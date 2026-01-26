@@ -8,11 +8,11 @@ function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold text-orange-400 mb-4">
-              Coal Lending
+              Van Share
             </h3>
             <p className="text-slate-300 leading-relaxed">
               Quality coal for your comfort and warmth. Fast delivery across
-              Ukraine.
+              Poland.
             </p>
           </div>
 

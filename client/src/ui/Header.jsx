@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import coalImage from "../assets/coal.webp";
+// import coalImage from "../assets/coal.webp";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,15 +11,17 @@ function Header() {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="flex items-center gap-3 hover:scale-105 transition-transform"
+            className="flex items-center gap-3 hover:scale-105 transition-all duration-300 group"
           >
-            <img
-              src={coalImage}
-              alt="Coal"
-              className="h-14 w-14 object-cover rounded-lg shadow-md"
-            />
-            <span className="text-2xl font-bold text-orange-400">
-              Coal Lending
+            <span
+              className="text-3xl font-bold bg-linear-to-r from-orange-400 via-orange-500 to-red-500 
+              bg-clip-text text-transparent uppercase tracking-wide font-zalando
+              drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]
+              group-hover:from-orange-300 group-hover:via-orange-400 group-hover:to-red-400
+              group-hover:drop-shadow-[0_4px_8px_rgba(249,115,22,0.4)]
+              transition-all duration-300"
+            >
+              Van Share
             </span>
           </Link>
 
@@ -30,7 +32,7 @@ function Header() {
                 to="/"
                 className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
-                Головна
+                Home
               </Link>
             </li>
             <li>
@@ -38,7 +40,7 @@ function Header() {
                 to="/about"
                 className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
-                Про нас
+                About Us
               </Link>
             </li>
             <li>
@@ -46,7 +48,7 @@ function Header() {
                 to="/delivery"
                 className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
-                Доставка
+                Delivery
               </Link>
             </li>
           </ul>
@@ -79,7 +81,7 @@ function Header() {
               className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
-              Головна
+              Home
             </Link>
           </li>
           <li>
@@ -88,7 +90,7 @@ function Header() {
               className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
-              Про нас
+              About Us
             </Link>
           </li>
           <li>
@@ -97,7 +99,7 @@ function Header() {
               className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
-              Доставка
+              Delivery
             </Link>
           </li>
         </ul>

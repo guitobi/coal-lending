@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+  --font-family-roboto: "Roboto", sans-serif;
+  --font-family-zalando: "Zalando Sans SemiExpanded", sans-serif;
+}
