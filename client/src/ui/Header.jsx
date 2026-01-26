@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 // import coalImage from "../assets/coal.webp";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Хедер стає sticky після 400px скролу (приблизно після CTA)
+      setIsScrolled(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="bg-stone-700 text-slate-50 shadow-xl border-b-4 border-orange-500">
+    <header
+      className={`text-slate-50 shadow-xl border-b-4 border-orange-500 transition-all duration-100 ease-in-out ${
+        isScrolled
+          ? "sticky top-0 z-50 bg-stone-700/95 backdrop-blur-md animate-[slideDown_0.5s_ease-out]"
+          : "relative z-10 bg-stone-700"
+      }`}
+      style={{
+        animation: isScrolled ? "slideDown 0.3s ease-out" : "none",
+      }}
+    >
       <nav className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           <Link

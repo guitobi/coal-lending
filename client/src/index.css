@@ -4,3 +4,14 @@
   --font-family-roboto: "Roboto", sans-serif;
   --font-family-zalando: "Zalando Sans SemiExpanded", sans-serif;
 }
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
