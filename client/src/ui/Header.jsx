@@ -27,14 +27,14 @@ function Header() {
         animation: isScrolled ? "slideDown 0.3s ease-out" : "none",
       }}
     >
-      <nav className="container mx-auto px-6 py-5">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6">
         <div className="flex items-center justify-between">
           <Link
             to="/"
             className="flex items-center gap-3 hover:scale-105 transition-all duration-300 group"
           >
             <span
-              className="text-3xl font-bold bg-linear-to-r from-orange-400 via-orange-500 to-red-500 
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-linear-to-r from-orange-400 via-orange-500 to-red-500 
               bg-clip-text text-transparent uppercase tracking-wide font-zalando
               drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]
               group-hover:from-orange-300 group-hover:via-orange-400 group-hover:to-red-400
@@ -46,11 +46,11 @@ function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex gap-2 text-lg font-medium">
+          <ul className="hidden sm:hidden md:flex gap-2 lg:gap-4 text-base md:text-lg lg:text-xl font-medium">
             <li>
               <Link
                 to="/"
-                className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
                 Home
               </Link>
@@ -58,7 +58,7 @@ function Header() {
             <li>
               <Link
                 to="/about"
-                className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
                 About Us
               </Link>
@@ -66,7 +66,7 @@ function Header() {
             <li>
               <Link
                 to="/delivery"
-                className="px-4 py-2 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
               >
                 Delivery
               </Link>

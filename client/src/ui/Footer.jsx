@@ -3,14 +3,14 @@ import { Link } from "react-router";
 function Footer() {
   return (
     <footer className="bg-stone-800 text-slate-50 border-t-4 border-orange-500">
-      <div className="container mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold text-orange-400 mb-4">
+            <h3 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-orange-400 mb-4">
               Van Share
             </h3>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
               Quality coal for your comfort and warmth. Fast delivery across
               Poland.
             </p>
@@ -18,10 +18,10 @@ function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-semibold mb-4 text-orange-400">
+            <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
               Navigation
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm sm:text-base lg:text-lg">
               <li>
                 <Link
                   to="/"
@@ -51,10 +51,10 @@ function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-semibold mb-4 text-orange-400">
+            <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
               Contact
             </h4>
-            <ul className="space-y-2 text-slate-300">
+            <ul className="space-y-2 text-slate-300 text-sm sm:text-base lg:text-lg">
               <li>📞 +380 (XX) XXX-XX-XX</li>
               <li>📧 info@coal-lending.ua</li>
               <li>📍 Kyiv, Prykladna St., 1</li>
