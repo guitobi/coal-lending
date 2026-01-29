@@ -1,5 +1,8 @@
-function WaveDevider({ color = "stone-100" }) {
+function WaveDevider({ color = "amber-100" }) {
   const colorClasses = {
+    "amber-50": "fill-amber-50",
+    "amber-100": "fill-amber-100",
+    "amber-200": "fill-amber-200",
     "stone-100": "fill-stone-100",
     "stone-200": "fill-stone-200",
   };

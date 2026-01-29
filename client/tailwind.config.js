@@ -7,6 +7,7 @@ export default {
         roboto: ["Roboto", "sans-serif"],
         zalando: ["Zalando Sans SemiExpanded", "sans-serif"],
         quicksand: ["Quicksand", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

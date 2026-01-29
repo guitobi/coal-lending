@@ -7,14 +7,14 @@ import KeyFeatures from "./KeyFeatures";
 function Home() {
   return (
     <div className="text-center">
-      <div className="bg-[#E7E5E4] relative">
+      <div className="bg-[#d4c4a8] relative">
         <CTA />
-        <WaveDevider color="stone-100" />
+        <WaveDevider color="amber-100" />
       </div>
 
       <div className="relative">
         <KeyFeatures />
-        <WaveDevider color="stone-200" />
+        <WaveDevider color="amber-50" />
       </div>
       <HowItWorks />
     </div>

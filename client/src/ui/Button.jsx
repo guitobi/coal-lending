@@ -5,13 +5,13 @@ function Button({ children, type }) {
   const styles = {
     primary:
       base +
-      " text-lg sm:text-xl md:text-2xl lg:text-3xl px-6 py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-5 lg:px-12 lg:py-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold shadow-lg hover:shadow-2xl hover:brightness-110 border-orange-600",
+      " text-base sm:text-lg md:text-xl px-6 py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-r from-yellow-500 to-red-500 text-white font-bold shadow-lg hover:shadow-2xl hover:brightness-110 border-yellow-600",
     secondary:
       base +
-      " text-sm sm:text-base md:text-lg lg:text-xl px-4 py-1.5 sm:px-5 sm:py-2 md:px-8 md:py-3 lg:px-10 lg:py-4 bg-stone-200 text-stone-700 border-stone-300 hover:bg-stone-300 hover:border-stone-400",
+      " text-sm sm:text-base px-4 py-1.5 sm:px-5 sm:py-2 bg-neutral-800 text-slate-100 border-neutral-700 hover:bg-neutral-700 hover:border-neutral-600",
     small:
       base +
-      " text-xs sm:text-sm md:text-base px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 bg-yellow-400 text-stone-800 border-yellow-500 hover:bg-yellow-500",
+      " text-xs sm:text-sm px-3 py-1 sm:px-4 sm:py-1.5 bg-yellow-400 text-neutral-800 border-yellow-500 hover:bg-yellow-500",
   };
 
   return <button className={styles[type]}>{children}</button>;
