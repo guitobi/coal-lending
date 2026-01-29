@@ -1,107 +1,22 @@
-import Button from "../../ui/Button";
 import WaveDevider from "../../ui/WaveDevider";
 import CTA from "./CTA";
-import coalImage from "../../assets/coal_in_bag.png";
+import HowItWorks from "./HowItWorks";
+
+import KeyFeatures from "./KeyFeatures";
 
 function Home() {
   return (
     <div className="text-center">
       <div className="bg-[#E7E5E4] relative">
         <CTA />
-        <WaveDevider />
+        <WaveDevider color="stone-100" />
       </div>
 
-      <div className="pt-15 pb-50 bg-stone-100">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-orange-600 mb-8">
-          Product Details
-        </h2>
-        <article className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-          {/* Ціна та опис */}
-          <div className="text-center mb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-orange-700 mb-3">
-              Premium Coal
-            </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-orange-600 mb-4">
-              $199.99/kg
-            </h2>
-            <p className="text-sm sm:text-base lg:text-base text-stone-600 max-w-3xl mx-auto leading-relaxed">
-              High-quality coal with maximum heat output and minimum ash.
-              Perfect for home heating and industrial use.
-            </p>
-          </div>
-
-          {/* Характеристики */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 mb-10">
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center">
-              <div className="text-3xl sm:text-4xl lg:text-4xl mb-2 sm:mb-3">
-                🔥
-              </div>
-              <h3 className="text-base sm:text-lg lg:text-lg font-semibold text-orange-700 mb-2">
-                High Heat
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 hidden md:block">
-                Maximum thermal efficiency
-              </p>
-            </div>
-
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center">
-              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">✨</div>
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-orange-700 mb-2">
-                Low Ash
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 hidden md:block">
-                Minimal residue
-              </p>
-            </div>
-
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center">
-              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">⚖️</div>
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-orange-700 mb-2">
-                Certified
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 hidden md:block">
-                Honest weight
-              </p>
-            </div>
-
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center">
-              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">🚚</div>
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-orange-700 mb-2">
-                Fast Delivery
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 hidden md:block">
-                Quick shipping
-              </p>
-            </div>
-
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center hidden md:block">
-              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">🏭</div>
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-orange-700 mb-2">
-                Eco-Friendly
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600">
-                Sustainable sourcing
-              </p>
-            </div>
-
-            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all text-center hidden md:block">
-              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">💰</div>
-              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-orange-700 mb-2">
-                Best Value
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600">
-                Competitive pricing
-              </p>
-            </div>
-          </div>
-
-          {/* Кнопки */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <Button type="primary">Buy now</Button>
-            <Button type="secondary">Learn more</Button>
-          </div>
-        </article>
+      <div className="relative">
+        <KeyFeatures />
+        <WaveDevider color="stone-200" />
       </div>
+      <HowItWorks />
     </div>
   );
 }

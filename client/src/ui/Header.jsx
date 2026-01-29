@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 // import coalImage from "../assets/coal.webp";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +51,11 @@ function Header() {
             <li>
               <Link
                 to="/"
-                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className={`px-3 py-2 lg:px-5 lg:py-3 rounded-lg transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                  location.pathname === "/"
+                    ? "bg-stone-600 text-orange-300"
+                    : ""
+                }`}
               >
                 Home
               </Link>
@@ -58,7 +63,11 @@ function Header() {
             <li>
               <Link
                 to="/about"
-                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className={`px-3 py-2 lg:px-5 lg:py-3 rounded-lg transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                  location.pathname === "/about"
+                    ? "bg-stone-600 text-orange-300"
+                    : ""
+                }`}
               >
                 About Us
               </Link>
@@ -66,7 +75,11 @@ function Header() {
             <li>
               <Link
                 to="/delivery"
-                className="px-3 py-2 lg:px-5 lg:py-3 rounded-lg hover:bg-stone-600 hover:text-orange-300 transition-all"
+                className={`px-3 py-2 lg:px-5 lg:py-3 rounded-lg transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                  location.pathname === "/delivery"
+                    ? "bg-stone-600 text-orange-300"
+                    : ""
+                }`}
               >
                 Delivery
               </Link>
@@ -98,7 +111,9 @@ function Header() {
           <li>
             <Link
               to="/"
-              className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
+              className={`block py-3 px-4 transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                location.pathname === "/" ? "bg-stone-600 text-orange-300" : ""
+              }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Home
@@ -107,7 +122,11 @@ function Header() {
           <li>
             <Link
               to="/about"
-              className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
+              className={`block py-3 px-4 transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                location.pathname === "/about"
+                  ? "bg-stone-600 text-orange-300"
+                  : ""
+              }`}
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
@@ -116,7 +135,11 @@ function Header() {
           <li>
             <Link
               to="/delivery"
-              className="block py-3 px-4 hover:bg-stone-600 hover:text-orange-300 transition-all"
+              className={`block py-3 px-4 transition-all hover:bg-stone-500 hover:text-orange-300 ${
+                location.pathname === "/delivery"
+                  ? "bg-stone-600 text-orange-300"
+                  : ""
+              }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Delivery

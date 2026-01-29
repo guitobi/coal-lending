@@ -1,5 +1,4 @@
 import Button from "../../ui/Button";
-import coalImage from "../../assets/coal_in_bag.png";
 
 function CTA() {
   return (
@@ -16,7 +15,7 @@ function CTA() {
             {/* Фото на мобільному */}
             <div className="lg:hidden flex justify-center mb-4 sm:mb-6">
               <img
-                src={coalImage}
+                src="/coal_in_bag.png"
                 alt="Premium coal in bag"
                 className="w-32 sm:w-40 md:w-48 rounded-2xl mix-blend-multiply drop-shadow-2xl"
               />
@@ -36,7 +35,7 @@ function CTA() {
           {/* Фото мішка справа */}
           <div className="hidden lg:flex flex-1 justify-end items-center mt-12 lg:mt-8">
             <img
-              src={coalImage}
+              src="/coal_in_bag.png"
               alt="Premium coal in bag"
               className="w-64 lg:w-72 xl:w-80 rounded-2xl hover:scale-105 transition-transform duration-300 mix-blend-multiply"
             />
