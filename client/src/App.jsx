@@ -1,7 +1,7 @@
-import Home from "./features/Home/Home.jsx";
-import Layout from "./ui/Layout.jsx";
-import AboutUs from "./features/About/AboutUs.jsx";
-import Delivery from "./features/Delivery/Delivery.jsx";
+import AppLayout from "./ui/AppLayout";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import Delivery from "./pages/Delivery";
 
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
@@ -9,7 +9,7 @@ import { RouterProvider } from "react-router/dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <AppLayout />,
     children: [
       {
         index: true,

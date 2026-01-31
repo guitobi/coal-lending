@@ -15,7 +15,7 @@ function CTA() {
               <span>Minimum Ash</span>
             </h1>
 
-            {/* Фото на мобільному */}
+            {/* Mobile layout photo */}
             <div className="lg:hidden flex justify-center mb-4 sm:mb-6">
               <img
                 src="/coal_in_bag.png"

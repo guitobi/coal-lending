@@ -1,8 +1,8 @@
-import WaveDevider from "../../ui/WaveDevider";
-import CTA from "./CTA";
-import HowItWorks from "./HowItWorks";
+import WaveDevider from "../ui/WaveDevider";
+import CTA from "../features/Home/CTA";
+import HowItWorks from "../features/Home/HowItWorks";
 
-import KeyFeatures from "./KeyFeatures";
+import KeyFeatures from "../features/Home/KeyFeatures";
 
 function Home() {
   return (

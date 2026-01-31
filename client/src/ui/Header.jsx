@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import NavBar from "./NavBar";
+import Logo from "./Logo";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,8 +19,8 @@ function Header() {
     <header
       className={`text-slate-50 shadow-xl border-b-4 border-yellow-500 transition-all duration-100 ease-in-out ${
         isScrolled
-          ? "sticky top-0 z-50 bg-neutral-900/95 backdrop-blur-md animate-[slideDown_0.5s_ease-out]"
-          : "relative z-10 bg-neutral-900"
+          ? "sticky top-0 z-50 bg-transparent backdrop-blur-md animate-[slideDown_0.5s_ease-out]"
+          : "relative z-10 bg-transparent"
       }`}
       style={{
         animation: isScrolled ? "slideDown 0.3s ease-out" : "none",
