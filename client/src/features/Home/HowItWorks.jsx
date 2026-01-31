@@ -57,7 +57,7 @@ const HowItWorks = () => {
 
         {/* Call-to-action button (Optional) */}
         <div className="mt-12 text-center">
-          <button className="text-neutral-800 font-semibold hover:text-neutral-900 underline underline-offset-4">
+          <button className="text-neutral-800 font-semibold hover:text-neutral-900 underline underline-offset-4 cursor-pointer">
             Learn more about delivery →
           </button>
         </div>

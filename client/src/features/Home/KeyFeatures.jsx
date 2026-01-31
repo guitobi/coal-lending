@@ -87,7 +87,7 @@ function KeyFeatures() {
         </div>
 
         {/* Кнопки */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
           <Button type="primary">Buy now</Button>
           <Button type="secondary">Learn more</Button>
         </div>

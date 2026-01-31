@@ -3,7 +3,7 @@ import { Link } from "react-router";
 function FooterQuickLinks() {
   return (
     <div>
-      <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-yellow-400">
+      <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
         Navigation
       </h4>
       <ul className="space-y-2 text-sm sm:text-base lg:text-lg">
