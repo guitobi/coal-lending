@@ -17,7 +17,10 @@ function CTA() {
             {/* Mobile layout photo */}
             <div className="lg:hidden flex justify-center mb-4 sm:mb-6">
               <img
-                src="/coal_in_bag.png"
+                fetchPriority="high"
+                width={567}
+                height={1280}
+                src="/coal_in_bag.webp"
                 alt="Premium coal in bag"
                 className="w-32 sm:w-40 md:w-48 rounded-2xl drop-shadow-[0_15px_50px_rgba(0,0,0,0.4)]"
               />
@@ -35,7 +38,10 @@ function CTA() {
 
           <div className="hidden lg:flex flex-1 justify-start items-center mt-12 lg:mt-8">
             <img
-              src="/coal_in_bag.png"
+              fetchPriority="high"
+              width={567}
+              height={1280}
+              src="/coal_in_bag.webp"
               alt="Premium coal in bag"
               className="w-64 lg:w-72 xl:w-80 rounded-2xl drop-shadow-[0_15px_50px_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-300"
             />
