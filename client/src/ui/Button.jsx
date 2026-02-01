@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-function Button({ children, type, to }) {
+function Button({ children, type, to, buttonType = "submit", onClick }) {
   const base =
     "rounded-full font-semibold transition-all duration-300 border-2";
 
@@ -14,6 +14,9 @@ function Button({ children, type, to }) {
     small:
       base +
       " text-xs sm:text-sm px-3 py-1 sm:px-4 sm:py-1.5 bg-yellow-400 text-neutral-800 border-yellow-500 hover:bg-yellow-500",
+    location:
+      base +
+      " text-sm px-4 py-2 bg-gradient-to-r from-yellow-500 to-red-500 text-white font-bold shadow-lg hover:shadow-2xl hover:brightness-110 border-yellow-600",
   };
 
   if (to) {
@@ -24,7 +27,11 @@ function Button({ children, type, to }) {
     );
   }
 
-  return <button className={styles[type]}>{children}</button>;
+  return (
+    <button type={buttonType} className={styles[type]} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;
