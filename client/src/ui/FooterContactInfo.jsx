@@ -5,9 +5,11 @@ function FooterContactInfo() {
         Contact
       </h4>
       <ul className="space-y-2 text-slate-300 text-sm sm:text-base lg:text-lg">
-        <li>📞 +380 (XX) XXX-XX-XX</li>
-        <li>📧 info@coal-lending.ua</li>
-        <li>📍 Kyiv, Prykladna St., 1</li>
+        <li>📞 +48 577 432 949</li>
+        <li>📞 +48 730 670 345</li>
+        <li>📧 vanshare1@gmail.com</li>
+        <li>📍 ul. Batalionów Chłopskich 3</li>
+        <li className="pl-5">58-050 Jelenia Góra, Poland</li>
       </ul>
     </div>
   );

@@ -32,7 +32,9 @@ function CTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <Button type="primary">Check Prices</Button>
-              <Button type="secondary">Calculate Price</Button>
+              <Button to="/calculator" type="secondary">
+                Calculate Price
+              </Button>
             </div>
           </div>
 

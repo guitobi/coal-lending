@@ -5,7 +5,11 @@ function FooterCompanyInfo() {
         Van Share
       </h3>
       <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-        Quality coal for your comfort and warmth. Fast delivery across Poland.
+        Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood
+        charcoal for grilling and BBQ.
+      </p>
+      <p className="text-slate-400 text-xs mt-2">
+        Van Share Spółka z o.o. | NIP: 716-28-26886
       </p>
     </div>
   );

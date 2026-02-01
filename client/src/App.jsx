@@ -5,6 +5,7 @@ import Delivery from "./pages/Delivery";
 
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
+import Calculator from "./pages/Calculator";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "delivery",
         element: <Delivery />,
+      },
+      {
+        path: "calculator",
+        element: <Calculator />,
       },
     ],
   },
