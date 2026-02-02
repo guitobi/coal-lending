@@ -2,7 +2,7 @@ import Button from "../../ui/Button";
 
 function KeyFeatures() {
   return (
-    <div className="pt-15 pb-50 bg-amber-100">
+    <div className="pt-15 pb-32 bg-amber-100/70">
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-neutral-800 mb-8 font-space-grotesk">
         Key Features
       </h2>

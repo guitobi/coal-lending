@@ -5,7 +5,7 @@ function OurMission() {
         Our Mission
       </h2>
       <div className="grid md:grid-cols-3 gap-8">
-        <div className=" bg-[#f5e5cb] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+        <div className=" bg-[#f5e5cb]/70 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
           <div className="text-5xl mb-4">🌍</div>
           <h3 className="text-xl font-semibold mb-3 text-yellow-700">
             Sustainability
@@ -15,7 +15,7 @@ function OurMission() {
             continuously to minimize the carbon footprint of our operations.
           </p>
         </div>
-        <div className="bg-[#f5e5cb] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+        <div className="bg-[#f5e5cb]/70 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
           <div className="text-5xl mb-4">🤝</div>
           <h3 className="text-xl font-semibold mb-3 text-yellow-700">
             Community
@@ -25,7 +25,7 @@ function OurMission() {
             lending process and supporting local economies.
           </p>
         </div>
-        <div className="bg-[#f5e5cb] rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+        <div className="bg-[#f5e5cb]/70 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
           <div className="text-5xl mb-4">💡</div>
           <h3 className="text-xl font-semibold mb-3 text-yellow-700">
             Innovation

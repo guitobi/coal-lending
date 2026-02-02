@@ -53,7 +53,7 @@ function Calculator() {
   }
 
   return (
-    <div className="min-h-screen bg-[#d4c4a8] py-16 px-4">
+    <div className="min-h-screen py-16 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
