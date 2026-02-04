@@ -45,7 +45,7 @@ export async function geocodeAddress(address) {
   }
 }
 
-export async function getGeolocation(e, onSuccess, onError) {
+export function getGeolocation(e, onSuccess, onError) {
   e.preventDefault();
 
   if (!navigator.geolocation) {

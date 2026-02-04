@@ -7,22 +7,23 @@ function CTA() {
         <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-16">
           <div className="flex-1 lg:text-left text-center pt-8 sm:pt-12 md:pt-20 lg:pt-0">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-50 transition-all duration-500 cursor-pointer hover:text-orange-600
-            hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] mb-4 sm:mb-6 md:mb-8 text-center flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 tracking-wide"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-50 transition-all duration-500 cursor-pointer hover:text-orange-600
+            hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
             >
-              <span>Maximum Heat,</span>
-              <span>Minimum Ash</span>
+              <span className="inline-block">Maximum Heat,</span>{" "}
+              <span className="inline-block">Minimum Ash</span>
             </h1>
 
             {/* Mobile layout photo */}
-            <div className="lg:hidden flex justify-center mb-4 sm:mb-6">
+            <div className="lg:hidden flex justify-center mb-4 sm:mb-6 relative group">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/30 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
               <img
                 fetchPriority="high"
                 width={567}
                 height={1280}
                 src="/coal_in_bag.webp"
                 alt="Premium coal in bag"
-                className="w-32 sm:w-40 md:w-48 rounded-2xl drop-shadow-[0_15px_50px_rgba(0,0,0,0.4)]"
+                className="relative z-10 w-32 sm:w-40 md:w-48 rounded-2xl drop-shadow-[0_15px_50px_rgba(0,0,0,0.4)]"
               />
             </div>
 
