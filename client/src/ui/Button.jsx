@@ -1,6 +1,13 @@
 import { Link } from "react-router";
 
-function Button({ children, type, to, buttonType = "submit", onClick }) {
+function Button({
+  children,
+  type,
+  to,
+  buttonType = "submit",
+  onClick,
+  className,
+}) {
   const base =
     "rounded-full font-semibold transition-all duration-300 border-2 cursor-pointer";
 
@@ -21,14 +28,18 @@ function Button({ children, type, to, buttonType = "submit", onClick }) {
 
   if (to) {
     return (
-      <Link to="/calculator" className={styles[type]}>
+      <Link to={to} className={className || styles[type]}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={buttonType} className={styles[type]} onClick={onClick}>
+    <button
+      type={buttonType}
+      className={className || styles[type]}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

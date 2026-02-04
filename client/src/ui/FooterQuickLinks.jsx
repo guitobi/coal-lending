@@ -10,7 +10,7 @@ function FooterQuickLinks() {
         <li>
           <Link
             to="/"
-            className="text-slate-300 hover:text-yellow-300 transition-colors"
+            className="text-slate-300 hover:text-orange-500 transition-colors"
           >
             Home
           </Link>
@@ -18,7 +18,7 @@ function FooterQuickLinks() {
         <li>
           <Link
             to="/about"
-            className="text-slate-300 hover:text-yellow-300 transition-colors"
+            className="text-slate-300 hover:text-orange-500  transition-colors"
           >
             About Us
           </Link>
@@ -26,7 +26,7 @@ function FooterQuickLinks() {
         <li>
           <Link
             to="/delivery"
-            className="text-slate-300 hover:text-yellow-300 transition-colors"
+            className="text-slate-300 hover:text-orange-500 transition-colors"
           >
             Delivery
           </Link>

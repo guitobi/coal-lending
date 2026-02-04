@@ -2,17 +2,19 @@ import { Mail, MapPinned, Phone } from "lucide-react";
 
 function DeliveryContactSection() {
   return (
-    <section className="bg-yellow-700 py-16">
+    <section className="bg-stone-900/50 py-16 border border-stone-800">
       <div className="max-w-4xl mx-auto px-4 text-center text-white">
-        <h2 className="text-4xl font-bold mb-6">Ready to Order?</h2>
-        <p className="text-xl mb-8">
+        <h2 className="text-4xl font-bold mb-6 text-orange-500">
+          Ready to Order?
+        </h2>
+        <p className="text-xl mb-8 text-stone-400">
           Contact our sales department for orders and details
         </p>
         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-left max-w-2xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <div className="flex items-center gap-2 font-semibold mb-2">
-                <Mail className="w-5 h-5" />
+                <Mail className="w-5 h-5 text-orange-500" />
                 <h3>Email</h3>
               </div>
               <a href="mailto:vanshare1@gmail.com" className="hover:underline">
@@ -21,7 +23,7 @@ function DeliveryContactSection() {
             </div>
             <div>
               <div className="flex items-center gap-2 font-semibold mb-2">
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 text-orange-500" />
                 <h3>Phone</h3>
               </div>
               <p>+48 577 432 949</p>
@@ -29,7 +31,7 @@ function DeliveryContactSection() {
             </div>
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 font-semibold mb-2">
-                <MapPinned className="w-5 h-5" />
+                <MapPinned className="w-5 h-5 text-orange-500" />
                 <h3>Address</h3>
               </div>
               <p>Van Share Spółka z o.o.</p>
