@@ -2,7 +2,7 @@ import Button from "../../ui/Button";
 
 function CTA() {
   return (
-    <section className="pb-20 sm:pb-25 md:pb-30 lg:pb-25 flex items-center relative z-10">
+    <section className="pb-20 sm:pb-25 md:pb-30 lg:pb-25 flex items-center relative z-10 w-screen h-screen">
       <div className="max-w-7xl mx-auto px-6 lg:px-16 w-full">
         <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-16">
           <div className="flex-1 lg:text-left text-center pt-8 sm:pt-12 md:pt-20 lg:pt-0">
@@ -32,7 +32,17 @@ function CTA() {
             </h3>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-              <Button type="primary">Check Prices</Button>
+              <Button
+                type="primary"
+                onClick={() => {
+                  const section = document.getElementById("packages");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Check Prices
+              </Button>
               <Button to="/calculator" type="secondary">
                 Calculate Price
               </Button>

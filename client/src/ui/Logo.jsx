@@ -1,6 +1,6 @@
 function Logo() {
   return (
-    <div className="relative px-2 py-2 h-full flex items-center justify-center grow flex-none">
+    <div className="relative px-2 py-2 h-full flex items-center justify-center grow flex-none lg:ml-10 ">
       <img
         fetchPriority="high"
         width={1280}

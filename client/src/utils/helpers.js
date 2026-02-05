@@ -14,7 +14,7 @@ export async function geocodeAddress(address) {
 
   try {
     const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`,
+      `/api/nominatim/search?q=${encodeURIComponent(address)}&format=json&limit=1`,
     );
     const data = await res.json();
 
@@ -66,7 +66,7 @@ export function getGeolocation(e, onSuccess, onError) {
         const distanceInKm = (distanceInMeters / 1000).toFixed(2);
 
         const res = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+          `/api/nominatim/reverse?lat=${latitude}&lon=${longitude}&format=json`,
         );
         const data = await res.json();
 

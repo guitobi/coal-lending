@@ -13,7 +13,7 @@ function DeliveryHero() {
           standard EN 1860-2:2005.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <div className="bg-stone-900/40rounded-lg px-6 py-3 flex items-center gap-3">
+          <div className="bg-stone-900/40 rounded-lg px-6 py-3 flex items-center gap-3">
             <div className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center">
               <Package className="w-6 h-6 text-orange-500" strokeWidth={2} />
             </div>

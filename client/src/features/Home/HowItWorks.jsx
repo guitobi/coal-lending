@@ -26,7 +26,7 @@ const HowItWorks = () => {
               {/* Icon circle */}
               <div className="relative w-24 h-24 bg-stone-900/40 rounded-full flex items-center justify-center mb-6 shadow-sm border-4 hover:border-amber-600 z-20 transition-all duration-300 group-hover:scale-105">
                 {/* Opaque background to hide line */}
-                <div className="absolute inset-0 bg-stone-950 rounded-full -z-10"></div>
+                <div className="absolute inset-0 bg-stone-950 rounded-full -z-10 "></div>
                 {step.icon}
               </div>
 
