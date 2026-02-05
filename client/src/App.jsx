@@ -6,6 +6,7 @@ import Delivery from "./pages/Delivery";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Calculator from "./pages/Calculator";
+import Order from "./pages/Order";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +29,20 @@ const router = createBrowserRouter([
         path: "calculator",
         element: <Calculator />,
       },
+      {
+        path: "order",
+        element: <Order />,
+      },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

@@ -6,35 +6,30 @@ function CoalPiece({ className = "", style = {} }) {
       style={style}
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Main coal shape - irregular rock */}
+      {/* Minecraft-style coal - stepped angular shape */}
       <path
-        d="M20 35 L35 15 L55 10 L75 18 L88 35 L92 55 L85 75 L70 90 L45 92 L25 85 L12 65 L15 45 Z"
+        d="M 35,10 L 45,8 L 55,10 L 62,12 L 68,18 L 75,25 L 82,35 L 88,45 L 90,55 L 88,65 L 82,75 L 75,82 L 65,88 L 55,92 L 45,90 L 35,88 L 25,82 L 18,75 L 12,65 L 10,55 L 12,45 L 18,35 L 25,25 L 30,18 Z"
         fill="#1a1a1a"
       />
-      {/* Shiny facets */}
-      <path d="M35 15 L55 10 L60 30 L40 35 Z" fill="#2d2d2d" />
-      <path d="M75 18 L88 35 L75 45 L65 30 Z" fill="#333" />
-      <path d="M25 85 L45 92 L50 75 L30 70 Z" fill="#252525" />
-      {/* Subtle highlight for gloss effect */}
-      <path d="M40 20 L52 18 L48 28 L38 30 Z" fill="#444" opacity="0.6" />
-      {/* Surface cracks/texture lines */}
-      <path
-        d="M30 45 L50 50 L70 42"
-        stroke="#0a0a0a"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <path
-        d="M45 60 L60 65 L75 58"
-        stroke="#0a0a0a"
-        strokeWidth="1"
-        fill="none"
-      />
-      <path
-        d="M25 55 L35 70 L50 75"
-        stroke="#0a0a0a"
-        strokeWidth="1"
-        fill="none"
+
+      {/* Dark areas - angular patches */}
+      <path d="M 25,30 L 35,28 L 40,35 L 35,42 L 28,40 Z" fill="#0d0d0d" />
+      <path d="M 60,40 L 70,38 L 75,48 L 70,55 L 62,50 Z" fill="#0d0d0d" />
+      <path d="M 40,65 L 50,63 L 55,72 L 48,78 L 38,72 Z" fill="#0d0d0d" />
+
+      {/* Light highlights - angular */}
+      <path d="M 40,18 L 50,15 L 55,22 L 48,28 L 42,25 Z" fill="#404040" />
+      <path d="M 70,58 L 78,62 L 75,70 L 68,68 Z" fill="#333333" />
+
+      {/* Medium tone patches */}
+      <path d="M 28,55 L 35,53 L 40,60 L 35,68 L 30,62 Z" fill="#2d2d2d" />
+      <path d="M 50,45 L 60,43 L 65,52 L 58,58 L 52,52 Z" fill="#252525" />
+
+      {/* Small bright spot */}
+      <polygon
+        points="45,25 50,23 52,28 48,32 43,30"
+        fill="#505050"
+        opacity="0.7"
       />
     </svg>
   );
