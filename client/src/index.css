@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  /* Додаємо класи затримки вручну, щоб не писати плагін */
+  .delay-150 {
+    animation-delay: 150ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @theme {
   --font-family-roboto: "Roboto", sans-serif;
   --font-family-zalando: "Zalando Sans SemiExpanded", sans-serif;

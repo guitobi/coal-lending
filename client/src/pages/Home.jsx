@@ -12,7 +12,7 @@ function Home() {
 
       <div className="relative overflow-visible z-10">
         {/* <KeyFeatures /> */}
-        <ProductPackages />
+        <ProductPackages links={true} />
       </div>
 
       <div className="relative z-0 -mt-1">
