@@ -31,7 +31,10 @@ function Order() {
         </p>
         <p>
           <button onClick={() => setIsEditing((cur) => !cur)}>
-            <PencilLine color={isEditing ? "orangered" : "#d6d3d1"} />
+            <PencilLine
+              className="transition-colors duration-500 "
+              color={isEditing ? "orangered" : "#d6d3d1"}
+            />
           </button>
         </p>
       </div>
