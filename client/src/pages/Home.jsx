@@ -1,22 +1,23 @@
-import WaveDevider from "../ui/WaveDevider";
 import CTA from "../features/Home/CTA";
 import HowItWorks from "../features/Home/HowItWorks";
-
 import KeyFeatures from "../features/Home/KeyFeatures";
+import ProductPackages from "../features/Home/ProductPackages";
 
 function Home() {
   return (
     <div className="text-center">
-      <div className="bg-[#d4c4a8] relative">
+      <div className="relative">
         <CTA />
-        <WaveDevider color="amber-100" />
       </div>
 
-      <div className="relative">
-        <KeyFeatures />
-        <WaveDevider color="amber-50" />
+      <div className="relative overflow-visible z-10">
+        {/* <KeyFeatures /> */}
+        <ProductPackages links={true} />
       </div>
-      <HowItWorks />
+
+      <div className="relative z-0 -mt-1">
+        <HowItWorks />
+      </div>
     </div>
   );
 }

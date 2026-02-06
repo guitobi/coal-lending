@@ -9,13 +9,13 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full flex flex-col">
+    <nav className="w-full flex flex-col bg-stone-900  border-b border-stone-800/50">
       <div className="flex w-full items-stretch">
         <NavButtonLink to="/" type="logo">
           <Logo />
         </NavButtonLink>
 
-        <div className="flex-1 flex items-center justify-end bg-neutral-900 px-4">
+        <div className="text-stone-50 bg-stone-900 flex-1 flex items-center justify-end  px-4">
           <ul className="hidden sm:hidden md:flex gap-2 lg:gap-4 text-base md:text-lg lg:text-xl font-medium items-center">
             <li>
               <NavButtonLink to="/" type="primary">

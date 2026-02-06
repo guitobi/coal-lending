@@ -6,33 +6,33 @@ function DeliveryTerms() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold mb-6 text-yellow-700">
+            <h2 className="text-4xl font-bold mb-6 text-orange-500">
               Delivery Terms
             </h2>
-            <div className="space-y-4 text-stone-800">
+            <div className="space-y-4 text-stone-300">
               <div className="flex items-start">
-                <Truck className="w-7 h-7 mr-3 text-yellow-700 shrink-0 mt-1" />
+                <Truck className="w-7 h-7 mr-3 text-orange-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg">Fast Delivery</h3>
                   <p>10-21 business days from order confirmation</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <MapPin className="w-7 h-7 mr-3 text-yellow-700 shrink-0 mt-1" />
+                <MapPin className="w-7 h-7 mr-3 text-orange-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg">DAP Polkowice</h3>
                   <p>Delivered to your specified location in Polkowice</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <Package className="w-7 h-7 mr-3 text-yellow-700 shrink-0 mt-1" />
+                <Package className="w-7 h-7 mr-3 text-orange-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg">Minimum Order</h3>
                   <p>10 tons (negotiable for larger orders)</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <CreditCard className="w-7 h-7 mr-3 text-yellow-700 shrink-0 mt-1" />
+                <CreditCard className="w-7 h-7 mr-3 text-orange-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg">Payment Terms</h3>
                   <p>30% advance, 70% after delivery (bank transfer)</p>

@@ -11,10 +11,10 @@ function OurTeam() {
             />
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-4xl font-bold mb-6 text-yellow-700">
+            <h2 className="text-4xl font-bold mb-6 text-orange-500">
               Our Team
             </h2>
-            <p className="text-lg text-stone-800 leading-relaxed">
+            <p className="text-lg text-stone-300 leading-relaxed">
               Our passionate team consists of energy experts, software
               engineers, and community advocates. We are united by a vision to
               empower people and businesses with reliable energy solutions. With

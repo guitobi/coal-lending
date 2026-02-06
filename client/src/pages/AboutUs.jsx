@@ -6,7 +6,7 @@ import OurTeam from "../features/About/OurTeam";
 
 function AboutUs() {
   return (
-    <div className="bg-[#d4c4a8] min-h-screen">
+    <div className="min-h-screen">
       <AboutVanShare />
 
       <OurAchievements />

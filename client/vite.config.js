@@ -14,5 +14,15 @@ export default defineConfig({
   ],
   server: {
     allowedHosts: true,
+    proxy: {
+      "/api/nominatim": {
+        target: "https://nominatim.openstreetmap.org",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/nominatim/, ""),
+        headers: {
+          "User-Agent": "CoalLendingApp/1.0",
+        },
+      },
+    },
   },
 });
