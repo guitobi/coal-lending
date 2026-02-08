@@ -1,40 +1,57 @@
 @import "tailwindcss";
 
 @layer utilities {
+  /* Клас появи: плавно (0.3с), знизу вгору */
   .animate-fade-in-up {
-    animation: fade-in-up 0.5s ease-out forwards;
+    animation: fade-in-up 0.3s ease-out forwards;
   }
 
-  /* Додаємо класи затримки вручну, щоб не писати плагін */
-  .delay-150 {
-    animation-delay: 150ms;
-  }
-  .delay-300 {
-    animation-delay: 300ms;
+  /* Клас зникнення: швидко (0.2с), спливає ВГОРУ */
+  .animate-fade-out-up {
+    animation: fade-out-up 0.2s ease-in forwards;
   }
 }
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @theme {
+  /* Шрифти */
   --font-family-roboto: "Roboto", sans-serif;
   --font-family-zalando: "Zalando Sans SemiExpanded", sans-serif;
   --font-family-poppins: "Poppins", sans-serif;
   --font-family-space-grotesk: "Space Grotesk", sans-serif;
+
+  /* Кейфрейми */
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-out-up {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
 }
 
+/* Базові стилі */
 body {
   font-family: "Poppins", sans-serif;
   font-display: swap;
+  background-color: #0c0a09; /* stone-950 */
+  color: white;
 }
+
+/* --- Вугільний фон та декорації (Ваш оригінальний код) --- */
 
 /* Coal-themed background pattern */
 .coal-background {

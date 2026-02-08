@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 function Button({
   children,
-  type,
+  type = "primary",
   to,
   buttonType = "submit",
   onClick,
