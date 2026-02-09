@@ -35,6 +35,23 @@ function Order() {
 
   const selectedPackage = watch("packageType");
   const numberOfBags = watch("numberOfBags");
+  const name = watch("name");
+  const email = watch("email");
+  const phoneNumber = watch("phoneNumber");
+  const totalWeigth =
+    numberOfBags && selectedPackage
+      ? Number(numberOfBags.split(" ").at(0)) *
+        Number(selectedPackage.split(" ").at(0))
+      : "0";
+
+  const totalOrder = {
+    name,
+    email,
+    phoneNumber,
+    numberOfBags,
+    selectedPackage,
+    totalWeigth,
+  };
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -91,7 +108,6 @@ function Order() {
           </button>
         </div>
 
-        {/* Вибраний пакет (завжди видимий) */}
         {selectedPackage && !isExpanded && (
           <div className="max-w-md mx-auto mb-4 p-4 rounded-lg border-2 border-orange-500 bg-orange-500/10 text-center animate-fade-in-up">
             <Package className="w-10 h-10 mx-auto mb-2 text-orange-500" />
@@ -164,8 +180,22 @@ function Order() {
       </div>
 
       <form
-        onSubmit={handleSubmit((data) => {
+        onSubmit={handleSubmit(async (data) => {
           console.log(data);
+          try {
+            const res = await fetch("http://localhost:5000/api/order/new", {
+              method: "POST",
+              body: JSON.stringify(totalOrder),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            if (!res.ok) throw new Error("error posting data");
+
+            const result = await res.text();
+          } catch (error) {
+            console.error(error);
+          }
         })}
         className="text-stone-100 flex flex-col m-10  rounded-2xl justify-between items-center gap-5 px-5 py-6 bg-stone-900/50  mx-auto"
       >
@@ -266,7 +296,7 @@ function Order() {
             Comment <span>(optional)</span>
           </label>
           <textarea
-            {...register("commment")}
+            {...register("comment")}
             className="w-full h-32 bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500 transition-colors resize-none"
             name="comment"
             id="comment"
@@ -280,7 +310,7 @@ function Order() {
           {numberOfBags && selectedPackage
             ? Number(numberOfBags.split(" ").at(0)) *
               Number(selectedPackage.split(" ").at(0))
-            : "0"}
+            : 0}
         </p>
       </form>
 
