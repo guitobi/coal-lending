@@ -68,6 +68,41 @@ app.post("/api/order/new", async (req, res) => {
   }
 });
 
+app.post("api/problem/new", async (req, res) => {
+  console.log("data arrived");
+  console.log(data);
+
+  if (!data) {
+    return res
+      .status(400)
+      .json({ success: false, message: "No data provided" });
+  }
+
+  const { name, email, subject, message } = data;
+
+  try {
+    await transporter.sendMail({
+      from: "skullvisit@gmail.com",
+      to: "stratilatov.oleksandr@gmail.com", //TODO: change to user email after testing
+      subject: "Client contact message!",
+      text: "Client saying: ",
+      html: `
+        <p><strong>From:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Subject:</strong> ${subject} kg</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    });
+  } catch (error) {
+    console.error("Error sending email:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Message received but failed to send email",
+      error: error.message,
+    });
+  }
+});
+
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is runinng");
 });

@@ -162,7 +162,7 @@ function ContactUs() {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   id="name"
-                  placeholder="John Doe"
+                  placeholder="Enter your name..."
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
                 />
                 {errors.name && (
@@ -190,7 +190,7 @@ function ContactUs() {
                   })}
                   type="email"
                   id="email"
-                  placeholder="john.doe@example.com"
+                  placeholder="Enter your email..."
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
                 />
                 {errors.email && (
