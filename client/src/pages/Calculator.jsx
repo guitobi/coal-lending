@@ -1,289 +1,180 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Button from "../ui/Button";
-import { getGeolocation, geocodeAddress } from "../utils/helpers";
-import { MapPin } from "lucide-react";
-import Spinner from "../ui/Spinner";
+import {
+  Calculator as CalcIcon,
+  Package,
+  Truck,
+  CheckCircle2,
+} from "lucide-react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 function Calculator() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
     watch,
   } = useForm();
 
-  const [isLocationLoading, setIsLocationLoading] = useState(false);
-  const [locationError, setLocationError] = useState(null);
-  const [distance, setDistance] = useState(0);
-  const [isGeocodingAddress, setIsGeocodingAddress] = useState(false);
+  const [subtotal, setSubtotal] = useState(0);
+  const [showResult, setShowResult] = useState(false);
 
-  const [productCost, setProductCost] = useState(0);
-  const [finalPrice, setFinalPrice] = useState(0);
+  const tons = watch("tons");
+  const PRICE_PER_TON = 950;
 
-  const skipGeocoding = useRef(false);
-  const debounceTimer = useRef(null);
-  const errorTimer = useRef(null);
-
-  const address = watch("address");
-
-  useEffect(() => {
-    if (skipGeocoding.current) {
-      skipGeocoding.current = false;
-      return;
-    }
-
-    if (debounceTimer.current) {
-      clearTimeout(debounceTimer.current);
-    }
-
-    debounceTimer.current = setTimeout(async () => {
-      if (address && address.trim().length > 3) {
-        setIsGeocodingAddress(true);
-        const result = await geocodeAddress(address);
-        if (result) {
-          setDistance(result.distance);
-        }
-        setIsGeocodingAddress(false);
-      } else {
-        setDistance(0);
-      }
-    }, 1000);
-
-    return () => {
-      if (debounceTimer.current) {
-        clearTimeout(debounceTimer.current);
-      }
-    };
-  }, [address]);
-
-  function handleGetLocation(e) {
-    setIsLocationLoading(true);
-    setLocationError(null);
-
-    if (errorTimer.current) {
-      clearTimeout(errorTimer.current);
-    }
-
-    getGeolocation(
-      e,
-      (data) => {
-        if (errorTimer.current) {
-          clearTimeout(errorTimer.current);
-          errorTimer.current = null;
-        }
-        skipGeocoding.current = true;
-        setDistance(data.distance);
-        setValue("address", data.address);
-        setIsLocationLoading(false);
-        setLocationError(null);
-      },
-      (error) => {
-        console.warn("Geolocation warning:", error);
-        errorTimer.current = setTimeout(() => {
-          setLocationError(error);
-          setIsLocationLoading(false);
-          errorTimer.current = null;
-        }, 3000);
-      },
-    );
-  }
+  const handleCalculate = (data) => {
+    const { tons } = data;
+    const total = Number(tons) * PRICE_PER_TON;
+    setSubtotal(total);
+    setShowResult(true);
+  };
 
   return (
-    <div className="min-h-screen py-16 px-4 max-w-2xl mx-auto relative">
-      {/* Loading Overlay */}
-      {isLocationLoading && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-black/50 backdrop-blur-sm">
-          <Spinner className="h-16 w-16 border-4" />
-          <p className="text-white text-lg font-semibold">
-            Getting your location...
-          </p>
-        </div>
-      )}
-
+    <div className="min-h-screen py-12 sm:py-16 px-4 max-w-4xl mx-auto relative">
       {/* Header */}
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-orange-500 mb-4 hover:text-orange-600 hover:[text-shadow:0_0_20px_rgb(249_115_22/0.8)] transition-all duration-300">
-          Price Calculator
-        </h1>
-        <p className="text-lg text-stone-400">
-          Calculate the estimated cost for your charcoal delivery
+      <header className="text-center mb-10 sm:mb-12">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <CalcIcon className="w-10 h-10 sm:w-12 sm:h-12 text-orange-500" />
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-500 hover:text-orange-600 transition-colors duration-300">
+            Price Calculator
+          </h1>
+        </div>
+        <p className="text-base sm:text-lg text-stone-400 max-w-2xl mx-auto">
+          Calculate your total order cost instantly. Perfect for wholesale
+          buyers.
         </p>
       </header>
 
       {/* Calculator Form */}
       <form
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-          const { packageType, numberOfBags } = data;
-          const finalPrice = packageType * numberOfBags + 1.5 * distance;
-          setProductCost(packageType * numberOfBags);
-          setFinalPrice(finalPrice);
-        })}
-        className="bg-stone-900/50 rounded-2xl shadow-2xl p-8 space-y-6"
+        onSubmit={handleSubmit(handleCalculate)}
+        className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10 space-y-8"
       >
-        {/* Package Type */}
-        <div>
+        {/* Tons Input */}
+        <div className="space-y-3">
           <label
-            htmlFor="packageType"
-            className="block text-sm font-semibold text-stone-200 mb-2"
+            htmlFor="tons"
+            className=" text-base sm:text-lg font-semibold text-stone-200 flex items-center gap-2"
           >
-            Package Type
+            <Package className="w-5 h-5 text-orange-500" />
+            Order Quantity (tons)
           </label>
-          {errors?.address?.message && (
-            <p className="text-sm md:text-md text-red-600 font-semibold py-2">
-              {errors?.packageType?.message}
-            </p>
-          )}
-          <select
-            id="packageType"
-            className="w-full px-4 py-3 border-2 border-stone-300 rounded-lg  focus:ring-2 focus:ring-yellow-200 outline-none transition-all bg-stone-950 text-stone-300 focus:border-orange-500"
-            {...register("packageType", {
-              required: "This field is required",
-            })}
-          >
-            <option value="">Select package size...</option>
-            <option value="1.88">2.5 kg - €1.88/bag</option>
-            <option value="3.75">5 kg - €3.75/bag</option>
-            <option value="7.50">10 kg - €7.50/bag</option>
-          </select>
-        </div>
-
-        {/* Number of Bags */}
-        <div>
-          <label
-            htmlFor="numberOfBags"
-            className="block text-sm font-semibold text-stone-200 mb-2"
-          >
-            Number of Bags
-          </label>
-          {errors?.numberOfBags?.message && (
-            <p className="text-sm md:text-md text-red-600 font-semibold py-2">
-              {errors?.address?.message}
-            </p>
-          )}
-          <input
-            type="number"
-            id="numberOfBags"
-            min="1"
-            placeholder="Enter quantity..."
-            className="w-full px-4 py-3 border-2 border-stone-300 rounded-lg  focus:ring-2 focus:ring-yellow-200 outline-none transition-all text-stone-300 bg-stone-950 focus:border-orange-500"
-            {...register("numberOfBags", {
-              required: "This field is required",
-            })}
-          />
-        </div>
-
-        {/* Delivery Distance
-          <div>
-            <label
-              htmlFor="distance"
-              className="block text-sm font-semibold text-stone-800 mb-2"
-            >
-              Delivery Distance (km)
-            </label>
+          <div className="relative">
             <input
               type="number"
-              id="distance"
-              min="0"
+              id="tons"
+              min="1"
               step="0.1"
-              placeholder="Enter distance in kilometers..."
-              className="w-full px-4 py-3 border-2 border-stone-300 rounded-lg focus:border-yellow-600 focus:ring-2 focus:ring-yellow-200 outline-none transition-all"
+              placeholder="Enter quantity in tons (e.g., 22)"
+              className="w-full px-5 py-4 text-lg border-2 border-stone-800 rounded-xl bg-stone-950/50 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+              {...register("tons", {
+                required: "Please enter the quantity",
+                min: {
+                  value: 1,
+                  message: "Minimum order is 1 ton",
+                },
+              })}
             />
-          </div> */}
-
-        {/* Delivery Address */}
-        <div>
-          <label
-            htmlFor="address"
-            className="block text-sm font-semibold text-stone-200 mb-2"
-          >
-            Delivery Address
-          </label>
-          {errors?.address?.message && (
-            <p className="text-sm md:text-md text-red-600 font-semibold py-2">
-              {errors?.address?.message}
+          </div>
+          {errors?.tons?.message && (
+            <p className="text-sm font-medium text-red-400 flex items-center gap-1">
+              ⚠ {errors.tons.message}
             </p>
           )}
-          {locationError && (
-            <div className="mb-3 p-3 bg-red-500/20 border border-red-500 rounded-lg text-red-200 text-sm">
-              {locationError}
-            </div>
-          )}
-
-          {isGeocodingAddress && (
-            <div className="mb-3 flex items-center gap-3 p-3 bg-orange-500/20 border border-orange-500 rounded-lg text-orange-200 text-sm">
-              <Spinner className="h-5 w-5 border-2 border-orange-500 border-t-transparent" />
-              <span>Calculating distance...</span>
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:relative">
-            <input
-              type="text"
-              id="address"
-              placeholder="Enter delivery address..."
-              className="w-full px-4 py-4 sm:py-3 sm:pr-48 border-2 border-stone-300 rounded-lg focus:ring-2 focus:ring-yellow-200 outline-none transition-all bg-stone-950 text-stone-300 focus:border-orange-500"
-              {...register("address", { required: "This field is required" })}
-            />
-
-            <button
-              type="button"
-              onClick={(e) => handleGetLocation(e)}
-              disabled={isLocationLoading}
-              className="sm:absolute sm:right-2 sm:top-1/2 sm:-translate-y-1/2 w-full sm:w-auto px-4 py-3 bg-orange-500 hover:bg-orange-600 disabled:bg-stone-600 disabled:cursor-not-allowed text-white rounded-lg transition-all hover:shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group"
-              title="Get my location"
-            >
-              <MapPin className="w-5 h-5 group-hover:animate-pulse" />
-              <span className="sm:hidden">Get my location</span>
-            </button>
-          </div>
+          <p className="text-sm text-stone-500">
+            Base price:{" "}
+            <span className="text-orange-500 font-semibold">
+              €{PRICE_PER_TON}/ton
+            </span>
+          </p>
         </div>
 
-        {/* Calculate Button */}
-        <Button
-          type="submit"
-          className="text-md w-full bg-linear-to-r from-yellow-500 to-orange-500 text-white font-bold py-4 px-6 rounded-lg hover:brightness-110 hover:shadow-2xl transition-all duration-300 md:text-lg"
-        >
-          Calculate Total Price
-        </Button>
-
-        {/* Result Section */}
-        <div className="bg-stone-950 rounded-lg p-6 border-2 border-stone-800">
-          <h3 className="text-lg font-semibold text-stone-200 mb-3">
-            Estimated Cost Breakdown:
-          </h3>
-          <div className="space-y-2 text-stone-300">
-            <div className="flex justify-between">
-              <span>Product Cost:</span>
-              <span className="font-semibold">€{productCost.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Base Delivery Fee:</span>
-              <span className="font-semibold">€0.00</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Distance Fee {distance > 0 && `(${distance} km)`}:</span>
-              <span className="font-semibold">
-                €{(1.5 * distance).toFixed(2)}
+        {/* Live Preview */}
+        {tons && Number(tons) >= 1 && (
+          <div className="bg-stone-950/30 border border-stone-800 rounded-xl p-4 space-y-2">
+            <p className="text-stone-400 text-sm">Preview:</p>
+            <p className="text-stone-200 text-lg">
+              {tons} tons × €{PRICE_PER_TON} ={" "}
+              <span className="text-orange-500 font-bold">
+                €{(Number(tons) * PRICE_PER_TON).toFixed(2)}
               </span>
-            </div>
-            <div className="border-t-2 border-stone-300 pt-2 mt-2 flex justify-between text-xl">
-              <span className="font-bold text-orange-400">Total:</span>
-              <span className="font-bold text-orange-400">
-                €{finalPrice.toFixed(2)}
-              </span>
-            </div>
+            </p>
           </div>
+        )}
+
+        {/* Calculate Button */}
+        <div className="pt-2">
+          <Button type="primary" className="w-full text-lg">
+            Calculate Total Price
+          </Button>
         </div>
       </form>
 
+      {/* Result Section */}
+      {showResult && (
+        <div className="mt-8 bg-linear-to-br from-orange-500/10 to-amber-600/5 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-orange-500/30 p-6 sm:p-10 space-y-6 transition-all duration-500 ease-out">
+          <div className="flex items-center gap-3 mb-6">
+            <CheckCircle2 className="w-8 h-8 text-green-500" />
+            <h3 className="text-2xl sm:text-3xl font-bold text-orange-500">
+              Cost Breakdown
+            </h3>
+          </div>
+
+          <div className="space-y-4">
+            {/* Subtotal */}
+            <div className="flex justify-between items-center pb-3 border-b border-stone-700">
+              <span className="text-stone-300 text-lg">Subtotal:</span>
+              <span className="text-white text-2xl font-bold">
+                €{subtotal.toFixed(2)}
+              </span>
+            </div>
+
+            {/* Delivery */}
+            <div className="flex justify-between items-center pb-3 border-b border-stone-700">
+              <div className="flex items-center gap-2">
+                <Truck className="w-5 h-5 text-green-500" />
+                <span className="text-stone-300 text-lg">Delivery:</span>
+              </div>
+              <span className="text-green-500 font-bold text-lg flex items-center gap-2">
+                INCLUDED (FREE)
+              </span>
+            </div>
+
+            {/* Total */}
+            <div className="flex justify-between items-center pt-4">
+              <span className="text-orange-400 text-2xl font-bold">Total:</span>
+              <span className="text-orange-500 text-3xl sm:text-4xl font-bold">
+                €{subtotal.toFixed(2)}
+              </span>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-6 pt-6 border-t border-stone-700/50 space-y-2">
+            <p className="text-stone-400 text-sm">✓ Price includes VAT</p>
+            <p className="text-stone-400 text-sm">
+              ✓ Delivery: DAP Polkowice (Incoterms 2020)
+            </p>
+            <p className="text-stone-500 text-xs mt-3">
+              *Final price will be confirmed by our manager
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Info Note */}
-      <p className="mt-8 text-center text-sm text-stone-400">
-        * Final price may vary based on availability and current rates
-        <br />* Minimum order: 10 tons for wholesale
-      </p>
+      <div className="mt-8 text-center space-y-2">
+        <p className="text-sm text-stone-400">
+          Need help with your order?{" "}
+          <Link
+            to="/contact"
+            className="text-orange-500 hover:text-orange-400 underline"
+          >
+            Contact us
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

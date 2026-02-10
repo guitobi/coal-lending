@@ -1,182 +1,41 @@
 import Button from "../ui/Button";
-import { useLocation } from "react-router";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Package, ChevronDown, ChevronUp } from "lucide-react";
-
-const packages = [
-  {
-    weight: "2.5 kg",
-    price: "€1.88",
-    features: ["Perfect for small grills", "Ideal for 2-3 people"],
-  },
-  {
-    weight: "5 kg",
-    price: "€3.75",
-    features: ["Best value option", "Perfect for families"],
-    popular: true,
-  },
-  {
-    weight: "10 kg",
-    price: "€7.50",
-    features: ["Commercial use ready", "Best price per kg"],
-  },
-];
+import { User, Mail, Phone, Weight, MessageSquare, MapPin } from "lucide-react";
+import { Link } from "react-router";
 
 function Order() {
   const {
     handleSubmit,
     register,
     formState: { errors },
-    setValue,
     watch,
   } = useForm();
-  const { state } = useLocation();
 
-  const selectedPackage = watch("packageType");
-  const numberOfBags = watch("numberOfBags");
   const name = watch("name");
   const email = watch("email");
   const phoneNumber = watch("phoneNumber");
-  const totalWeigth =
-    numberOfBags && selectedPackage
-      ? Number(numberOfBags.split(" ").at(0)) *
-        Number(selectedPackage.split(" ").at(0))
-      : "0";
+  const city = watch("city");
+  const weightInKg = watch("weightInKg");
 
   const totalOrder = {
     name,
     email,
     phoneNumber,
-    numberOfBags,
-    packageType: selectedPackage,
-    totalWeigth,
-  };
-
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    if (state?.weight) {
-      setValue("packageType", state.weight);
-    }
-  }, [state?.weight, setValue]);
-
-  // Обробка анімації згортання
-  useEffect(() => {
-    if (isAnimating) {
-      const timer = setTimeout(() => {
-        setIsExpanded(false);
-        setIsAnimating(false);
-      }, 200);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isAnimating]);
-
-  const toggleExpand = (e) => {
-    e.stopPropagation();
-    if (isExpanded) {
-      setIsAnimating(true);
-    } else {
-      setIsExpanded(true);
-    }
-  };
-
-  const handlePackageSelect = (weight) => {
-    setValue("packageType", weight, { shouldValidate: true });
-    setIsAnimating(true);
+    city,
+    weightInKg: weightInKg ? Number(weightInKg) : 0,
   };
 
   return (
-    <div className="min-h-screen py-16 px-4 max-w-2xl mx-auto relative">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl text-nowrap text-orange-500 font-extrabold text-center m-5">
-        Place your order!
-      </h2>
-
-      <div className="mb-8">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <h3 className="text-xl text-stone-200 text-center">
-            Select packaging type
-          </h3>
-          <button
-            type="button"
-            onClick={toggleExpand}
-            className="text-stone-400 hover:text-orange-500 transition-colors"
-          >
-            {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-          </button>
-        </div>
-
-        {selectedPackage && !isExpanded && (
-          <div className="max-w-md mx-auto mb-4 p-4 rounded-lg border-2 border-orange-500 bg-orange-500/10 text-center animate-fade-in-up">
-            <Package className="w-10 h-10 mx-auto mb-2 text-orange-500" />
-            <p className="text-xl font-bold text-stone-200">
-              {selectedPackage}
-            </p>
-            <p className="text-sm text-orange-500 font-semibold mt-1">
-              SELECTED
-            </p>
-          </div>
-        )}
-
-        {/* Всі картки (показуємо коли розгорнуто або нічого не вибрано) */}
-        {(isExpanded || !selectedPackage) && (
-          <div
-            className={`grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto ${isAnimating ? "animate-fade-out-up" : "animate-fade-in-up"}`}
-          >
-            {packages.map((pkg) => (
-              <div
-                key={pkg.weight}
-                onClick={() => handlePackageSelect(pkg.weight)}
-                className={`
-                  cursor-pointer rounded-lg p-6 border-2 transition-all duration-200
-                  ${
-                    selectedPackage === pkg.weight
-                      ? "border-orange-500 bg-orange-500/10 ring-2 ring-orange-500/50"
-                      : "border-stone-700 bg-stone-900/40 hover:border-orange-500/50"
-                  }
-                `}
-              >
-                <div className="text-center">
-                  {pkg.popular && (
-                    <div className="bg-orange-500 text-white text-xs font-bold py-1 px-3 rounded-full inline-block mb-2">
-                      MOST POPULAR
-                    </div>
-                  )}
-                  <Package className="w-12 h-12 mx-auto mb-3 text-orange-500" />
-                  <h4 className="text-2xl font-bold text-stone-200 mb-2">
-                    {pkg.weight}
-                  </h4>
-                  <p className="text-3xl font-bold text-orange-500 mb-3">
-                    {pkg.price}
-                  </p>
-                  <p className="text-sm text-stone-400 mb-3">per bag</p>
-                  {selectedPackage === pkg.weight && (
-                    <p className="text-sm font-semibold text-orange-500 mb-2">
-                      ✓ SELECTED
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <input
-          type="hidden"
-          {...register("packageType", {
-            required: "Please select a packaging type",
-          })}
-        />
-        {errors?.packageType?.message && (
-          <p
-            role="alert"
-            className="text-center text-sm font-semibold text-red-500 mt-2"
-          >
-            {errors.packageType.message}
-          </p>
-        )}
+    <div className="min-h-screen py-12 sm:py-16 px-4 max-w-3xl mx-auto relative">
+      {/* Header */}
+      <div className="text-center mb-10 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-orange-500 font-extrabold mb-3">
+          Place Your Order
+        </h2>
+        <p className="text-stone-400 text-sm sm:text-base max-w-xl mx-auto">
+          Fill out the form below and our manager will contact you shortly to
+          confirm your order
+        </p>
       </div>
 
       <form
@@ -192,135 +51,280 @@ function Order() {
             });
             if (!res.ok) throw new Error("error posting data");
 
-            const result = await res.text();
+            const result = await res.json();
+            console.log(result);
           } catch (error) {
             console.error(error);
           }
         })}
-        className="text-stone-100 flex flex-col m-10  rounded-2xl justify-between items-center gap-5 px-5 py-6 bg-stone-900/50  mx-auto"
+        className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10"
       >
-        <div className="flex flex-col gap-1 w-full">
-          <label className="text-xs text-stone-300" htmlFor="name">
-            Your name
-          </label>
-          <input
-            {...register("name", {
-              required: "This field is required",
-              min: 2,
-              max: 15,
-            })}
-            className="bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-            type="text"
-            id="name"
-            placeholder="Enter your name..."
-          />
-          {errors?.name?.message && (
-            <p role="alert" className="text-xs font-semibold text-red-500">
-              {errors.name.message}
-            </p>
-          )}
-        </div>
+        <div className="space-y-6">
+          {/* Name Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="name"
+            >
+              <User size={16} className="text-orange-500" />
+              Your name
+            </label>
+            <div className="relative">
+              <input
+                {...register("name", {
+                  required: "This field is required",
+                  minLength: {
+                    value: 2,
+                    message: "Name must be at least 2 characters",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Name must be less than 50 characters",
+                  },
+                })}
+                className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                type="text"
+                id="name"
+                placeholder="Enter your name..."
+              />
+            </div>
+            {errors?.name?.message && (
+              <p
+                role="alert"
+                className="text-xs font-medium text-red-400 flex items-center gap-1"
+              >
+                ⚠ {errors.name.message}
+              </p>
+            )}
+          </div>
 
-        <div className="flex flex-col gap-1 w-full">
-          <label className="text-xs text-stone-300" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="email"
-            {...register("email", {
-              required: "This field is required",
-              pattern: {
-                type: "email",
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
-              },
-            })}
-            className="bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-            name="email"
-            id="email"
-            placeholder="Enter your email..."
-          />
-          {errors?.email?.message && (
-            <p role="alert" className="text-xs font-semibold text-red-500">
-              {errors.email.message}
-            </p>
-          )}
-        </div>
+          {/* Email Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="email"
+            >
+              <Mail size={16} className="text-orange-500" />
+              Email address
+            </label>
+            <div className="relative">
+              <input
+                type="email"
+                {...register("email", {
+                  required: "This field is required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
+                className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                name="email"
+                id="email"
+                placeholder="Enter your email..."
+              />
+            </div>
+            {errors?.email?.message && (
+              <p
+                role="alert"
+                className="text-xs font-medium text-red-400 flex items-center gap-1"
+              >
+                ⚠ {errors.email.message}
+              </p>
+            )}
+          </div>
 
-        <div className="flex flex-col gap-1 w-full">
-          <label className="text-xs text-stone-300" htmlFor="phoneNumber">
-            Phone number
-          </label>
-          <input
-            {...register("phoneNumber", {
-              required: "This field is required",
-              pattern: {
-                value: /^\+?[1-9]\d{6,14}$/,
-                message: "Invalid phone number",
-              },
-            })}
-            className="bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500  transition-colors resize-none"
-            type="text"
-            id="phoneNumber"
-            placeholder="Enter your phone number..."
-          />
-          {errors?.phoneNumber?.message && (
-            <p role="alert" className="text-xs font-semibold text-red-500">
-              {errors.phoneNumber.message}
-            </p>
-          )}
-        </div>
+          {/* Phone Number Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="phoneNumber"
+            >
+              <Phone size={16} className="text-orange-500" />
+              Phone number
+            </label>
+            <div className="relative">
+              <input
+                {...register("phoneNumber", {
+                  required: "This field is required",
+                  pattern: {
+                    value: /^\+?[1-9]\d{6,14}$/,
+                    message: "Invalid phone number",
+                  },
+                })}
+                className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                type="text"
+                id="phoneNumber"
+                placeholder="Enter your phone..."
+              />
+            </div>
+            {errors?.phoneNumber?.message && (
+              <p
+                role="alert"
+                className="text-xs font-medium text-red-400 flex items-center gap-1"
+              >
+                ⚠ {errors.phoneNumber.message}
+              </p>
+            )}
+          </div>
 
-        <div className="flex flex-col gap-1 w-full">
-          <label className="text-xs text-stone-300" htmlFor="numberOfBags">
-            Number of bags
-          </label>
-          <input
-            {...register("numberOfBags", {
-              required: "This field is required",
-            })}
-            className="bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-            type="text"
-            id="numberOfBags"
-            placeholder="Enter number of bags"
-          />
-          {errors?.numberOfBags?.message && (
-            <p role="alert" className="text-xs font-semibold text-red-500">
-              {errors.numberOfBags.message}
-            </p>
-          )}
-        </div>
+          {/* City Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="city"
+            >
+              <MapPin size={16} className="text-orange-500" />
+              City
+            </label>
+            <div className="relative">
+              <input
+                {...register("city", {
+                  required: "This field is required",
+                  minLength: {
+                    value: 2,
+                    message: "City must be at least 2 characters",
+                  },
+                })}
+                className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                type="text"
+                id="city"
+                placeholder="Enter your city..."
+              />
+            </div>
+            {errors?.city?.message && (
+              <p
+                role="alert"
+                className="text-xs font-medium text-red-400 flex items-center gap-1"
+              >
+                ⚠ {errors.city.message}
+              </p>
+            )}
+          </div>
 
-        <div className="flex flex-col items-start gap-1 w-full  mx-10 ">
-          <label className="text-xs text-stone-300" htmlFor="comment">
-            Comment <span>(optional)</span>
-          </label>
-          <textarea
-            {...register("comment")}
-            className="w-full h-32 bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-600 focus:outline-none focus:border-orange-500 transition-colors resize-none"
-            name="comment"
-            id="comment"
-          ></textarea>
+          {/* Weight Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="weightInKg"
+            >
+              <Weight size={16} className="text-orange-500" />
+              Order weight (kg)
+            </label>
+            <div className="relative">
+              <input
+                {...register("weightInKg", {
+                  required: "This field is required",
+                  min: {
+                    value: 100,
+                    message: "Minimum order is 100 kg",
+                  },
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Please enter a valid number",
+                  },
+                })}
+                className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
+                type="number"
+                id="weightInKg"
+                placeholder="Enter weight..."
+              />
+            </div>
+            {errors?.weightInKg?.message && (
+              <p
+                role="alert"
+                className="text-xs font-medium text-red-400 flex items-center gap-1"
+              >
+                ⚠ {errors.weightInKg.message}
+              </p>
+            )}
+            <p className="text-xs text-stone-500 flex items-center gap-1">
+              ℹ️ Minimum order: 100 kg
+            </p>
+          </div>
+
+          {/* Comment Field */}
+          <div className="flex flex-col gap-2">
+            <label
+              className="text-sm font-medium text-stone-300 flex items-center gap-2"
+              htmlFor="comment"
+            >
+              <MessageSquare size={16} className="text-orange-500" />
+              Additional comments{" "}
+              <span className="text-stone-500">(optional)</span>
+            </label>
+            <div className="relative">
+              <textarea
+                {...register("comment")}
+                className="w-full h-32 bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
+                name="comment"
+                id="comment"
+                placeholder="Any special requests or delivery instructions..."
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Order Summary */}
+          {weightInKg && Number(weightInKg) >= 100 && (
+            <div className="bg-linear-to-br from-orange-500/10 to-amber-600/5 border-2 border-orange-500/30 rounded-2xl p-6 space-y-3">
+              <h3 className="text-lg font-bold text-orange-500 mb-3">
+                Order Summary
+              </h3>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-stone-400 text-sm">Weight:</span>
+                  <span className="text-white font-bold text-lg">
+                    {weightInKg} kg
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-stone-400 text-sm">Price per kg:</span>
+                  <span className="text-stone-300">€0.95</span>
+                </div>
+                <div className="border-t border-orange-500/20 pt-2 mt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-stone-300 font-medium">
+                      Estimated Total:
+                    </span>
+                    <span className="text-orange-500 font-bold text-2xl">
+                      €{(Number(weightInKg) * 0.95).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs text-stone-500 mt-3">
+                *Final price will be confirmed by our manager
+              </p>
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <div className="pt-4 flex justify-center">
+            <Button type="primary">Submit Order</Button>
+          </div>
         </div>
-        <div className="text-center m-10">
-          <Button type="primary">Submit order</Button>
-        </div>
-        <p>
-          Your total order weight is:{" "}
-          {numberOfBags && selectedPackage
-            ? Number(numberOfBags.split(" ").at(0)) *
-              Number(selectedPackage.split(" ").at(0))
-            : 0}
-        </p>
       </form>
 
-      <p className="text-center text-stone-300 text-xs">
-        NOTE! Minimum order is 1 ton.
-      </p>
-
-      <p className="text-stone-200 text-center text-md md:text-xl">
-        And we will contact with you.
-      </p>
+      {/* Footer Text */}
+      <div className="text-center mt-8 space-y-2">
+        <p className="text-stone-300 text-base sm:text-lg font-medium">
+          📞 Our manager will contact you soon
+        </p>
+        <p className="text-stone-500 text-sm">
+          Delivery: DAP Polkowice (Incoterms 2020)
+        </p>
+        {/* Info Note */}
+        <div className="mt-8 text-center space-y-2">
+          <p className="text-sm text-stone-400">
+            Need help with your order?{" "}
+            <Link
+              to="/contact"
+              className="text-orange-500 hover:text-orange-400 underline"
+            >
+              Contact us
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

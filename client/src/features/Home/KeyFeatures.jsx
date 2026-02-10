@@ -11,14 +11,14 @@ function KeyFeatures() {
       <article className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
         <div className="text-center mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-stone-100 mb-3 font-space-grotesk">
-            Premium Coal
+            Premium Charcoal
           </h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-orange-500 mb-4 font-space-grotesk">
             $199.99/kg
           </h2>
           <p className="text-sm sm:text-base lg:text-base text-stone-400 max-w-3xl mx-auto leading-relaxed">
-            High-quality coal with maximum heat output and minimum ash. Perfect
-            for home heating and industrial use.
+            High-quality charcoal with maximum heat output and minimum ash.
+            Perfect for grilling and outdoor cooking.
           </p>
         </div>
 

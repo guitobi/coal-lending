@@ -31,6 +31,22 @@ function FooterQuickLinks() {
             Delivery
           </Link>
         </li>
+        <li>
+          <Link
+            to="/calculator"
+            className="text-slate-300 hover:text-orange-500 transition-colors"
+          >
+            Calculator
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/contact"
+            className="text-slate-300 hover:text-orange-500 transition-colors"
+          >
+            Contact Us
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -32,6 +32,16 @@ function NavBar() {
                 Delivery
               </NavButtonLink>
             </li>
+            <li>
+              <NavButtonLink to="/calculator" type="primary">
+                Calculator
+              </NavButtonLink>
+            </li>
+            <li>
+              <NavButtonLink to="/contact" type="primary">
+                Contact Us
+              </NavButtonLink>
+            </li>
           </ul>
           <HamburgerMenu
             setIsMenuOpen={setIsMenuOpen}
