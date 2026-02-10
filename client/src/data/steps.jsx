@@ -13,7 +13,7 @@ export const steps = [
       <Truck className="w-10 text-orange-500 h-10 md:text-stone-500 group-hover:text-orange-500" />
     ),
     title: "2. Fast Delivery",
-    desc: "We load and deliver coal with our own transport within 1-3 days.",
+    desc: "We load and deliver charcoal with our own transport within 1-3 days.",
   },
   {
     icon: (

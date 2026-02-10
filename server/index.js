@@ -27,24 +27,32 @@ app.post("/api/order/new", async (req, res) => {
       .json({ success: false, message: "No data provided" });
   }
 
-  const { name, email, phoneNumber, numberOfBags, packageType, totalWeigth } =
-    data;
+  const { name, email, phoneNumber, city, weightInKg } = data;
+
+  // Validate minimum order
+  if (!weightInKg || weightInKg < 100) {
+    return res.status(400).json({
+      success: false,
+      message: "Minimum order is 100 kg",
+    });
+  }
 
   try {
     await transporter.sendMail({
       from: "skullvisit@gmail.com",
       to: email,
-      subject: "Coal Order info",
+      subject: "Charcoal Order Confirmation",
       text: "Thanks for ordering our product!",
       html: `
         <h2>Your order details</h2>
-        <p>Name: ${name}</p>
-        <p>Phone number: ${phoneNumber}</p>
-        <p>Number of bags: ${numberOfBags}</p>
-        <p>Selected packaging: ${packageType}</p>
-        <p>Total weigth: ${totalWeigth}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone number:</strong> ${phoneNumber}</p>
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>Order weight:</strong> ${weightInKg} kg</p>
+        <p><strong>Estimated price:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
 
-        <h3>Manager will contact with you soon! Be on phone😉</h3>
+        <h3>Our manager will contact you soon! Be on phone😉</h3>
+        <p style="color: #666; font-size: 12px;">Base price: €0.95/kg | Delivery: DAP Polkowice</p>
       `,
     });
 

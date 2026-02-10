@@ -11,12 +11,15 @@ function Home() {
       </div>
 
       <div className="relative overflow-visible z-10">
-        {/* <KeyFeatures /> */}
-        <ProductPackages isOrderButtons={true} />
+        <ProductPackages />
       </div>
 
       <div className="relative z-0 -mt-1">
         <HowItWorks />
+      </div>
+
+      <div className="relative z-0 -mt-1">
+        <KeyFeatures />
       </div>
     </div>
   );

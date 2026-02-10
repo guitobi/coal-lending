@@ -2,6 +2,7 @@ import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Delivery from "./pages/Delivery";
+import ContactUs from "./pages/ContactUs";
 
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "order",
         element: <Order />,
+      },
+      {
+        path: "contact",
+        element: <ContactUs />,
       },
     ],
   },

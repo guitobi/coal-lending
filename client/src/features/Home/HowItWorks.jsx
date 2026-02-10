@@ -24,7 +24,7 @@ const HowItWorks = () => {
               className="flex flex-col items-center text-center group "
             >
               {/* Icon circle */}
-              <div className="relative w-24 h-24 bg-stone-900/40 rounded-full flex items-center justify-center mb-6 shadow-sm border-4 hover:border-amber-600 z-20 transition-all duration-300 group-hover:scale-105">
+              <div className="relative w-24 h-24 bg-stone-900/40 rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-stone-800/40  hover:border-amber-600 z-20 transition-all duration-300 group-hover:scale-105">
                 {/* Opaque background to hide line */}
                 <div className="absolute inset-0 bg-stone-950 rounded-full -z-10 "></div>
                 {step.icon}
@@ -43,6 +43,7 @@ const HowItWorks = () => {
         {/* Call-to-action button (Optional) */}
         <div className="mt-12 text-center">
           <Button
+            type=""
             to="/delivery"
             className="text-stone-300 font-semibold hover:text-stone-400 underline underline-offset-4 cursor-pointer"
           >

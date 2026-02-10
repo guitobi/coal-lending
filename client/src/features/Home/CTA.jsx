@@ -7,7 +7,7 @@ function CTA() {
         <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-16">
           <div className="flex-1 lg:text-left text-center pt-8 sm:pt-12 md:pt-20 lg:pt-0">
             <h1
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-50 transition-all duration-500 cursor-pointer hover:text-orange-600
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-200 transition-all duration-500 cursor-pointer hover:text-orange-600
             hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
             >
               <span className="inline-block">Maximum Heat,</span>{" "}
@@ -22,7 +22,7 @@ function CTA() {
                 width={567}
                 height={1280}
                 src="/coal_in_bag.webp"
-                alt="Premium coal in bag"
+                alt="Premium charcoal in bag"
                 className="relative z-10 w-32 sm:w-40 md:w-48 rounded-2xl drop-shadow-[0_15px_50px_rgba(0,0,0,0.4)]"
               />
             </div>
@@ -57,7 +57,7 @@ function CTA() {
               width={567}
               height={1280}
               src="/coal_in_bag.webp"
-              alt="Premium coal in bag"
+              alt="Premium charcoal in bag"
               className="relative z-10 w-64 lg:w-72 xl:w-80 rounded-2xl drop-shadow-2xl transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-2"
             />
           </div>
