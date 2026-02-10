@@ -11,19 +11,36 @@ function Order() {
     watch,
   } = useForm();
 
-  const name = watch("name");
-  const email = watch("email");
-  const phoneNumber = watch("phoneNumber");
-  const city = watch("city");
-  const weightInKg = watch("weightInKg");
+  const weightInKg = watch("weigthInKg");
 
-  const totalOrder = {
-    name,
-    email,
-    phoneNumber,
-    city,
-    weightInKg: weightInKg ? Number(weightInKg) : 0,
-  };
+  async function submitOrder(data) {
+    try {
+      const { name, email, phoneNumber, city, weightInKg } = data;
+
+      const totalOrder = {
+        name,
+        email,
+        phoneNumber,
+        city,
+        weightInKg: weightInKg ? Number(weightInKg) : 0,
+      };
+
+      const res = await fetch("http://localhost:5000/api/order/new", {
+        method: "POST",
+        body: JSON.stringify(totalOrder),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok) throw new Error("error posting data");
+
+      const result = await res.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4 max-w-3xl mx-auto relative">
@@ -39,24 +56,7 @@ function Order() {
       </div>
 
       <form
-        onSubmit={handleSubmit(async (data) => {
-          console.log(data);
-          try {
-            const res = await fetch("http://localhost:5000/api/order/new", {
-              method: "POST",
-              body: JSON.stringify(totalOrder),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
-            if (!res.ok) throw new Error("error posting data");
-
-            const result = await res.json();
-            console.log(result);
-          } catch (error) {
-            console.error(error);
-          }
-        })}
+        onSubmit={handleSubmit((data) => submitOrder(data))}
         className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10"
       >
         <div className="space-y-6">
