@@ -49,7 +49,7 @@ function Order() {
     email,
     phoneNumber,
     numberOfBags,
-    selectedPackage,
+    packageType: selectedPackage,
     totalWeigth,
   };
 
