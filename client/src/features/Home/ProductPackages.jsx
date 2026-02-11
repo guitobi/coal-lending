@@ -98,7 +98,7 @@ function ProductPackages() {
         <Link to="/order">
           <Button type="primary">Order now</Button>
         </Link>
-        <a href="#about">
+        <a href="/about">
           <Button type="secondary">Learn more</Button>
         </a>
       </div>

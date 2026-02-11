@@ -1,6 +1,6 @@
 function AboutVanShare() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-16">
+    <section className="max-w-7xl mx-auto px-4 py-16 bg-stone-950/40">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-4xl font-bold mb-6 text-stone-100">
