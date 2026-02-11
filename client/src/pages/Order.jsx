@@ -9,6 +9,7 @@ function Order() {
     register,
     formState: { errors },
     watch,
+    reset,
   } = useForm();
 
   const weightInKg = watch("weigthInKg");
@@ -25,7 +26,7 @@ function Order() {
         weightInKg: weightInKg ? Number(weightInKg) : 0,
       };
 
-      const res = await fetch("http://localhost:5000/api/order/new", {
+      const req = await fetch("http://localhost:5000/api/order/new", {
         method: "POST",
         body: JSON.stringify(totalOrder),
         headers: {
@@ -33,10 +34,11 @@ function Order() {
         },
       });
 
-      if (!res.ok) throw new Error("error posting data");
+      if (!req.ok) throw new Error("error posting data");
 
-      const result = await res.json();
+      const result = await req.json();
       console.log(result);
+      reset();
     } catch (error) {
       console.error(error);
     }

@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function ContactUs() {
   const {
@@ -10,11 +11,27 @@ function ContactUs() {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log("Contact form data:", data);
-    // TODO: Send contact message to backend
-    alert("Thank you for your message! We'll get back to you soon.");
-    reset();
+  const onContactUs = async (data) => {
+    try {
+      const req = await fetch("http://localhost:5000/api/problem/new", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!req.ok) throw new Error("error posting data");
+
+      const result = await req.json();
+      console.log(result);
+
+      toast.success("Thank you for your message! We'll get back to you soon.");
+    } catch (error) {
+      toast.error(`Something went wrong, try again later(${error.message})`);
+    } finally {
+      reset();
+    }
   };
 
   return (
@@ -147,7 +164,7 @@ function ContactUs() {
             </h2>
 
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit((data) => onContactUs(data))}
               className="space-y-4 sm:space-y-5"
             >
               {/* Name */}
