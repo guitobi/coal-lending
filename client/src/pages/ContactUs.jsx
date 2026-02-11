@@ -2,8 +2,11 @@ import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import Spinner from "../ui/Spinner";
+import { useState } from "react";
 
 function ContactUs() {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -13,6 +16,7 @@ function ContactUs() {
 
   const onContactUs = async (data) => {
     try {
+      setIsLoading(true);
       const req = await fetch("http://localhost:5000/api/problem/new", {
         method: "POST",
         body: JSON.stringify(data),
@@ -27,10 +31,11 @@ function ContactUs() {
       console.log(result);
 
       toast.success("Thank you for your message! We'll get back to you soon.");
+      reset();
     } catch (error) {
       toast.error(`Something went wrong, try again later(${error.message})`);
     } finally {
-      reset();
+      setIsLoading(false);
     }
   };
 
@@ -67,7 +72,7 @@ function ContactUs() {
                       Email
                     </h3>
                     <a
-                      href="mailto:skullvisit@gmail.com"
+                      href="mailto:vanshare1@gmail.com"
                       className="text-stone-400 hover:text-orange-500 transition-colors text-sm sm:text-base break-all"
                     >
                       vanshare1@gmail.com
@@ -273,8 +278,17 @@ function ContactUs() {
                   type="primary"
                   className="w-full flex items-center justify-center gap-2"
                 >
-                  <Send size={18} />
-                  Send Message
+                  {isLoading ? (
+                    <div className="flex items-center gap-2">
+                      <Spinner />
+                      <span>Processing...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      'Send Message'
+                    </>
+                  )}
                 </Button>
               </div>
             </form>

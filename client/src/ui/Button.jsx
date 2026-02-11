@@ -7,6 +7,7 @@ function Button({
   buttonType = "submit",
   onClick,
   className = "",
+  disabled,
 }) {
   const base =
     "rounded-full font-semibold transition-all duration-300 border-2 cursor-pointer";
@@ -37,7 +38,12 @@ function Button({
   }
 
   return (
-    <button type={buttonType} className={combinedClassName} onClick={onClick}>
+    <button
+      type={buttonType}
+      className={combinedClassName}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
