@@ -40,8 +40,12 @@ function KeyFeatures() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-          <Button type="primary">Buy now</Button>
-          <Button type="secondary">Learn more</Button>
+          <Button type="primary" to="/order">
+            Buy now
+          </Button>
+          <Button type="secondary" to="/about">
+            Learn more
+          </Button>
         </div>
       </article>
     </div>

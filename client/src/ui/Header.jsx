@@ -17,10 +17,10 @@ function Header() {
 
   return (
     <header
-      className={`text-slate-50 shadow-xl border-b-4 bg-stone-900 border-orange-500 transition-all duration-100 ease-in-out 
+      className={`text-slate-50 z-50 shadow-xl border-b-4 bg-stone-900 border-orange-500 transition-all duration-100 ease-in-out 
         ${
           isScrolled
-            ? "sticky top-0 z-50 bg-transparent backdrop-blur-md animate-[slideDown_0.5s_ease-out]"
+            ? "sticky top-0 z-10 bg-transparent backdrop-blur-md animate-[slideDown_0.5s_ease-out]"
             : "relative z-10 bg-transparent"
         }`}
       style={{

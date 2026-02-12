@@ -68,7 +68,8 @@ app.post("/api/order/new", async (req, res) => {
   }
 });
 
-app.post("api/problem/new", async (req, res) => {
+app.post("/api/problem/new", async (req, res) => {
+  const data = req.body;
   console.log("data arrived");
   console.log(data);
 
@@ -89,10 +90,12 @@ app.post("api/problem/new", async (req, res) => {
       html: `
         <p><strong>From:</strong> ${email}</p>
         <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Subject:</strong> ${subject} kg</p>
+        <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
     });
+
+    res.json({ success: true, message: "Message sent successfully" });
   } catch (error) {
     console.error("Error sending email:", error.message);
     res.status(500).json({
@@ -104,5 +107,5 @@ app.post("api/problem/new", async (req, res) => {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log("Server is runinng");
+  console.log(`Server is runinng on port ${process.env.PORT}`);
 });

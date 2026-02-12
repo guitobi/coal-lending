@@ -1,0 +1,69 @@
+{
+      "nav": {
+        "home": "Strona główna",
+        "aboutUs": "O nas",
+        "contact": "Kontakt",
+        "delivery": "Dostawa",
+        "calculator": "Kalkulator",
+        "contactUs": "Skontaktuj się z nami"
+      },
+      "cta": {
+        "Maximum Heat": "Maksimum ciepła, ",
+        "Minimum Ash": "Minimum popiołu",
+        "Honest weight, certified quality.":
+          "Uczciwa waga, certyfikowana jakość",
+        "Check Prices": "Sprawdź ceny",
+        "Calculate Price": "Oblicz koszt"
+      },
+      "productPackages": {
+        "MOST POPULAR": "NAJPOPULARNIEJSZY",
+        "Available Packages": "Dostępne warianty",
+        "per bag": "za worek",
+        "small": {
+          "firstCheck": "Idealny do małych grillów",
+          "secondCheck": "W sam raz dla 2-3 osób",
+          "thirdCheck": "Łatwy w przechowywaniu",
+          "fourthCheck": "Szczelne opakowanie"
+        },
+        "medium": {
+          "firstCheck": "Najkorzystniejsza opcja",
+          "secondCheck": "Idealny dla rodzin",
+          "thirdCheck": "Wystarczy na wiele grillowań",
+          "fourthCheck": "Opakowanie Premium"
+        },
+        "big": {
+          "firstCheck": "Do użytku komercyjnego",
+          "secondCheck": "Najlepsza cena za kg",
+          "thirdCheck": "Zapas na długi czas",
+          "fourthCheck": "Wytrzymałe opakowanie"
+        },
+        "Order now": "Zamów teraz",
+        "Learn more": "Dowiedz się więcej",
+        "Base price": "Cena bazowa: ",
+        "€950/ton": "950 € / tona",
+        " | €0.95/kg": " | 0,95 € / kg",
+        "Delivery: DAP Polkowice (Incoterms 2020)":
+          " Dostawa: DAP Polkowice (Incoterms 2020)"
+      },
+      "howItWorks": {
+        "How It Works?": "Jak to działa?",
+        "A completely transparent process with no prepayment required.":
+          "W pełni przejrzysty proces bez konieczności przedpłaty.",
+        "order": {
+          "1. Order": "1. Zamówienie",
+          "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes.":
+            "Złóż zamówienie na stronie lub zadzwoń do nas. Nasz menedżer ustali szczegóły dostawy w ciągu 2 minut."
+        },
+        "fastDelivery": {
+          "2. Fast Delivery": "2. Szybka dostawa",
+          "We load and deliver charcoal with our own transport within 1-3 days.":
+            "Ładujemy i dostarczamy węgiel własnym transportem w ciągu 1-3 dni."
+        },
+        "payOnDelivery": {
+          "3. Pay on Delivery": "3. Płatność przy odbiorze",
+          "No risks. You check the weight and quality at home, and only then pay.":
+            "Bez ryzyka. Sprawdzasz wagę i jakość na miejscu i dopiero wtedy płacisz."
+        },
+        "Learn more about delivery →": "Dowiedz się więcej o dostawie →"
+      }
+    }

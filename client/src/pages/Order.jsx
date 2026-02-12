@@ -2,19 +2,26 @@ import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
 import { User, Mail, Phone, Weight, MessageSquare, MapPin } from "lucide-react";
 import { Link } from "react-router";
+import { useState } from "react";
+import Spinner from "../ui/Spinner";
+import toast from "react-hot-toast";
 
 function Order() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
     watch,
+    reset,
   } = useForm();
 
   const weightInKg = watch("weigthInKg");
 
   async function submitOrder(data) {
     try {
+      setIsLoading(true);
       const { name, email, phoneNumber, city, weightInKg } = data;
 
       const totalOrder = {
@@ -25,7 +32,7 @@ function Order() {
         weightInKg: weightInKg ? Number(weightInKg) : 0,
       };
 
-      const res = await fetch("http://localhost:5000/api/order/new", {
+      const req = await fetch("http://localhost:5000/api/order/new", {
         method: "POST",
         body: JSON.stringify(totalOrder),
         headers: {
@@ -33,12 +40,21 @@ function Order() {
         },
       });
 
-      if (!res.ok) throw new Error("error posting data");
+      if (!req.ok) throw new Error("error posting data");
 
-      const result = await res.json();
+      const result = await req.json();
       console.log(result);
+      reset();
+      toast.success(
+        "Thanks for submitting order! We will contact with you as soon as possible!",
+      );
     } catch (error) {
       console.error(error);
+      toast.error(
+        "Something went wrong with submitting the form, please try again later!",
+      );
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -299,7 +315,16 @@ function Order() {
 
           {/* Submit Button */}
           <div className="pt-4 flex justify-center">
-            <Button type="primary">Submit Order</Button>
+            <Button type="primary" disabled={isLoading}>
+              {isLoading ? (
+                <div className="flex items-center gap-2">
+                  <Spinner />
+                  <span>Processing...</span>
+                </div>
+              ) : (
+                "Submit Order"
+              )}
+            </Button>
           </div>
         </div>
       </form>

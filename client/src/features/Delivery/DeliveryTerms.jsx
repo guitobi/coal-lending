@@ -28,7 +28,7 @@ function DeliveryTerms() {
                 <Package className="w-7 h-7 mr-3 text-orange-500 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg">Minimum Order</h3>
-                  <p>10 tons (negotiable for larger orders)</p>
+                  <p>10 kg (negotiable for larger orders)</p>
                 </div>
               </div>
               <div className="flex items-start">

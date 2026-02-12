@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import NavButtonLink from "./NavButtonLink";
 
 function MobileNav({ setIsMenuOpen, isMenuOpen }) {
+  const { t } = useTranslation();
   return (
     <div
       className={`w-full bg-neutral-900 overflow-hidden transition-all duration-300 ${isMenuOpen ? "max-h-96 pb-4" : "max-h-0 pb-0"}`}
@@ -14,7 +16,7 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
             type="mobile"
             onClick={() => setIsMenuOpen(false)}
           >
-            Home
+            {t("nav.home")}
           </NavButtonLink>
         </li>
         <li>
@@ -23,7 +25,7 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
             type="mobile"
             onClick={() => setIsMenuOpen(false)}
           >
-            About Us
+            {t("nav.aboutUs")}
           </NavButtonLink>
         </li>
         <li>
@@ -32,25 +34,17 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
             type="mobile"
             onClick={() => setIsMenuOpen(false)}
           >
-            Delivery
+            {t("nav.delivery")}
           </NavButtonLink>
         </li>
-        <li>
-          <NavButtonLink
-            to="/calculator"
-            type="mobile"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Calculator
-          </NavButtonLink>
-        </li>
+
         <li>
           <NavButtonLink
             to="/contact"
             type="mobile"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact Us
+            {t("nav.contactUs")}
           </NavButtonLink>
         </li>
       </ul>
