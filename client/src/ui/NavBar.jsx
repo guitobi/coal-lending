@@ -4,8 +4,11 @@ import Logo from "./Logo";
 import NavButtonLink from "./NavButtonLink";
 import HamburgerMenu from "./HamburgerMenu";
 import MobileNav from "./MobileNav";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function NavBar() {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -15,32 +18,31 @@ function NavBar() {
           <Logo />
         </NavButtonLink>
 
-        <div className="text-stone-50 bg-stone-900 flex-1 flex items-center justify-end  px-4">
+        <div className="text-stone-50 bg-stone-900 flex-1 flex items-center justify-end  px-4 whitespace-nowrap">
           <ul className="hidden sm:hidden md:flex gap-2 lg:gap-4 text-base md:text-lg lg:text-xl font-medium items-center">
             <li>
               <NavButtonLink to="/" type="primary">
-                Home
+                {t("nav.home")}
               </NavButtonLink>
             </li>
             <li>
               <NavButtonLink to="/about" type="primary">
-                About Us
+                {t("nav.aboutUs")}
               </NavButtonLink>
             </li>
             <li>
               <NavButtonLink to="/delivery" type="primary">
-                Delivery
+                {t("nav.delivery")}
               </NavButtonLink>
             </li>
-            <li>
-              <NavButtonLink to="/calculator" type="primary">
-                Calculator
-              </NavButtonLink>
-            </li>
+
             <li>
               <NavButtonLink to="/contact" type="primary">
-                Contact Us
+                {t("nav.contactUs")}
               </NavButtonLink>
+            </li>
+            <li>
+              <LanguageSwitcher />
             </li>
           </ul>
           <HamburgerMenu

@@ -1,16 +1,21 @@
+import { useTranslation } from "react-i18next";
 import { steps } from "../../data/steps.jsx";
 import Button from "../../ui/Button.jsx";
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-20  relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-stone-100 mb-4 font-space-grotesk">
-            How It Works?
+            {t("howItWorks.How It Works?")}
           </h2>
           <p className="text-stone-300 max-w-2xl mx-auto">
-            A completely transparent process with no prepayment required.
+            {t(
+              "howItWorks.A completely transparent process with no prepayment required.",
+            )}
           </p>
         </div>
 
@@ -31,10 +36,10 @@ const HowItWorks = () => {
               </div>
 
               <h3 className="text-xl font-bold text-amber-600 mb-3">
-                {step.title}
+                {t(step.title)}
               </h3>
               <p className="text-sm text-stone-300 leading-relaxed max-w-xs mx-auto">
-                {step.desc}
+                {t(step.desc)}
               </p>
             </div>
           ))}
@@ -47,7 +52,7 @@ const HowItWorks = () => {
             to="/delivery"
             className="text-stone-300 font-semibold hover:text-stone-400 underline underline-offset-4 cursor-pointer"
           >
-            Learn more about delivery →
+            {t("howItWorks.Learn more about delivery →")}
           </Button>
         </div>
       </div>

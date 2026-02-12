@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "delivery": "Delivery",
+    "calculator": "Calculator",
+    "contactUs": "Contact Us"
+  },
+  "cta": {
+    "Maximum Heat": "Maximum Heat,",
+    "Minimum Ash": "Minimum Ash",
+    "Honest weight, certified quality.": "Honest weight, certified quality.",
+    "Check Prices": "Check Prices",
+    "Calculate Price": "Calculate Price"
+  },
+  "productPackages": {
+    "MOST POPULAR": "MOST POPULAR",
+    "Available Packages": "Available Packages",
+    "per bag": "per bag",
+    "small": {
+      "firstCheck": "Perfect for small grills",
+      "secondCheck": "Ideal for 2-3 people",
+      "thirdCheck": "Easy to store",
+      "fourthCheck": "Sealed packaging"
+    },
+    "medium": {
+      "firstCheck": "Best value option",
+      "secondCheck": "Perfect for families",
+      "thirdCheck": "Multiple grilling",
+      "fourthCheck": "Premium packaging"
+    },
+    "big": {
+      "firstCheck": "Commercial use ready",
+      "secondCheck": "Best price per kg",
+      "thirdCheck": "Long-lasting supply",
+      "fourthCheck": "Heavy-duty packaging"
+    },
+    "Order now": "Order now",
+    "Learn more": "Learn more",
+    "Base price": "Base price: ",
+    "€950/ton": "€950/ton",
+    " | €0.95/kg": " | €0.95/kg",
+    "Delivery: DAP Polkowice (Incoterms 2020)": " Delivery: DAP Polkowice (Incoterms 2020)"
+  },
+  "howItWorks": {
+    "How It Works?": "How It Works?",
+    "A completely transparent process with no prepayment required.": "A completely transparent process with no prepayment required.",
+    "order": {
+      "1. Order": "1. Order",
+      "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes.": "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes."
+    },
+    "fastDelivery": {
+      "2. Fast Delivery": "2. Fast Delivery",
+      "We load and deliver charcoal with our own transport within 1-3 days.": "We load and deliver charcoal with our own transport within 1-3 days."
+    },
+    "payOnDelivery": {
+      "3. Pay on Delivery": "3. Pay on Delivery",
+      "No risks. You check the weight and quality at home, and only then pay.": "No risks. You check the weight and quality at home, and only then pay."
+    },
+    "Learn more about delivery →": "Learn more about delivery →"
+  }
+}
