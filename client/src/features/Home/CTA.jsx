@@ -12,7 +12,9 @@ function CTA() {
               className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-200 transition-all duration-500 cursor-pointer hover:text-orange-600
             hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
             >
-              <span className="inline-block">{t("cta.Maximum Heat")}</span>{" "}
+              <span className="inline-block whitespace-nowrap">
+                {t("cta.Maximum Heat")}
+              </span>{" "}
               <span className="inline-block">{t("cta.Minimum Ash")}</span>
             </h1>
 

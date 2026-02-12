@@ -1,24 +1,28 @@
+import { useTranslation } from "react-i18next";
 import { features } from "../../data/features.jsx";
 import Button from "../../ui/Button";
 
 function KeyFeatures() {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-15 pb-32">
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-stone-50 mb-8 font-space-grotesk px-6 lg:px-16 text-center">
-        Key Features
+        {t("keyFeatures.Key Features")}
       </h2>
 
       <article className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
         <div className="text-center mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-stone-100 mb-3 font-space-grotesk">
-            Premium Charcoal
+            {t("keyFeatures.Premium Charcoal")}
           </h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-orange-500 mb-4 font-space-grotesk">
-            $199.99/kg
+            €0.95/kg
           </h2>
           <p className="text-sm sm:text-base lg:text-base text-stone-400 max-w-3xl mx-auto leading-relaxed">
-            High-quality charcoal with maximum heat output and minimum ash.
-            Perfect for grilling and outdoor cooking.
+            {t(
+              "keyFeatures.High-quality charcoal with maximum heat output and minimum ash. Perfect for grilling and outdoor cooking.",
+            )}
           </p>
         </div>
 
@@ -30,10 +34,10 @@ function KeyFeatures() {
             >
               <div className="mb-2 sm:mb-3">{feature.icon}</div>
               <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-stone-200 group-hover:text-white transition-colors mb-2">
-                {feature.title}
+                {t(feature.title)}
               </h3>
               <p className="text-xs sm:text-sm text-stone-400 hidden md:block">
-                {feature.desc}
+                {t(feature.desc)}
               </p>
             </div>
           ))}
@@ -41,10 +45,10 @@ function KeyFeatures() {
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
           <Button type="primary" to="/order">
-            Buy now
+            {t("keyFeatures.Buy now")}
           </Button>
           <Button type="secondary" to="/about">
-            Learn more
+            {t("keyFeatures.Learn more")}
           </Button>
         </div>
       </article>
