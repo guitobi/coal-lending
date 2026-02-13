@@ -88,5 +88,31 @@
     "Calculator": "Calculator",
     "Contact Us": "Contact Us",
     "Contact": "Contact"
+  },
+  "about": {
+    "Official Distributor of Wooden West": "Official Distributor of Wooden West",
+    "More Than Just": " More Than Just",
+    "Charcoal": "Charcoal",
+    "We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.": " We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.",
+    "firstCard": {
+      "title": "Fixed Carbon",
+      "percentage": "79.4%",
+      "description": "Norm: ≥ 75.0%"
+    },
+    "secondCard": {
+      "title": "Ash Content",
+      "percentage": "1.9%",
+      "description": "Ultra-clean burn"
+    },
+    "thirdCard": {
+      "title": "Moisture",
+      "percentage": "5.4%",
+      "description": "Instant ignition"
+    },
+    "fourthCard": {
+      "title": "Premium Fraction",
+      "percentage": "20-120 mm",
+      "description": "94% screened lumps"
+    }
   }
 }

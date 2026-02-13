@@ -88,5 +88,31 @@
     "Calculator": "Kalkulator",
     "Contact Us": "Skontaktuj się z nami",
     "Contact": "Kontakt"
+  },
+  "about": {
+    "Official Distributor of Wooden West": "Oficjalny dystrybutor Wooden West",
+    "More Than Just": " Więcej niż tylko",
+    "Charcoal": "Węgiel drzewny",
+    "We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.": " Dostarczamy energię. Bezpośredni import od producenta z laboratoryjnie potwierdzoną jakością, która przekracza europejskie normy EN 1860-2.",
+    "firstCard": {
+      "title": "Węgiel związany",
+      "percentage": "79.4%",
+      "description": "Norma: ≥ 75.0%"
+    },
+    "secondCard": {
+      "title": "Zawartość popiołu",
+      "percentage": "1.9%",
+      "description": "Niezwykle czyste spalanie"
+    },
+    "thirdCard": {
+      "title": "Wilgotność",
+      "percentage": "5.4%",
+      "description": "Błyskawiczny zapłon"
+    },
+    "fourthCard": {
+      "title": "Frakcja Premium",
+      "percentage": "20-120 mm",
+      "description": "94% przesiane kawałki"
+    }
   }
 }

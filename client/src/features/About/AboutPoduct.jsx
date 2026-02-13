@@ -6,8 +6,11 @@ import {
   FileCheck,
   ShieldCheck,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AboutProduct = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-20 px-4 bg-stone-900/40 relative overflow-hidden">
       {/* Background Decor */}
@@ -18,14 +21,16 @@ const AboutProduct = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-sm font-medium mb-4">
             <ShieldCheck className="w-4 h-4" />
-            <span>Official Distributor of Wooden West</span>
+            <span>{t("about.Official Distributor of Wooden West")}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            More Than Just <span className="text-orange-500">Charcoal</span>
+            {t("about.More Than Just")}{" "}
+            <span className="text-orange-500">{t("about.Charcoal")}</span>
           </h2>
           <p className="text-stone-400 max-w-2xl mx-auto text-lg">
-            We supply energy. Direct import from the manufacturer with
-            laboratory-proven quality that exceeds European standards EN 1860-2.
+            {t(
+              "about.We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.",
+            )}
           </p>
         </div>
 
@@ -37,10 +42,14 @@ const AboutProduct = () => {
               <Flame className="w-6 h-6 text-orange-500" />
             </div>
             <h3 className="text-stone-400 text-sm font-medium mb-1">
-              Fixed Carbon
+              {t("about.firstCard.title")}
             </h3>
-            <p className="text-3xl font-bold text-white">79.4%</p>
-            <p className="text-xs text-stone-500 mt-2">Norm: ≥ 75.0%</p>
+            <p className="text-3xl font-bold text-white">
+              {t("about.firstCard.percentage")}
+            </p>
+            <p className="text-xs text-stone-500 mt-2">
+              {t("about.firstCard.description")}
+            </p>
           </div>
 
           {/* Card 2: Ash */}
@@ -49,10 +58,14 @@ const AboutProduct = () => {
               <Diamond className="w-6 h-6 text-orange-500" />
             </div>
             <h3 className="text-stone-400 text-sm font-medium mb-1">
-              Ash Content
+              {t("about.secondCard.title")}
             </h3>
-            <p className="text-3xl font-bold text-white">1.9%</p>
-            <p className="text-xs text-stone-500 mt-2">Ultra-clean burn</p>
+            <p className="text-3xl font-bold text-white">
+              {t("about.secondCard.percentage")}
+            </p>
+            <p className="text-xs text-stone-500 mt-2">
+              {t("about.secondCard.description")}
+            </p>
           </div>
 
           {/* Card 3: Moisture */}
@@ -61,10 +74,14 @@ const AboutProduct = () => {
               <Droplets className="w-6 h-6 text-orange-500" />
             </div>
             <h3 className="text-stone-400 text-sm font-medium mb-1">
-              Moisture
+              {t("about.thirdCard.title")}
             </h3>
-            <p className="text-3xl font-bold text-white">5.4%</p>
-            <p className="text-xs text-stone-500 mt-2">Instant ignition</p>
+            <p className="text-3xl font-bold text-white">
+              {t("about.thirdCard.percentage")}
+            </p>
+            <p className="text-xs text-stone-500 mt-2">
+              {t("about.thirdCard.description")}
+            </p>
           </div>
 
           {/* Card 4: Fraction */}
@@ -73,13 +90,15 @@ const AboutProduct = () => {
               <FileCheck className="w-6 h-6 text-orange-500" />
             </div>
             <h3 className="text-stone-400 text-sm font-medium mb-1">
-              Premium Fraction
+              {t("about.fourthCard.title")}
             </h3>
             <p className="text-3xl font-bold text-white">
               20-120{" "}
               <span className="text-lg font-normal text-stone-400">mm</span>
             </p>
-            <p className="text-xs text-stone-500 mt-2">94% screened lumps</p>
+            <p className="text-xs text-stone-500 mt-2">
+              {t("about.fourthCard.description")}
+            </p>
           </div>
         </div>
 
