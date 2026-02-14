@@ -14,7 +14,7 @@ function FooterCompanyInfo() {
         .
       </p>
       <p className="text-slate-400 text-xs mt-2">
-        Van Share Spółka z o.o. | NIP: 716-28-26886
+        Van Share Spółka z o.o. | NIP: 716-28-26-886
       </p>
     </div>
   );

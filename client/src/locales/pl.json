@@ -155,6 +155,93 @@
         "title": "Innowacje",
         "description": "Wierzymy w przyszłość, w której energia jest współdzielona, a nie marnowana. Technologia napędza naszą misję."
       }
+    },
+    "ourTeam": {
+      "title": "Nasz zespół",
+      "description": "Nasz pełen pasji zespół tworzą eksperci ds. energetyki, inżynierowie oprogramowania oraz działacze społeczni. Zjednoczyła nas wizja dostarczania ludziom i firmom niezawodnych rozwiązań energetycznych. Dzięki wieloletniemu doświadczeniu w sektorach energetycznym i technologicznym, dążymy do świadczenia usług na najwyższym poziomie."
+    },
+    "contactUs": {
+      "title": "Skontaktuj się z nami",
+      "description": "Masz pytania lub chcesz nawiązać współpracę?",
+      "email": "vanshare1@gmail.com",
+      "btnText": "Wyślij wiadomość",
+      "or": "Lub"
+    }
+  },
+  "delivery": {
+    "title": "Dostawa Węgla Premium",
+    "description": "Oficjalny dystrybutor marki WOODEN WEST w Polsce. Wysokiej jakości węgiel drzewny z drewna liściastego do grillowania i BBQ, zgodny z europejską normą EN 1860-2:2005.",
+    "features": {
+      "firstFeature": {
+        "description": "Dostawa w 10-21 dni"
+      },
+      "secondFeature": {
+        "description": "Certyfikat EN 1860-2:2005"
+      },
+      "thirdFeature": {
+        "description": "100% Drewno liściaste"
+      }
+    },
+    "terms": {
+      "title": "Warunki dostawy",
+      "features": {
+        "firstFeature": {
+          "title": "Szybka dostawa",
+          "description": "10-21 dni roboczych od potwierdzenia zamówienia"
+        },
+        "secondFeature": {
+          "title": "DAP Polkowice",
+          "description": "Dostawa pod wskazany adres w Polkowicach"
+        },
+        "thirdFeature": {
+          "title": "Minimalne zamówienie",
+          "description": "100 kg (możliwość negocjacji przy większych zamówieniach)"
+        },
+        "fourthFeature": {
+          "title": "Warunki płatności",
+          "description": "30% zaliczki, 70% po dostawie (przelew bankowy)"
+        }
+      }
+    },
+    "additional": {
+      "title": "Usługi dodatkowe",
+      "firstPoint": {
+        "title": "Indywidualne etykietowanie",
+        "description": "Niestandardowe opakowania i etykiety dostosowane do Twoich wymagań"
+      },
+      "secondPoint": {
+        "title": "Próbki jakości",
+        "description": "Darmowe próbki dostępne na życzenie wraz ze specyfikacją techniczną"
+      },
+      "thirdPoint": {
+        "title": "Program lojalnościowy",
+        "description": "Specjalne warunki dla stałych lub hurtowych zamówień"
+      }
+    },
+    "order": {
+      "title": "Gotowy do zamówienia?",
+      "description": "Skontaktuj się z naszym działem sprzedaży w sprawie zamówień i szczegółów",
+      "contacts": {
+        "email": {
+          "title": "E-mail",
+          "description": "vanshare1@gmail.com"
+        },
+        "phone": {
+          "title": "Telefon",
+          "first": "+48 577 432 949",
+          "second": "+48 730 670 345"
+        },
+        "address": {
+          "title": "Adres",
+          "description": {
+            "firstLine": "Van Share Spółka z o.o.",
+            "secondLine": "ul. Batalionów Chłopskich 3",
+            "thirdLine": "58-050 Jelenia Góra, Poland"
+          }
+        },
+        "nip": "NIP: 716-28-26-886",
+        "footer": "Oferta ważna przez 14 dni od daty wystawienia"
+      }
     }
   }
 }

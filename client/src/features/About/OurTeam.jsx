@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 function OurTeam() {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-stone-800/5 py-16">
       <div className="max-w-7xl mx-auto px-4">
@@ -12,14 +16,10 @@ function OurTeam() {
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-4xl font-bold mb-6 text-orange-500">
-              Our Team
+              {t("about.ourTeam.title")}
             </h2>
             <p className="text-lg text-stone-300 leading-relaxed">
-              Our passionate team consists of energy experts, software
-              engineers, and community advocates. We are united by a vision to
-              empower people and businesses with reliable energy solutions. With
-              years of experience in both the energy and tech sectors, we strive
-              to deliver the best possible service to our users.
+              {t("about.ourTeam.description")}
             </p>
           </div>
         </div>

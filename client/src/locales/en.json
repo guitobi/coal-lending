@@ -156,6 +156,93 @@
         "title": "Innovation",
         "description": "We believe in a future where energy is shared, not wasted. Technology drives our mission forward."
       }
+    },
+    "ourTeam": {
+      "title": "Our Team",
+      "description": "Our passionate team consists of energy experts, software engineers, and community advocates. We are united by a vision to empower people and businesses with reliable energy solutions. With years of experience in both the energy and tech sectors, we strive to deliver the best possible service to our users."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "description": "Have questions or want to partner with us? Get us at",
+      "email": "vanshare1@gmail.com",
+      "btnText": "Send message to us",
+      "or": "Or"
+    }
+  },
+  "delivery": {
+    "title": "Premium Charcoal Delivery",
+    "description": " Official distributor of WOODEN WEST brand in Poland. High-quality hardwood charcoal for grilling and BBQ, compliant with European standard EN 1860-2:2005.",
+    "features": {
+      "firstFeature": {
+        "description": "10-21 Days Delivery"
+      },
+      "secondFeature": {
+        "description": "EN 1860-2:2005 Certified"
+      },
+      "thirdFeature": {
+        "description": "100% Hardwood"
+      }
+    },
+    "terms": {
+      "title": "Delivery Terms",
+      "features": {
+        "firstFeature": {
+          "title": "Fast Delivery",
+          "description": "10-21 business days from order confirmation"
+        },
+        "secondFeature": {
+          "title": "DAP Polkowice",
+          "description": "Delivered to your specified location in Polkowice"
+        },
+        "thirdFeature": {
+          "title": "Minimum Order",
+          "description": "100 kg (negotiable for larger orders)"
+        },
+        "fourthFeature": {
+          "title": "Payment Terms",
+          "description": "30% advance, 70% after delivery (bank transfer)"
+        }
+      }
+    },
+    "additional": {
+      "title": "Additional Services",
+      "firstPoint": {
+        "title": "Custom Labeling",
+        "description": "Customized packaging and labeling according to your requirements"
+      },
+      "secondPoint": {
+        "title": "Quality Samples",
+        "description": "Free samples available upon request with technical specifications"
+      },
+      "thirdPoint": {
+        "title": "Loyalty Program",
+        "description": "Special conditions for regular or bulk orders"
+      }
+    },
+    "order": {
+      "title": "Ready to Order?",
+      "description": "Contact our sales department for orders and details",
+      "contacts": {
+        "email": {
+          "title": "Email",
+          "description": "vanshare1@gmail.com"
+        },
+        "phone": {
+          "title": "Phone",
+          "first": "+48 577 432 949",
+          "second": "+48 730 670 345"
+        },
+        "address": {
+          "title": "Address",
+          "description": {
+            "firstLine": "Van Share Spółka z o.o.",
+            "secondLine": "ul. Batalionów Chłopskich 3",
+            "thirdLine": "58-050 Jelenia Góra, Poland"
+          }
+        },
+        "nip": "NIP: 716-28-26-886",
+        "footer": "Offer valid for 14 days from issue date"
+      }
     }
   }
 }

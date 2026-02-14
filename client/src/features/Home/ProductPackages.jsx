@@ -30,7 +30,7 @@ function ProductPackages() {
                 2.5 kg
               </h3>
               <div className="text-3xl sm:text-4xl font-bold text-stone-200 mb-4">
-                €1.88
+                €2.38
               </div>
               <div className="text-sm text-stone-400 mb-6">
                 {t("productPackages.per bag")}
@@ -59,7 +59,7 @@ function ProductPackages() {
                 10 kg
               </h3>
               <div className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                €7.50
+                €9.50
               </div>
               <div className="text-sm text-stone-400 mb-6">
                 {t("productPackages.per bag")}
@@ -85,7 +85,7 @@ function ProductPackages() {
                 5 kg
               </h3>
               <div className="text-3xl sm:text-4xl font-bold text-stone-100 mb-4">
-                €3.75
+                €4,75
               </div>
               <div className="text-sm text-stone-400 mb-6">
                 {t("productPackages.per bag")}
