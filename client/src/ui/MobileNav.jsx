@@ -1,11 +1,14 @@
 import { useTranslation } from "react-i18next";
 import NavButtonLink from "./NavButtonLink";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function MobileNav({ setIsMenuOpen, isMenuOpen }) {
   const { t } = useTranslation();
+
   return (
     <div
-      className={`w-full bg-neutral-900 overflow-hidden transition-all duration-300 ${isMenuOpen ? "max-h-96 pb-4" : "max-h-0 pb-0"}`}
+      className={`w-full bg-neutral-900 overflow-hidden transition-all duration-500 ease-in-out 
+        ${isMenuOpen ? "max-h-screen pb-4 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
     >
       <ul
         className={`md:hidden flex flex-col divide-y divide-neutral-700 mt-2 mb-0 text-lg font-medium bg-neutral-800 rounded-lg`}
@@ -46,6 +49,10 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
           >
             {t("nav.contactUs")}
           </NavButtonLink>
+        </li>
+
+        <li className="p-2">
+          <LanguageSwitcher isMobile={true} />
         </li>
       </ul>
     </div>

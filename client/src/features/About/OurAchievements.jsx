@@ -1,25 +1,29 @@
+import { useTranslation } from "react-i18next";
+
 function OurAchievements() {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-stone-900/50 border border-stone-950 rounded-3xl py-16 ">
       <div className="max-w-7xl mx-auto px-4 ">
         <h2 className="text-3xl font-bold text-center mb-12 text-stone-100">
-          Our Achievements
+          {t("about.achievements.title")}
         </h2>
         <div className="grid md:grid-cols-3 gap-8 text-center">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 flex flex-col justify-center align-center gap-1">
             <div className="text-5xl md:text-6xl font-bold text-orange-500 mb-2">
-              2021
+              {t("about.achievements.firstCard.title")}
             </div>
             <p className="text-lg md:text-xl text-stone-300 whitespace-nowrap">
-              Founded
+              {t("about.achievements.firstCard.description")}
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300  flex flex-col justify-center align-center gap-1">
             <div className="text-5xl md:text-6xl font-bold text-orange-500 mb-2">
-              100%
+              {t("about.achievements.secondCard.title")}
             </div>
             <p className="text-lg md:text-xl text-stone-300 whitespace-nowrap">
-              Honest weight
+              {t("about.achievements.secondCard.description")}
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 flex flex-col justify-center align-center gap-1">
@@ -34,7 +38,7 @@ function OurAchievements() {
               </div>
             </div>
             <p className="text-base md:text-xl text-stone-300 whitespace-nowrap">
-              Certified quality
+              {t("about.achievements.thirdCard.description")}
             </p>
           </div>
         </div>

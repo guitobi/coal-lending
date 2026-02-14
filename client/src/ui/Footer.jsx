@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import FooterCompanyInfo from "./FooterCompanyInfo";
 import FooterQuickLinks from "./FooterQuickLinks";
 import FooterContactInfo from "./FooterContactInfo";

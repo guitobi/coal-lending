@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 function FooterContactInfo() {
+  const { t } = useTranslation();
   return (
     <div>
       <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
-        Contact
+        {t("footer.Contact")}
       </h4>
       <ul className="space-y-2 text-slate-300 text-sm sm:text-base lg:text-lg">
         <li>📞 +48 577 432 949</li>

@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 function FooterQuickLinks() {
+  const { t } = useTranslation();
+
   return (
     <div>
       <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
-        Navigation
+        {t("footer.Navigation")}
       </h4>
       <ul className="space-y-2 text-sm sm:text-base lg:text-lg">
         <li>
@@ -12,7 +15,7 @@ function FooterQuickLinks() {
             to="/"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            Home
+            {t("footer.Home")}
           </Link>
         </li>
         <li>
@@ -20,7 +23,7 @@ function FooterQuickLinks() {
             to="/about"
             className="text-slate-300 hover:text-orange-500  transition-colors"
           >
-            About Us
+            {t("footer.About Us")}
           </Link>
         </li>
         <li>
@@ -28,7 +31,7 @@ function FooterQuickLinks() {
             to="/delivery"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            Delivery
+            {t("footer.Delivery")}
           </Link>
         </li>
         <li>
@@ -36,7 +39,7 @@ function FooterQuickLinks() {
             to="/calculator"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            Calculator
+            {t("footer.Calculator")}
           </Link>
         </li>
         <li>
@@ -44,7 +47,7 @@ function FooterQuickLinks() {
             to="/contact"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            Contact Us
+            {t("footer.Contact Us")}
           </Link>
         </li>
       </ul>
