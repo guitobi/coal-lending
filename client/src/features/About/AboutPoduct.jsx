@@ -107,14 +107,19 @@ const AboutProduct = () => {
           {/* Left: Text Content */}
           <div className="space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold text-white">
-              Official Partner of{" "}
-              <span className="text-orange-500">Wooden West LLC</span>
+              {t("about.Official Partner of")}{" "}
+              <span className="text-orange-500">
+                {t("about.Wooden West LLC")}
+              </span>
             </h3>
             <p className="text-stone-300 leading-relaxed">
-              Van Share operates as a direct distributor, eliminating
-              unnecessary intermediaries. We manage the entire supply chain from
-              the sustainable forests in Ukraine to our warehouse in{" "}
-              <strong className="text-white">Polkowice, Poland</strong>.
+              {t(
+                "about.Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in",
+              )}{" "}
+              <strong className="text-white">
+                {t("about.Polkowice, Poland")}
+              </strong>
+              .
             </p>
 
             <ul className="space-y-4">
@@ -124,10 +129,11 @@ const AboutProduct = () => {
                 </div>
                 <p className="text-stone-400 text-sm">
                   <strong className="text-white block mb-1">
-                    Own Logistics System
+                    {t("about.Own Logistics System")}
                   </strong>
-                  Timely delivery across Poland & EU. Standard truckload: 33
-                  pallets.
+                  {t(
+                    "about.Timely delivery across Poland & EU. Standard truckload: 33 pallets.",
+                  )}
                 </p>
               </li>
               <li className="flex items-start gap-3">
@@ -136,10 +142,11 @@ const AboutProduct = () => {
                 </div>
                 <p className="text-stone-400 text-sm">
                   <strong className="text-white block mb-1">
-                    Private Label Services
+                    {t("about.Private Label Services")}
                   </strong>
-                  We can pack high-quality charcoal into bags featuring your
-                  logo.
+                  {t(
+                    "about.We can pack high-quality charcoal into bags featuring your logo.",
+                  )}
                 </p>
               </li>
             </ul>
@@ -150,7 +157,7 @@ const AboutProduct = () => {
                 download="VanShare_Certificate.pdf"
                 className="text-white border-b border-orange-500 pb-1 hover:text-orange-500 transition-colors text-sm font-medium"
               >
-                Download Quality Certificate (PDF) &rarr;
+                {t("about.Download Quality Certificate (PDF) &rarr;")}
               </a>
             </div>
           </div>
@@ -162,7 +169,7 @@ const AboutProduct = () => {
 
             {/* Main Image Container */}
             <div className="relative bg-stone-900 rounded-2xl overflow-hidden aspect-video border border-stone-800 shadow-2xl">
-              {/* Тут має бути фото складу або фури. Поки що градієнт-заглушка */}
+              //TODO: TRUCK PHOTO
               <div className="absolute inset-0 bg-linear-to-br from-stone-800 to-stone-950 flex items-center justify-center group">
                 <Truck className="w-20 h-20 text-stone-700 group-hover:text-orange-500/50 transition-colors duration-500" />
 

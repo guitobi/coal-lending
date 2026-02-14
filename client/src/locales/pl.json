@@ -113,6 +113,48 @@
       "title": "Frakcja Premium",
       "percentage": "20-120 mm",
       "description": "94% przesiane kawałki"
+    },
+    "Official Partner of": "Oficjalny partner",
+    "Wooden West LLC": "Wooden West LLC",
+    "Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in": "Van Share działa jako bezpośredni dystrybutor, eliminując niepotrzebnych pośredników. Zarządzamy całym łańcuchem dostaw, od zrównoważonych lasów w Ukrainie po nasz magazyn w",
+    "Polkowice, Poland": "Polkowicach, Polska",
+    "Own Logistics System": "Własny system logistyczny",
+    "Timely delivery across Poland & EU. Standard truckload: 33 pallets.": "Terminowa dostawa na terenie Polski i UE. Standardowy ładunek ciężarówki: 33 palety.",
+    "Private Label Services": "Usługi marki własnej",
+    "We can pack high-quality charcoal into bags featuring your logo.": "Możemy zapakować wysokiej jakości węgiel drzewny w worki z Twoim logo.",
+    "Download Quality Certificate (PDF) &rarr;": "Pobierz certyfikat jakości (PDF) →",
+    "About Van Share": "O Van Share",
+    "Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart": " Van Share Spółka z o.o. jest oficjalnym dystrybutorem węgla drzewnego liściastego premium marki WOODEN WEST w Polsce. Dostarczamy wysokiej jakości węgiel do grillowania i BBQ, zgodny z europejską normą",
+    "mission": "Naszą misją jest dostarczanie niezawodnych rozwiązań energetycznych z zachowaniem przejrzystości, efektywności i zaufania w każdej transakcji.",
+    "achievements": {
+      "title": "Nasze osiągnięcia",
+      "firstCard": {
+        "title": "2021",
+        "description": "Założenie firmy"
+      },
+      "secondCard": {
+        "title": "100%",
+        "description": "Uczciwa waga"
+      },
+      "thirdCard": {
+        "title": "EN 1860-2",
+        "description": "Certyfikowana jakość"
+      }
+    },
+    "ourMission": {
+      "title": "Nasza misja",
+      "firstCard": {
+        "title": "Zrównoważony rozwój",
+        "description": "Jesteśmy zaangażowani w odpowiedzialność za środowisko i nieustannie pracujemy nad minimalizacją śladu węglowego naszej działalności."
+      },
+      "secondCard": {
+        "title": "Społeczność",
+        "description": "Nasza platforma łączy dostawców i odbiorców węgla, usprawniając proces dystrybucji i wspierając lokalne gospodarki."
+      },
+      "thirdCard": {
+        "title": "Innowacje",
+        "description": "Wierzymy w przyszłość, w której energia jest współdzielona, a nie marnowana. Technologia napędza naszą misję."
+      }
     }
   }
 }
