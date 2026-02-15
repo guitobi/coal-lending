@@ -155,6 +155,228 @@
         "title": "Innowacje",
         "description": "Wierzymy w przyszłość, w której energia jest współdzielona, a nie marnowana. Technologia napędza naszą misję."
       }
+    },
+    "ourTeam": {
+      "title": "Nasz zespół",
+      "description": "Nasz pełen pasji zespół tworzą eksperci ds. energetyki, inżynierowie oprogramowania oraz działacze społeczni. Zjednoczyła nas wizja dostarczania ludziom i firmom niezawodnych rozwiązań energetycznych. Dzięki wieloletniemu doświadczeniu w sektorach energetycznym i technologicznym, dążymy do świadczenia usług na najwyższym poziomie."
+    },
+    "contactUs": {
+      "title": "Skontaktuj się z nami",
+      "description": "Masz pytania lub chcesz nawiązać współpracę?",
+      "email": "vanshare1@gmail.com",
+      "btnText": "Wyślij wiadomość",
+      "or": "Lub"
+    }
+  },
+  "delivery": {
+    "title": "Dostawa Węgla Premium",
+    "description": "Oficjalny dystrybutor marki WOODEN WEST w Polsce. Wysokiej jakości węgiel drzewny z drewna liściastego do grillowania i BBQ, zgodny z europejską normą EN 1860-2:2005.",
+    "features": {
+      "firstFeature": {
+        "description": "Dostawa w 10-21 dni"
+      },
+      "secondFeature": {
+        "description": "Certyfikat EN 1860-2:2005"
+      },
+      "thirdFeature": {
+        "description": "100% Drewno liściaste"
+      }
+    },
+    "terms": {
+      "title": "Warunki dostawy",
+      "features": {
+        "firstFeature": {
+          "title": "Szybka dostawa",
+          "description": "10-21 dni roboczych od potwierdzenia zamówienia"
+        },
+        "secondFeature": {
+          "title": "DAP Polkowice",
+          "description": "Dostawa pod wskazany adres w Polkowicach"
+        },
+        "thirdFeature": {
+          "title": "Minimalne zamówienie",
+          "description": "100 kg (możliwość negocjacji przy większych zamówieniach)"
+        },
+        "fourthFeature": {
+          "title": "Warunki płatności",
+          "description": "30% zaliczki, 70% po dostawie (przelew bankowy)"
+        }
+      }
+    },
+    "additional": {
+      "title": "Usługi dodatkowe",
+      "firstPoint": {
+        "title": "Indywidualne etykietowanie",
+        "description": "Niestandardowe opakowania i etykiety dostosowane do Twoich wymagań"
+      },
+      "secondPoint": {
+        "title": "Próbki jakości",
+        "description": "Darmowe próbki dostępne na życzenie wraz ze specyfikacją techniczną"
+      },
+      "thirdPoint": {
+        "title": "Program lojalnościowy",
+        "description": "Specjalne warunki dla stałych lub hurtowych zamówień"
+      }
+    },
+    "order": {
+      "title": "Gotowy do zamówienia?",
+      "description": "Skontaktuj się z naszym działem sprzedaży w sprawie zamówień i szczegółów",
+      "contacts": {
+        "email": {
+          "title": "E-mail",
+          "description": "vanshare1@gmail.com"
+        },
+        "phone": {
+          "title": "Telefon",
+          "first": "+48 577 432 949",
+          "second": "+48 730 670 345"
+        },
+        "address": {
+          "title": "Adres",
+          "description": {
+            "firstLine": "Van Share Spółka z o.o.",
+            "secondLine": "ul. Batalionów Chłopskich 3",
+            "thirdLine": "58-050 Jelenia Góra, Poland"
+          }
+        },
+        "nip": "NIP: 716-28-26-886",
+        "footer": "Oferta ważna przez 14 dni od daty wystawienia"
+      },
+      "btn": "Zamów teraz"
+    }
+  },
+  "calculator": {
+    "title": "Kalkulator cen",
+    "description": " Błyskawicznie oblicz całkowity koszt zamówienia. Idealne rozwiązanie dla klientów hurtowych.",
+    "label": "Wielkość zamówienia (tony)",
+    "placeholder": "Wprowadź ilość w tonach (np. 22)",
+    "basePrice": " Cena bazowa:",
+    "pricePerTon": "€950/tona",
+    "btn": "Oblicz koszt całkowity",
+    "breakdown": "Zestawienie kosztów",
+    "subtotal": "Suma częściowa:",
+    "delivery": "Dostawa:",
+    "freeDelivery": "W CENIE (BEZPŁATNA)",
+    "total": "Razem:",
+    "vat": "Cena zawiera VAT",
+    "polkowice": "Dostawa: DAP Polkowice (Incoterms 2020)",
+    "note": "*Ostateczna cena zostanie potwierdzona przez naszego menedżera",
+    "help": "Potrzebujesz pomocy z zamówieniem?",
+    "contact": "Skontaktuj się z nami"
+  },
+  "contactUs": {
+    "title": "Skontaktuj się z nami",
+    "description": "Masz pytania? Chętnie na nie odpowiemy. Wyślij nam wiadomość, a my odpowiemy najszybciej jak to możliwe.",
+    "contactInfo": {
+      "title": "Dane kontaktowe",
+      "email": {
+        "title": "E-mail"
+      },
+      "phone": {
+        "title": "Telefon",
+        "description": "+48 577 432 949"
+      },
+      "address": {
+        "title": "Adres",
+        "description": {
+          "firstLine": "Polkowice, Polska",
+          "secondLine": "Dostępna dostawa DAP"
+        }
+      },
+      "businessHours": {
+        "title": "Godziny otwarcia",
+        "description": {
+          "firstLine": "Poniedziałek - Piątek: 9:00 - 18:00",
+          "secondLine": "Sobota: 10:00 - 16:00",
+          "thirdLine": "Niedziela: Zamknięte"
+        }
+      }
+    },
+    "whyChooseUs": {
+      "title": "Dlaczego warto nas wybrać?",
+      "firstPoint": "Węgiel najwyższej jakości (Premium)",
+      "secondPoint": "Konkurencyjne ceny hurtowe",
+      "thirdPoint": "Darmowa dostawa w cenie",
+      "fourthPoint": "Niezawodna obsługa klienta"
+    },
+    "form": {
+      "title": "Wyślij nam wiadomość",
+      "name": {
+        "label": "Twoje imię i nazwisko",
+        "placeholder": "Wpisz swoje imię..."
+      },
+      "email": {
+        "label": "Adres e-mail",
+        "placeholder": "Wpisz swój e-mail..."
+      },
+      "subject": {
+        "label": "Temat",
+        "placeholder": "W czym możemy pomóc?"
+      },
+      "message": {
+        "label": "Wiadomość",
+        "placeholder": "Napisz nam więcej o swoim zapytaniu..."
+      },
+      "btn": {
+        "submitText": "Wyślij wiadomość",
+        "proccessingText": "Wysyłanie..."
+      },
+      "toastSuccess": "Dziękujemy za wiadomość! Odpowiemy wkrótce.",
+      "toastError": "Ups! Coś poszło nie tak. Spróbuj ponownie później."
+    }
+  },
+  "order": {
+    "title": "Złóż zamówienie",
+    "description": "Wypełnij poniższy formularz, a nasz menedżer wkrótce skontaktuje się z Tobą w celu potwierdzenia szczegółów zamówienia.",
+    "form": {
+      "name": {
+        "label": "Twoje imię i nazwisko",
+        "placeholder": "Wpisz swoje imię..."
+      },
+      "email": {
+        "label": "Adres e-mail",
+        "placeholder": "Wpisz swój e-mail..."
+      },
+      "phone": {
+        "label": "Numer telefonu",
+        "placeholder": "Wpisz swój numer telefonu..."
+      },
+      "quantity": {
+        "label": "Waga zamówienia (kg)",
+        "placeholder": "Wprowadź ilość w kg (np. 22000)",
+        "min": "Minimalne zamówienie: 100 kg"
+      },
+      "city": {
+        "label": "Miasto",
+        "placeholder": "Wpisz swoje miasto..."
+      },
+      "comment": {
+        "label": "Dodatkowe uwagi",
+        "placeholder": "Masz specjalne wymagania lub pytania?",
+        "optional": "(Opcjonalnie)"
+      },
+
+      "btn": {
+        "submitText": "Wyślij zamówienie",
+        "proccessingText": "Przetwarzanie..."
+      }
+    },
+    "summary": {
+      "title": "Podsumowanie zamówienia",
+      "weight": "Waga:",
+      "pricePerKg": "Cena za kg:",
+      "totalPrice": "Szacunkowa suma:",
+      "note": "*Ostateczna cena zostanie potwierdzona przez naszego menedżera"
+    },
+    "footer": {
+      "title": "Nasz menedżer wkrótce się z Tobą skontaktuje",
+      "delivery": "Dostawa: DAP Polkowice (Incoterms 2020)",
+      "contact": {
+        "title": "Potrzebujesz pomocy z zamówieniem?",
+        "contact": "Skontaktuj się z nami"
+      },
+      "toastSuccess": "Dziękujemy za zamówienie! Nasz menedżer wkrótce się z Tobą skontaktuje.",
+      "toastError": "Ups! Coś poszło nie tak. Spróbuj ponownie później."
     }
   }
 }

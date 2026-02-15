@@ -1,16 +1,17 @@
 import { CheckCircle, Package, TreeDeciduous } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function DeliveryHero() {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-stone-950/50 border border-black text-stone-100 py-20">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h1 className="text-5xl font-bold mb-6 text-stone-100">
-          Premium Charcoal Delivery
+          {t("delivery.title")}
         </h1>
         <p className="text-xl mb-8 max-w-3xl mx-auto px-4 text-stone-300">
-          Official distributor of WOODEN WEST brand in Poland. High-quality
-          hardwood charcoal for grilling and BBQ, compliant with European
-          standard EN 1860-2:2005.
+          {t("delivery.description")}
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <div className="bg-stone-900/40 rounded-lg px-6 py-3 flex items-center gap-3">
@@ -18,7 +19,7 @@ function DeliveryHero() {
               <Package className="w-6 h-6 text-orange-500" strokeWidth={2} />
             </div>
             <span className="font-semibold text-stone-300 ">
-              10-21 Days Delivery
+              {t("delivery.features.firstFeature.description")}
             </span>
           </div>
           <div className="bg-stone-900/40 rounded-lg px-6 py-3 flex items-center gap-3">
@@ -29,7 +30,7 @@ function DeliveryHero() {
               />
             </div>
             <span className="font-semibold text-stone-300">
-              EN 1860-2:2005 Certified
+              {t("delivery.features.secondFeature.description")}
             </span>
           </div>
           <div className="bg-stone-900/40 rounded-lg px-6 py-3 flex items-center gap-3">
@@ -39,7 +40,9 @@ function DeliveryHero() {
                 strokeWidth={2}
               />
             </div>
-            <span className="font-semibold text-stone-300">100% Hardwood</span>
+            <span className="font-semibold text-stone-300">
+              {t("delivery.features.thirdFeature.description")}
+            </span>
           </div>
         </div>
       </div>

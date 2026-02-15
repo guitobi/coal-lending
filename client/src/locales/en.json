@@ -156,6 +156,227 @@
         "title": "Innovation",
         "description": "We believe in a future where energy is shared, not wasted. Technology drives our mission forward."
       }
+    },
+    "ourTeam": {
+      "title": "Our Team",
+      "description": "Our passionate team consists of energy experts, software engineers, and community advocates. We are united by a vision to empower people and businesses with reliable energy solutions. With years of experience in both the energy and tech sectors, we strive to deliver the best possible service to our users."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "description": "Have questions or want to partner with us? Get us at",
+      "email": "vanshare1@gmail.com",
+      "btnText": "Send message to us",
+      "or": "Or"
+    }
+  },
+  "delivery": {
+    "title": "Premium Charcoal Delivery",
+    "description": " Official distributor of WOODEN WEST brand in Poland. High-quality hardwood charcoal for grilling and BBQ, compliant with European standard EN 1860-2:2005.",
+    "features": {
+      "firstFeature": {
+        "description": "10-21 Days Delivery"
+      },
+      "secondFeature": {
+        "description": "EN 1860-2:2005 Certified"
+      },
+      "thirdFeature": {
+        "description": "100% Hardwood"
+      }
+    },
+    "terms": {
+      "title": "Delivery Terms",
+      "features": {
+        "firstFeature": {
+          "title": "Fast Delivery",
+          "description": "10-21 business days from order confirmation"
+        },
+        "secondFeature": {
+          "title": "DAP Polkowice",
+          "description": "Delivered to your specified location in Polkowice"
+        },
+        "thirdFeature": {
+          "title": "Minimum Order",
+          "description": "100 kg (negotiable for larger orders)"
+        },
+        "fourthFeature": {
+          "title": "Payment Terms",
+          "description": "30% advance, 70% after delivery (bank transfer)"
+        }
+      }
+    },
+    "additional": {
+      "title": "Additional Services",
+      "firstPoint": {
+        "title": "Custom Labeling",
+        "description": "Customized packaging and labeling according to your requirements"
+      },
+      "secondPoint": {
+        "title": "Quality Samples",
+        "description": "Free samples available upon request with technical specifications"
+      },
+      "thirdPoint": {
+        "title": "Loyalty Program",
+        "description": "Special conditions for regular or bulk orders"
+      }
+    },
+    "order": {
+      "title": "Ready to Order?",
+      "description": "Contact our sales department for orders and details",
+      "contacts": {
+        "email": {
+          "title": "Email",
+          "description": "vanshare1@gmail.com"
+        },
+        "phone": {
+          "title": "Phone",
+          "first": "+48 577 432 949",
+          "second": "+48 730 670 345"
+        },
+        "address": {
+          "title": "Address",
+          "description": {
+            "firstLine": "Van Share Spółka z o.o.",
+            "secondLine": "ul. Batalionów Chłopskich 3",
+            "thirdLine": "58-050 Jelenia Góra, Poland"
+          }
+        },
+        "nip": "NIP: 716-28-26-886",
+        "footer": "Offer valid for 14 days from issue date"
+      },
+      "btn": "Order Now"
+    }
+  },
+  "calculator": {
+    "title": "Price Calculator",
+    "description": " Calculate your total order cost instantly. Perfect for wholesale buyers.",
+    "label": "Order Quantity (tons)",
+    "placeholder": "Enter quantity in tons (e.g., 22)",
+    "basePrice": " Base price:",
+    "pricePerTon": "€950/ton",
+    "btn": "Calculate Total Price",
+    "breakdown": "Cost Breakdown",
+    "subtotal": "Subtotal:",
+    "delivery": "Delivery:",
+    "freeDelivery": "INCLUDED (FREE)",
+    "total": "Total:",
+    "vat": "Price includes VAT",
+    "polkowice": "Delivery: DAP Polkowice (Incoterms 2020)",
+    "note": "*Final price will be confirmed by our manager",
+    "help": "Need help with your order?",
+    "contact": "Contact us"
+  },
+  "contactUs": {
+    "title": "Get In Touch",
+    "description": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "+48 577 432 949"
+      },
+      "address": {
+        "title": "Address",
+        "description": {
+          "firstLine": "Polkowice, Poland",
+          "secondLine": "DAP Delivery Available"
+        }
+      },
+      "businessHours": {
+        "title": "Business Hours",
+        "description": {
+          "firstLine": "Monday - Friday: 9:00 AM - 6:00 PM",
+          "secondLine": "Saturday: 10:00 AM - 4:00 PM",
+          "thirdLine": "Sunday: Closed"
+        }
+      }
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us?",
+      "firstPoint": "Premium quality charcoal",
+      "secondPoint": "Competitive wholesale prices",
+      "thirdPoint": "Free delivery included",
+      "fourthPoint": "Reliable customer support"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": {
+        "label": "Your Name",
+        "placeholder": "Enter your name..."
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email..."
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "How can we help you?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us more about your inquiry..."
+      },
+      "btn": {
+        "submitText": "Send Message",
+        "proccessingText": "Sending..."
+      },
+      "toastSuccess": "Thank you for your message! We'll get back to you soon.",
+      "toastError": "Oops! Something went wrong. Please try again later."
+    }
+  },
+  "order": {
+    "title": "Place Your Order",
+    "description": "Fill out the form below and our manager will contact you shortly to confirm your order details.",
+    "form": {
+      "name": {
+        "label": "Your Name",
+        "placeholder": "Enter your name..."
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email..."
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number..."
+      },
+      "quantity": {
+        "label": "Order weight (kg)",
+        "placeholder": "Enter quantity in kg (e.g., 22000)",
+        "min": "Minimum order: 100 kg"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "Enter your city..."
+      },
+      "comment": {
+        "label": "Additional Comments",
+        "placeholder": "Any specific requirements or questions?",
+        "optional": "(Optional)"
+      },
+      "summary": {
+        "title": "Order Summary",
+        "weight": "Weight:",
+        "pricePerKg": "Price per kg:",
+        "totalPrice": "Estimated Total:",
+        "note": "*Final price will be confirmed by our manager"
+      },
+      "btn": {
+        "submitText": "Submit Order",
+        "proccessingText": "Processing..."
+      },
+      "footer": {
+        "title": "Our manager will contact you soon",
+        "delivery": "Delivery: DAP Polkowice (Incoterms 2020)",
+        "contact": {
+          "title": "Need help with your order?",
+          "contact": "Contact us"
+        }
+      },
+      "toastSuccess": "Thank you for your order! Our manager will contact you shortly.",
+      "toastError": "Oops! Something went wrong. Please try again later."
     }
   }
 }
