@@ -242,7 +242,141 @@
         },
         "nip": "NIP: 716-28-26-886",
         "footer": "Offer valid for 14 days from issue date"
+      },
+      "btn": "Order Now"
+    }
+  },
+  "calculator": {
+    "title": "Price Calculator",
+    "description": " Calculate your total order cost instantly. Perfect for wholesale buyers.",
+    "label": "Order Quantity (tons)",
+    "placeholder": "Enter quantity in tons (e.g., 22)",
+    "basePrice": " Base price:",
+    "pricePerTon": "€950/ton",
+    "btn": "Calculate Total Price",
+    "breakdown": "Cost Breakdown",
+    "subtotal": "Subtotal:",
+    "delivery": "Delivery:",
+    "freeDelivery": "INCLUDED (FREE)",
+    "total": "Total:",
+    "vat": "Price includes VAT",
+    "polkowice": "Delivery: DAP Polkowice (Incoterms 2020)",
+    "note": "*Final price will be confirmed by our manager",
+    "help": "Need help with your order?",
+    "contact": "Contact us"
+  },
+  "contactUs": {
+    "title": "Get In Touch",
+    "description": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "+48 577 432 949"
+      },
+      "address": {
+        "title": "Address",
+        "description": {
+          "firstLine": "Polkowice, Poland",
+          "secondLine": "DAP Delivery Available"
+        }
+      },
+      "businessHours": {
+        "title": "Business Hours",
+        "description": {
+          "firstLine": "Monday - Friday: 9:00 AM - 6:00 PM",
+          "secondLine": "Saturday: 10:00 AM - 4:00 PM",
+          "thirdLine": "Sunday: Closed"
+        }
       }
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us?",
+      "firstPoint": "Premium quality charcoal",
+      "secondPoint": "Competitive wholesale prices",
+      "thirdPoint": "Free delivery included",
+      "fourthPoint": "Reliable customer support"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": {
+        "label": "Your Name",
+        "placeholder": "Enter your name..."
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email..."
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "How can we help you?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us more about your inquiry..."
+      },
+      "btn": {
+        "submitText": "Send Message",
+        "proccessingText": "Sending..."
+      },
+      "toastSuccess": "Thank you for your message! We'll get back to you soon.",
+      "toastError": "Oops! Something went wrong. Please try again later."
+    }
+  },
+  "order": {
+    "title": "Place Your Order",
+    "description": "Fill out the form below and our manager will contact you shortly to confirm your order details.",
+    "form": {
+      "name": {
+        "label": "Your Name",
+        "placeholder": "Enter your name..."
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email..."
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number..."
+      },
+      "quantity": {
+        "label": "Order weight (kg)",
+        "placeholder": "Enter quantity in kg (e.g., 22000)",
+        "min": "Minimum order: 100 kg"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "Enter your city..."
+      },
+      "comment": {
+        "label": "Additional Comments",
+        "placeholder": "Any specific requirements or questions?",
+        "optional": "(Optional)"
+      },
+      "summary": {
+        "title": "Order Summary",
+        "weight": "Weight:",
+        "pricePerKg": "Price per kg:",
+        "totalPrice": "Estimated Total:",
+        "note": "*Final price will be confirmed by our manager"
+      },
+      "btn": {
+        "submitText": "Submit Order",
+        "proccessingText": "Processing..."
+      },
+      "footer": {
+        "title": "Our manager will contact you soon",
+        "delivery": "Delivery: DAP Polkowice (Incoterms 2020)",
+        "contact": {
+          "title": "Need help with your order?",
+          "contact": "Contact us"
+        }
+      },
+      "toastSuccess": "Thank you for your order! Our manager will contact you shortly.",
+      "toastError": "Oops! Something went wrong. Please try again later."
     }
   }
 }

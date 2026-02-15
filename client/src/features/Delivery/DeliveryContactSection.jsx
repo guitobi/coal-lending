@@ -57,7 +57,7 @@ function DeliveryContactSection() {
           {t("delivery.order.contacts.footer")}
         </p>
         <Button type="secondary" to="/order">
-          Order now
+          {t("delivery.order.btn")}
         </Button>
       </div>
     </section>

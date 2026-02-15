@@ -5,8 +5,11 @@ import { Link } from "react-router";
 import { useState } from "react";
 import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 function Order() {
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -45,14 +48,10 @@ function Order() {
       const result = await req.json();
       console.log(result);
       reset();
-      toast.success(
-        "Thanks for submitting order! We will contact with you as soon as possible!",
-      );
+      toast.success(t("order.toastSuccess"));
     } catch (error) {
       console.error(error);
-      toast.error(
-        "Something went wrong with submitting the form, please try again later!",
-      );
+      toast.error(t("order.toastError"));
     } finally {
       setIsLoading(false);
     }
@@ -63,11 +62,10 @@ function Order() {
       {/* Header */}
       <div className="text-center mb-10 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl text-orange-500 font-extrabold mb-3">
-          Place Your Order
+          {t("order.title")}
         </h2>
         <p className="text-stone-400 text-sm sm:text-base max-w-xl mx-auto">
-          Fill out the form below and our manager will contact you shortly to
-          confirm your order
+          {t("order.description")}
         </p>
       </div>
 
@@ -83,7 +81,7 @@ function Order() {
               htmlFor="name"
             >
               <User size={16} className="text-orange-500" />
-              Your name
+              {t("order.form.name.label")}
             </label>
             <div className="relative">
               <input
@@ -101,7 +99,7 @@ function Order() {
                 className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                 type="text"
                 id="name"
-                placeholder="Enter your name..."
+                placeholder={t("order.form.name.placeholder")}
               />
             </div>
             {errors?.name?.message && (
@@ -121,7 +119,7 @@ function Order() {
               htmlFor="email"
             >
               <Mail size={16} className="text-orange-500" />
-              Email address
+              {t("order.form.email.label")}
             </label>
             <div className="relative">
               <input
@@ -136,7 +134,7 @@ function Order() {
                 className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                 name="email"
                 id="email"
-                placeholder="Enter your email..."
+                placeholder={t("order.form.email.placeholder")}
               />
             </div>
             {errors?.email?.message && (
@@ -156,7 +154,7 @@ function Order() {
               htmlFor="phoneNumber"
             >
               <Phone size={16} className="text-orange-500" />
-              Phone number
+              {t("order.form.phone.label")}
             </label>
             <div className="relative">
               <input
@@ -170,7 +168,7 @@ function Order() {
                 className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                 type="text"
                 id="phoneNumber"
-                placeholder="Enter your phone..."
+                placeholder={t("order.form.phone.placeholder")}
               />
             </div>
             {errors?.phoneNumber?.message && (
@@ -190,7 +188,7 @@ function Order() {
               htmlFor="city"
             >
               <MapPin size={16} className="text-orange-500" />
-              City
+              {t("order.form.city.label")}
             </label>
             <div className="relative">
               <input
@@ -204,7 +202,7 @@ function Order() {
                 className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                 type="text"
                 id="city"
-                placeholder="Enter your city..."
+                placeholder={t("order.form.city.placeholder")}
               />
             </div>
             {errors?.city?.message && (
@@ -224,7 +222,7 @@ function Order() {
               htmlFor="weightInKg"
             >
               <Weight size={16} className="text-orange-500" />
-              Order weight (kg)
+              {t("order.form.quantity.label")}
             </label>
             <div className="relative">
               <input
@@ -242,7 +240,7 @@ function Order() {
                 className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                 type="number"
                 id="weightInKg"
-                placeholder="Enter weight..."
+                placeholder={t("order.form.quantity.placeholder")}
               />
             </div>
             {errors?.weightInKg?.message && (
@@ -254,7 +252,7 @@ function Order() {
               </p>
             )}
             <p className="text-xs text-stone-500 flex items-center gap-1">
-              ℹ️ Minimum order: 100 kg
+              ℹ️ {t("order.form.quantity.min")}
             </p>
           </div>
 
@@ -265,8 +263,10 @@ function Order() {
               htmlFor="comment"
             >
               <MessageSquare size={16} className="text-orange-500" />
-              Additional comments{" "}
-              <span className="text-stone-500">(optional)</span>
+              {t("order.form.comment.label")}{" "}
+              <span className="text-stone-500">
+                {t("order.form.comment.optional")}
+              </span>
             </label>
             <div className="relative">
               <textarea
@@ -274,7 +274,7 @@ function Order() {
                 className="w-full h-32 bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3.5 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
                 name="comment"
                 id="comment"
-                placeholder="Any special requests or delivery instructions..."
+                placeholder={t("order.form.comment.placeholder")}
               ></textarea>
             </div>
           </div>
@@ -283,23 +283,27 @@ function Order() {
           {weightInKg && Number(weightInKg) >= 100 && (
             <div className="bg-linear-to-br from-orange-500/10 to-amber-600/5 border-2 border-orange-500/30 rounded-2xl p-6 space-y-3">
               <h3 className="text-lg font-bold text-orange-500 mb-3">
-                Order Summary
+                {t("order.form.summary.title")}
               </h3>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-stone-400 text-sm">Weight:</span>
+                  <span className="text-stone-400 text-sm">
+                    {t("order.form.summary.weight")}
+                  </span>
                   <span className="text-white font-bold text-lg">
                     {weightInKg} kg
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-stone-400 text-sm">Price per kg:</span>
+                  <span className="text-stone-400 text-sm">
+                    {t("order.form.summary.pricePerKg")}
+                  </span>
                   <span className="text-stone-300">€0.95</span>
                 </div>
                 <div className="border-t border-orange-500/20 pt-2 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-stone-300 font-medium">
-                      Estimated Total:
+                      {t("order.form.summary.totalPrice")}
                     </span>
                     <span className="text-orange-500 font-bold text-2xl">
                       €{(Number(weightInKg) * 0.95).toFixed(2)}
@@ -308,7 +312,7 @@ function Order() {
                 </div>
               </div>
               <p className="text-xs text-stone-500 mt-3">
-                *Final price will be confirmed by our manager
+                {t("order.form.summary.note")}
               </p>
             </div>
           )}
@@ -319,10 +323,10 @@ function Order() {
               {isLoading ? (
                 <div className="flex items-center gap-2">
                   <Spinner />
-                  <span>Processing...</span>
+                  <span>{t("order.form.btn.proccessingText")}</span>
                 </div>
               ) : (
-                "Submit Order"
+                t("order.form.btn.submitText")
               )}
             </Button>
           </div>
@@ -332,20 +336,18 @@ function Order() {
       {/* Footer Text */}
       <div className="text-center mt-8 space-y-2">
         <p className="text-stone-300 text-base sm:text-lg font-medium">
-          📞 Our manager will contact you soon
+          📞 {t("order.footer.title")}
         </p>
-        <p className="text-stone-500 text-sm">
-          Delivery: DAP Polkowice (Incoterms 2020)
-        </p>
+        <p className="text-stone-500 text-sm">{t("order.footer.delivery")}</p>
         {/* Info Note */}
         <div className="mt-8 text-center space-y-2">
           <p className="text-sm text-stone-400">
-            Need help with your order?{" "}
+            {t("order.footer.contact.title")}{" "}
             <Link
               to="/contact"
               className="text-orange-500 hover:text-orange-400 underline"
             >
-              Contact us
+              {t("order.footer.contact.contact")}
             </Link>
           </p>
         </div>

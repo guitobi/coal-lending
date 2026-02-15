@@ -1,11 +1,15 @@
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-import Button from "../ui/Button";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
+
+import Button from "../ui/Button";
 import toast from "react-hot-toast";
 import Spinner from "../ui/Spinner";
-import { useState } from "react";
 
 function ContactUs() {
+  const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -45,11 +49,10 @@ function ContactUs() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-500 mb-4">
-            Get In Touch
+            {t("contactUs.title")}
           </h1>
           <p className="text-stone-400 text-base sm:text-lg max-w-2xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and
-            we'll respond as soon as possible.
+            {t("contactUs.description")}
           </p>
         </div>
 
@@ -58,7 +61,7 @@ function ContactUs() {
           <div className="space-y-6 order-2 md:order-1">
             <div className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-8">
               <h2 className="text-xl sm:text-2xl font-bold text-orange-500 mb-6">
-                Contact Information
+                {t("contactUs.contactInfo.title")}
               </h2>
 
               <div className="space-y-5 sm:space-y-6">
@@ -69,7 +72,7 @@ function ContactUs() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-stone-200 font-semibold mb-1 text-sm sm:text-base">
-                      Email
+                      {t("contactUs.contactInfo.email.title")}
                     </h3>
                     <a
                       href="mailto:vanshare1@gmail.com"
@@ -87,13 +90,13 @@ function ContactUs() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-stone-200 font-semibold mb-1 text-sm sm:text-base">
-                      Phone
+                      {t("contactUs.contactInfo.phone.title")}
                     </h3>
                     <a
                       href="tel:+48123456789"
                       className="text-stone-400 hover:text-orange-500 transition-colors text-sm sm:text-base"
                     >
-                      +48 123 456 789
+                      {t("contactUs.contactInfo.phone.description")}
                     </a>
                   </div>
                 </div>
@@ -105,12 +108,14 @@ function ContactUs() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-stone-200 font-semibold mb-1 text-sm sm:text-base">
-                      Address
+                      {t("contactUs.contactInfo.address.title")}
                     </h3>
                     <p className="text-stone-400 text-sm sm:text-base">
-                      Polkowice, Poland
+                      {t("contactUs.contactInfo.address.description.firstLine")}
                       <br />
-                      DAP Delivery Available
+                      {t(
+                        "contactUs.contactInfo.address.description.secondLine",
+                      )}
                     </p>
                   </div>
                 </div>
@@ -122,14 +127,20 @@ function ContactUs() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="text-stone-200 font-semibold mb-1 text-sm sm:text-base">
-                      Business Hours
+                      {t("contactUs.contactInfo.businessHours.title")}
                     </h3>
                     <p className="text-stone-400 text-sm sm:text-base">
-                      Monday - Friday: 9:00 AM - 6:00 PM
+                      {t(
+                        "contactUs.contactInfo.businessHours.description.firstLine",
+                      )}
                       <br />
-                      Saturday: 10:00 AM - 4:00 PM
+                      {t(
+                        "contactUs.contactInfo.businessHours.description.secondLine",
+                      )}
                       <br />
-                      Sunday: Closed
+                      {t(
+                        "contactUs.contactInfo.businessHours.description.thirdLine",
+                      )}
                     </p>
                   </div>
                 </div>
@@ -139,24 +150,24 @@ function ContactUs() {
             {/* Quick Info */}
             <div className="bg-linear-to-br from-orange-500/10 to-amber-600/5 border-2 border-orange-500/30 rounded-2xl p-5 sm:p-6">
               <h3 className="text-base sm:text-lg font-bold text-orange-500 mb-3">
-                Why Choose Us?
+                {t("contactUs.whyChooseUs.title")}
               </h3>
               <ul className="space-y-2 text-stone-300 text-xs sm:text-sm">
                 <li className="flex items-center gap-2">
                   <span className="text-orange-500 shrink-0">✓</span>
-                  Premium quality charcoal
+                  {t("contactUs.whyChooseUs.firstPoint")}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-orange-500 shrink-0">✓</span>
-                  Competitive wholesale prices
+                  {t("contactUs.whyChooseUs.secondPoint")}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-orange-500 shrink-0">✓</span>
-                  Free delivery included
+                  {t("contactUs.whyChooseUs.thirdPoint")}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-orange-500 shrink-0">✓</span>
-                  Reliable customer support
+                  {t("contactUs.whyChooseUs.fourthPoint")}
                 </li>
               </ul>
             </div>
@@ -165,7 +176,7 @@ function ContactUs() {
           {/* Contact Form */}
           <div className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-8 order-1 md:order-2">
             <h2 className="text-xl sm:text-2xl font-bold text-orange-500 mb-6">
-              Send Us a Message
+              {t("contactUs.form.title")}
             </h2>
 
             <form
@@ -178,13 +189,13 @@ function ContactUs() {
                   htmlFor="name"
                   className="block text-sm font-medium text-stone-300 mb-2"
                 >
-                  Your Name
+                  {t("contactUs.form.name.label")}
                 </label>
                 <input
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   id="name"
-                  placeholder="Enter your name..."
+                  placeholder={t("contactUs.form.name.placeholder")}
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
                 />
                 {errors.name && (
@@ -200,7 +211,7 @@ function ContactUs() {
                   htmlFor="email"
                   className="block text-sm font-medium text-stone-300 mb-2"
                 >
-                  Email Address
+                  {t("contactUs.form.email.label")}
                 </label>
                 <input
                   {...register("email", {
@@ -212,7 +223,7 @@ function ContactUs() {
                   })}
                   type="email"
                   id="email"
-                  placeholder="Enter your email..."
+                  placeholder={t("contactUs.form.email.placeholder")}
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
                 />
                 {errors.email && (
@@ -228,13 +239,13 @@ function ContactUs() {
                   htmlFor="subject"
                   className="block text-sm font-medium text-stone-300 mb-2"
                 >
-                  Subject
+                  {t("contactUs.form.subject.label")}
                 </label>
                 <input
                   {...register("subject", { required: "Subject is required" })}
                   type="text"
                   id="subject"
-                  placeholder="How can we help you?"
+                  placeholder={t("contactUs.form.subject.placeholder")}
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all text-sm sm:text-base"
                 />
                 {errors.subject && (
@@ -250,7 +261,7 @@ function ContactUs() {
                   htmlFor="message"
                   className="block text-sm font-medium text-stone-300 mb-2"
                 >
-                  Message
+                  {t("contactUs.form.message.label")}
                 </label>
                 <textarea
                   {...register("message", {
@@ -262,7 +273,7 @@ function ContactUs() {
                   })}
                   id="message"
                   rows="5"
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder={t("contactUs.form.message.placeholder")}
                   className="w-full bg-stone-950/50 border-2 border-stone-800 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none text-sm sm:text-base"
                 ></textarea>
                 {errors.message && (
@@ -281,12 +292,12 @@ function ContactUs() {
                   {isLoading ? (
                     <div className="flex items-center gap-2">
                       <Spinner />
-                      <span>Processing...</span>
+                      <span>{t("contactUs.form.btn.proccesingText")}</span>
                     </div>
                   ) : (
                     <>
                       <Send size={18} />
-                      'Send Message'
+                      {t("contactUs.form.btn.submitText")}
                     </>
                   )}
                 </Button>
