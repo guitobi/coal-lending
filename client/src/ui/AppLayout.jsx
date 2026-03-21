@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import BackgroundDecorations from "./BackgroundDecorations";
-import ScrollToTop from "../utils/scrollToTop";
+import ScrollToTop from "../utils/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 
 function Layout() {
