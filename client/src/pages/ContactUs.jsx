@@ -7,6 +7,7 @@ import Button from "../ui/Button";
 import toast from "react-hot-toast";
 import Spinner from "../ui/Spinner";
 import Seo from "../seo/Seo";
+import { buildApiUrl } from "../utils/api";
 
 function ContactUs() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ function ContactUs() {
   const onContactUs = async (data) => {
     try {
       setIsLoading(true);
-      const req = await fetch("http://localhost:5000/api/problem/new", {
+      const req = await fetch(buildApiUrl("/api/problem/new"), {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

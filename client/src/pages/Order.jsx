@@ -7,6 +7,7 @@ import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
+import { buildApiUrl } from "../utils/api";
 
 function Order() {
   const { t } = useTranslation();
@@ -36,7 +37,7 @@ function Order() {
         weightInKg: weightInKg ? Number(weightInKg) : 0,
       };
 
-      const req = await fetch("http://localhost:5000/api/order/new", {
+      const req = await fetch(buildApiUrl("/api/order/new"), {
         method: "POST",
         body: JSON.stringify(totalOrder),
         headers: {

@@ -17,10 +17,12 @@ export const createProblem = async (req, res) => {
   }
 
   const { name, email, subject, message } = data;
+  const senderEmail = email || MAIL_FROM;
 
   try {
     await transporter.sendMail({
-      from: MAIL_FROM,
+      from: senderEmail,
+      replyTo: email || MAIL_FROM,
       to: CONTACT_EMAIL_TO,
       subject: "Client contact message!",
       text: "Client saying: ",

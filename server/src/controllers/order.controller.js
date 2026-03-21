@@ -15,6 +15,7 @@ export const createOrder = async (req, res) => {
   }
 
   const { name, email, phoneNumber, city, weightInKg } = data;
+  const senderEmail = email || MAIL_FROM;
 
   if (!weightInKg || weightInKg < 100) {
     return res
@@ -24,7 +25,8 @@ export const createOrder = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: MAIL_FROM,
+      from: senderEmail,
+      replyTo: email || MAIL_FROM,
       to: email,
       subject: "Charcoal Order Confirmation",
       html: `
