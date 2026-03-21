@@ -5,7 +5,7 @@ function FooterContactInfo() {
   return (
     <div>
       <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
-        {t("footer.Contact")}
+        {t("footer.contactTitle")}
       </h4>
       <ul className="space-y-2 text-slate-300 text-sm sm:text-base lg:text-lg">
         <li>📞 +48 577 432 949</li>
@@ -13,6 +13,7 @@ function FooterContactInfo() {
         <li>📧 vanshare1@gmail.com</li>
         <li>📍 ul. Batalionów Chłopskich 3</li>
         <li className="pl-5">58-050 Jelenia Góra, Poland</li>
+        <li>🧾 NIP: 716-28-26-886</li>
       </ul>
     </div>
   );

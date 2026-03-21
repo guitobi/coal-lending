@@ -7,7 +7,7 @@ function FooterQuickLinks() {
   return (
     <div>
       <h4 className="text-xl sm:text-xl lg:text-2xl font-semibold mb-4 text-orange-400">
-        {t("footer.Navigation")}
+        {t("footer.navigationTitle")}
       </h4>
       <ul className="space-y-2 text-sm sm:text-base lg:text-lg">
         <li>
@@ -15,7 +15,7 @@ function FooterQuickLinks() {
             to="/"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            {t("footer.Home")}
+            {t("nav.home")}
           </Link>
         </li>
         <li>
@@ -23,7 +23,7 @@ function FooterQuickLinks() {
             to="/about"
             className="text-slate-300 hover:text-orange-500  transition-colors"
           >
-            {t("footer.About Us")}
+            {t("nav.aboutUs")}
           </Link>
         </li>
         <li>
@@ -31,7 +31,7 @@ function FooterQuickLinks() {
             to="/delivery"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            {t("footer.Delivery")}
+            {t("nav.delivery")}
           </Link>
         </li>
         <li>
@@ -39,7 +39,7 @@ function FooterQuickLinks() {
             to="/calculator"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            {t("footer.Calculator")}
+            {t("nav.calculator")}
           </Link>
         </li>
         <li>
@@ -47,7 +47,7 @@ function FooterQuickLinks() {
             to="/contact"
             className="text-slate-300 hover:text-orange-500 transition-colors"
           >
-            {t("footer.Contact Us")}
+            {t("nav.contactUs")}
           </Link>
         </li>
       </ul>

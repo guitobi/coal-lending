@@ -8,16 +8,13 @@
     "contactUs": "Contact Us"
   },
   "cta": {
-    "Maximum Heat": "Maximum Heat,",
-    "Minimum Ash": "Minimum Ash",
-    "Honest weight, certified quality.": "Honest weight, certified quality.",
-    "Check Prices": "Check Prices",
-    "Calculate Price": "Calculate Price"
+    "maximumHeat": "Maximum Heat,",
+    "minimumAsh": "Minimum Ash",
+    "qualityClaim": "Honest weight, certified quality.",
+    "checkPrices": "Check Prices",
+    "calculatePrice": "Calculate Price"
   },
   "productPackages": {
-    "MOST POPULAR": "MOST POPULAR",
-    "Available Packages": "Available Packages",
-    "per bag": "per bag",
     "small": {
       "firstCheck": "Perfect for small grills",
       "secondCheck": "Ideal for 2-3 people",
@@ -36,64 +33,88 @@
       "thirdCheck": "Long-lasting supply",
       "fourthCheck": "Heavy-duty packaging"
     },
-    "Order now": "Order now",
-    "Learn more": "Learn more",
-    "Base price": "Base price: ",
-    "€950/ton": "€950/ton",
-    " | €0.95/kg": " | €0.95/kg",
-    "Delivery: DAP Polkowice (Incoterms 2020)": " Delivery: DAP Polkowice (Incoterms 2020)"
+    "mostPopular": "MOST POPULAR",
+    "availablePackages": "Available Packages",
+    "perBag": "per bag",
+    "orderNow": "Order now",
+    "learnMore": "Learn more",
+    "basePriceLabel": "Base price: ",
+    "basePricePerTon": "€950/ton",
+    "basePricePerKg": " | €0.95/kg",
+    "deliveryNote": " Delivery: DAP Polkowice (Incoterms 2020)"
   },
   "howItWorks": {
-    "How It Works?": "How It Works?",
-    "A completely transparent process with no prepayment required.": "A completely transparent process with no prepayment required.",
+    "title": "How It Works?",
+    "subtitle": "A completely transparent process with no prepayment required.",
     "order": {
-      "1. Order": "1. Order",
-      "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes.": "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes."
+      "title": "1. Order",
+      "description": "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes."
     },
     "fastDelivery": {
-      "2. Fast Delivery": "2. Fast Delivery",
-      "We load and deliver charcoal with our own transport within 1-3 days.": "We load and deliver charcoal with our own transport within 1-3 days."
+      "title": "2. Fast Delivery",
+      "description": "We load and deliver charcoal with our own transport within 1-3 days."
     },
     "payOnDelivery": {
-      "3. Pay on Delivery": "3. Pay on Delivery",
-      "No risks. You check the weight and quality at home, and only then pay.": "No risks. You check the weight and quality at home, and only then pay."
+      "title": "3. Pay on Delivery",
+      "description": "No risks. You check the weight and quality at home, and only then pay."
     },
-    "Learn more about delivery →": "Learn more about delivery →"
+    "learnMoreDelivery": "Learn more about delivery →"
   },
   "keyFeatures": {
-    "Key Features": "Key Features",
-    "Premium Charcoal": "Premium Charcoal",
-    "High-quality charcoal with maximum heat output and minimum ash. Perfect for grilling and outdoor cooking.": "High-quality charcoal with maximum heat output and minimum ash. Perfect for grilling and outdoor cooking.",
-    "High Heat": "High Heat",
-    "Maximum thermal efficiency": "Maximum thermal efficiency",
-    "Low Ash": "Low Ash",
-    "Minimal residue": "Minimal residue",
-    "Certified": "Certified",
-    "Honest weight": "Honest weight",
-    "Fast Delivery": "Fast Delivery",
-    "Quick shipping": "Quick shipping",
-    "Eco-Friendly": "Eco-Friendly",
-    "Sustainable sourcing": "Sustainable sourcing",
-    "Best Value": "Best Value",
-    "Competitive pricing": "Competitive pricing",
-    "Buy now": "Buy now",
-    "Learn more": "Learn more"
+    "sectionTitle": "Key Features",
+    "title": "Premium Charcoal",
+    "description": "High-quality charcoal with maximum heat output and minimum ash. Perfect for grilling and outdoor cooking.",
+    "highHeat": "High Heat",
+    "maximumThermalEfficiency": "Maximum thermal efficiency",
+    "lowAsh": "Low Ash",
+    "minimalResidue": "Minimal residue",
+    "certified": "Certified",
+    "honestWeight": "Honest weight",
+    "fastDelivery": "Fast Delivery",
+    "quickShipping": "Quick shipping",
+    "ecoFriendly": "Eco-Friendly",
+    "sustainableSourcing": "Sustainable sourcing",
+    "bestValue": "Best Value",
+    "competitivePricing": "Competitive pricing",
+    "buyNow": "Buy now",
+    "learnMore": "Learn more"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real feedback from people who already grill with our premium charcoal.",
+    "first": {
+      "text": "Stable quality every time. Lights quickly and keeps heat for a long session.",
+      "author": "Marek K.",
+      "role": "Restaurant owner"
+    },
+    "second": {
+      "text": "Delivery was on time and the packaging was perfect. Definitely ordering again.",
+      "author": "Anna W.",
+      "role": "Private customer"
+    },
+    "third": {
+      "text": "Very low ash compared to other brands. Great for weekend BBQ events.",
+      "author": "Piotr L.",
+      "role": "Event organizer"
+    }
   },
   "footer": {
-    "Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood charcoal for grilling and BBQ.": "Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood charcoal for grilling and BBQ.",
-    "Navigation": "Navigation",
-    "Home": "Home",
-    "About Us": "About Us",
-    "Delivery": "Delivery",
-    "Calculator": "Calculator",
-    "Contact Us": "Contact Us",
-    "Contact": "Contact"
+    "contactTitle": "Contact",
+    "navigationTitle": "Navigation",
+    "companyDescription": "Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood charcoal for grilling and BBQ",
+    "allRightsReserved": "All rights reserved.",
+    "legalLinks": {
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy",
+      "legalNotice": "Legal Notice"
+    }
   },
   "about": {
-    "Official Distributor of Wooden West": "Official Distributor of Wooden West",
-    "More Than Just": " More Than Just",
-    "Charcoal": "Charcoal",
-    "We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.": " We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.",
+    "distributorBadge": "Official Distributor of Wooden West",
+    "headingPrefix": "More Than Just",
+    "headingHighlight": "Charcoal",
+    "intro": "We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.",
     "firstCard": {
       "title": "Fixed Carbon",
       "percentage": "79.4%",
@@ -114,19 +135,18 @@
       "percentage": "20-120 mm",
       "description": "94% screened lumps"
     },
-    "Official Partner of": "Official Partner of",
-    "Wooden West LLC": "Wooden West LLC",
-    "Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in": "Van Share operates as a direct distributor, eliminatingunnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in",
-    "Polkowice, Poland": "Polkowice, Poland",
-    "Own Logistics System": "Own Logistics System",
-    "Timely delivery across Poland & EU. Standard truckload: 33 pallets.": "Timely delivery across Poland & EU. Standard truckload: 33 pallets.",
-    "Private Label Services": "Private Label Services",
-    "We can pack high-quality charcoal into bags featuring your logo.": " We can pack high-quality charcoal into bags featuring your logo.",
-    "Download Quality Certificate (PDF) &rarr;": "Download Quality Certificate (PDF) →",
-    "About Van Share": "About Van Share",
-    "Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart": " Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart",
-
-    "mission": "Our mission is to deliver reliable energy solutions with transparency, efficiency, and trust in every transaction.",
+    "partnerTitlePrefix": "Official Partner of",
+    "partnerName": "Wooden West LLC",
+    "partnerDescription": "Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in",
+    "warehouseLocation": "Polkowice, Poland",
+    "logisticsTitle": "Own Logistics System",
+    "logisticsDescription": "Timely delivery across Poland & EU. Standard truckload: 33 pallets.",
+    "privateLabelTitle": "Private Label Services",
+    "privateLabelDescription": "We can pack high-quality charcoal into bags featuring your logo.",
+    "certificateLink": "Download Quality Certificate (PDF) →",
+    "companySectionTitle": "About Van Share",
+    "companySectionDescription": "Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart",
+    "missionStatement": "Our mission is to deliver reliable energy solutions with transparency, efficiency, and trust in every transaction.",
     "achievements": {
       "title": "Our Achievements",
       "firstCard": {
@@ -165,7 +185,7 @@
       "title": "Contact Us",
       "description": "Have questions or want to partner with us? Get us at",
       "email": "vanshare1@gmail.com",
-      "btnText": "Send message to us",
+      "buttonText": "Send message to us",
       "or": "Or"
     }
   },
@@ -243,7 +263,7 @@
         "nip": "NIP: 716-28-26-886",
         "footer": "Offer valid for 14 days from issue date"
       },
-      "btn": "Order Now"
+      "orderButtonText": "Order Now"
     }
   },
   "calculator": {
@@ -253,7 +273,7 @@
     "placeholder": "Enter quantity in tons (e.g., 22)",
     "basePrice": " Base price:",
     "pricePerTon": "€950/ton",
-    "btn": "Calculate Total Price",
+    "calculateButton": "Calculate Total Price",
     "breakdown": "Cost Breakdown",
     "subtotal": "Subtotal:",
     "delivery": "Delivery:",
@@ -318,9 +338,9 @@
         "label": "Message",
         "placeholder": "Tell us more about your inquiry..."
       },
-      "btn": {
+      "actions": {
         "submitText": "Send Message",
-        "proccessingText": "Sending..."
+        "processingText": "Sending..."
       },
       "toastSuccess": "Thank you for your message! We'll get back to you soon.",
       "toastError": "Oops! Something went wrong. Please try again later."
@@ -363,9 +383,9 @@
         "totalPrice": "Estimated Total:",
         "note": "*Final price will be confirmed by our manager"
       },
-      "btn": {
+      "actions": {
         "submitText": "Submit Order",
-        "proccessingText": "Processing..."
+        "processingText": "Processing..."
       },
       "footer": {
         "title": "Our manager will contact you soon",
@@ -377,6 +397,83 @@
       },
       "toastSuccess": "Thank you for your order! Our manager will contact you shortly.",
       "toastError": "Oops! Something went wrong. Please try again later."
+    }
+  },
+  "legalDocs": {
+    "lastUpdated": "Last updated: March 21, 2026",
+    "privacy": {
+      "seoTitle": "Privacy Policy",
+      "seoDescription": "Privacy policy for VAN SHARE website and customer communications.",
+      "title": "Privacy Policy",
+      "intro": "This policy describes how VAN SHARE processes personal data in connection with B2B sales, contact requests, and website use in the EU.",
+      "dataControllerTitle": "Data controller",
+      "dataController": {
+        "company": "VAN SHARE Spółka z o.o.",
+        "address": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+        "nip": "NIP: 716-28-26-886",
+        "email": "Email: vanshare1@gmail.com"
+      },
+      "dataCollectedTitle": "What data we collect",
+      "dataCollectedText": "Contact and business data provided in forms or correspondence, including name, business email, phone number, city, order data, and communication content.",
+      "legalBasisTitle": "Legal basis and purpose",
+      "legalBasisText": "We process data to respond to inquiries, perform contracts, issue invoices, and comply with legal obligations. Legal bases include GDPR Art. 6(1)(b), 6(1)(c), and 6(1)(f).",
+      "dataSharingTitle": "Data sharing and processors",
+      "dataSharingText": "We do not sell personal data. Data can be shared with payment, accounting, logistics, hosting, and email service providers strictly for service delivery and legal compliance.",
+      "retentionTitle": "Retention period",
+      "retentionText": "We keep personal data for as long as needed to provide services, handle claims, and fulfill accounting/tax obligations.",
+      "rightsTitle": "Data subject rights",
+      "rightsText": "You can request access, rectification, deletion, restriction, objection, and data portability where applicable. You may also lodge a complaint with a competent EU supervisory authority."
+    },
+    "terms": {
+      "seoTitle": "Terms of Service",
+      "seoDescription": "Terms of service for orders, delivery, and website usage at VAN SHARE.",
+      "title": "Terms of Service",
+      "intro": "These terms apply to business customers (B2B) and govern sale, delivery, and communication related to charcoal products.",
+      "scopeTitle": "Scope",
+      "scopeText": "Website content is informational. Orders become binding only after explicit confirmation by VAN SHARE.",
+      "ordersAndPricingTitle": "Orders and pricing",
+      "ordersAndPricingText": "Prices, availability, and lead times may change. Final commercial conditions are defined in the confirmed offer/order document.",
+      "deliveryAndIncotermsTitle": "Delivery and Incoterms",
+      "deliveryAndIncotermsText": "Unless agreed otherwise, delivery terms are based on Incoterms 2020 (e.g., DAP Polkowice). Risk transfer and responsibilities follow the agreed Incoterm.",
+      "paymentTermsTitle": "Payment terms",
+      "paymentTermsText": "Payment schedules and methods are specified in the confirmed commercial offer and invoice.",
+      "liabilityTitle": "Liability",
+      "liabilityText": "VAN SHARE is not liable for delays or failures caused by force majeure, carrier disruptions, authority restrictions, or incorrect buyer-provided data.",
+      "b2bStatusTitle": "B2B status",
+      "b2bStatusText": "Consumer withdrawal rights do not apply to contracts concluded exclusively between businesses.",
+      "governingLawTitle": "Governing law and jurisdiction",
+      "governingLawText": "These terms are governed by Polish law. Competent courts in Poland shall have jurisdiction unless mandatory law provides otherwise."
+    },
+    "cookies": {
+      "seoTitle": "Cookie Policy",
+      "seoDescription": "Cookie usage policy for VAN SHARE website.",
+      "title": "Cookie Policy",
+      "intro": "This website uses cookies and similar technologies to ensure proper operation and maintain user preferences.",
+      "essentialTitle": "Essential cookies",
+      "essentialText": "Required for core site functionality such as language settings and secure communication. These cookies are always active.",
+      "optionalTitle": "Optional cookies",
+      "optionalText": "Optional analytics/marketing cookies are used only if implemented and only after valid user consent where required.",
+      "managingTitle": "Managing cookies",
+      "managingText": "You can disable or delete cookies through your browser settings at any time.",
+      "withdrawalTitle": "Consent withdrawal",
+      "withdrawalText": "If optional cookies are enabled in the future, users will be able to update or withdraw consent through cookie settings."
+    },
+    "notice": {
+      "seoTitle": "Legal Notice",
+      "seoDescription": "Company legal details and business identification information for VAN SHARE.",
+      "title": "Legal Notice",
+      "companyLabel": "Company:",
+      "companyValue": "VAN SHARE Spółka z o.o.",
+      "addressLabel": "Address:",
+      "addressValue": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+      "nipLabel": "NIP:",
+      "nipValue": "716-28-26-886",
+      "emailLabel": "Email:",
+      "emailValue": "vanshare1@gmail.com",
+      "phoneLabel": "Phone:",
+      "phoneValue": "+48 577 432 949, +48 730 670 345",
+      "businessProfileLabel": "Business profile:",
+      "businessProfileValue": "B2B supply and distribution of hardwood charcoal."
     }
   }
 }

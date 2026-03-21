@@ -1,5 +1,10 @@
 import { transporter } from "../config/mailer.js";
 
+const MAIL_FROM =
+  process.env.MAIL_FROM || process.env.SMTP_USER || "skullvisit@gmail.com";
+const CONTACT_EMAIL_TO =
+  process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
+
 export const createProblem = async (req, res) => {
   const data = req.body;
   console.log("data arrived");
@@ -15,8 +20,8 @@ export const createProblem = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: "skullvisit@gmail.com",
-      to: "stratilatov.oleksandr@gmail.com", //TODO: change to user email after testing
+      from: MAIL_FROM,
+      to: CONTACT_EMAIL_TO,
       subject: "Client contact message!",
       text: "Client saying: ",
       html: `

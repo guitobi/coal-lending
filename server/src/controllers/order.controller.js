@@ -1,5 +1,8 @@
 import { transporter } from "../config/mailer.js";
 
+const MAIL_FROM =
+  process.env.MAIL_FROM || process.env.SMTP_USER || "skullvisit@gmail.com";
+
 // Експортуємо саму функцію обробки
 export const createOrder = async (req, res) => {
   const data = req.body;
@@ -21,7 +24,7 @@ export const createOrder = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: "skullvisit@gmail.com",
+      from: MAIL_FROM,
       to: email,
       subject: "Charcoal Order Confirmation",
       html: `

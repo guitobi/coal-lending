@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import Button from "../ui/Button";
 import toast from "react-hot-toast";
 import Spinner from "../ui/Spinner";
+import Seo from "../seo/Seo";
 
 function ContactUs() {
   const { t } = useTranslation();
@@ -45,6 +46,12 @@ function ContactUs() {
 
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4">
+      <Seo
+        title={t("nav.contactUs")}
+        description={t("contactUs.description")}
+        path="/contact"
+      />
+
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -292,12 +299,12 @@ function ContactUs() {
                   {isLoading ? (
                     <div className="flex items-center gap-2">
                       <Spinner />
-                      <span>{t("contactUs.form.btn.proccesingText")}</span>
+                      <span>{t("contactUs.form.actions.processingText")}</span>
                     </div>
                   ) : (
                     <>
                       <Send size={18} />
-                      {t("contactUs.form.btn.submitText")}
+                      {t("contactUs.form.actions.submitText")}
                     </>
                   )}
                 </Button>

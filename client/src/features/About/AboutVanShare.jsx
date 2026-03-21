@@ -8,21 +8,20 @@ function AboutVanShare() {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-4xl font-bold mb-6 text-stone-100">
-            {t("about.About Van Share")}
+            {t("about.companySectionTitle")}
           </h2>
           <p className="text-lg text-stone-300 leading-relaxed">
-            {t(
-              "about.Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart",
-            )}
+            {t("about.companySectionDescription")}
             <span className="text-amber-600"> EN 1860-2:2005</span>.{" "}
-            {t("about.mission")}
+            {t("about.missionStatement")}
           </p>
         </div>
         <div className="rounded-lg overflow-hidden shadow-2xl">
           <img
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop"
-            alt="Coal delivery truck"
-            className="w-full h-80 object-cover"
+            src="/5310268230607771050.jpg"
+            alt="Forklift and palletized charcoal at warehouse"
+            className="w-full h-80 object-cover object-center"
+            loading="lazy"
           />
         </div>
       </div>

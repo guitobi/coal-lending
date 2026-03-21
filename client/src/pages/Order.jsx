@@ -6,6 +6,7 @@ import { useState } from "react";
 import Spinner from "../ui/Spinner";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import Seo from "../seo/Seo";
 
 function Order() {
   const { t } = useTranslation();
@@ -59,11 +60,17 @@ function Order() {
 
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4 max-w-3xl mx-auto relative">
+      <Seo
+        title={t("order.title")}
+        description={t("order.description")}
+        path="/order"
+      />
+
       {/* Header */}
       <div className="text-center mb-10 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-orange-500 font-extrabold mb-3">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-orange-500 font-extrabold mb-3">
           {t("order.title")}
-        </h2>
+        </h1>
         <p className="text-stone-400 text-sm sm:text-base max-w-xl mx-auto">
           {t("order.description")}
         </p>
@@ -323,10 +330,10 @@ function Order() {
               {isLoading ? (
                 <div className="flex items-center gap-2">
                   <Spinner />
-                  <span>{t("order.form.btn.proccessingText")}</span>
+                  <span>{t("order.form.actions.processingText")}</span>
                 </div>
               ) : (
-                t("order.form.btn.submitText")
+                t("order.form.actions.submitText")
               )}
             </Button>
           </div>

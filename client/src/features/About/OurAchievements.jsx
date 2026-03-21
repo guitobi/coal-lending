@@ -10,34 +10,32 @@ function OurAchievements() {
           {t("about.achievements.title")}
         </h2>
         <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 flex flex-col justify-center align-center gap-1">
-            <div className="text-5xl md:text-6xl font-bold text-orange-500 mb-2">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 min-h-40 flex flex-col justify-center items-center gap-2">
+            <div className="text-5xl md:text-6xl font-bold text-orange-400 leading-none">
               {t("about.achievements.firstCard.title")}
             </div>
-            <p className="text-lg md:text-xl text-stone-300 whitespace-nowrap">
+            <p className="text-base md:text-xl text-stone-200">
               {t("about.achievements.firstCard.description")}
             </p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300  flex flex-col justify-center align-center gap-1">
-            <div className="text-5xl md:text-6xl font-bold text-orange-500 mb-2">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 min-h-40 flex flex-col justify-center items-center gap-2">
+            <div className="text-5xl md:text-6xl font-bold text-orange-400 leading-none">
               {t("about.achievements.secondCard.title")}
             </div>
-            <p className="text-lg md:text-xl text-stone-300 whitespace-nowrap">
+            <p className="text-base md:text-xl text-stone-200">
               {t("about.achievements.secondCard.description")}
             </p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 flex flex-col justify-center align-center gap-1">
-            <div className="md:hidden lg:block text-5xl lg:text-6xl font-bold text-orange-500 mb-2">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:outline hover:outline-amber-600 duration-300 min-h-40 flex flex-col justify-center items-center gap-2">
+            <div className="md:hidden lg:block text-5xl lg:text-6xl font-bold text-orange-400 leading-none">
               EN 1860-2
             </div>
 
             <div className="hidden md:flex lg:hidden flex-col items-center">
-              <div className="text-5xl font-bold text-orange-500 mb-0">EN</div>
-              <div className="text-3xl font-bold text-orange-500 mb-2">
-                1860-2
-              </div>
+              <div className="text-5xl font-bold text-orange-400 mb-0">EN</div>
+              <div className="text-3xl font-bold text-orange-400">1860-2</div>
             </div>
-            <p className="text-base md:text-xl text-stone-300 whitespace-nowrap">
+            <p className="text-base md:text-xl text-stone-200">
               {t("about.achievements.thirdCard.description")}
             </p>
           </div>

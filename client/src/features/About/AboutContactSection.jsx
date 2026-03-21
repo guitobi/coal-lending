@@ -22,7 +22,7 @@ function AboutContactSection() {
         {t("about.contactUs.or")}
       </p>
       <Button type="secondary" to="/contact">
-        {t("about.contactUs.btnText")}
+        {t("about.contactUs.buttonText")}
       </Button>
     </section>
   );

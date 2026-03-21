@@ -9,13 +9,13 @@ function CTA() {
         <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-16">
           <div className="flex-1 lg:text-left text-center pt-8 sm:pt-12 md:pt-20 lg:pt-0">
             <h1
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-200 transition-all duration-500 cursor-pointer hover:text-orange-600
-            hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-300 transition-all duration-500 cursor-pointer
+            mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
             >
               <span className="inline-block whitespace-nowrap">
-                {t("cta.Maximum Heat")}
+                {t("cta.maximumHeat")}
               </span>{" "}
-              <span className="inline-block">{t("cta.Minimum Ash")}</span>
+              <span className="inline-block">{t("cta.minimumAsh")}</span>
             </h1>
 
             {/* Mobile layout photo */}
@@ -31,8 +31,8 @@ function CTA() {
               />
             </div>
 
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 hover:text-orange-500 hover:drop-shadow-[0_0_8px_rgba(234,179,8,0.6)] cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center">
-              {t("cta.Honest weight, certified quality.")}
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center">
+              {t("cta.qualityClaim")}
             </h3>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -45,10 +45,10 @@ function CTA() {
                   }
                 }}
               >
-                {t("cta.Check Prices")}
+                {t("cta.checkPrices")}
               </Button>
               <Button to="/calculator" type="secondary">
-                {t("cta.Calculate Price")}
+                {t("cta.calculatePrice")}
               </Button>
             </div>
           </div>

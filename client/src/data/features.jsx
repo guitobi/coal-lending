@@ -12,42 +12,42 @@ export const features = [
     icon: (
       <Flame className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.High Heat",
-    desc: "keyFeatures.Maximum thermal efficiency",
+    title: "keyFeatures.highHeat",
+    desc: "keyFeatures.maximumThermalEfficiency",
   },
   {
     icon: (
       <Sparkles className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.Low Ash",
-    desc: "keyFeatures.Minimal residue",
+    title: "keyFeatures.lowAsh",
+    desc: "keyFeatures.minimalResidue",
   },
   {
     icon: (
       <Scale className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.Certified",
-    desc: "keyFeatures.Honest weight",
+    title: "keyFeatures.certified",
+    desc: "keyFeatures.honestWeight",
   },
   {
     icon: (
       <Truck className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.Fast Delivery",
-    desc: "keyFeatures.Quick shipping",
+    title: "keyFeatures.fastDelivery",
+    desc: "keyFeatures.quickShipping",
   },
   {
     icon: (
       <Factory className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.Eco-Friendly",
-    desc: "keyFeatures.Sustainable sourcing",
+    title: "keyFeatures.ecoFriendly",
+    desc: "keyFeatures.sustainableSourcing",
   },
   {
     icon: (
       <DollarSign className="w-10 h-10 mx-auto mb-4 text-stone-500 group-hover:text-orange-500 transition-colors duration-300" />
     ),
-    title: "keyFeatures.Best Value",
-    desc: "keyFeatures.Competitive pricing",
+    title: "keyFeatures.bestValue",
+    desc: "keyFeatures.competitivePricing",
   },
 ];

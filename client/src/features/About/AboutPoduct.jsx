@@ -1,11 +1,4 @@
-import {
-  Flame,
-  Droplets,
-  Diamond,
-  Truck,
-  FileCheck,
-  ShieldCheck,
-} from "lucide-react";
+import { Flame, Droplets, Diamond, FileCheck, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const AboutProduct = () => {
@@ -21,16 +14,16 @@ const AboutProduct = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-500 text-sm font-medium mb-4">
             <ShieldCheck className="w-4 h-4" />
-            <span>{t("about.Official Distributor of Wooden West")}</span>
+            <span>{t("about.distributorBadge")}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            {t("about.More Than Just")}{" "}
-            <span className="text-orange-500">{t("about.Charcoal")}</span>
+            {t("about.headingPrefix")}{" "}
+            <span className="text-orange-500">
+              {t("about.headingHighlight")}
+            </span>
           </h2>
           <p className="text-stone-400 max-w-2xl mx-auto text-lg">
-            {t(
-              "about.We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.",
-            )}
+            {t("about.intro")}
           </p>
         </div>
 
@@ -107,17 +100,13 @@ const AboutProduct = () => {
           {/* Left: Text Content */}
           <div className="space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold text-white">
-              {t("about.Official Partner of")}{" "}
-              <span className="text-orange-500">
-                {t("about.Wooden West LLC")}
-              </span>
+              {t("about.partnerTitlePrefix")}{" "}
+              <span className="text-orange-500">{t("about.partnerName")}</span>
             </h3>
             <p className="text-stone-300 leading-relaxed">
-              {t(
-                "about.Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in",
-              )}{" "}
+              {t("about.partnerDescription")}{" "}
               <strong className="text-white">
-                {t("about.Polkowice, Poland")}
+                {t("about.warehouseLocation")}
               </strong>
               .
             </p>
@@ -129,11 +118,9 @@ const AboutProduct = () => {
                 </div>
                 <p className="text-stone-400 text-sm">
                   <strong className="text-white block mb-1">
-                    {t("about.Own Logistics System")}
+                    {t("about.logisticsTitle")}
                   </strong>
-                  {t(
-                    "about.Timely delivery across Poland & EU. Standard truckload: 33 pallets.",
-                  )}
+                  {t("about.logisticsDescription")}
                 </p>
               </li>
               <li className="flex items-start gap-3">
@@ -142,11 +129,9 @@ const AboutProduct = () => {
                 </div>
                 <p className="text-stone-400 text-sm">
                   <strong className="text-white block mb-1">
-                    {t("about.Private Label Services")}
+                    {t("about.privateLabelTitle")}
                   </strong>
-                  {t(
-                    "about.We can pack high-quality charcoal into bags featuring your logo.",
-                  )}
+                  {t("about.privateLabelDescription")}
                 </p>
               </li>
             </ul>
@@ -157,29 +142,31 @@ const AboutProduct = () => {
                 download="VanShare_Certificate.pdf"
                 className="text-white border-b border-orange-500 pb-1 hover:text-orange-500 transition-colors text-sm font-medium"
               >
-                {t("about.Download Quality Certificate (PDF) &rarr;")}
+                {t("about.certificateLink")}
               </a>
             </div>
           </div>
 
-          {/* Right: Visual Block (Abstract Representation) */}
+          {/* Right: Visual Block */}
           <div className="relative">
             {/* Decorative Border */}
             <div className="absolute -inset-4 border-2 border-stone-800 rounded-3xl opacity-50 rotate-2" />
 
             {/* Main Image Container */}
-            <div className="relative bg-stone-900 rounded-2xl overflow-hidden aspect-video border border-stone-800 shadow-2xl">
-              //TODO: TRUCK PHOTO
-              <div className="absolute inset-0 bg-linear-to-br from-stone-800 to-stone-950 flex items-center justify-center group">
-                <Truck className="w-20 h-20 text-stone-700 group-hover:text-orange-500/50 transition-colors duration-500" />
+            <div className="relative bg-stone-900 rounded-2xl overflow-hidden h-80 md:h-96 border border-stone-800 shadow-2xl">
+              <img
+                src="/5310268230607771055.jpg"
+                alt="Charcoal pallets loaded in delivery truck"
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
 
-                {/* Floating Badge */}
-                <div className="absolute bottom-6 right-6 bg-stone-950/90 backdrop-blur border border-stone-700 px-4 py-3 rounded-xl shadow-xl">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">
-                    Incoterms 2020
-                  </p>
-                  <p className="text-white font-bold">DAP Polkowice</p>
-                </div>
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 right-6 bg-stone-950/90 backdrop-blur border border-stone-700 px-4 py-3 rounded-xl shadow-xl">
+                <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">
+                  Incoterms 2020
+                </p>
+                <p className="text-white font-bold">DAP Polkowice</p>
               </div>
             </div>
           </div>

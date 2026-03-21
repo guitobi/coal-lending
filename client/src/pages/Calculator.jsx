@@ -9,6 +9,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import Seo from "../seo/Seo";
 
 function Calculator() {
   const { t } = useTranslation();
@@ -35,6 +36,12 @@ function Calculator() {
 
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4 max-w-4xl mx-auto relative">
+      <Seo
+        title={t("nav.calculator")}
+        description={t("calculator.description")}
+        path="/calculator"
+      />
+
       {/* Header */}
       <header className="text-center mb-10 sm:mb-12">
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -108,7 +115,7 @@ function Calculator() {
         {/* Calculate Button */}
         <div className="pt-2">
           <Button type="primary" className="w-full text-lg">
-            {t("calculator.btn")}
+            {t("calculator.calculateButton")}
           </Button>
         </div>
       </form>

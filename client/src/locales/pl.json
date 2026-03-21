@@ -8,16 +8,13 @@
     "contactUs": "Skontaktuj się z nami"
   },
   "cta": {
-    "Maximum Heat": "Maksimum ciepła, ",
-    "Minimum Ash": "Minimum popiołu",
-    "Honest weight, certified quality.": "Uczciwa waga, certyfikowana jakość",
-    "Check Prices": "Sprawdź ceny",
-    "Calculate Price": "Oblicz koszt"
+    "maximumHeat": "Maksimum ciepła, ",
+    "minimumAsh": "Minimum popiołu",
+    "qualityClaim": "Uczciwa waga, certyfikowana jakość",
+    "checkPrices": "Sprawdź ceny",
+    "calculatePrice": "Oblicz koszt"
   },
   "productPackages": {
-    "MOST POPULAR": "NAJPOPULARNIEJSZY",
-    "Available Packages": "Dostępne warianty",
-    "per bag": "za worek",
     "small": {
       "firstCheck": "Idealny do małych grillów",
       "secondCheck": "W sam raz dla 2-3 osób",
@@ -36,64 +33,88 @@
       "thirdCheck": "Zapas na długi czas",
       "fourthCheck": "Wytrzymałe opakowanie"
     },
-    "Order now": "Zamów teraz",
-    "Learn more": "Dowiedz się więcej",
-    "Base price": "Cena bazowa: ",
-    "€950/ton": "950 € / tona",
-    " | €0.95/kg": " | 0,95 € / kg",
-    "Delivery: DAP Polkowice (Incoterms 2020)": " Dostawa: DAP Polkowice (Incoterms 2020)"
+    "mostPopular": "NAJPOPULARNIEJSZY",
+    "availablePackages": "Dostępne warianty",
+    "perBag": "za worek",
+    "orderNow": "Zamów teraz",
+    "learnMore": "Dowiedz się więcej",
+    "basePriceLabel": "Cena bazowa: ",
+    "basePricePerTon": "950 € / tona",
+    "basePricePerKg": " | 0,95 € / kg",
+    "deliveryNote": " Dostawa: DAP Polkowice (Incoterms 2020)"
   },
   "howItWorks": {
-    "How It Works?": "Jak to działa?",
-    "A completely transparent process with no prepayment required.": "W pełni przejrzysty proces bez konieczności przedpłaty.",
+    "title": "Jak to działa?",
+    "subtitle": "W pełni przejrzysty proces bez konieczności przedpłaty.",
     "order": {
-      "1. Order": "1. Zamówienie",
-      "Leave a request on the website or call us. Our manager will clarify delivery details within 2 minutes.": "Złóż zamówienie na stronie lub zadzwoń do nas. Nasz menedżer ustali szczegóły dostawy w ciągu 2 minut."
+      "title": "1. Zamówienie",
+      "description": "Złóż zamówienie na stronie lub zadzwoń do nas. Nasz menedżer ustali szczegóły dostawy w ciągu 2 minut."
     },
     "fastDelivery": {
-      "2. Fast Delivery": "2. Szybka dostawa",
-      "We load and deliver charcoal with our own transport within 1-3 days.": "Ładujemy i dostarczamy węgiel własnym transportem w ciągu 1-3 dni."
+      "title": "2. Szybka dostawa",
+      "description": "Ładujemy i dostarczamy węgiel własnym transportem w ciągu 1-3 dni."
     },
     "payOnDelivery": {
-      "3. Pay on Delivery": "3. Płatność przy odbiorze",
-      "No risks. You check the weight and quality at home, and only then pay.": "Bez ryzyka. Sprawdzasz wagę i jakość na miejscu i dopiero wtedy płacisz."
+      "title": "3. Płatność przy odbiorze",
+      "description": "Bez ryzyka. Sprawdzasz wagę i jakość na miejscu i dopiero wtedy płacisz."
     },
-    "Learn more about delivery →": "Dowiedz się więcej o dostawie →"
+    "learnMoreDelivery": "Dowiedz się więcej o dostawie →"
   },
   "keyFeatures": {
-    "Key Features": "Kluczowe cechy",
-    "Premium Charcoal": "Węgiel Premium",
-    "High-quality charcoal with maximum heat output and minimum ash. Perfect for grilling and outdoor cooking.": "Wysokiej jakości węgiel o maksymalnej wydajności cieplnej i minimalnej zawartości popiołu. Idealny do grillowania i gotowania w plenerze.",
-    "High Heat": "Wysoka temperatura",
-    "Maximum thermal efficiency": "Maksymalna wydajność cieplna",
-    "Low Ash": "Niska zawartość popiołu",
-    "Minimal residue": "Minimalna ilość osadu",
-    "Certified": "Certyfikowany",
-    "Honest weight": "Uczciwa waga",
-    "Fast Delivery": "Szybka dostawa",
-    "Quick shipping": "Szybka wysyłka",
-    "Eco-Friendly": "Ekologiczny",
-    "Sustainable sourcing": "Zrównoważone źródła",
-    "Best Value": "Najlepsza oferta",
-    "Competitive pricing": "Konkurencyjne ceny",
-    "Buy now": "Kup teraz",
-    "Learn more": "Dowiedz się więcej"
+    "sectionTitle": "Kluczowe cechy",
+    "title": "Węgiel Premium",
+    "description": "Wysokiej jakości węgiel o maksymalnej wydajności cieplnej i minimalnej zawartości popiołu. Idealny do grillowania i gotowania w plenerze.",
+    "highHeat": "Wysoka temperatura",
+    "maximumThermalEfficiency": "Maksymalna wydajność cieplna",
+    "lowAsh": "Niska zawartość popiołu",
+    "minimalResidue": "Minimalna ilość osadu",
+    "certified": "Certyfikowany",
+    "honestWeight": "Uczciwa waga",
+    "fastDelivery": "Szybka dostawa",
+    "quickShipping": "Szybka wysyłka",
+    "ecoFriendly": "Ekologiczny",
+    "sustainableSourcing": "Zrównoważone źródła",
+    "bestValue": "Najlepsza oferta",
+    "competitivePricing": "Konkurencyjne ceny",
+    "buyNow": "Kup teraz",
+    "learnMore": "Dowiedz się więcej"
+  },
+  "testimonials": {
+    "title": "Co mówią nasi klienci",
+    "subtitle": "Prawdziwe opinie osób, które już grillują naszym węglem premium.",
+    "first": {
+      "text": "Stabilna jakość za każdym razem. Szybko się rozpala i długo trzyma temperaturę.",
+      "author": "Marek K.",
+      "role": "Właściciel restauracji"
+    },
+    "second": {
+      "text": "Dostawa była na czas, a opakowanie świetne. Na pewno zamówię ponownie.",
+      "author": "Anna W.",
+      "role": "Klient indywidualny"
+    },
+    "third": {
+      "text": "Bardzo mało popiołu w porównaniu do innych marek. Idealny na weekendowe BBQ.",
+      "author": "Piotr L.",
+      "role": "Organizator eventów"
+    }
   },
   "footer": {
-    "Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood charcoal for grilling and BBQ.": "Oficjalny dystrybutor węgla WOODEN WEST w Polsce. Węgiel drzewny liściasty premium do grillowania i BBQ.",
-    "Navigation": "Nawigacja",
-    "Home": "Strona główna",
-    "About Us": "O nas",
-    "Delivery": "Dostawa",
-    "Calculator": "Kalkulator",
-    "Contact Us": "Skontaktuj się z nami",
-    "Contact": "Kontakt"
+    "contactTitle": "Kontakt",
+    "navigationTitle": "Nawigacja",
+    "companyDescription": "Oficjalny dystrybutor węgla WOODEN WEST w Polsce. Węgiel drzewny liściasty premium do grillowania i BBQ",
+    "allRightsReserved": "Wszelkie prawa zastrzeżone.",
+    "legalLinks": {
+      "privacyPolicy": "Polityka prywatności",
+      "termsOfService": "Regulamin",
+      "cookiePolicy": "Polityka cookies",
+      "legalNotice": "Informacje prawne"
+    }
   },
   "about": {
-    "Official Distributor of Wooden West": "Oficjalny dystrybutor Wooden West",
-    "More Than Just": " Więcej niż tylko",
-    "Charcoal": "Węgiel drzewny",
-    "We supply energy. Direct import from the manufacturer with laboratory-proven quality that exceeds European standards EN 1860-2.": " Dostarczamy energię. Bezpośredni import od producenta z laboratoryjnie potwierdzoną jakością, która przekracza europejskie normy EN 1860-2.",
+    "distributorBadge": "Oficjalny dystrybutor Wooden West",
+    "headingPrefix": "Więcej niż tylko",
+    "headingHighlight": "Węgiel drzewny",
+    "intro": "Dostarczamy energię. Bezpośredni import od producenta z laboratoryjnie potwierdzoną jakością, która przekracza europejskie normy EN 1860-2.",
     "firstCard": {
       "title": "Węgiel związany",
       "percentage": "79.4%",
@@ -114,18 +135,18 @@
       "percentage": "20-120 mm",
       "description": "94% przesiane kawałki"
     },
-    "Official Partner of": "Oficjalny partner",
-    "Wooden West LLC": "Wooden West LLC",
-    "Van Share operates as a direct distributor, eliminating unnecessary intermediaries. We manage the entire supply chain from the sustainable forests in Ukraine to our warehouse in": "Van Share działa jako bezpośredni dystrybutor, eliminując niepotrzebnych pośredników. Zarządzamy całym łańcuchem dostaw, od zrównoważonych lasów w Ukrainie po nasz magazyn w",
-    "Polkowice, Poland": "Polkowicach, Polska",
-    "Own Logistics System": "Własny system logistyczny",
-    "Timely delivery across Poland & EU. Standard truckload: 33 pallets.": "Terminowa dostawa na terenie Polski i UE. Standardowy ładunek ciężarówki: 33 palety.",
-    "Private Label Services": "Usługi marki własnej",
-    "We can pack high-quality charcoal into bags featuring your logo.": "Możemy zapakować wysokiej jakości węgiel drzewny w worki z Twoim logo.",
-    "Download Quality Certificate (PDF) &rarr;": "Pobierz certyfikat jakości (PDF) →",
-    "About Van Share": "O Van Share",
-    "Van Share Spółka z o.o. is the official distributor of WOODEN WEST brand premium hardwood charcoal in Poland. We provide high-quality charcoal for grilling and BBQ, compliant with European standart": " Van Share Spółka z o.o. jest oficjalnym dystrybutorem węgla drzewnego liściastego premium marki WOODEN WEST w Polsce. Dostarczamy wysokiej jakości węgiel do grillowania i BBQ, zgodny z europejską normą",
-    "mission": "Naszą misją jest dostarczanie niezawodnych rozwiązań energetycznych z zachowaniem przejrzystości, efektywności i zaufania w każdej transakcji.",
+    "partnerTitlePrefix": "Oficjalny partner",
+    "partnerName": "Wooden West LLC",
+    "partnerDescription": "Van Share działa jako bezpośredni dystrybutor, eliminując niepotrzebnych pośredników. Zarządzamy całym łańcuchem dostaw, od zrównoważonych lasów w Ukrainie po nasz magazyn w",
+    "warehouseLocation": "Polkowicach, Polska",
+    "logisticsTitle": "Własny system logistyczny",
+    "logisticsDescription": "Terminowa dostawa na terenie Polski i UE. Standardowy ładunek ciężarówki: 33 palety.",
+    "privateLabelTitle": "Usługi marki własnej",
+    "privateLabelDescription": "Możemy zapakować wysokiej jakości węgiel drzewny w worki z Twoim logo.",
+    "certificateLink": "Pobierz certyfikat jakości (PDF) →",
+    "companySectionTitle": "O Van Share",
+    "companySectionDescription": "Van Share Spółka z o.o. jest oficjalnym dystrybutorem węgla drzewnego liściastego premium marki WOODEN WEST w Polsce. Dostarczamy wysokiej jakości węgiel do grillowania i BBQ, zgodny z europejską normą",
+    "missionStatement": "Naszą misją jest dostarczanie niezawodnych rozwiązań energetycznych z zachowaniem przejrzystości, efektywności i zaufania w każdej transakcji.",
     "achievements": {
       "title": "Nasze osiągnięcia",
       "firstCard": {
@@ -164,7 +185,7 @@
       "title": "Skontaktuj się z nami",
       "description": "Masz pytania lub chcesz nawiązać współpracę?",
       "email": "vanshare1@gmail.com",
-      "btnText": "Wyślij wiadomość",
+      "buttonText": "Wyślij wiadomość",
       "or": "Lub"
     }
   },
@@ -242,7 +263,7 @@
         "nip": "NIP: 716-28-26-886",
         "footer": "Oferta ważna przez 14 dni od daty wystawienia"
       },
-      "btn": "Zamów teraz"
+      "orderButtonText": "Zamów teraz"
     }
   },
   "calculator": {
@@ -252,7 +273,7 @@
     "placeholder": "Wprowadź ilość w tonach (np. 22)",
     "basePrice": " Cena bazowa:",
     "pricePerTon": "€950/tona",
-    "btn": "Oblicz koszt całkowity",
+    "calculateButton": "Oblicz koszt całkowity",
     "breakdown": "Zestawienie kosztów",
     "subtotal": "Suma częściowa:",
     "delivery": "Dostawa:",
@@ -317,9 +338,9 @@
         "label": "Wiadomość",
         "placeholder": "Napisz nam więcej o swoim zapytaniu..."
       },
-      "btn": {
+      "actions": {
         "submitText": "Wyślij wiadomość",
-        "proccessingText": "Wysyłanie..."
+        "processingText": "Wysyłanie..."
       },
       "toastSuccess": "Dziękujemy za wiadomość! Odpowiemy wkrótce.",
       "toastError": "Ups! Coś poszło nie tak. Spróbuj ponownie później."
@@ -356,9 +377,9 @@
         "optional": "(Opcjonalnie)"
       },
 
-      "btn": {
+      "actions": {
         "submitText": "Wyślij zamówienie",
-        "proccessingText": "Przetwarzanie..."
+        "processingText": "Przetwarzanie..."
       }
     },
     "summary": {
@@ -377,6 +398,83 @@
       },
       "toastSuccess": "Dziękujemy za zamówienie! Nasz menedżer wkrótce się z Tobą skontaktuje.",
       "toastError": "Ups! Coś poszło nie tak. Spróbuj ponownie później."
+    }
+  },
+  "legalDocs": {
+    "lastUpdated": "Ostatnia aktualizacja: 21 marca 2026",
+    "privacy": {
+      "seoTitle": "Polityka prywatności",
+      "seoDescription": "Polityka prywatności dla strony VAN SHARE i komunikacji z klientami.",
+      "title": "Polityka prywatności",
+      "intro": "Niniejsza polityka opisuje, jak VAN SHARE przetwarza dane osobowe w związku ze sprzedażą B2B, zapytaniami kontaktowymi i korzystaniem ze strony internetowej w UE.",
+      "dataControllerTitle": "Administrator danych",
+      "dataController": {
+        "company": "VAN SHARE Spółka z o.o.",
+        "address": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+        "nip": "NIP: 716-28-26-886",
+        "email": "E-mail: vanshare1@gmail.com"
+      },
+      "dataCollectedTitle": "Jakie dane zbieramy",
+      "dataCollectedText": "Dane kontaktowe i biznesowe przekazane w formularzach lub korespondencji, w tym imię i nazwisko, służbowy e-mail, numer telefonu, miasto, dane zamówienia oraz treść komunikacji.",
+      "legalBasisTitle": "Podstawa prawna i cel",
+      "legalBasisText": "Przetwarzamy dane, aby odpowiadać na zapytania, realizować umowy, wystawiać faktury i wypełniać obowiązki prawne. Podstawy prawne obejmują art. 6 ust. 1 lit. b, c i f RODO.",
+      "dataSharingTitle": "Udostępnianie danych i podmioty przetwarzające",
+      "dataSharingText": "Nie sprzedajemy danych osobowych. Dane mogą być przekazywane dostawcom usług płatniczych, księgowych, logistycznych, hostingowych i e-mail wyłącznie w celu świadczenia usług i spełnienia wymogów prawnych.",
+      "retentionTitle": "Okres przechowywania",
+      "retentionText": "Przechowujemy dane osobowe tak długo, jak to konieczne do świadczenia usług, obsługi roszczeń oraz realizacji obowiązków księgowych i podatkowych.",
+      "rightsTitle": "Prawa osoby, której dane dotyczą",
+      "rightsText": "Możesz żądać dostępu, sprostowania, usunięcia, ograniczenia, sprzeciwu i przenoszenia danych, jeśli ma to zastosowanie. Możesz również złożyć skargę do właściwego organu nadzorczego w UE."
+    },
+    "terms": {
+      "seoTitle": "Regulamin",
+      "seoDescription": "Regulamin zamówień, dostaw i korzystania ze strony VAN SHARE.",
+      "title": "Regulamin",
+      "intro": "Niniejsze warunki dotyczą klientów biznesowych (B2B) i regulują sprzedaż, dostawę oraz komunikację dotyczącą produktów z węgla drzewnego.",
+      "scopeTitle": "Zakres",
+      "scopeText": "Treści na stronie mają charakter informacyjny. Zamówienia stają się wiążące dopiero po wyraźnym potwierdzeniu przez VAN SHARE.",
+      "ordersAndPricingTitle": "Zamówienia i ceny",
+      "ordersAndPricingText": "Ceny, dostępność i terminy realizacji mogą ulec zmianie. Ostateczne warunki handlowe określa potwierdzona oferta lub dokument zamówienia.",
+      "deliveryAndIncotermsTitle": "Dostawa i Incoterms",
+      "deliveryAndIncotermsText": "O ile nie uzgodniono inaczej, warunki dostawy opierają się na Incoterms 2020 (np. DAP Polkowice). Przejście ryzyka i odpowiedzialności wynika z uzgodnionego Incoterm.",
+      "paymentTermsTitle": "Warunki płatności",
+      "paymentTermsText": "Harmonogram i metody płatności są określone w potwierdzonej ofercie handlowej i fakturze.",
+      "liabilityTitle": "Odpowiedzialność",
+      "liabilityText": "VAN SHARE nie ponosi odpowiedzialności za opóźnienia lub niewykonanie spowodowane siłą wyższą, zakłóceniami przewoźnika, ograniczeniami organów lub nieprawidłowymi danymi przekazanymi przez kupującego.",
+      "b2bStatusTitle": "Status B2B",
+      "b2bStatusText": "Prawa konsumenta do odstąpienia od umowy nie mają zastosowania do umów zawieranych wyłącznie między przedsiębiorcami.",
+      "governingLawTitle": "Prawo właściwe i jurysdykcja",
+      "governingLawText": "Niniejsze warunki podlegają prawu polskiemu. Właściwe sądy w Polsce mają jurysdykcję, o ile bezwzględnie obowiązujące przepisy nie stanowią inaczej."
+    },
+    "cookies": {
+      "seoTitle": "Polityka cookies",
+      "seoDescription": "Zasady używania plików cookies na stronie VAN SHARE.",
+      "title": "Polityka cookies",
+      "intro": "Ta strona używa plików cookies i podobnych technologii, aby zapewnić prawidłowe działanie oraz zapamiętywanie preferencji użytkownika.",
+      "essentialTitle": "Niezbędne cookies",
+      "essentialText": "Wymagane do podstawowego działania strony, np. ustawień języka i bezpiecznej komunikacji. Te cookies są zawsze aktywne.",
+      "optionalTitle": "Opcjonalne cookies",
+      "optionalText": "Opcjonalne cookies analityczne i marketingowe są używane tylko wtedy, gdy zostaną wdrożone, i wyłącznie po uzyskaniu ważnej zgody użytkownika, jeśli jest wymagana.",
+      "managingTitle": "Zarządzanie cookies",
+      "managingText": "Możesz wyłączyć lub usunąć pliki cookies w ustawieniach swojej przeglądarki w dowolnym momencie.",
+      "withdrawalTitle": "Wycofanie zgody",
+      "withdrawalText": "Jeśli opcjonalne cookies zostaną w przyszłości uruchomione, użytkownicy będą mogli zaktualizować lub wycofać zgodę w ustawieniach cookies."
+    },
+    "notice": {
+      "seoTitle": "Informacje prawne",
+      "seoDescription": "Dane prawne firmy i informacje identyfikacyjne VAN SHARE.",
+      "title": "Informacje prawne",
+      "companyLabel": "Firma:",
+      "companyValue": "VAN SHARE Spółka z o.o.",
+      "addressLabel": "Adres:",
+      "addressValue": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+      "nipLabel": "NIP:",
+      "nipValue": "716-28-26-886",
+      "emailLabel": "E-mail:",
+      "emailValue": "vanshare1@gmail.com",
+      "phoneLabel": "Telefon:",
+      "phoneValue": "+48 577 432 949, +48 730 670 345",
+      "businessProfileLabel": "Profil działalności:",
+      "businessProfileValue": "Dostawy i dystrybucja węgla drzewnego liściastego w modelu B2B."
     }
   }
 }

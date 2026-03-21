@@ -1,13 +1,37 @@
 import AppLayout from "./ui/AppLayout";
-import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import Delivery from "./pages/Delivery";
-import ContactUs from "./pages/ContactUs";
+import { lazy, Suspense } from "react";
+import {
+  PrivacyDocPage,
+  TermsDocPage,
+  CookieDocPage,
+  LegalNoticePage,
+} from "./pages/LegalDocs";
+import Spinner from "./ui/Spinner";
 
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import Calculator from "./pages/Calculator";
-import Order from "./pages/Order";
+
+const Home = lazy(() => import("./pages/Home"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Delivery = lazy(() => import("./pages/Delivery"));
+const Calculator = lazy(() => import("./pages/Calculator"));
+const Order = lazy(() => import("./pages/Order"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+
+function withSuspense(component) {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-[50vh] flex flex-col items-center justify-center gap-4 text-stone-300">
+          <Spinner className="h-10 w-10 border-4" />
+          <p className="text-sm sm:text-base">Loading...</p>
+        </div>
+      }
+    >
+      {component}
+    </Suspense>
+  );
+}
 
 const router = createBrowserRouter([
   {
@@ -16,27 +40,43 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: withSuspense(<Home />),
       },
       {
         path: "about",
-        element: <AboutUs />,
+        element: withSuspense(<AboutUs />),
       },
       {
         path: "delivery",
-        element: <Delivery />,
+        element: withSuspense(<Delivery />),
       },
       {
         path: "calculator",
-        element: <Calculator />,
+        element: withSuspense(<Calculator />),
       },
       {
         path: "order",
-        element: <Order />,
+        element: withSuspense(<Order />),
       },
       {
         path: "contact",
-        element: <ContactUs />,
+        element: withSuspense(<ContactUs />),
+      },
+      {
+        path: "privacy-policy",
+        element: withSuspense(<PrivacyDocPage />),
+      },
+      {
+        path: "terms-of-service",
+        element: withSuspense(<TermsDocPage />),
+      },
+      {
+        path: "cookie-policy",
+        element: withSuspense(<CookieDocPage />),
+      },
+      {
+        path: "legal-notice",
+        element: withSuspense(<LegalNoticePage />),
       },
     ],
   },

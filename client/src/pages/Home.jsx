@@ -2,16 +2,55 @@ import CTA from "../features/Home/CTA";
 import HowItWorks from "../features/Home/HowItWorks";
 import KeyFeatures from "../features/Home/KeyFeatures";
 import ProductPackages from "../features/Home/ProductPackages";
+import Testimonials from "../features/Home/Testimonials";
+import { useTranslation } from "react-i18next";
+import Seo from "../seo/Seo";
 
 function Home() {
+  const { t } = useTranslation();
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "VAN SHARE",
+    url: import.meta.env.VITE_SITE_URL || "https://vanshare.pl",
+    email: "vanshare1@gmail.com",
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Premium Hardwood Charcoal",
+    brand: "WOODEN WEST",
+    description: t("keyFeatures.description"),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: "0.95",
+      availability: "https://schema.org/InStock",
+      url: `${import.meta.env.VITE_SITE_URL || "https://vanshare.pl"}/order`,
+    },
+  };
+
   return (
     <div className="text-center">
+      <Seo
+        title={t("nav.home")}
+        description={t("cta.qualityClaim")}
+        path="/"
+        schema={[organizationSchema, productSchema]}
+      />
+
       <div className="relative">
         <CTA />
       </div>
 
       <div className="relative overflow-visible z-10">
         <ProductPackages />
+      </div>
+
+      <div className="relative z-0 -mt-1">
+        <Testimonials />
       </div>
 
       <div className="relative z-0 -mt-1">

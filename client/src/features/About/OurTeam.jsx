@@ -9,9 +9,10 @@ function OurTeam() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="rounded-lg overflow-hidden shadow-2xl order-2 md:order-1">
             <img
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=400&fit=crop"
-              alt="Warehouse storage"
-              className="w-full h-80 object-cover"
+              src="/5310268230607771061.jpg"
+              alt="Palletized charcoal prepared for transport"
+              className="w-full h-80 object-cover object-center"
+              loading="lazy"
             />
           </div>
           <div className="order-1 md:order-2">
