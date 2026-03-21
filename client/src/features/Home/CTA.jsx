@@ -9,7 +9,7 @@ function CTA() {
         <div className="flex flex-col lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-16">
           <div className="flex-1 lg:text-left text-center pt-8 sm:pt-12 md:pt-20 lg:pt-0">
             <h1
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-300 transition-all duration-500 cursor-pointer
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold font-space-grotesk text-stone-300 transition-all duration-500 cursor-pointer hover:text-orange-500 hover:scale-[1.01]
             mb-4 sm:mb-6 md:mb-8 text-center tracking-tight sm:tracking-normal px-2 sm:px-0"
             >
               <span className="inline-block whitespace-nowrap">
@@ -31,7 +31,7 @@ function CTA() {
               />
             </div>
 
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center hover:text-orange-400 hover:scale-[1.01] transition-all">
               {t("cta.qualityClaim")}
             </h3>
 
