@@ -1,7 +1,11 @@
 import { transporter } from "../config/mailer.js";
+import {
+  getEmailLocale,
+  renderProblemCustomerEmail,
+  renderProblemManagerEmail,
+} from "../emails/templates.js";
 
-const MAIL_FROM =
-  process.env.MAIL_FROM || process.env.SMTP_USER || "skullvisit@gmail.com";
+const MAIL_FROM = process.env.MAIL_FROM || "orders@vanshare.pl";
 const CONTACT_EMAIL_TO =
   process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
 
@@ -16,22 +20,36 @@ export const createProblem = async (req, res) => {
       .json({ success: false, message: "No data provided" });
   }
 
-  const { name, email, subject, message } = data;
+  const { name, email, subject, message, lang } = data;
+  const locale = getEmailLocale(lang);
 
   try {
+    const managerEmail = renderProblemManagerEmail(locale, {
+      name,
+      email,
+      subject,
+      message,
+    });
+
     await transporter.sendMail({
       from: MAIL_FROM,
       replyTo: email || MAIL_FROM,
       to: CONTACT_EMAIL_TO,
-      subject: "Client contact message!",
-      text: "Client saying: ",
-      html: `
-        <p><strong>From:</strong> ${email}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
+      subject: managerEmail.subject,
+      html: managerEmail.html,
     });
+
+    if (email) {
+      const customerEmail = renderProblemCustomerEmail(locale, { name });
+
+      await transporter.sendMail({
+        from: MAIL_FROM,
+        replyTo: CONTACT_EMAIL_TO,
+        to: email,
+        subject: customerEmail.subject,
+        html: customerEmail.html,
+      });
+    }
 
     res.json({ success: true, message: "Message sent successfully" });
   } catch (error) {

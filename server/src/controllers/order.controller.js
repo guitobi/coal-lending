@@ -1,7 +1,11 @@
 import { transporter } from "../config/mailer.js";
+import {
+  getEmailLocale,
+  renderOrderCustomerEmail,
+  renderOrderManagerEmail,
+} from "../emails/templates.js";
 
-const MAIL_FROM =
-  process.env.MAIL_FROM || process.env.SMTP_USER || "skullvisit@gmail.com";
+const MAIL_FROM = process.env.MAIL_FROM || "orders@vanshare.pl";
 const CONTACT_EMAIL_TO =
   process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
 
@@ -15,8 +19,8 @@ export const createOrder = async (req, res) => {
       .json({ success: false, message: "No data provided" });
   }
 
-  const { name, email, phoneNumber, city, weightInKg } = data;
-  const recipients = [CONTACT_EMAIL_TO, email].filter(Boolean);
+  const { name, email, phoneNumber, city, weightInKg, comment, lang } = data;
+  const locale = getEmailLocale(lang);
 
   if (!weightInKg || weightInKg < 100) {
     return res
@@ -25,22 +29,38 @@ export const createOrder = async (req, res) => {
   }
 
   try {
+    const managerEmail = renderOrderManagerEmail(locale, {
+      name,
+      email,
+      phoneNumber,
+      city,
+      weightInKg,
+      comment,
+    });
+
     await transporter.sendMail({
       from: MAIL_FROM,
       replyTo: email || MAIL_FROM,
-      to: recipients,
-      subject: "Charcoal Order Confirmation",
-      html: `
-        <h2>Your order details</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone number:</strong> ${phoneNumber}</p>
-        <p><strong>City:</strong> ${city}</p>
-        <p><strong>Order weight:</strong> ${weightInKg} kg</p>
-        <p><strong>Estimated price:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
-        <h3>Our manager will contact you soon! Be on phone😉</h3>
-        <p style="color: #666; font-size: 12px;">Base price: €0.95/kg | Delivery: DAP Polkowice</p>
-      `,
+      to: CONTACT_EMAIL_TO,
+      subject: managerEmail.subject,
+      html: managerEmail.html,
     });
+
+    if (email) {
+      const customerEmail = renderOrderCustomerEmail(locale, {
+        name,
+        city,
+        weightInKg,
+      });
+
+      await transporter.sendMail({
+        from: MAIL_FROM,
+        replyTo: CONTACT_EMAIL_TO,
+        to: email,
+        subject: customerEmail.subject,
+        html: customerEmail.html,
+      });
+    }
 
     console.log(`Email sent successfully to ${email}`);
     res.json({ success: true, message: "Order received and email sent" });

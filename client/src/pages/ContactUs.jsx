@@ -10,7 +10,7 @@ import Seo from "../seo/Seo";
 import { buildApiUrl } from "../utils/api";
 
 function ContactUs() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -23,9 +23,14 @@ function ContactUs() {
   const onContactUs = async (data) => {
     try {
       setIsLoading(true);
+      const payload = {
+        ...data,
+        lang: i18n.language,
+      };
+
       const req = await fetch(buildApiUrl("/api/problem/new"), {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
         headers: {
           "Content-Type": "application/json",
         },

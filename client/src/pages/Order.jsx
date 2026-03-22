@@ -10,7 +10,7 @@ import Seo from "../seo/Seo";
 import { buildApiUrl } from "../utils/api";
 
 function Order() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,7 +27,7 @@ function Order() {
   async function submitOrder(data) {
     try {
       setIsLoading(true);
-      const { name, email, phoneNumber, city, weightInKg } = data;
+      const { name, email, phoneNumber, city, weightInKg, comment } = data;
 
       const totalOrder = {
         name,
@@ -35,6 +35,8 @@ function Order() {
         phoneNumber,
         city,
         weightInKg: weightInKg ? Number(weightInKg) : 0,
+        comment,
+        lang: i18n.language,
       };
 
       const req = await fetch(buildApiUrl("/api/order/new"), {
@@ -50,10 +52,12 @@ function Order() {
       const result = await req.json();
       console.log(result);
       reset();
-      toast.success(t("order.toastSuccess"));
+      toast.success(
+        t(["order.form.toastSuccess", "order.footer.toastSuccess"]),
+      );
     } catch (error) {
       console.error(error);
-      toast.error(t("order.toastError"));
+      toast.error(t(["order.form.toastError", "order.footer.toastError"]));
     } finally {
       setIsLoading(false);
     }
@@ -296,7 +300,7 @@ function Order() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-stone-400 text-sm">
-                    {t("order.form.summary.weight")}
+                    {t(["order.form.summary.weight", "order.summary.weight"])}
                   </span>
                   <span className="text-white font-bold text-lg">
                     {weightInKg} kg
@@ -304,14 +308,20 @@ function Order() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-stone-400 text-sm">
-                    {t("order.form.summary.pricePerKg")}
+                    {t([
+                      "order.form.summary.pricePerKg",
+                      "order.summary.pricePerKg",
+                    ])}
                   </span>
                   <span className="text-stone-300">€0.95</span>
                 </div>
                 <div className="border-t border-orange-500/20 pt-2 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-stone-300 font-medium">
-                      {t("order.form.summary.totalPrice")}
+                      {t([
+                        "order.form.summary.totalPrice",
+                        "order.summary.totalPrice",
+                      ])}
                     </span>
                     <span className="text-orange-500 font-bold text-2xl">
                       €{(Number(weightInKg) * 0.95).toFixed(2)}
@@ -320,7 +330,7 @@ function Order() {
                 </div>
               </div>
               <p className="text-xs text-stone-500 mt-3">
-                {t("order.form.summary.note")}
+                {t(["order.form.summary.note", "order.summary.note"])}
               </p>
             </div>
           )}
@@ -344,18 +354,26 @@ function Order() {
       {/* Footer Text */}
       <div className="text-center mt-8 space-y-2">
         <p className="text-stone-300 text-base sm:text-lg font-medium">
-          📞 {t("order.footer.title")}
+          📞 {t(["order.form.footer.title", "order.footer.title"])}
         </p>
-        <p className="text-stone-500 text-sm">{t("order.footer.delivery")}</p>
+        <p className="text-stone-500 text-sm">
+          {t(["order.form.footer.delivery", "order.footer.delivery"])}
+        </p>
         {/* Info Note */}
         <div className="mt-8 text-center space-y-2">
           <p className="text-sm text-stone-400">
-            {t("order.footer.contact.title")}{" "}
+            {t([
+              "order.form.footer.contact.title",
+              "order.footer.contact.title",
+            ])}{" "}
             <Link
               to="/contact"
               className="text-orange-500 hover:text-orange-400 underline"
             >
-              {t("order.footer.contact.contact")}
+              {t([
+                "order.form.footer.contact.contact",
+                "order.footer.contact.contact",
+              ])}
             </Link>
           </p>
         </div>
