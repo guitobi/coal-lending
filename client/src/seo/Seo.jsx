@@ -1,14 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
+import { SITE_NAME, SITE_URL } from "../utils/siteConfig";
 
-const SITE_NAME = "VAN SHARE";
 const FALLBACK_OG_IMAGE = "/coal_in_bag.webp";
 
 function getBaseUrl() {
-  const envUrl = import.meta.env.VITE_SITE_URL?.replace(/\/+$/, "");
-
-  if (envUrl) return envUrl;
+  if (SITE_URL) return SITE_URL;
   if (typeof window !== "undefined") return window.location.origin;
 
   return "";
@@ -39,7 +37,9 @@ function Seo({
 
   const canonicalUrl = toAbsoluteUrl(baseUrl, pathname);
   const ogImageUrl = toAbsoluteUrl(baseUrl, image);
-  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const fullTitle = title.includes(SITE_NAME)
+    ? title
+    : `${title} | ${SITE_NAME}`;
 
   const enAlternate = `${canonicalUrl}${canonicalUrl.includes("?") ? "&" : "?"}lang=en`;
   const plAlternate = `${canonicalUrl}${canonicalUrl.includes("?") ? "&" : "?"}lang=pl`;
@@ -60,8 +60,14 @@ function Seo({
 
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content={language === "pl" ? "pl_PL" : "en_US"} />
-      <meta property="og:locale:alternate" content={language === "pl" ? "en_US" : "pl_PL"} />
+      <meta
+        property="og:locale"
+        content={language === "pl" ? "pl_PL" : "en_US"}
+      />
+      <meta
+        property="og:locale:alternate"
+        content={language === "pl" ? "en_US" : "pl_PL"}
+      />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />

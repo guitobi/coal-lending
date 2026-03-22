@@ -5,6 +5,7 @@ import ProductPackages from "../features/Home/ProductPackages";
 import Testimonials from "../features/Home/Testimonials";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
+import { SITE_URL } from "../utils/siteConfig";
 
 function Home() {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "VAN SHARE",
-    url: import.meta.env.VITE_SITE_URL || "https://vanshare.pl",
+    url: SITE_URL,
     email: "vanshare1@gmail.com",
   };
 
@@ -28,7 +29,7 @@ function Home() {
       priceCurrency: "EUR",
       price: "0.95",
       availability: "https://schema.org/InStock",
-      url: `${import.meta.env.VITE_SITE_URL || "https://vanshare.pl"}/order`,
+      url: `${SITE_URL}/order`,
     },
   };
 
