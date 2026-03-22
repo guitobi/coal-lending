@@ -22,6 +22,7 @@ function Home() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Premium Hardwood Charcoal",
+    image: `${SITE_URL}/coal_in_bag.webp`,
     brand: "WOODEN WEST",
     description: t("keyFeatures.description"),
     offers: {
@@ -30,6 +31,22 @@ function Home() {
       price: "0.95",
       availability: "https://schema.org/InStock",
       url: `${SITE_URL}/order`,
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "PL",
+        },
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "EUR",
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      },
     },
   };
 
