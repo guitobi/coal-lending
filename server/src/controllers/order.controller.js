@@ -2,8 +2,9 @@ import { transporter } from "../config/mailer.js";
 
 const MAIL_FROM =
   process.env.MAIL_FROM || process.env.SMTP_USER || "skullvisit@gmail.com";
+const CONTACT_EMAIL_TO =
+  process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
 
-// Експортуємо саму функцію обробки
 export const createOrder = async (req, res) => {
   const data = req.body;
   console.log("Order data arrived:", data);
@@ -15,7 +16,7 @@ export const createOrder = async (req, res) => {
   }
 
   const { name, email, phoneNumber, city, weightInKg } = data;
-  const senderEmail = email || MAIL_FROM;
+  const recipients = [CONTACT_EMAIL_TO, email].filter(Boolean);
 
   if (!weightInKg || weightInKg < 100) {
     return res
@@ -25,9 +26,9 @@ export const createOrder = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: senderEmail,
+      from: MAIL_FROM,
       replyTo: email || MAIL_FROM,
-      to: email,
+      to: recipients,
       subject: "Charcoal Order Confirmation",
       html: `
         <h2>Your order details</h2>
