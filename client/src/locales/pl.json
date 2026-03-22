@@ -476,5 +476,14 @@
       "businessProfileLabel": "Profil działalności:",
       "businessProfileValue": "Dostawy i dystrybucja węgla drzewnego liściastego w modelu B2B."
     }
+  },
+  "notFound": {
+    "seoTitle": "404 - Nie znaleziono strony",
+    "seoDescription": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "errorLabel": "Błąd 404",
+    "title": "Nie znaleziono strony",
+    "description": "Strona, której szukasz, nie istnieje, została przeniesiona lub adres został wpisany niepoprawnie.",
+    "homeButton": "Wróć na stronę główną",
+    "contactButton": "Skontaktuj się z nami"
   }
 }

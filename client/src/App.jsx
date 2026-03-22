@@ -17,6 +17,7 @@ const Delivery = lazy(() => import("./pages/Delivery"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 const Order = lazy(() => import("./pages/Order"));
 const ContactUs = lazy(() => import("./pages/ContactUs"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function withSuspense(component) {
   return (
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "legal-notice",
         element: withSuspense(<LegalNoticePage />),
+      },
+      {
+        path: "*",
+        element: withSuspense(<NotFound />),
       },
     ],
   },

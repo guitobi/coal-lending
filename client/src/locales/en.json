@@ -475,5 +475,14 @@
       "businessProfileLabel": "Business profile:",
       "businessProfileValue": "B2B supply and distribution of hardwood charcoal."
     }
+  },
+  "notFound": {
+    "seoTitle": "404 - Page Not Found",
+    "seoDescription": "The page you are looking for does not exist or has been moved.",
+    "errorLabel": "Error 404",
+    "title": "Page not found",
+    "description": "The page you requested does not exist, was moved, or the address was entered incorrectly.",
+    "homeButton": "Back to home",
+    "contactButton": "Contact us"
   }
 }
