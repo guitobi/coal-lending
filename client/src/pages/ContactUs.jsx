@@ -48,8 +48,8 @@ function ContactUs() {
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4">
       <Seo
-        title={t("nav.contactUs")}
-        description={t("contactUs.description")}
+        title={t("seoPages.contact.title")}
+        description={t("seoPages.contact.description")}
         path="/contact"
       />
 

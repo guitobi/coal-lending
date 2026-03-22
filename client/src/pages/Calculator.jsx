@@ -37,8 +37,8 @@ function Calculator() {
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4 max-w-4xl mx-auto relative">
       <Seo
-        title={t("nav.calculator")}
-        description={t("calculator.description")}
+        title={t("seoPages.calculator.title")}
+        description={t("seoPages.calculator.description")}
         path="/calculator"
       />
 

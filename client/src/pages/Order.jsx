@@ -62,8 +62,8 @@ function Order() {
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4 max-w-3xl mx-auto relative">
       <Seo
-        title={t("order.title")}
-        description={t("order.description")}
+        title={t("seoPages.order.title")}
+        description={t("seoPages.order.description")}
         path="/order"
       />
 

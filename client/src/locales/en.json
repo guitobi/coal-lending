@@ -399,6 +399,32 @@
       "toastError": "Oops! Something went wrong. Please try again later."
     }
   },
+  "seoPages": {
+    "home": {
+      "title": "Charcoal Supplier Poland",
+      "description": "Wholesale charcoal Poland from VAN SHARE: premium hardwood charcoal bulk supply for B2B buyers."
+    },
+    "about": {
+      "title": "Premium Charcoal Supplier",
+      "description": "Learn why VAN SHARE is a premium charcoal supplier and official WOODEN WEST charcoal distributor in Poland."
+    },
+    "delivery": {
+      "title": "Charcoal Delivery Poland",
+      "description": "Charcoal delivery Poland with DAP Polkowice and Incoterms 2020 terms for reliable B2B logistics."
+    },
+    "calculator": {
+      "title": "Wholesale Charcoal Poland Calculator",
+      "description": "Estimate costs for wholesale charcoal Poland orders with instant pricing for bulk charcoal deliveries."
+    },
+    "order": {
+      "title": "Order Charcoal Wholesale",
+      "description": "Order charcoal wholesale online and request hardwood charcoal bulk delivery for your business."
+    },
+    "contact": {
+      "title": "Buy Charcoal in Bulk",
+      "description": "Buy charcoal in bulk with VAN SHARE. Contact our team for quotes, delivery details, and B2B support."
+    }
+  },
   "legalDocs": {
     "lastUpdated": "Last updated: March 21, 2026",
     "privacy": {

@@ -36,8 +36,8 @@ function Home() {
   return (
     <div className="text-center">
       <Seo
-        title={t("nav.home")}
-        description={t("cta.qualityClaim")}
+        title={t("seoPages.home.title")}
+        description={t("seoPages.home.description")}
         path="/"
         schema={[organizationSchema, productSchema]}
       />

@@ -12,8 +12,8 @@ function Delivery() {
   return (
     <div className="min-h-screen">
       <Seo
-        title={t("nav.delivery")}
-        description={t("delivery.description")}
+        title={t("seoPages.delivery.title")}
+        description={t("seoPages.delivery.description")}
         path="/delivery"
       />
 

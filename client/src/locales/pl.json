@@ -400,6 +400,32 @@
       "toastError": "Ups! Coś poszło nie tak. Spróbuj ponownie później."
     }
   },
+  "seoPages": {
+    "home": {
+      "title": "Dostawca węgla drzewnego",
+      "description": "VAN SHARE to dostawca węgla drzewnego w Polsce: sprzedaż hurtowa węgla drzewnego dla klientów B2B."
+    },
+    "about": {
+      "title": "Węgiel drzewny B2B",
+      "description": "Poznaj VAN SHARE: węgiel drzewny B2B i oficjalna dystrybucja WOODEN WEST w Polsce."
+    },
+    "delivery": {
+      "title": "Dostawa węgla drzewnego Polska",
+      "description": "Dostawa węgla drzewnego Polska na warunkach DAP Polkowice (Incoterms 2020) dla klientów hurtowych."
+    },
+    "calculator": {
+      "title": "Węgiel drzewny hurt kalkulator",
+      "description": "Oblicz koszty zamówień hurtowych: węgiel drzewny hurt z szybką kalkulacją ceny i dostawy."
+    },
+    "order": {
+      "title": "Zamówienie węgla drzewnego hurt",
+      "description": "Złóż zamówienie węgla drzewnego hurt online i otrzymaj ofertę B2B od VAN SHARE."
+    },
+    "contact": {
+      "title": "Sprzedaż hurtowa węgla drzewnego",
+      "description": "Skontaktuj się z nami, jeśli interesuje Cię sprzedaż hurtowa węgla drzewnego i warunki współpracy B2B."
+    }
+  },
   "legalDocs": {
     "lastUpdated": "Ostatnia aktualizacja: 21 marca 2026",
     "privacy": {

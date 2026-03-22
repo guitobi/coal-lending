@@ -13,8 +13,8 @@ function AboutUs() {
   return (
     <div className="min-h-screen">
       <Seo
-        title={t("nav.aboutUs")}
-        description={t("about.companySectionDescription")}
+        title={t("seoPages.about.title")}
+        description={t("seoPages.about.description")}
         path="/about"
       />
 
