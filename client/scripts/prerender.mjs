@@ -43,13 +43,14 @@ async function prerender() {
   );
 
   await new Promise((resolve) => server.listen(port, resolve));
-
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  let browser;
 
   try {
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+
     const page = await browser.newPage();
 
     for (const routePath of routes) {
@@ -66,12 +67,34 @@ async function prerender() {
       );
     }
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
     server.close();
   }
 }
 
+function canSkipPrerender(error) {
+  const message = String(error?.message || "");
+  const vercelBuild = process.env.VERCEL === "1" || process.env.VERCEL_ENV;
+
+  const missingChromeLib =
+    message.includes("Failed to launch the browser process") ||
+    message.includes("error while loading shared libraries") ||
+    message.includes("libnspr4.so");
+
+  return Boolean(vercelBuild && missingChromeLib);
+}
+
 prerender().catch((error) => {
+  if (canSkipPrerender(error)) {
+    console.warn(
+      "Prerender skipped: Chromium runtime libs are unavailable in this build environment.",
+    );
+    console.warn("Deploy will continue with SPA fallback rendering.");
+    process.exit(0);
+  }
+
   console.error("Prerender failed", error);
   process.exit(1);
 });
