@@ -83,13 +83,21 @@ function canSkipPrerender(error) {
     message.includes("error while loading shared libraries") ||
     message.includes("libnspr4.so");
 
-  return Boolean(vercelBuild && missingChromeLib);
+  const missingChromeBinary =
+    message.includes("Could not find Chrome") ||
+    message.includes(
+      "you did not perform an installation before running the script",
+    ) ||
+    message.includes("cache path is incorrectly configured") ||
+    message.includes("/puppeteer");
+
+  return Boolean(vercelBuild && (missingChromeLib || missingChromeBinary));
 }
 
 prerender().catch((error) => {
   if (canSkipPrerender(error)) {
     console.warn(
-      "Prerender skipped: Chromium runtime libs are unavailable in this build environment.",
+      "Prerender skipped: Chromium is unavailable in this Vercel build environment.",
     );
     console.warn("Deploy will continue with SPA fallback rendering.");
     process.exit(0);
