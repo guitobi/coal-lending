@@ -4,8 +4,33 @@ import Footer from "./Footer";
 import BackgroundDecorations from "./BackgroundDecorations";
 import ScrollToTop from "../utils/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 function Layout() {
+  const [showDecorations, setShowDecorations] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const canShowDecorations =
+      window.innerWidth >= 768 && !prefersReducedMotion;
+
+    if (!canShowDecorations) return;
+
+    const idleCallback = window.requestIdleCallback;
+
+    if (typeof idleCallback === "function") {
+      const id = idleCallback(() => setShowDecorations(true), {
+        timeout: 1200,
+      });
+      return () => window.cancelIdleCallback?.(id);
+    }
+
+    const timeoutId = window.setTimeout(() => setShowDecorations(true), 300);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
@@ -36,7 +61,7 @@ function Layout() {
       />
       <Header />
       <main className="grow coal-background bg-stone-950 font-roboto relative overflow-hidden ">
-        <BackgroundDecorations />
+        {showDecorations ? <BackgroundDecorations /> : null}
         <div className="relative z-10">
           <Outlet />
         </div>

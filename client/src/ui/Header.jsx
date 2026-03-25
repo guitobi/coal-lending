@@ -8,10 +8,11 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 400);
+      const nextScrolled = window.scrollY > 400;
+      setIsScrolled((prev) => (prev === nextScrolled ? prev : nextScrolled));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
