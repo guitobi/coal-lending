@@ -13,6 +13,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    cssMinify: "lightningcss",
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -29,8 +30,18 @@ export default defineConfig({
           if (id.includes("react-hot-toast")) return "vendor-ui";
           if (id.includes("lucide-react")) return "vendor-icons";
         },
+        // Performance budgets
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith(".css")) {
+            return "assets/[name].[hash].css";
+          }
+          return "assets/[name].[hash][extname]";
+        },
       },
     },
+    // Performance budgets
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 1000, // Increase from default 500KB
   },
   server: {
     allowedHosts: true,

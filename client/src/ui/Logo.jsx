@@ -9,7 +9,7 @@ function Logo() {
           src="/Logo-Photoroom.png"
           alt="Van Share Logo"
           decoding="async"
-          className="relative z-10 h-14 sm:h-14 md:h-16 lg:h-20 w-auto transition-all duration-300 brightness-0 invert opacity-90 hover:opacity-100"
+          className="relative z-10 h-14 sm:h-14 md:h-16 lg:h-20 w-auto transition-all duration-300 brightness-0 invert opacity-90 hover:opacity-100 aspect-1280/1074"
         />
       </picture>
     </div>

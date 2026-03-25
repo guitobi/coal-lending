@@ -32,7 +32,11 @@ function Layout() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div
+      className="flex flex-col min-h-screen"
+      role="main"
+      aria-label="Main content"
+    >
       <ScrollToTop />
       <Toaster
         position="top-center"
@@ -60,7 +64,10 @@ function Layout() {
         }}
       />
       <Header />
-      <main className="grow coal-background bg-stone-950 font-roboto relative overflow-hidden ">
+      <main
+        className="grow coal-background bg-stone-950 font-roboto relative overflow-hidden "
+        id="main-content"
+      >
         {showDecorations ? <BackgroundDecorations /> : null}
         <div className="relative z-10">
           <Outlet />

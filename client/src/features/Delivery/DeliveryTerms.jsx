@@ -60,6 +60,7 @@ function DeliveryTerms() {
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop"
               alt="Delivery truck"
               className="w-full h-96 object-cover"
+              loading="lazy"
             />
           </div>
         </div>
