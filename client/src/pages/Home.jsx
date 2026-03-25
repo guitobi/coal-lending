@@ -3,7 +3,6 @@ import HowItWorks from "../features/Home/HowItWorks";
 import KeyFeatures from "../features/Home/KeyFeatures";
 import ProductPackages from "../features/Home/ProductPackages";
 import Testimonials from "../features/Home/Testimonials";
-import DeferredSection from "../ui/DeferredSection";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
 import { SITE_URL } from "../utils/siteConfig";
@@ -69,21 +68,15 @@ function Home() {
       </div>
 
       <div className="relative z-0 -mt-1">
-        <DeferredSection>
-          <Testimonials />
-        </DeferredSection>
+        <Testimonials />
       </div>
 
       <div className="relative z-0 -mt-1">
-        <DeferredSection>
-          <HowItWorks />
-        </DeferredSection>
+        <HowItWorks />
       </div>
 
       <div className="relative z-0 -mt-1">
-        <DeferredSection>
-          <KeyFeatures />
-        </DeferredSection>
+        <KeyFeatures />
       </div>
     </div>
   );
