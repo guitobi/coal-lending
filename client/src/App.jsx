@@ -1,11 +1,13 @@
 import AppLayout from "./ui/AppLayout";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   PrivacyDocPage,
   TermsDocPage,
   CookieDocPage,
   LegalNoticePage,
 } from "./pages/LegalDocs";
+
 import Spinner from "./ui/Spinner";
 
 import { createBrowserRouter } from "react-router";
@@ -88,6 +90,29 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const updateHtmlLangAttribute = () => {
+      const htmlTag = document.getElementById("html-tag");
+      if (htmlTag) {
+        htmlTag.setAttribute("lang", i18n.language);
+      }
+    };
+
+    updateHtmlLangAttribute();
+
+    const handleLanguageChange = () => {
+      updateHtmlLangAttribute();
+    };
+
+    i18n.on("languageChanged", handleLanguageChange);
+
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n]);
+
   return (
     <>
       <RouterProvider router={router} />

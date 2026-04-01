@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://vanshare.pl/sitemap.xml
+
+# Language versions
+Link: https://vanshare.pl/ ; rel="alternate"; hreflang="en"
+Link: https://vanshare.pl/ ; rel="alternate"; hreflang="pl"

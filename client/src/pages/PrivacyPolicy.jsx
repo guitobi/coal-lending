@@ -1,4 +1,5 @@
 import Seo from "../seo/Seo";
+import GDPRConsentManager from "../features/GDPR/GDPRConsentManager";
 
 function PrivacyPolicy() {
   return (
@@ -61,7 +62,39 @@ function PrivacyPolicy() {
             </p>
           </div>
 
+          {/* GDPR Rights Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-stone-300 mb-2">
+              Your Rights under GDPR
+            </h2>
+            <ul className="list-disc pl-5 space-y-2 text-stone-300">
+              <li>Right to access your personal data</li>
+              <li>Right to rectification of inaccurate data</li>
+              <li>Right to erasure of your data</li>
+              <li>Right to data portability</li>
+              <li>Right to object to processing</li>
+              <li>Right to withdraw consent</li>
+            </ul>
+          </div>
+
+          {/* Contact Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-stone-300 mb-2">
+              Contact Us About Your Data
+            </h2>
+            <p className="text-stone-300 mb-2">
+              If you wish to exercise any of your GDPR rights or have questions
+              about our data practices, please contact us at:
+            </p>
+            <p className="text-stone-300 font-medium">vanshare1@gmail.com</p>
+          </div>
+
           <p className="text-sm text-stone-400">Last updated: March 21, 2026</p>
+        </div>
+
+        {/* GDPR Consent Manager */}
+        <div className="mt-8">
+          <GDPRConsentManager />
         </div>
       </div>
     </section>

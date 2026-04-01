@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="html-tag">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -45,31 +45,53 @@
     </noscript>
 
     <!-- Resource hints for critical assets -->
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="prefetch" href="/coal_in_bag.webp" />
     <link rel="prefetch" href="/Logo-Photoroom.webp" />
 
-    <!-- Google Analytics implementation with privacy considerations -->
-    <!-- Load GA only after user consent (will be managed via cookie consent banner in production) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
+    <!-- Google Analytics will be loaded conditionally after user consent -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+      // Function to initialize Google Analytics after consent
+      function initializeGoogleAnalytics() {
+        const consent = JSON.parse(
+          localStorage.getItem("gdpr_consent") || "{}",
+        );
+
+        if (consent.analytics) {
+          // Add Google Analytics script only after consent is given
+          const gtagScript = document.createElement("script");
+          gtagScript.async = true;
+          gtagScript.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+          document.head.appendChild(gtagScript);
+
+          gtagScript.onload = function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("consent", "update", {
+              analytics_storage: "granted",
+              ad_storage: "denied",
+            });
+            gtag("config", "G-XXXXXXXXXX", {
+              anonymize_ip: true,
+              allow_google_signals: false,
+              allow_ad_personalization_signals: false,
+            });
+          };
+        }
       }
 
-      // Configure analytics with privacy settings
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX", {
-        // Disable advertising features by default
-        allow_google_signals: false,
-        allow_ad_personalization_signals: false,
-        // Respect Do Not Track settings
-        anonymize_ip: true,
+      // Initialize when consent is given
+      document.addEventListener(
+        "gdpr_consent_given",
+        initializeGoogleAnalytics,
+      );
+
+      // Also check on page load if consent already exists
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeGoogleAnalytics();
       });
     </script>
   </head>

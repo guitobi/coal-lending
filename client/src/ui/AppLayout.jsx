@@ -5,6 +5,7 @@ import BackgroundDecorations from "./BackgroundDecorations";
 import ScrollToTop from "../utils/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
+import GDPRConsentBanner from "../features/GDPR/GDPRConsentBanner";
 
 function Layout() {
   const [showDecorations, setShowDecorations] = useState(false);
@@ -74,6 +75,7 @@ function Layout() {
         </div>
       </main>
       <Footer />
+      <GDPRConsentBanner />
     </div>
   );
 }

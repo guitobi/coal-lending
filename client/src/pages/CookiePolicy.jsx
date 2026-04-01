@@ -1,4 +1,5 @@
 import Seo from "../seo/Seo";
+import GDPRConsentManager from "../features/GDPR/GDPRConsentManager";
 
 function CookiePolicy() {
   return (
@@ -51,6 +52,11 @@ function CookiePolicy() {
           </div>
 
           <p className="text-sm text-stone-400">Last updated: March 21, 2026</p>
+        </div>
+
+        {/* GDPR Consent Manager */}
+        <div className="mt-8">
+          <GDPRConsentManager />
         </div>
       </div>
     </section>
