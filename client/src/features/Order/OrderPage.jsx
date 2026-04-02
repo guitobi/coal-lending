@@ -1,5 +1,9 @@
 import { useTranslation } from "react-i18next";
 import Seo from "../../seo/Seo";
+import {
+  createLocalBusinessSchema,
+  createOrganizationSchema,
+} from "../../utils/structuredDataSchemas";
 
 import OrderForm from "./OrderForm";
 import OrderContactInfo from "./OrderContactInfo";
@@ -7,12 +11,17 @@ import OrderContactInfo from "./OrderContactInfo";
 function OrderPage() {
   const { t } = useTranslation();
 
+  // Get schemas for structured data
+  const localBusinessSchema = createLocalBusinessSchema();
+  const organizationSchema = createOrganizationSchema();
+
   return (
     <div className="min-h-screen py-12 sm:py-16 px-4">
       <Seo
         title={t("seoPages.order.title")}
         description={t("seoPages.order.description")}
         path="/order"
+        schema={[localBusinessSchema, organizationSchema]}
       />
 
       <div className="max-w-6xl mx-auto relative">

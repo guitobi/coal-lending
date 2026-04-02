@@ -5,7 +5,8 @@
     "contact": "Kontakt",
     "delivery": "Dostawa",
     "calculator": "Kalkulator",
-    "contactUs": "Skontaktuj się z nami"
+    "contactUs": "Skontaktuj się z nami",
+    "faq": "FAQ"
   },
   "cta": {
     "maximumHeat": "Maksimum ciepła, ",
@@ -78,25 +79,6 @@
     "competitivePricing": "Konkurencyjne ceny",
     "buyNow": "Kup teraz",
     "learnMore": "Dowiedz się więcej"
-  },
-  "testimonials": {
-    "title": "Co mówią nasi klienci",
-    "subtitle": "Prawdziwe opinie osób, które już grillują naszym węglem premium.",
-    "first": {
-      "text": "Stabilna jakość za każdym razem. Szybko się rozpala i długo trzyma temperaturę.",
-      "author": "Marek K.",
-      "role": "Właściciel restauracji"
-    },
-    "second": {
-      "text": "Dostawa była na czas, a opakowanie świetne. Na pewno zamówię ponownie.",
-      "author": "Anna W.",
-      "role": "Klient indywidualny"
-    },
-    "third": {
-      "text": "Bardzo mało popiołu w porównaniu do innych marek. Idealny na weekendowe BBQ.",
-      "author": "Piotr L.",
-      "role": "Organizator eventów"
-    }
   },
   "footer": {
     "contactTitle": "Kontakt",
@@ -424,6 +406,14 @@
     "contact": {
       "title": "Sprzedaż hurtowa węgla drzewnego",
       "description": "Skontaktuj się z nami, jeśli interesuje Cię sprzedaż hurtowa węgla drzewnego i warunki współpracy B2B."
+    },
+    "faq": {
+      "title": "Często zadawane pytania o węgiel drzewny | VAN SHARE",
+      "description": "Odpowiedzi na często zadawane pytania o węgiel drzewny WOODEN WEST, dostawę, przechowywanie i korzyści. VAN SHARE - oficjalny dystrybutor w Polsce."
+    },
+    "regional": {
+      "title": "Dostawca węgla drzewnego w {{region}} | VAN SHARE",
+      "description": "Oficjalny dystrybutor węgla drzewnego premium w {{region}}. Węgiel drzewny WOODEN WEST certyfikowany do użytku przemysłowego i mieszkaniowego. Szybka dostawa i konkurencyjne ceny."
     }
   },
   "legalDocs": {
@@ -503,6 +493,49 @@
       "businessProfileValue": "Dostawy i dystrybucja węgla drzewnego liściastego w modelu B2B."
     }
   },
+  "comparison": {
+    "title": "Porównanie produktów",
+    "subtitle": "Porównaj nasze produkty i wybierz najlepszą opcję dla siebie",
+    "pageTitle": "Porównanie produktów",
+    "pageSubtitle": "Porównaj nasze produkty i wybierz najlepszą opcję dla swoich potrzeb",
+    "info": "Wszystkie nasze produkty spełniają normy europejskie EN 1860-2 i są testowane pod kątem jakości, bezpieczeństwa i skuteczności. Dostarczamy tylko najlepsze węgle drzewne premium do grillowania i ogrzewania.",
+    "headers": {
+      "quality": "Jakość",
+      "burnTime": "Czas spalania",
+      "ashContent": "Zawartość popiołu",
+      "price": "Cena",
+      "certified": "Certyfikowany"
+    },
+    "products": {
+      "woodenWest": "WOODEN WEST Premium",
+      "brandA": "Marka A",
+      "brandB": "Marka B",
+      "coconut": "Kokosowe"
+    },
+    "qualities": {
+      "low": "Niska",
+      "medium": "Średnia",
+      "high": "Wysoka",
+      "veryHigh": "Bardzo wysoka"
+    },
+    "burnTimes": {
+      "short": "~1.5h",
+      "medium": "~2h",
+      "long": ">3h",
+      "veryLong": ">5h"
+    },
+    "ashContents": {
+      "low": "<2%",
+      "medium": "~5%",
+      "high": ">8%",
+      "veryLow": "<1%"
+    },
+    "prices": {
+      "low": "Niska",
+      "medium": "Średnia",
+      "high": "Wysoka"
+    }
+  },
   "notFound": {
     "seoTitle": "404 - Nie znaleziono strony",
     "seoDescription": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
@@ -511,5 +544,102 @@
     "description": "Strona, której szukasz, nie istnieje, została przeniesiona lub adres został wpisany niepoprawnie.",
     "homeButton": "Wróć na stronę główną",
     "contactButton": "Skontaktuj się z nami"
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "subtitle": "Odpowiedzi na najpopularniejsze pytania o nasze węgiel drzewny premium",
+    "pageTitle": "Często zadawane pytania",
+    "pageSubtitle": "Znajdź odpowiedzi na najczęściej zadawane pytania o nasz węgiel drzewny WOODEN WEST",
+    "firstQuestion": "Jakie są zalety stosowania węgla drzewnego WOODEN WEST?",
+    "firstAnswer": "Nasz węgiel drzewny WOODEN WEST ma wysoką sprawność termiczną, długi czas palenia i minimalną zawartość popiołu. Jest wykonany z jakościowej drewniny i spełnia normy europejskie EN 1860-2.",
+    "secondQuestion": "Jak należy przechowywać węgiel drzewny?",
+    "secondAnswer": "Węgiel drzewny należy przechowywać w suchym, wentylowanym miejscu chronionym przed wilgocią. Najlepiej trzymać go w oryginalnym opakowaniu lub szczelnym pojemniku.",
+    "thirdQuestion": "Jak długo spala się węgiel drzewny?",
+    "thirdAnswer": "Czas spalania zależy od frakcji i warunków, ale jakoś węgiel drzewny WOODEN WEST pali się od 2 do 4 godzin, zapewniając stabilną temperaturę.",
+    "fourthQuestion": "Jakie frakcje węgla oferujecie?",
+    "fourthAnswer": "Oferujemy różne frakcje węgla, w tym standardową frakcję 20-120 mm, która idealnie nadaje się do grillowania i barbeku.",
+    "fifthQuestion": "Jak odbywa się dostawa węgla?",
+    "fifthAnswer": "Dostarczamy węgiel własnym transportem na terenie całej Polski i krajów UE. Warunki dostawy są zgodne z INCOTERMS 2020 (DAP Polkowice)."
+  },
+  "testimonials": {
+    "title": "Co mówią nasi klienci",
+    "subtitle": "Prawdziwe opinie od osób, które już grillują naszym premium węglem",
+    "sliderTitle": "Co mówią nasi klienci",
+    "sliderSubtitle": "Prawdziwe opinie od osób, które już grillują naszym premium węglem",
+    "pause": "Automatyczna zmiana",
+    "play": "Wstrzymano",
+    "first": {
+      "author": "Marek K.",
+      "role": "Właściciel restauracji",
+      "text": "Stała jakość za każdym razem. Łatwo się zapala i utrzymuje ciepło przez długą sesję."
+    },
+    "second": {
+      "author": "Anna W.",
+      "role": "Klient prywatny",
+      "text": "Dostawa była terminowa, a opakowanie idealne. Na pewno zamawiam ponownie."
+    },
+    "third": {
+      "author": "Piotr L.",
+      "role": "Organizator eventów",
+      "text": "Bardzo mało popiołu w porównaniu do innych marek. Idealne na weekendowe spotkania grillowe."
+    },
+    "fourth": {
+      "author": "Tomasz M.",
+      "role": "Mistrz grilla",
+      "text": "Doskonałe oddawanie ciepła i jednolita wielkość. Idealne do profesjonalnych eventów."
+    },
+    "fifth": {
+      "author": "Katarzyna S.",
+      "role": "Kucharz domowy",
+      "text": "Najlepszy węgiel jaki próbowałam. Pali się równomiernie i znacznie dłużej niż inne."
+    },
+    "sixth": {
+      "author": "Michał P.",
+      "role": "Entuzjasta BBQ",
+      "text": "Pod impressem jakości i szybkiej dostawy. Polecam znajomym."
+    }
+  },
+  "localizedPages": {
+    "titleWithRegion": "{{title}} w {{region}}",
+    "descriptionWithRegion": "{{description}} dla {{region}}",
+    "defaultTitle": "Lokalna dostawa węgla",
+    "defaultDescription": "Dostawa węgla drzewnego premium w Twojej okolicy"
+  },
+  "regions": {
+    "default": "Polsce",
+    "supplyTitle": "Dostawa węgla premium w {{region}}",
+    "supplyDescription": "Dostarczamy premium węgiel drzewny WOODEN WEST bezpośrednio do {{region}}. Nasz wysokiej jakości węgiel jest idealny do użytku przemysłowego, komercyjnego i domowego.",
+    "fastDelivery": "Szybka dostawa",
+    "fastDeliveryDesc": "Bezpośrednia dostawa do {{region}} dzięki naszej sieci logistycznej",
+    "qualityGuarantee": "Gwarancja jakości",
+    "qualityGuaranteeDesc": "Węgiel certyfikowany zgodnie z EN 1860-2 dla klientów z {{region}}",
+    "bulkOrders": "Zamówienia hurtowe",
+    "bulkOrdersDesc": "Ceny hurtowe dla dużых zamówień w {{region}}",
+    "howToOrder": "Jak zamówić węgiel w {{region}}",
+    "orderStep1": "Skontaktuj się z nami, aby przesłać swoje wymagania",
+    "orderStep2": "Otrzymaj ofertę dopasowaną do {{region}}",
+    "orderStep3": "Potwierdź zamówienie",
+    "orderStep4": "Szybka dostawa do {{region}}",
+    "whyChooseUs": "Dlaczego warto wybrać VAN SHARE w {{region}}",
+    "reason1": "Bezpośrednio od producenta do {{region}}",
+    "reason2": "Konkurencyjne ceny dla rynku {{region}}",
+    "reason3": "Nie zawodna dostawa w {{region}}",
+    "reason4": "Certyfikowana jakość węgla"
+  },
+  "chat": {
+    "onlineHelp": "Pomoc Online",
+    "welcomeMessage": "Witamy w naszym czacie pomocy!",
+    "helpMessage": "Napisz do nas, a nasz zespół skontaktuje się z Tobą wkrótce.",
+    "writeMessage": "Napisz swoją wiadomość...",
+    "sendMessage": "Wyślij wiadomość",
+    "responses": [
+      "Dziękujemy za wiadomość! Nasz zespół skontaktuje się z Tobą wkrótce.",
+      "Otrzymaliśmy Twoje zapytanie i odpowiemy tak szybko, jak to możliwe.",
+      "Dziękujemy za skontaktowanie się z nami. Jaki jest Twój numer kontaktowy, abyśmy mogli się z Tobą skontaktować?"
+    ],
+    "statusOnline": "Online",
+    "statusOffline": "Offline",
+    "callUs": "Zadzwoń do nas",
+    "emailUs": "Napisz do nas"
   }
 }

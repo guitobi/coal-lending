@@ -9,9 +9,10 @@ import {
 } from "./pages/LegalDocs";
 
 import Spinner from "./ui/Spinner";
+import HeatmapAnalyticsProvider from "./components/HeatmapAnalyticsProvider";
 
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router/dom";
+import { createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 const Home = lazy(() => import("./pages/Home"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
@@ -19,6 +20,9 @@ const Delivery = lazy(() => import("./pages/Delivery"));
 const Calculator = lazy(() => import("./pages/Calculator"));
 const Order = lazy(() => import("./pages/Order"));
 const ContactUs = lazy(() => import("./pages/ContactUs"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Comparison = lazy(() => import("./pages/Comparison"));
+const RegionalCharcoal = lazy(() => import("./pages/RegionalCharcoal"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function withSuspense(component) {
@@ -36,10 +40,16 @@ function withSuspense(component) {
   );
 }
 
+import RoutedAnalyticsProvider from "./components/RoutedAnalyticsProvider";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <RoutedAnalyticsProvider measurementId={window.VITE_GA_MEASUREMENT_ID}>
+        <AppLayout />
+      </RoutedAnalyticsProvider>
+    ),
     children: [
       {
         index: true,
@@ -66,6 +76,14 @@ const router = createBrowserRouter([
         element: withSuspense(<ContactUs />),
       },
       {
+        path: "faq",
+        element: withSuspense(<FAQ />),
+      },
+      {
+        path: "comparison",
+        element: withSuspense(<Comparison />),
+      },
+      {
         path: "privacy-policy",
         element: withSuspense(<PrivacyDocPage />),
       },
@@ -80,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: "legal-notice",
         element: withSuspense(<LegalNoticePage />),
+      },
+      {
+        path: "region/:region/*",
+        element: withSuspense(<RegionalCharcoal />),
       },
       {
         path: "*",
@@ -113,10 +135,19 @@ function App() {
     };
   }, [i18n]);
 
+  // Heatmap analytics configuration
+  const heatmapConfig = {
+    enabled: true,
+    type: "custom", // Options: 'hotjar', 'crazyegg', 'custom'
+    id: null, // For Hotjar
+    version: null, // For Hotjar
+    accountId: null, // For Crazy Egg
+  };
+
   return (
-    <>
+    <HeatmapAnalyticsProvider config={heatmapConfig}>
       <RouterProvider router={router} />
-    </>
+    </HeatmapAnalyticsProvider>
   );
 }
 

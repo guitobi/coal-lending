@@ -29,6 +29,13 @@ export default defineConfig({
           if (id.includes("react-hook-form")) return "vendor-forms";
           if (id.includes("react-hot-toast")) return "vendor-ui";
           if (id.includes("lucide-react")) return "vendor-icons";
+          if (
+            id.includes("react-syntax-highlighter") ||
+            id.includes("react-markdown") ||
+            id.includes("remark-gfm")
+          ) {
+            return "vendor-utils-large";
+          }
         },
         // Performance budgets
         assetFileNames: (assetInfo) => {
@@ -53,6 +60,10 @@ export default defineConfig({
         headers: {
           "User-Agent": "CoalLendingApp/1.0",
         },
+      },
+      "/api": {
+        target: "http://localhost:5000", // Backend server URL
+        changeOrigin: true,
       },
     },
   },

@@ -5,7 +5,8 @@
     "contact": "Contact",
     "delivery": "Delivery",
     "calculator": "Calculator",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "faq": "FAQ"
   },
   "cta": {
     "maximumHeat": "Maximum Heat,",
@@ -78,25 +79,6 @@
     "competitivePricing": "Competitive pricing",
     "buyNow": "Buy now",
     "learnMore": "Learn more"
-  },
-  "testimonials": {
-    "title": "What Our Clients Say",
-    "subtitle": "Real feedback from people who already grill with our premium charcoal.",
-    "first": {
-      "text": "Stable quality every time. Lights quickly and keeps heat for a long session.",
-      "author": "Marek K.",
-      "role": "Restaurant owner"
-    },
-    "second": {
-      "text": "Delivery was on time and the packaging was perfect. Definitely ordering again.",
-      "author": "Anna W.",
-      "role": "Private customer"
-    },
-    "third": {
-      "text": "Very low ash compared to other brands. Great for weekend BBQ events.",
-      "author": "Piotr L.",
-      "role": "Event organizer"
-    }
   },
   "footer": {
     "contactTitle": "Contact",
@@ -423,6 +405,18 @@
     "contact": {
       "title": "Buy Charcoal in Bulk",
       "description": "Buy charcoal in bulk with VAN SHARE. Contact our team for quotes, delivery details, and B2B support."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions About Charcoal | VAN SHARE",
+      "description": "Answers to frequently asked questions about WOODEN WEST hardwood charcoal, delivery, storage and benefits. VAN SHARE - official distributor in Poland."
+    },
+    "comparison": {
+      "title": "Hardwood Charcoal Comparison | VAN SHARE",
+      "description": "Compare different types of hardwood charcoal based on quality, burn time, ash content and price. VAN SHARE - official WOODEN WEST distributor in Poland."
+    },
+    "regional": {
+      "title": "Charcoal Supplier in {{region}} | VAN SHARE",
+      "description": "Premium hardwood charcoal supplier in {{region}}. WOODEN WEST certified charcoal for industrial and residential use. Fast delivery and competitive prices."
     }
   },
   "legalDocs": {
@@ -510,5 +504,145 @@
     "description": "The page you requested does not exist, was moved, or the address was entered incorrectly.",
     "homeButton": "Back to home",
     "contactButton": "Contact us"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about our premium hardwood charcoal",
+    "pageTitle": "Frequently Asked Questions",
+    "pageSubtitle": "Find answers to the most common questions about our WOODEN WEST hardwood charcoal",
+    "firstQuestion": "What are the benefits of using WOODEN WEST hardwood charcoal?",
+    "firstAnswer": "Our WOODEN WEST hardwood charcoal has high thermal efficiency, long burning time and minimal ash content. It is made from quality wood and complies with European standards EN 1860-2.",
+    "secondQuestion": "How should I store hardwood charcoal?",
+    "secondAnswer": "Hardwood charcoal should be stored in a dry, ventilated place protected from moisture. It is best to keep it in the original packaging or an airtight container.",
+    "thirdQuestion": "How long does hardwood charcoal burn?",
+    "thirdAnswer": "Burning time depends on the fraction and conditions, but quality hardwood charcoal from WOODEN WEST burns for 2 to 4 hours, providing stable temperature.",
+    "fourthQuestion": "What fractions of charcoal do you offer?",
+    "fourthAnswer": "We offer various charcoal fractions, including the standard 20-120 mm fraction, which is ideal for grilling and barbecuing.",
+    "fifthQuestion": "How is charcoal delivery handled?",
+    "fifthAnswer": "We deliver charcoal with our own transport throughout Poland and EU countries. Delivery terms comply with INCOTERMS 2020 (DAP Polkowice)."
+  },
+  "comparison": {
+    "title": "Product Comparison",
+    "subtitle": "Compare our products and choose the best option for your needs",
+    "pageTitle": "Product Comparison",
+    "pageSubtitle": "Compare our products and choose the best option for your needs",
+    "info": "All our products meet European standards EN 1860-2 and are tested for quality, safety and effectiveness. We deliver only the best premium hardwood charcoal for grilling and heating.",
+    "headers": {
+      "quality": "Quality",
+      "burnTime": "Burn Time",
+      "ashContent": "Ash Content",
+      "price": "Price",
+      "certified": "Certified"
+    },
+    "products": {
+      "woodenWest": "WOODEN WEST Premium",
+      "brandA": "Brand A",
+      "brandB": "Brand B",
+      "coconut": "Coconut"
+    },
+    "qualities": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "veryHigh": "Very High"
+    },
+    "burnTimes": {
+      "short": "~1.5h",
+      "medium": "~2h",
+      "long": ">3h",
+      "veryLong": ">5h"
+    },
+    "ashContents": {
+      "low": "<2%",
+      "medium": "~5%",
+      "high": ">8%",
+      "veryLow": "<1%"
+    },
+    "prices": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real feedback from people who already grill with our premium charcoal",
+    "sliderTitle": "What Our Clients Say",
+    "sliderSubtitle": "Real feedback from people who already grill with our premium charcoal",
+    "pause": "Auto-rotate",
+    "play": "Paused",
+    "first": {
+      "author": "Marek K.",
+      "role": "Restaurant owner",
+      "text": "Stable quality every time. Lights quickly and keeps heat for a long session."
+    },
+    "second": {
+      "author": "Anna W.",
+      "role": "Private customer",
+      "text": "Delivery was on time and the packaging was perfect. Definitely ordering again."
+    },
+    "third": {
+      "author": "Piotr L.",
+      "role": "Event organizer",
+      "text": "Very low ash compared to other brands. Great for weekend BBQ events."
+    },
+    "fourth": {
+      "author": "Tomasz M.",
+      "role": "Grill master",
+      "text": "Excellent heat output and consistent size. Perfect for professional events."
+    },
+    "fifth": {
+      "author": "Katarzyna S.",
+      "role": "Home chef",
+      "text": "The best charcoal I've tried. Burns evenly and lasts much longer than others."
+    },
+    "sixth": {
+      "author": "Michał P.",
+      "role": "BBQ enthusiast",
+      "text": "Impressed with the quality and fast delivery. Will recommend to friends."
+    }
+  },
+  "localizedPages": {
+    "titleWithRegion": "{{title}} in {{region}}",
+    "descriptionWithRegion": "{{description}} for {{region}}",
+    "defaultTitle": "Local Charcoal Supply",
+    "defaultDescription": "Premium hardwood charcoal supply in your area"
+  },
+  "regions": {
+    "default": "Poland",
+    "supplyTitle": "Premium Charcoal Supply in {{region}}",
+    "supplyDescription": "We provide premium WOODEN WEST hardwood charcoal directly to {{region}}. Our high-quality charcoal is perfect for industrial, commercial, and residential use.",
+    "fastDelivery": "Fast Delivery",
+    "fastDeliveryDesc": "Direct delivery to {{region}} with our logistics network",
+    "qualityGuarantee": "Quality Guarantee",
+    "qualityGuaranteeDesc": "EN 1860-2 certified charcoal for {{region}} customers",
+    "bulkOrders": "Bulk Orders",
+    "bulkOrdersDesc": "Wholesale pricing for large orders in {{region}}",
+    "howToOrder": "How to Order Charcoal in {{region}}",
+    "orderStep1": "Contact us with your requirements",
+    "orderStep2": "Receive a quote tailored for {{region}}",
+    "orderStep3": "Confirm your order",
+    "orderStep4": "Fast delivery to {{region}}",
+    "whyChooseUs": "Why Choose VAN SHARE in {{region}}",
+    "reason1": "Direct from manufacturer to {{region}}",
+    "reason2": "Competitive pricing for {{region}} market",
+    "reason3": "Reliable delivery in {{region}}",
+    "reason4": "Certified quality charcoal"
+  },
+  "chat": {
+    "onlineHelp": "Online Help",
+    "welcomeMessage": "Welcome to our help chat!",
+    "helpMessage": "Write to us, and our team will contact you soon.",
+    "writeMessage": "Write your message...",
+    "sendMessage": "Send message",
+    "responses": [
+      "Thank you for your message! Our team will contact you soon.",
+      "We received your inquiry and will respond as soon as possible.",
+      "Thank you for contacting us. What is your contact number so we can reach you?"
+    ],
+    "statusOnline": "Online",
+    "statusOffline": "Offline",
+    "callUs": "Call us",
+    "emailUs": "Email us"
   }
 }

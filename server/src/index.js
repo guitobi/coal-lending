@@ -1,9 +1,12 @@
 import express from "express";
 import cors from "cors";
+import compression from "compression";
 import "dotenv/config";
 import apiRoutes from "./routes/api.routes.js";
 
 const app = express();
+
+app.use(compression());
 
 const configuredOrigins = [
   ...(process.env.ALLOWED_ORIGINS || "")
@@ -32,10 +35,25 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
+app.use(express.text({ type: "text/plain" }));
 app.use(express.json());
 
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
+});
+
+// Cache-Control middleware for API routes
+app.use((req, res, next) => {
+  if (req.method === "GET") {
+    // Cache GET requests for 5 minutes by default if they are not the heatmap/health ones
+    if (!req.path.includes("heatmap") && !req.path.includes("health")) {
+      res.setHeader("Cache-Control", "public, max-age=300");
+    }
+  } else {
+    // Prevent caching for POST/DELETE/etc
+    res.setHeader("Cache-Control", "no-store");
+  }
+  next();
 });
 
 app.use("/api", apiRoutes);

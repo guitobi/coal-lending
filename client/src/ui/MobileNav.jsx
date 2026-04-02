@@ -43,6 +43,15 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
 
         <li>
           <NavButtonLink
+            to="/faq"
+            type="mobile"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {t("nav.faq")}
+          </NavButtonLink>
+        </li>
+        <li>
+          <NavButtonLink
             to="/contact"
             type="mobile"
             onClick={() => setIsMenuOpen(false)}

@@ -6,9 +6,17 @@ import OurTeam from "../features/About/OurTeam";
 import AboutProduct from "../features/About/AboutPoduct";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
+import {
+  createLocalBusinessSchema,
+  createOrganizationSchema,
+} from "../utils/structuredDataSchemas";
 
 function AboutUs() {
   const { t } = useTranslation();
+
+  // Get schemas for structured data
+  const localBusinessSchema = createLocalBusinessSchema();
+  const organizationSchema = createOrganizationSchema();
 
   return (
     <div className="min-h-screen">
@@ -16,6 +24,7 @@ function AboutUs() {
         title={t("seoPages.about.title")}
         description={t("seoPages.about.description")}
         path="/about"
+        schema={[localBusinessSchema, organizationSchema]}
       />
 
       <AboutProduct />

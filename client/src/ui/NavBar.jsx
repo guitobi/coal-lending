@@ -37,6 +37,11 @@ function NavBar() {
             </li>
 
             <li>
+              <NavButtonLink to="/faq" type="primary">
+                {t("nav.faq")}
+              </NavButtonLink>
+            </li>
+            <li>
               <NavButtonLink to="/contact" type="primary">
                 {t("nav.contactUs")}
               </NavButtonLink>

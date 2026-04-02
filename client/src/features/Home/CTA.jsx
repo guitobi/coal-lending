@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Button from "../../ui/Button";
+import { scrollToElement } from "../../utils/scrollUtils";
 
 function CTA() {
   const { t } = useTranslation();
@@ -44,10 +45,8 @@ function CTA() {
               <Button
                 type="primary"
                 onClick={() => {
-                  const section = document.getElementById("packages");
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
-                  }
+                  // Scroll to the packages section using the same utility as FAQ
+                  scrollToElement("#packages", 100); // 100px offset to account for fixed header
                 }}
               >
                 {t("cta.checkPrices")}

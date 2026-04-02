@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "vite build && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "analyze": "vite build --mode analyze",
-    "perf-budget": "node scripts/check-bundle-size.mjs"
+    "perf-budget": "node scripts/check-bundle-size.mjs",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
+    "generate-robots": "node scripts/generate-robots.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -23,7 +25,11 @@
     "react-hook-form": "^7.71.1",
     "react-hot-toast": "^2.6.0",
     "react-i18next": "^16.5.4",
+    "react-markdown": "^10.1.0",
     "react-router": "^7.13.0",
+    "react-router-dom": "^7.13.2",
+    "react-syntax-highlighter": "^16.1.1",
+    "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

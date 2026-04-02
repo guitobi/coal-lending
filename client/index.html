@@ -25,9 +25,16 @@
     />
     <meta property="og:image" content="/coal_in_bag.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preload" as="image" href="/coal_in_bag.webp" />
+    <link rel="preload" as="image" href="/coal_in_bag.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/Logo-Photoroom.webp" fetchpriority="high" />
+    
+    <!-- DNS Prefetching and Preconnecting -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
@@ -43,10 +50,6 @@
         rel="stylesheet"
       />
     </noscript>
-
-    <!-- Resource hints for critical assets -->
-    <link rel="prefetch" href="/coal_in_bag.webp" />
-    <link rel="prefetch" href="/Logo-Photoroom.webp" />
 
     <!-- Google Analytics will be loaded conditionally after user consent -->
     <script>

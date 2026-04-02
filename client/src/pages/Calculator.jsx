@@ -10,9 +10,17 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
+import {
+  createLocalBusinessSchema,
+  createOrganizationSchema,
+} from "../utils/structuredDataSchemas";
 
 function Calculator() {
   const { t } = useTranslation();
+
+  // Get schemas for structured data
+  const localBusinessSchema = createLocalBusinessSchema();
+  const organizationSchema = createOrganizationSchema();
 
   const {
     register,
@@ -40,6 +48,7 @@ function Calculator() {
         title={t("seoPages.calculator.title")}
         description={t("seoPages.calculator.description")}
         path="/calculator"
+        schema={[localBusinessSchema, organizationSchema]}
       />
 
       {/* Header */}
