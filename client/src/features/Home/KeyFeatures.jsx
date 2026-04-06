@@ -3,9 +3,80 @@ import { features } from "../../data/features.jsx";
 import Button from "../../ui/Button";
 import { Link } from "react-router";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 function KeyFeatures() {
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const cardsRef = useRef(null);
+  const buttonsRef = useRef(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      // Section title fade
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: isMobile ? 'top 92%' : 'top 85%',
+            },
+          }
+        );
+      }
+
+      // Cards slide up with stagger
+      if (cardsRef.current) {
+        const cards = cardsRef.current.querySelectorAll('a');
+        gsap.fromTo(cards,
+          { opacity: 0, y: isMobile ? 25 : 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: isMobile ? 'top 85%' : 'top 75%',
+            },
+          }
+        );
+      }
+
+      // Buttons slide up
+      if (buttonsRef.current) {
+        gsap.fromTo(buttonsRef.current.children,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: buttonsRef.current,
+              start: isMobile ? 'top 92%' : 'top 85%',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const featureActions = [
     { to: "/order", label: t("productPackages.orderNow") },
@@ -17,13 +88,13 @@ function KeyFeatures() {
   ];
 
   return (
-    <div className="pt-12 sm:pt-15 pb-20 sm:pb-32">
+    <div ref={sectionRef} className="pt-12 sm:pt-15 pb-20 sm:pb-32">
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-semibold text-stone-300 mb-8 font-space-grotesk px-4 sm:px-6 lg:px-16 text-center">
         {t("keyFeatures.sectionTitle")}
       </h2>
 
       <article className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-        <div className="text-center mb-12">
+        <div ref={titleRef} className="text-center mb-12">
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-stone-300 mb-3 font-space-grotesk">
             {t("keyFeatures.title")}
           </h3>
@@ -41,7 +112,7 @@ function KeyFeatures() {
           <ChevronRight size={14} className="-ml-1 text-orange-500/80" />
         </div>
 
-        <div className="mb-12 flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory px-1 -mx-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div ref={cardsRef} className="mb-12 flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory px-1 -mx-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {features.map((feature, index) => (
             <Link
               key={index}
@@ -67,7 +138,7 @@ function KeyFeatures() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-stretch sm:items-center max-w-sm sm:max-w-none mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-stretch sm:items-center max-w-sm sm:max-w-none mx-auto" ref={buttonsRef}>
           <Button
             type="primary"
             to="/order"

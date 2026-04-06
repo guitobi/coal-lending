@@ -4,11 +4,15 @@ import Button from "../../ui/Button";
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 function ProductPackages() {
   const { t } = useTranslation();
   const packagesContainerRef = useRef(null);
   const middlePackageRef = useRef(null);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const buttonsRef = useRef(null);
 
   useEffect(() => {
     const container = packagesContainerRef.current;
@@ -27,15 +31,81 @@ function ProductPackages() {
     });
   }, []);
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      // Title fade
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: isMobile ? 'top 92%' : 'top 85%',
+            },
+          }
+        );
+      }
+
+      // Package cards slide up with stagger
+      if (packagesContainerRef.current) {
+        const cards = packagesContainerRef.current.querySelectorAll('a > div');
+        gsap.fromTo(cards,
+          { opacity: 0, y: isMobile ? 30 : 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: packagesContainerRef.current,
+              start: isMobile ? 'top 85%' : 'top 75%',
+            },
+          }
+        );
+      }
+
+      // Buttons slide up
+      if (buttonsRef.current) {
+        gsap.fromTo(buttonsRef.current.children,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: buttonsRef.current,
+              start: isMobile ? 'top 92%' : 'top 85%',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const baseCardStyles =
     "rounded-lg p-6 sm:p-8 shadow-lg transition-all duration-300 border hover:shadow-2xl";
 
   return (
     <section
+      ref={sectionRef}
       id="packages"
       className="scroll-mt-20 md:scroll-mt-65 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-16"
     >
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 text-stone-300">
+      <h2 ref={titleRef} className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 text-stone-300">
         {t("productPackages.availablePackages")}
       </h2>
 
@@ -136,7 +206,7 @@ function ProductPackages() {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+      <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
         <Link to="/order">
           <Button type="primary">{t("productPackages.orderNow")}</Button>
         </Link>

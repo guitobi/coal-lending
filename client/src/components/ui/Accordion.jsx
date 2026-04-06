@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import gsap from "gsap";
 
 const AccordionContext = createContext();
 
@@ -66,19 +67,59 @@ const AccordionTrigger = ({ children, className = "", value }) => {
 
 const AccordionContent = ({ children, className = "", value }) => {
   const { activeItems } = useContext(AccordionContext);
+  const contentRef = useRef(null);
+  const innerRef = useRef(null);
 
   const isVisible = activeItems.includes(value);
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!contentRef.current || !innerRef.current) return;
+
+    if (prefersReducedMotion) {
+      // Fallback for reduced motion
+      if (isVisible) {
+        contentRef.current.style.height = 'auto';
+        contentRef.current.style.opacity = '1';
+      } else {
+        contentRef.current.style.height = '0';
+        contentRef.current.style.opacity = '0';
+      }
+      return;
+    }
+
+    if (isVisible) {
+      // Opening animation
+      const height = innerRef.current.offsetHeight;
+      gsap.to(contentRef.current, {
+        height: height,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out',
+      });
+    } else {
+      // Closing animation
+      gsap.to(contentRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+      });
+    }
+  }, [isVisible]);
+
   return (
     <div
-      className={`transition-all duration-300 ease-in-out overflow-hidden ${
-        isVisible ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-      }`}
+      ref={contentRef}
+      className="overflow-hidden"
+      style={{ height: 0, opacity: 0 }}
     >
       <div
+        ref={innerRef}
         className={`p-5 pt-0 text-stone-400 border-t border-stone-800 ${className}`}
       >
-        {isVisible && children}
+        {children}
       </div>
     </div>
   );

@@ -225,3 +225,19 @@ body {
     transform: translateY(-20px) rotate(5deg);
   }
 }
+
+/* GSAP animation optimization classes */
+.gsap-animated {
+  will-change: transform, opacity;
+}
+
+.gsap-animated-complete {
+  will-change: auto;
+}
+
+/* GPU acceleration for transforms */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}

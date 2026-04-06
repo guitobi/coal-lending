@@ -2,14 +2,66 @@ import { useTranslation } from "react-i18next";
 import { steps } from "../../data/steps.jsx";
 import { Link } from "react-router";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 const HowItWorks = () => {
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const stepsRef = useRef(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      // Title fade
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: isMobile ? 'top 92%' : 'top 85%',
+            },
+          }
+        );
+      }
+
+      // Steps slide up with stagger
+      if (stepsRef.current) {
+        const stepCards = stepsRef.current.querySelectorAll('a');
+        gsap.fromTo(stepCards,
+          { opacity: 0, y: isMobile ? 25 : 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: isMobile ? 0.08 : 0.12,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: stepsRef.current,
+              start: isMobile ? 'top 85%' : 'top 75%',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="py-20  relative">
+    <section ref={sectionRef} className="py-20  relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-stone-300 mb-4 font-space-grotesk">
             {t("howItWorks.title")}
           </h2>
@@ -24,7 +76,7 @@ const HowItWorks = () => {
           <ChevronRight size={14} className="-ml-1 text-orange-500/80" />
         </div>
 
-        <div className="relative flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-1 -mx-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div ref={stepsRef} className="relative flex md:grid md:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-1 -mx-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {/* Decorative line (Desktop only) */}
           <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 bg-amber-600 -z-10 border-t-2 border-dashed border-amber-600"></div>
 

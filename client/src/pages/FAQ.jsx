@@ -70,18 +70,6 @@ function FAQ() {
       />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-500 mb-4">
-            {t("faq.pageTitle", "Часті питання")}
-          </h1>
-          <p className="text-stone-400 text-base sm:text-lg max-w-2xl mx-auto">
-            {t(
-              "faq.pageSubtitle",
-              "Знайдіть відповіді на найпоширеніші питання про наше деревне вугілля WOODEN WEST",
-            )}
-          </p>
-        </div>
-
         <FAQSection />
       </div>
     </div>

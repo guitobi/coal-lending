@@ -7,9 +7,61 @@ import {
 import { createFAQSchema } from "../utils/structuredDataSchemas";
 import StructuredData from "./StructuredData";
 import { useTranslation } from "react-i18next";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 function FAQSection({ faqs = [], className = "", id = "faq" }) {
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const accordionRef = useRef(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      // Title fade
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: 'top 85%',
+            },
+          }
+        );
+      }
+
+      // FAQ items slide up with stagger
+      if (accordionRef.current) {
+        const items = accordionRef.current.querySelectorAll('[data-radix-collection-item]');
+        gsap.fromTo(items,
+          { opacity: 0, y: isMobile ? 20 : 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: accordionRef.current,
+              start: 'top 75%',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // Default FAQs if none provided
   const defaultFaqs = [
@@ -67,11 +119,11 @@ function FAQSection({ faqs = [], className = "", id = "faq" }) {
   const faqSchema = createFAQSchema(allFaqs);
 
   return (
-    <section id={id} className={`py-12 sm:py-16 ${className}`}>
+    <section ref={sectionRef} id={id} className={`py-12 sm:py-16 ${className}`}>
       <StructuredData schema={faqSchema} />
 
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
+        <div ref={titleRef} className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-orange-500 mb-4">
             {t("faq.title", "Часті питання")}
           </h2>
@@ -83,7 +135,7 @@ function FAQSection({ faqs = [], className = "", id = "faq" }) {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
+        <Accordion ref={accordionRef} type="single" collapsible className="w-full space-y-4">
           {allFaqs.map((faq, index) => (
             <AccordionItem
               key={faq.id || `faq-${index}`}

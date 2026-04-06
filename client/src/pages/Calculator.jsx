@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "../ui/Button";
 import {
   Calculator as CalcIcon,
@@ -14,6 +14,7 @@ import {
   createLocalBusinessSchema,
   createOrganizationSchema,
 } from "../utils/structuredDataSchemas";
+import gsap from "gsap";
 
 function Calculator() {
   const { t } = useTranslation();
@@ -32,8 +33,83 @@ function Calculator() {
   const [subtotal, setSubtotal] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
+  const headerRef = useRef(null);
+  const formRef = useRef(null);
+  const resultRef = useRef(null);
+
   const tons = watch("tons");
   const PRICE_PER_TON = 950;
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const ctx = gsap.context(() => {
+      // Header animation
+      if (headerRef.current) {
+        gsap.fromTo(headerRef.current,
+          { opacity: 0, y: isMobile ? -20 : -30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+          }
+        );
+      }
+
+      // Form animation
+      if (formRef.current) {
+        gsap.fromTo(formRef.current,
+          { opacity: 0, y: isMobile ? 25 : 40, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'back.out(1.2)',
+            delay: 0.2,
+          }
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (showResult && resultRef.current) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      gsap.fromTo(resultRef.current,
+        { opacity: 0, y: 30, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: 'back.out(1.4)',
+        }
+      );
+
+      // Animate the price number
+      const priceElement = resultRef.current.querySelector('.price-number');
+      if (priceElement) {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: subtotal,
+          duration: 1.5,
+          ease: 'power2.out',
+          onUpdate: () => {
+            priceElement.textContent = Math.round(obj.val).toLocaleString();
+          },
+        });
+      }
+    }
+  }, [showResult, subtotal]);
 
   const handleCalculate = (data) => {
     const { tons } = data;
@@ -52,7 +128,7 @@ function Calculator() {
       />
 
       {/* Header */}
-      <header className="text-center mb-10 sm:mb-12">
+      <header ref={headerRef} className="text-center mb-10 sm:mb-12 opacity-0">
         <div className="flex items-center justify-center gap-3 mb-4">
           <CalcIcon className="w-10 h-10 sm:w-12 sm:h-12 text-orange-500" />
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-500 hover:text-orange-600 transition-colors duration-300">
@@ -66,8 +142,9 @@ function Calculator() {
 
       {/* Calculator Form */}
       <form
+        ref={formRef}
         onSubmit={handleSubmit(handleCalculate)}
-        className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10 space-y-8"
+        className="bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10 space-y-8 opacity-0"
       >
         {/* Tons Input */}
         <div className="space-y-3">
@@ -131,7 +208,7 @@ function Calculator() {
 
       {/* Result Section */}
       {showResult && (
-        <div className="mt-8 bg-linear-to-br from-orange-500/10 to-amber-600/5 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-orange-500/30 p-6 sm:p-10 space-y-6 transition-all duration-500 ease-out">
+        <div ref={resultRef} className="mt-8 bg-linear-to-br from-orange-500/10 to-amber-600/5 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-orange-500/30 p-6 sm:p-10 space-y-6 transition-all duration-500 ease-out opacity-0">
           <div className="flex items-center gap-3 mb-6">
             <CheckCircle2 className="w-8 h-8 text-green-500" />
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-500">
@@ -145,7 +222,7 @@ function Calculator() {
               <span className="text-stone-300 text-lg">
                 {t("calculator.subtotal")}
               </span>
-              <span className="text-white text-2xl font-bold">
+              <span className="text-white text-2xl font-bold price-number">
                 €{subtotal.toFixed(2)}
               </span>
             </div>

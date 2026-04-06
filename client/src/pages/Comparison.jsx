@@ -1,9 +1,53 @@
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
 import ComparisonTable from "../components/ComparisonTable";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 function Comparison() {
   const { t } = useTranslation();
+
+  const headerRef = useRef(null);
+  const tableRef = useRef(null);
+  const infoRef = useRef(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // Header
+      if (headerRef.current) {
+        tl.fromTo(headerRef.current,
+          { opacity: 0, y: -30 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          0
+        );
+      }
+
+      // Table with scale
+      if (tableRef.current) {
+        tl.fromTo(tableRef.current,
+          { opacity: 0, scale: 0.95, y: 30 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.8 },
+          0.2
+        );
+      }
+
+      // Info text
+      if (infoRef.current) {
+        tl.fromTo(infoRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          0.4
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   // Sample data for comparison table
   const headers = [
@@ -72,7 +116,7 @@ function Comparison() {
       />
 
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <div ref={headerRef} className="text-center mb-12 opacity-0">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-500 mb-4">
             {t("comparison.pageTitle", "Porównanie produktów")}
           </h1>
@@ -84,9 +128,11 @@ function Comparison() {
           </p>
         </div>
 
-        <ComparisonTable headers={headers} rows={rows} />
+        <div ref={tableRef} className="opacity-0">
+          <ComparisonTable headers={headers} rows={rows} />
+        </div>
 
-        <div className="mt-12 text-center">
+        <div ref={infoRef} className="mt-12 text-center opacity-0">
           <p className="text-stone-400 text-sm sm:text-base max-w-3xl mx-auto">
             {t(
               "comparison.info",
