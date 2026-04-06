@@ -48,5 +48,3 @@ export const orderSchema = z.object({
     .optional()
     .transform((val) => val?.trim() || ""),
 });
-
-export type OrderData = z.infer<typeof orderSchema>;

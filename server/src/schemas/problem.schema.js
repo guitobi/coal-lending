@@ -21,5 +21,3 @@ export const problemSchema = z.object({
     .toLowerCase()
     .trim(),
 });
-
-export type ProblemData = z.infer<typeof problemSchema>;

@@ -57,5 +57,3 @@ export const heatmapSchema = z.discriminatedUnion("type", [
   formFocusHeatmapSchema,
   formChangeHeatmapSchema,
 ]);
-
-export type HeatmapData = z.infer<typeof heatmapSchema>;
