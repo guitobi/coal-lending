@@ -69,7 +69,7 @@ export function renderOrderCustomerEmail(locale, data) {
         <p><strong>Miasto:</strong> ${city}</p>
         <p><strong>Waga zamówienia:</strong> ${weightInKg} kg</p>
         <p><strong>Szacunkowa cena:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
-        <h3>Nasz менеджер skontaktuje się z Tobą wkrótce.</h3>
+        <h3>Nasz menedżer skontaktuje się z Tobą wkrótce.</h3>
         <p style="color: #666; font-size: 12px;">Cena bazowa: €0.95/kg | Dostawa: DAP Polkowice</p>
       `,
     };
