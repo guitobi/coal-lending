@@ -4,21 +4,21 @@ import {
   renderProblemCustomerEmail,
   renderProblemManagerEmail,
 } from "../emails/templates.js";
+import logger from "../config/logger.js";
 
 const MAIL_FROM = process.env.MAIL_FROM || "orders@vanshare.pl";
 const CONTACT_EMAIL_TO =
   process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
 
 export const createProblem = async (req, res) => {
+  // Data is already validated by the validate middleware
   const data = req.body;
-  console.log("data arrived");
-  console.log(data);
 
-  if (!data) {
-    return res
-      .status(400)
-      .json({ success: false, message: "No data provided" });
-  }
+  // Log contact form submission without PII
+  logger.info("New contact message received", {
+    subject: data.subject,
+    messageLength: data.message?.length || 0,
+  });
 
   const { name, email, subject, message, lang } = data;
   const locale = getEmailLocale(lang);
@@ -51,13 +51,14 @@ export const createProblem = async (req, res) => {
       });
     }
 
+    logger.info("Contact email sent successfully");
     res.json({ success: true, message: "Message sent successfully" });
   } catch (error) {
-    console.error("Error sending email:", error.message);
+    logger.error("Error sending contact email", { error: error.message, stack: error.stack });
+    // Don't leak error details to client
     res.status(500).json({
       success: false,
-      message: "Message received but failed to send email",
-      error: error.message,
+      message: "Failed to send message. Please try again later.",
     });
   }
 };

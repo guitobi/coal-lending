@@ -1,12 +1,21 @@
 import express from "express";
 import cors from "cors";
 import compression from "compression";
+import helmet from "helmet";
 import "dotenv/config";
 import apiRoutes from "./routes/api.routes.js";
+import { generalLimiter } from "./middleware/rateLimiter.js";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
+import logger from "./config/logger.js";
 
 const app = express();
 
+// Security middleware
+app.use(helmet());
 app.use(compression());
+
+// General rate limiting for all requests
+app.use(generalLimiter);
 
 const configuredOrigins = [
   ...(process.env.ALLOWED_ORIGINS || "")
@@ -19,6 +28,12 @@ const configuredOrigins = [
 ].filter(Boolean);
 
 const allowedOrigins = [...new Set(configuredOrigins)];
+
+// Fail closed: require at least one origin in production
+if (allowedOrigins.length === 0 && process.env.NODE_ENV === 'production') {
+  throw new Error('ALLOWED_ORIGINS must be configured in production');
+}
+
 const allowAllOrigins = allowedOrigins.length === 0;
 
 app.use(
@@ -31,12 +46,14 @@ app.use(
 
       callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "OPTIONS"],
+    methods: ["GET", "POST", "OPTIONS", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
-app.use(express.text({ type: "text/plain" }));
-app.use(express.json());
+
+// Body parsers with size limits
+app.use(express.text({ type: "text/plain", limit: "50kb" }));
+app.use(express.json({ limit: "10kb" }));
 
 app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
@@ -58,6 +75,12 @@ app.use((req, res, next) => {
 
 app.use("/api", apiRoutes);
 
+// 404 handler (must be after all routes)
+app.use(notFoundHandler);
+
+// Error handler (must be last)
+app.use(errorHandler);
+
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 5000}`);
+  logger.info(`Server is running on port ${process.env.PORT || 5000}`);
 });

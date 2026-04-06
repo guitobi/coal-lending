@@ -4,29 +4,25 @@ import {
   renderOrderCustomerEmail,
   renderOrderManagerEmail,
 } from "../emails/templates.js";
+import logger from "../config/logger.js";
 
 const MAIL_FROM = process.env.MAIL_FROM || "orders@vanshare.pl";
 const CONTACT_EMAIL_TO =
   process.env.CONTACT_EMAIL_TO || process.env.EMAIL_TO || "vanshare1@gmail.com";
 
 export const createOrder = async (req, res) => {
+  // Data is already validated by the validate middleware
   const data = req.body;
-  console.log("Order data arrived:", data);
 
-  if (!data) {
-    return res
-      .status(400)
-      .json({ success: false, message: "No data provided" });
-  }
+  // Log order received without PII
+  logger.info("New order received", {
+    weightInKg: data.weightInKg,
+    city: data.city,
+    hasComment: !!data.comment,
+  });
 
   const { name, email, phoneNumber, city, weightInKg, comment, lang } = data;
   const locale = getEmailLocale(lang);
-
-  if (!weightInKg || weightInKg < 100) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Minimum order is 100 kg" });
-  }
 
   try {
     const managerEmail = renderOrderManagerEmail(locale, {
@@ -62,14 +58,14 @@ export const createOrder = async (req, res) => {
       });
     }
 
-    console.log(`Email sent successfully to ${email}`);
+    logger.info("Order email sent successfully");
     res.json({ success: true, message: "Order received and email sent" });
   } catch (error) {
-    console.error("Error sending email:", error.message);
+    logger.error("Error sending order email", { error: error.message, stack: error.stack });
+    // Don't leak error details to client
     res.status(500).json({
       success: false,
-      message: "Failed to send email",
-      error: error.message,
+      message: "Failed to send email. Please try again later.",
     });
   }
 };

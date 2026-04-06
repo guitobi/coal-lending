@@ -25,16 +25,26 @@
     />
     <meta property="og:image" content="/coal_in_bag.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preload" as="image" href="/coal_in_bag.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/Logo-Photoroom.webp" fetchpriority="high" />
-    
+    <link
+      rel="preload"
+      as="image"
+      href="/coal_in_bag.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/Logo-Photoroom.webp"
+      fetchpriority="high"
+    />
+
     <!-- DNS Prefetching and Preconnecting -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    
+
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
@@ -52,50 +62,19 @@
     </noscript>
 
     <!-- Google Analytics will be loaded conditionally after user consent -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TY2RQHRFWQ"
+    ></script>
     <script>
-      // Function to initialize Google Analytics after consent
-      function initializeGoogleAnalytics() {
-        const consent = JSON.parse(
-          localStorage.getItem("gdpr_consent") || "{}",
-        );
-
-        if (consent.analytics) {
-          // Add Google Analytics script only after consent is given
-          const gtagScript = document.createElement("script");
-          gtagScript.async = true;
-          gtagScript.src =
-            "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
-          document.head.appendChild(gtagScript);
-
-          gtagScript.onload = function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("consent", "update", {
-              analytics_storage: "granted",
-              ad_storage: "denied",
-            });
-            gtag("config", "G-XXXXXXXXXX", {
-              anonymize_ip: true,
-              allow_google_signals: false,
-              allow_ad_personalization_signals: false,
-            });
-          };
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
+      gtag("js", new Date());
 
-      // Initialize when consent is given
-      document.addEventListener(
-        "gdpr_consent_given",
-        initializeGoogleAnalytics,
-      );
-
-      // Also check on page load if consent already exists
-      document.addEventListener("DOMContentLoaded", function () {
-        initializeGoogleAnalytics();
-      });
+      gtag("config", "G-TY2RQHRFWQ");
     </script>
   </head>
   <body>

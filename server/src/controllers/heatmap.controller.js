@@ -1,9 +1,38 @@
 import fs from "fs/promises";
 import path from "path";
+import crypto from "crypto";
+import logger from "../config/logger.js";
 
 // Define the data directory for storing heatmap data
-const HEATMAP_DATA_DIR = path.join(process.cwd(), "data", "heatmap");
+// In production (Fly.io), use mounted volume at /data
+// In development, use local data directory
+const HEATMAP_DATA_DIR = process.env.NODE_ENV === "production"
+  ? "/data/heatmap"
+  : path.join(process.cwd(), "data", "heatmap");
 const HEATMAP_FILE_PATH = path.join(HEATMAP_DATA_DIR, "heatmap-data.json");
+
+// Helper function to anonymize IP address
+const anonymizeIP = (ip) => {
+  if (!ip) return "unknown";
+
+  // Hash the IP for privacy
+  const hash = crypto.createHash("sha256").update(ip).digest("hex");
+  return hash.substring(0, 16); // First 16 chars of hash
+};
+
+// Helper function to extract basic user agent info
+const sanitizeUserAgent = (userAgent) => {
+  if (!userAgent) return "unknown";
+
+  // Extract only browser and OS info, not full UA string
+  const browserMatch = userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera)\/[\d.]+/);
+  const osMatch = userAgent.match(/(Windows|Mac|Linux|Android|iOS)/);
+
+  return {
+    browser: browserMatch ? browserMatch[0] : "unknown",
+    os: osMatch ? osMatch[0] : "unknown",
+  };
+};
 
 const inferHeatmapTypeFromPath = (requestPath = "") => {
   const normalizedPath = requestPath.split("?")[0];
@@ -38,7 +67,7 @@ const normalizeHeatmapBody = (body) => {
 try {
   await fs.mkdir(HEATMAP_DATA_DIR, { recursive: true });
 } catch (error) {
-  console.error("Error creating heatmap data directory:", error);
+  logger.error("Error creating heatmap data directory", { error: error.message });
 }
 
 // Helper function to read heatmap data from file
@@ -51,7 +80,7 @@ const readHeatmapData = async () => {
     if (error.code === "ENOENT") {
       return [];
     }
-    console.error("Error reading heatmap data:", error);
+    logger.error("Error reading heatmap data", { error: error.message });
     return [];
   }
 };
@@ -61,81 +90,114 @@ const writeHeatmapData = async (data) => {
   try {
     await fs.writeFile(HEATMAP_FILE_PATH, JSON.stringify(data, null, 2));
   } catch (error) {
-    console.error("Error writing heatmap data:", error);
+    logger.error("Error writing heatmap data", { error: error.message });
   }
 };
 
 // Store heatmap data (clicks, scrolls, mouse movements, etc.)
 export const storeHeatmapData = async (req, res) => {
   try {
+    // Data is already validated by the validate middleware
     const parsedBody = normalizeHeatmapBody(req.body);
     const inferredType = inferHeatmapTypeFromPath(req.path);
     const { type: bodyType, ...payload } = parsedBody;
     const type = bodyType || inferredType;
 
-    // Validate required fields based on type
     if (!type) {
       return res.status(400).json({ error: "Type is required" });
     }
 
-    // Add timestamp if not provided
+    // Anonymize sensitive data
     const heatmapEntry = {
       id: Date.now().toString(),
       type,
       ...payload,
       timestamp: payload.timestamp || Date.now(),
-      userAgent: req.headers["user-agent"],
-      ip: req.ip,
+      userAgent: sanitizeUserAgent(req.headers["user-agent"]),
+      ipHash: anonymizeIP(req.ip), // Store hash instead of real IP
     };
 
     // Read existing data
     const existingData = await readHeatmapData();
 
+    // Limit file size: keep only last 10000 entries
+    const MAX_ENTRIES = 10000;
+    const trimmedData = existingData.slice(-MAX_ENTRIES + 1);
+
     // Add new entry
-    const updatedData = [...existingData, heatmapEntry];
+    const updatedData = [...trimmedData, heatmapEntry];
 
     // Write updated data back to file
     await writeHeatmapData(updatedData);
 
     res.status(200).json({ success: true, id: heatmapEntry.id });
   } catch (error) {
-    console.error("Error storing heatmap data:", error);
-    res.status(500).json({ error: "Internal server error" });
+    logger.error("Error storing heatmap data", { error: error.message, stack: error.stack });
+    res.status(500).json({ error: "Failed to store heatmap data" });
   }
 };
 
 // Get heatmap data (for analytics dashboard or processing)
+// Protected with admin auth middleware
 export const getHeatmapData = async (req, res) => {
   try {
+    const { limit = 100, offset = 0 } = req.query;
+    const limitNum = Math.min(parseInt(limit) || 100, 1000); // Max 1000
+    const offsetNum = parseInt(offset) || 0;
+
     const heatmapData = await readHeatmapData();
-    res.status(200).json({ data: heatmapData });
+
+    // Paginate results
+    const paginatedData = heatmapData.slice(offsetNum, offsetNum + limitNum);
+
+    res.status(200).json({
+      data: paginatedData,
+      total: heatmapData.length,
+      limit: limitNum,
+      offset: offsetNum,
+    });
   } catch (error) {
-    console.error("Error retrieving heatmap data:", error);
-    res.status(500).json({ error: "Internal server error" });
+    logger.error("Error retrieving heatmap data", { error: error.message, stack: error.stack });
+    res.status(500).json({ error: "Failed to retrieve heatmap data" });
   }
 };
 
 // Get heatmap data by type
+// Protected with admin auth middleware
 export const getHeatmapDataByType = async (req, res) => {
   try {
     const { type } = req.params;
+    const { limit = 100, offset = 0 } = req.query;
+    const limitNum = Math.min(parseInt(limit) || 100, 1000);
+    const offsetNum = parseInt(offset) || 0;
+
     const heatmapData = await readHeatmapData();
     const filteredData = heatmapData.filter((entry) => entry.type === type);
 
-    res.status(200).json({ data: filteredData });
+    // Paginate results
+    const paginatedData = filteredData.slice(offsetNum, offsetNum + limitNum);
+
+    res.status(200).json({
+      data: paginatedData,
+      total: filteredData.length,
+      limit: limitNum,
+      offset: offsetNum,
+    });
   } catch (error) {
-    console.error("Error retrieving heatmap data by type:", error);
-    res.status(500).json({ error: "Internal server error" });
+    logger.error("Error retrieving heatmap data by type", { error: error.message, stack: error.stack });
+    res.status(500).json({ error: "Failed to retrieve heatmap data" });
   }
 };
 
 // Clear heatmap data (admin function)
+// Protected with admin auth middleware
 export const clearHeatmapData = async (req, res) => {
   try {
     await writeHeatmapData([]);
+    logger.info("Heatmap data cleared by admin");
     res.status(200).json({ success: true, message: "Heatmap data cleared" });
   } catch (error) {
-    console.error("Error clearing heatmap data:", error);
-    res.status(500).json({ error: "Internal server error" });
+    logger.error("Error clearing heatmap data", { error: error.message, stack: error.stack });
+    res.status(500).json({ error: "Failed to clear heatmap data" });
   }
 };
