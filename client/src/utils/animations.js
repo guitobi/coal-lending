@@ -110,8 +110,6 @@ export function splitTextAnimation(element, options = {}) {
   const {
     duration = 0.8,
     stagger = 0.05,
-    y = 20,
-    opacity = 0,
     ease = 'power3.out',
   } = options;
 

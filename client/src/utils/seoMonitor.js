@@ -176,12 +176,11 @@ export const monitorStructuredData = () => {
   // Validate structured data
   const structuredDataValid = Array.from(jsonLdScripts).every((script) => {
     try {
-      try {
-        JSON.parse(script.textContent);
-        return true;
-      } catch {
-        return false;
-      }
+      JSON.parse(script.textContent);
+      return true;
+    } catch {
+      return false;
+    }
   });
 
   sendMetricToAnalytics("structured_data", {
