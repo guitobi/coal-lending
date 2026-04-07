@@ -14,57 +14,62 @@ function CTA() {
   const glowRef = useRef(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (prefersReducedMotion) return;
 
     const isMobile = window.innerWidth < 768;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       // Title: slide from left
       if (titleRef.current) {
-        const originalTransition = titleRef.current.style.transition;
-        titleRef.current.style.transition = 'none';
+        titleRef.current.style.transition = "none";
 
-        tl.fromTo(titleRef.current,
+        tl.fromTo(
+          titleRef.current,
           { opacity: 0, x: isMobile ? -30 : -60 },
           {
             opacity: 1,
             x: 0,
             duration: 0.8,
             onComplete: () => {
-              titleRef.current.style.transition = 'all 0.5s';
-            }
+              titleRef.current.style.transition = "all 0.5s";
+            },
           },
-          0
+          0,
         );
       }
 
       // Subtitle: slide from left (delayed)
       if (subtitleRef.current) {
-        tl.fromTo(subtitleRef.current,
+        tl.fromTo(
+          subtitleRef.current,
           { opacity: 0, x: isMobile ? -20 : -40 },
           { opacity: 1, x: 0, duration: 0.7 },
-          0.1
+          0.1,
         );
       }
 
       // Buttons: slide from bottom
       if (buttonsRef.current) {
-        tl.fromTo(buttonsRef.current.children,
+        tl.fromTo(
+          buttonsRef.current.children,
           { opacity: 0, y: isMobile ? 20 : 30 },
           { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 },
-          0.3
+          0.3,
         );
       }
 
       // Desktop image: slide from right + scale
       if (imageRef.current) {
-        tl.fromTo(imageRef.current,
+        tl.fromTo(
+          imageRef.current,
           { opacity: 0, x: isMobile ? 30 : 60, scale: 1.05 },
           { opacity: 1, x: 0, scale: 1, duration: 0.9 },
-          0.15
+          0.15,
         );
 
         // Subtle floating (only on desktop)
@@ -72,7 +77,7 @@ function CTA() {
           gsap.to(imageRef.current, {
             y: 10,
             duration: 3,
-            ease: 'sine.inOut',
+            ease: "sine.inOut",
             repeat: -1,
             yoyo: true,
             delay: 1.2,
@@ -81,31 +86,32 @@ function CTA() {
 
         // Hover
         const img = imageRef.current;
-        img.parentElement.addEventListener('mouseenter', () => {
+        img.parentElement.addEventListener("mouseenter", () => {
           gsap.to(img, {
             scale: 1.03,
             duration: 0.4,
-            ease: 'power2.out',
-            overwrite: 'auto',
+            ease: "power2.out",
+            overwrite: "auto",
           });
         });
 
-        img.parentElement.addEventListener('mouseleave', () => {
+        img.parentElement.addEventListener("mouseleave", () => {
           gsap.to(img, {
             scale: 1,
             duration: 0.4,
-            ease: 'power2.out',
-            overwrite: 'auto',
+            ease: "power2.out",
+            overwrite: "auto",
           });
         });
       }
 
       // Mobile image: slide from right
       if (imageMobileRef.current) {
-        tl.fromTo(imageMobileRef.current,
+        tl.fromTo(
+          imageMobileRef.current,
           { opacity: 0, x: isMobile ? 20 : 40, scale: 1.05 },
           { opacity: 1, x: 0, scale: 1, duration: 0.7 },
-          0.15
+          0.15,
         );
       }
 
@@ -116,7 +122,7 @@ function CTA() {
           duration: 4,
           repeat: -1,
           yoyo: true,
-          ease: 'sine.inOut',
+          ease: "sine.inOut",
           delay: 0.8,
         });
       }
@@ -146,7 +152,10 @@ function CTA() {
             </h1>
 
             {/* Mobile layout photo */}
-            <div ref={imageMobileRef} className="lg:hidden flex justify-center mb-4 sm:mb-6 relative group opacity-0">
+            <div
+              ref={imageMobileRef}
+              className="lg:hidden flex justify-center mb-4 sm:mb-6 relative group opacity-0"
+            >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/30 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
               <img
                 fetchPriority="high"
@@ -158,11 +167,17 @@ function CTA() {
               />
             </div>
 
-            <h3 ref={subtitleRef} className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center hover:text-orange-400 hover:scale-[1.01] transition-all opacity-0">
+            <h3
+              ref={subtitleRef}
+              className="text-xl sm:text-2xl md:text-3xl lg:text-2xl font-semibold text-stone-300 cursor-pointer duration-300 mb-6 sm:mb-8 lg:mb-10 text-center hover:text-orange-400 hover:scale-[1.01] transition-all opacity-0"
+            >
               {t("cta.qualityClaim")}
             </h3>
 
-            <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 [&>*]:opacity-0">
+            <div
+              ref={buttonsRef}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 *:opacity-0"
+            >
               <Button
                 type="primary"
                 onClick={() => {
@@ -178,7 +193,10 @@ function CTA() {
           </div>
 
           <div className="hidden lg:flex flex-1 justify-center items-center mt-12 lg:mt-8 relative z-0 group">
-            <div ref={glowRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-orange-500/30 rounded-full blur-[120px] -z-10 pointer-events-none transition-all duration-700 group-hover:scale-125 group-hover:bg-orange-500/50"></div>
+            <div
+              ref={glowRef}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-orange-500/30 rounded-full blur-[120px] -z-10 pointer-events-none transition-all duration-700 group-hover:scale-125 group-hover:bg-orange-500/50"
+            ></div>
 
             <img
               ref={imageRef}

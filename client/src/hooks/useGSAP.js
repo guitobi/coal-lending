@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register ScrollTrigger plugin
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -15,9 +15,9 @@ export function getDevicePerformance() {
   const memory = navigator.deviceMemory || 4;
   const isMobile = window.innerWidth < 768;
 
-  if (!isMobile && cores >= 4 && memory >= 8) return 'high';
-  if (isMobile && cores >= 4 && memory >= 4) return 'medium';
-  return 'low';
+  if (!isMobile && cores >= 4 && memory >= 8) return "high";
+  if (isMobile && cores >= 4 && memory >= 4) return "medium";
+  return "low";
 }
 
 /**
@@ -35,14 +35,15 @@ export function configureScrollTrigger() {
 /**
  * Custom hook for GSAP animations with automatic cleanup
  * @param {Function} animationFn - Function that creates GSAP animations
- * @param {Array} dependencies - Dependencies array for useEffect
  */
-export function useGSAPAnimation(animationFn, dependencies = []) {
+export function useGSAPAnimation(animationFn) {
   const contextRef = useRef();
 
   useEffect(() => {
     // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     if (prefersReducedMotion) {
       return;
@@ -57,7 +58,7 @@ export function useGSAPAnimation(animationFn, dependencies = []) {
       // Cleanup all animations in this context
       contextRef.current?.revert();
     };
-  }, dependencies);
+  }, [animationFn]);
 
   return contextRef;
 }
@@ -67,7 +68,9 @@ export function useGSAPAnimation(animationFn, dependencies = []) {
  */
 export function useScrollAnimation(elementRef, options = {}) {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     if (prefersReducedMotion || !elementRef.current) {
       return;
@@ -75,8 +78,8 @@ export function useScrollAnimation(elementRef, options = {}) {
 
     const element = elementRef.current;
     const {
-      start = 'top 80%',
-      end = 'bottom 20%',
+      start = "top 80%",
+      end = "bottom 20%",
       scrub = false,
       markers = false,
       ...animationProps
