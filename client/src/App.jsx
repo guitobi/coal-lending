@@ -23,6 +23,8 @@ const ContactUs = lazy(() => import("./pages/ContactUs"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Comparison = lazy(() => import("./pages/Comparison"));
 const RegionalCharcoal = lazy(() => import("./pages/RegionalCharcoal"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function withSuspense(component) {
@@ -78,6 +80,14 @@ const router = createBrowserRouter([
       {
         path: "faq",
         element: withSuspense(<FAQ />),
+      },
+      {
+        path: "blog",
+        element: withSuspense(<Blog />),
+      },
+      {
+        path: "blog/:slug",
+        element: withSuspense(<BlogArticle />),
       },
       {
         path: "comparison",

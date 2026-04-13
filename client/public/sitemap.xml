@@ -43,6 +43,31 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://vanshare.pl/contact" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
   </url>
   <url>
+    <loc>https://vanshare.pl/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vanshare.pl/blog" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://vanshare.pl/blog" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
+    <loc>https://vanshare.pl/blog/jak-wybrac-wegiel-drzewny</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-04-10</lastmod>
+  </url>
+  <url>
+    <loc>https://vanshare.pl/blog/wegiel-drzewny-vs-bryket</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://vanshare.pl/blog/najlepszy-wegiel-do-bbq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-04-05</lastmod>
+  </url>
+  <url>
     <loc>https://vanshare.pl/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
