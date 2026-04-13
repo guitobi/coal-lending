@@ -42,6 +42,11 @@ function NavBar() {
               </NavButtonLink>
             </li>
             <li>
+              <NavButtonLink to="/blog" type="primary">
+                {t("nav.blog")}
+              </NavButtonLink>
+            </li>
+            <li>
               <NavButtonLink to="/contact" type="primary">
                 {t("nav.contactUs")}
               </NavButtonLink>
