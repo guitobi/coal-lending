@@ -1,5 +1,10 @@
 # VAN SHARE - Coal Lending Platform
 
+[![CI](https://github.com/guitobi/coal-lending/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/ci.yml)
+[![Deploy Client](https://github.com/guitobi/coal-lending/workflows/Deploy%20client%20to%20Vercel/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/vercel-deploy.yml)
+[![Deploy Backend](https://github.com/guitobi/coal-lending/workflows/Deploy%20backend%20to%20Fly/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/fly-deploy.yml)
+[![Nightly Build](https://github.com/guitobi/coal-lending/workflows/Nightly%20Build/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/nightly-build.yml)
+
 A modern e-commerce platform for selling premium hardwood charcoal in Poland. Built with React and Express, featuring internationalization, SEO optimization, and comprehensive security measures.
 
 ## Project Overview
@@ -8,6 +13,17 @@ VAN SHARE is a full-stack web application that enables customers to order high-q
 
 **Live Application:** https://vanshare.pl  
 **Backend API:** https://coal-lending-backend.fly.dev
+
+## CI/CD Status
+
+| Workflow | Status | Description |
+|----------|--------|-------------|
+| CI Build & Test | ![CI](https://github.com/guitobi/coal-lending/workflows/CI%20-%20Build%20and%20Test/badge.svg) | Automated testing and building |
+| Client Deploy | ![Deploy](https://github.com/guitobi/coal-lending/workflows/Deploy%20client%20to%20Vercel/badge.svg) | Frontend deployment to Vercel |
+| Backend Deploy | ![Deploy](https://github.com/guitobi/coal-lending/workflows/Deploy%20backend%20to%20Fly/badge.svg) | Backend deployment to Fly.io |
+| Nightly Build | ![Nightly](https://github.com/guitobi/coal-lending/workflows/Nightly%20Build/badge.svg) | Daily health checks |
+
+📖 **[Full CI/CD Documentation](.github/CI_CD.md)**
 
 ## Technology Stack
 

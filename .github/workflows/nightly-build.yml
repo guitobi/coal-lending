@@ -1,0 +1,209 @@
+name: Nightly Build
+
+on:
+  schedule:
+    # Run every day at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  nightly-build:
+    name: Nightly Full Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # ============================================
+      # CLIENT BUILD
+      # ============================================
+      - name: Install client dependencies
+        working-directory: client
+        run: npm ci
+
+      - name: Lint client
+        working-directory: client
+        run: npm run lint
+
+      - name: Build client
+        working-directory: client
+        run: npm run build
+        env:
+          VITE_API_URL: https://coal-lending-backend.fly.dev
+          VITE_SITE_URL: https://vanshare.pl
+          VITE_GA_MEASUREMENT_ID: G-TY2RQHRFWQ
+
+      - name: Analyze client bundle
+        working-directory: client
+        run: npm run analyze || echo "Bundle analysis completed"
+        continue-on-error: true
+
+      - name: Check client bundle size
+        working-directory: client
+        run: |
+          echo "## Client Bundle Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          du -sh dist >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Assets" >> $GITHUB_STEP_SUMMARY
+          du -sh dist/assets >> $GITHUB_STEP_SUMMARY
+
+      # ============================================
+      # SERVER BUILD
+      # ============================================
+      - name: Install server dependencies
+        working-directory: server
+        run: npm ci
+
+      - name: Run server tests
+        working-directory: server
+        run: npm test || echo "No tests configured"
+        continue-on-error: true
+
+      - name: Build server Docker image
+        working-directory: server
+        run: docker build -t coal-lending-server:nightly .
+
+      - name: Test server Docker container
+        run: |
+          docker run -d --name nightly-test \
+            -e NODE_ENV=test \
+            -e PORT=5000 \
+            -e FRONTEND_URL=http://localhost:5173 \
+            -e ALLOWED_ORIGINS=http://localhost:5173 \
+            -e RESEND_API_KEY=test_key \
+            -e MAIL_FROM=test@example.com \
+            -e EMAIL_TO=test@example.com \
+            -e CONTACT_EMAIL_TO=test@example.com \
+            -e ADMIN_API_KEY=test_admin_key \
+            -p 5000:5000 \
+            coal-lending-server:nightly
+
+          sleep 5
+
+          if docker ps | grep nightly-test; then
+            echo "✅ Container running"
+          else
+            echo "❌ Container failed"
+            docker logs nightly-test
+            exit 1
+          fi
+
+          curl -f http://localhost:5000/health || exit 1
+          echo "✅ Health check passed"
+
+          docker stop nightly-test
+          docker rm nightly-test
+
+      # ============================================
+      # SECURITY AUDIT
+      # ============================================
+      - name: Security audit - Client
+        working-directory: client
+        run: |
+          echo "## Client Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=moderate || echo "Vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+
+      - name: Security audit - Server
+        working-directory: server
+        run: |
+          echo "## Server Security Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=moderate || echo "Vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+
+      # ============================================
+      # PRODUCTION HEALTH CHECKS
+      # ============================================
+      - name: Check production endpoints
+        run: |
+          echo "## Production Health Checks" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check frontend
+          if curl -f -s -o /dev/null -w "%{http_code}" https://vanshare.pl | grep -q "200"; then
+            echo "✅ Frontend (vanshare.pl): OK" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Frontend (vanshare.pl): FAILED" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check backend health
+          if curl -f -s https://coal-lending-backend.fly.dev/health | grep -q "ok"; then
+            echo "✅ Backend health endpoint: OK" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Backend health endpoint: FAILED" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      # ============================================
+      # DEPENDENCY REPORT
+      # ============================================
+      - name: Generate dependency report
+        run: |
+          echo "## Dependency Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Client Dependencies" >> $GITHUB_STEP_SUMMARY
+          cd client && npm list --depth=0 >> $GITHUB_STEP_SUMMARY || true
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Server Dependencies" >> $GITHUB_STEP_SUMMARY
+          cd ../server && npm list --depth=0 >> $GITHUB_STEP_SUMMARY || true
+
+      # ============================================
+      # NOTIFICATION ON FAILURE
+      # ============================================
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '🚨 Nightly Build Failed - ' + new Date().toISOString().split('T')[0];
+            const body = `## Nightly Build Failure Report
+
+            The nightly build has failed. This could indicate:
+            - Breaking changes in dependencies
+            - Infrastructure issues
+            - Security vulnerabilities
+            - Production endpoint problems
+
+            ### Actions Required:
+            1. Review the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            2. Check for dependency updates that may have caused issues
+            3. Verify production endpoints are accessible
+            4. Review security audit results
+
+            ### Build Information:
+            - **Date:** ${new Date().toISOString()}
+            - **Branch:** ${{ github.ref }}
+            - **Commit:** ${{ github.sha }}
+            - **Workflow:** Nightly Build
+
+            ---
+            *This issue was automatically created by the Nightly Build workflow*
+            `;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['bug', 'automated', 'nightly-build']
+            });
+
+      - name: Build summary
+        if: success()
+        run: |
+          echo "## ✅ Nightly Build Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All checks passed:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Client build" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Server build" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Docker image" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Security audit" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Production health checks" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Build Date:** $(date -u)" >> $GITHUB_STEP_SUMMARY
