@@ -1,12 +1,6 @@
 name: Deploy backend to Fly
 
 on:
-  push:
-    branches:
-      - prod
-    paths:
-      - server/**
-      - .github/workflows/fly-deploy.yml
   workflow_dispatch:
   workflow_run:
     workflows: ["CI - Build and Test"]
@@ -26,8 +20,7 @@ jobs:
     # Only deploy if CI passed or if manually triggered
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/prod')
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
 
     steps:
       - name: Checkout repository
@@ -52,7 +45,7 @@ jobs:
           npm list --depth=0
 
       - name: Setup Flyctl
-        uses: superfly/flyctl-actions/setup-flyctl@master
+        uses: superfly/flyctl-actions/setup-flyctl@v1
 
       - name: Deploy backend
         working-directory: server

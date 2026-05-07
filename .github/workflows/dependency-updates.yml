@@ -26,7 +26,7 @@ jobs:
           echo "## Client Outdated Packages" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          npm outdated || true >> $GITHUB_STEP_SUMMARY
+          npm outdated >> $GITHUB_STEP_SUMMARY 2>&1 || true
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Check server outdated packages
@@ -35,7 +35,7 @@ jobs:
           echo "## Server Outdated Packages" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          npm outdated || true >> $GITHUB_STEP_SUMMARY
+          npm outdated >> $GITHUB_STEP_SUMMARY 2>&1 || true
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Audit client dependencies
@@ -52,7 +52,23 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           npm audit --audit-level=moderate || true
 
-      - name: Create issue if vulnerabilities found
+      - name: Save audit results
+        id: audit_results
+        run: |
+          # Check if there are any outdated packages or vulnerabilities
+          cd client
+          CLIENT_OUTDATED=$(npm outdated 2>&1 || true)
+          cd ../server
+          SERVER_OUTDATED=$(npm outdated 2>&1 || true)
+
+          if [ -n "$CLIENT_OUTDATED" ] || [ -n "$SERVER_OUTDATED" ]; then
+            echo "has_findings=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_findings=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create issue if findings exist
+        if: steps.audit_results.outputs.has_findings == 'true'
         uses: actions/github-script@v7
         with:
           script: |

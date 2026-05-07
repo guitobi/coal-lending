@@ -83,40 +83,6 @@ jobs:
           path: client/dist
           retention-days: 7
 
-  client-type-check:
-    name: Client - Type Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: client/package-lock.json
-
-      - name: Install dependencies
-        working-directory: client
-        run: npm ci
-
-      - name: Check for TypeScript files
-        id: check-ts
-        working-directory: client
-        run: |
-          if find src -name "*.ts" -o -name "*.tsx" | grep -q .; then
-            echo "has_typescript=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_typescript=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Run type check
-        if: steps.check-ts.outputs.has_typescript == 'true'
-        working-directory: client
-        run: npx tsc --noEmit || echo "No TypeScript configuration found"
-
   # ============================================
   # SERVER CHECKS
   # ============================================
@@ -312,7 +278,6 @@ jobs:
     needs:
       - client-lint
       - client-build
-      - client-type-check
       - server-lint
       - server-test
       - server-build
@@ -339,7 +304,6 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ Client lint: ${{ needs.client-lint.result }}" >> $GITHUB_STEP_SUMMARY
           echo "✅ Client build: ${{ needs.client-build.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Client type check: ${{ needs.client-type-check.result }}" >> $GITHUB_STEP_SUMMARY
           echo "✅ Server lint: ${{ needs.server-lint.result }}" >> $GITHUB_STEP_SUMMARY
           echo "✅ Server test: ${{ needs.server-test.result }}" >> $GITHUB_STEP_SUMMARY
           echo "✅ Server build: ${{ needs.server-build.result }}" >> $GITHUB_STEP_SUMMARY

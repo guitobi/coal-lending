@@ -1,12 +1,6 @@
 name: Deploy client to Vercel
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - client/**
-      - .github/workflows/vercel-deploy.yml
   workflow_dispatch:
   workflow_run:
     workflows: ["CI - Build and Test"]
@@ -26,8 +20,7 @@ jobs:
     # Only deploy if CI passed or if manually triggered
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/main')
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
 
     steps:
       - name: Checkout repository
