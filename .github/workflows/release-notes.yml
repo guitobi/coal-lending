@@ -1,0 +1,180 @@
+name: Release Notes
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag version (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  create-release:
+    name: Create Release Notes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get tag name
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 ${{ steps.tag.outputs.tag }}^ 2>/dev/null || echo "")
+          echo "prev_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          if [ -z "${{ steps.prev_tag.outputs.prev_tag }}" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" ${{ steps.tag.outputs.tag }})
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" ${{ steps.prev_tag.outputs.prev_tag }}..${{ steps.tag.outputs.tag }})
+          fi
+
+          echo "commits<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Categorize changes
+        id: categorize
+        run: |
+          FEATURES=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "feat:" || echo "")
+          FIXES=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "fix:" || echo "")
+          DOCS=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "docs:" || echo "")
+          CHORES=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "chore:" || echo "")
+          REFACTOR=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "refactor:" || echo "")
+          STYLE=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "style:" || echo "")
+          PERF=$(echo "${{ steps.changelog.outputs.commits }}" | grep -i "perf:" || echo "")
+
+          echo "features<<EOF" >> $GITHUB_OUTPUT
+          echo "$FEATURES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "fixes<<EOF" >> $GITHUB_OUTPUT
+          echo "$FIXES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "docs<<EOF" >> $GITHUB_OUTPUT
+          echo "$DOCS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "chores<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHORES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "refactor<<EOF" >> $GITHUB_OUTPUT
+          echo "$REFACTOR" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "style<<EOF" >> $GITHUB_OUTPUT
+          echo "$STYLE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "perf<<EOF" >> $GITHUB_OUTPUT
+          echo "$PERF" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create release notes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = '${{ steps.tag.outputs.tag }}';
+            const prevTag = '${{ steps.prev_tag.outputs.prev_tag }}';
+            const features = `${{ steps.categorize.outputs.features }}`;
+            const fixes = `${{ steps.categorize.outputs.fixes }}`;
+            const docs = `${{ steps.categorize.outputs.docs }}`;
+            const chores = `${{ steps.categorize.outputs.chores }}`;
+            const refactor = `${{ steps.categorize.outputs.refactor }}`;
+            const style = `${{ steps.categorize.outputs.style }}`;
+            const perf = `${{ steps.categorize.outputs.perf }}`;
+
+            let body = `## Release ${tag}\n\n`;
+            body += `**Release Date:** ${new Date().toISOString().split('T')[0]}\n\n`;
+
+            if (prevTag) {
+              body += `**Previous Version:** ${prevTag}\n\n`;
+              body += `[View Full Changelog](https://github.com/${{ github.repository }}/compare/${prevTag}...${tag})\n\n`;
+            }
+
+            body += `---\n\n`;
+
+            if (features.trim()) {
+              body += `### ✨ New Features\n\n${features}\n\n`;
+            }
+
+            if (fixes.trim()) {
+              body += `### 🐛 Bug Fixes\n\n${fixes}\n\n`;
+            }
+
+            if (perf.trim()) {
+              body += `### ⚡ Performance Improvements\n\n${perf}\n\n`;
+            }
+
+            if (refactor.trim()) {
+              body += `### ♻️ Code Refactoring\n\n${refactor}\n\n`;
+            }
+
+            if (docs.trim()) {
+              body += `### 📝 Documentation\n\n${docs}\n\n`;
+            }
+
+            if (style.trim()) {
+              body += `### 💄 Styling\n\n${style}\n\n`;
+            }
+
+            if (chores.trim()) {
+              body += `### 🔧 Chores & Maintenance\n\n${chores}\n\n`;
+            }
+
+            body += `---\n\n`;
+            body += `### 🚀 Deployment Information\n\n`;
+            body += `- **Frontend:** https://vanshare.pl\n`;
+            body += `- **Backend:** https://coal-lending-backend.fly.dev\n\n`;
+            body += `### 📦 Technology Stack\n\n`;
+            body += `- React 19.2 with React Compiler\n`;
+            body += `- Vite 7.2\n`;
+            body += `- Express 5.2\n`;
+            body += `- Node.js 20\n\n`;
+            body += `### 🔒 Security\n\n`;
+            body += `Security checks are managed through the project's CI and repository security tooling. See the latest workflow runs and security alerts for current status.\n\n`;
+            body += `---\n\n`;
+            body += `*This release was automatically generated by GitHub Actions*`;
+
+            // Create the release
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: tag,
+              name: `Release ${tag}`,
+              body: body,
+              draft: false,
+              prerelease: tag.includes('beta') || tag.includes('alpha') || tag.includes('rc')
+            });
+
+            console.log(`Release ${tag} created successfully!`);
+
+      - name: Summary
+        run: |
+          echo "## 🎉 Release Created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** ${{ steps.tag.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "View the release: https://github.com/${{ github.repository }}/releases/tag/${{ steps.tag.outputs.tag }}" >> $GITHUB_STEP_SUMMARY

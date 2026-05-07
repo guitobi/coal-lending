@@ -347,57 +347,127 @@ function BlogArticle() {
       />
       <BreadcrumbSchema items={breadcrumbItems} />
 
-      <article className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-16 px-4">
+      <article className="min-h-screen py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <Link
-            to="/blog"
-            className="inline-flex items-center text-amber-500 hover:text-amber-400 mb-8 transition-colors"
-          >
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            {currentLang === 'pl' ? 'Wróć do bloga' : 'Back to blog'}
-          </Link>
+          {/* Breadcrumb Navigation */}
+          <nav className="mb-8">
+            <Link
+              to="/blog"
+              className="inline-flex items-center text-amber-500 hover:text-amber-400 transition-colors group"
+            >
+              <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {currentLang === 'pl' ? 'Wróć do bloga' : 'Back to blog'}
+            </Link>
+          </nav>
 
-          <header className="mb-12">
-            <time className="text-stone-400 mb-4 block">
-              {new Date(article.date).toLocaleDateString(currentLang === 'pl' ? 'pl-PL' : 'en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            <h1 className="text-4xl md:text-5xl font-bold text-amber-500 mb-6">{title}</h1>
+          {/* Article Header */}
+          <header className="mb-12 text-center">
+            <div className="flex items-center justify-center gap-4 text-sm text-stone-400 mb-6">
+              <time className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {new Date(article.date).toLocaleDateString(currentLang === 'pl' ? 'pl-PL' : 'en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+              <span className="text-stone-600">•</span>
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {currentLang === 'pl' ? '5 min czytania' : '5 min read'}
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-500 mb-6 leading-tight">
+              {title}
+            </h1>
+
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto"></div>
           </header>
 
-          <div
-            className="prose prose-invert prose-amber max-w-none
-              prose-headings:text-amber-400
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:text-stone-300 prose-p:leading-relaxed prose-p:mb-6
-              prose-ul:text-stone-300 prose-ul:mb-6
-              prose-li:mb-2
-              prose-strong:text-amber-400"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          {/* Article Content */}
+          <div className="bg-stone-800/30 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-stone-700/50 shadow-2xl">
+            <div
+              className="prose prose-invert prose-amber max-w-none
+                prose-headings:text-amber-400 prose-headings:font-bold
+                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-stone-700
+                prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                prose-p:text-stone-300 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
+                prose-ul:text-stone-300 prose-ul:mb-6 prose-ul:space-y-2
+                prose-li:mb-2 prose-li:pl-2
+                prose-strong:text-amber-400 prose-strong:font-semibold
+                prose-a:text-amber-500 prose-a:no-underline hover:prose-a:text-amber-400 hover:prose-a:underline
+                prose-code:text-amber-400 prose-code:bg-stone-900/50 prose-code:px-2 prose-code:py-1 prose-code:rounded"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </div>
 
-          <footer className="mt-16 pt-8 border-t border-stone-700">
-            <div className="bg-stone-800 rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-semibold text-amber-400 mb-4">
-                {currentLang === 'pl' ? 'Zamów węgiel drzewny' : 'Order charcoal'}
+          {/* Article Footer - CTA */}
+          <footer className="mt-16">
+            <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 text-center border border-amber-500/20 shadow-xl">
+              <div className="max-w-2xl mx-auto">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+
+                <h3 className="text-3xl font-bold text-amber-400 mb-4">
+                  {currentLang === 'pl' ? 'Zamów węgiel drzewny premium' : 'Order premium charcoal'}
+                </h3>
+
+                <p className="text-stone-300 text-lg mb-8 leading-relaxed">
+                  {currentLang === 'pl'
+                    ? 'Wysokiej jakości węgiel bukowy z certyfikatem FSC. Dostawa w całej Polsce w 1-3 dni. Płatność przy odbiorze.'
+                    : 'High quality FSC certified beech charcoal. Delivery throughout Poland in 1-3 days. Payment on delivery.'}
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    to="/order"
+                    className="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-amber-500/50"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    {currentLang === 'pl' ? 'Zamów teraz' : 'Order now'}
+                  </Link>
+
+                  <Link
+                    to="/calculator"
+                    className="inline-flex items-center justify-center bg-stone-700 hover:bg-stone-600 text-stone-200 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    {currentLang === 'pl' ? 'Kalkulator ceny' : 'Price calculator'}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Related Articles */}
+            <div className="mt-12 pt-8 border-t border-stone-700">
+              <h3 className="text-2xl font-bold text-amber-400 mb-6 text-center">
+                {currentLang === 'pl' ? 'Więcej artykułów' : 'More articles'}
               </h3>
-              <p className="text-stone-300 mb-6">
-                {currentLang === 'pl'
-                  ? 'Wysokiej jakości węgiel bukowy z dostawą w całej Polsce'
-                  : 'High quality beech charcoal with delivery throughout Poland'}
-              </p>
-              <Link
-                to="/order"
-                className="inline-block bg-amber-500 hover:bg-amber-600 text-stone-900 font-semibold px-8 py-3 rounded-lg transition-colors"
-              >
-                {currentLang === 'pl' ? 'Zamów teraz' : 'Order now'}
-              </Link>
+              <div className="text-center">
+                <Link
+                  to="/blog"
+                  className="inline-flex items-center text-amber-500 hover:text-amber-400 font-medium transition-colors group"
+                >
+                  {currentLang === 'pl' ? 'Zobacz wszystkie artykuły' : 'View all articles'}
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </footer>
         </div>

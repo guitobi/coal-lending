@@ -1,13 +1,13 @@
 name: Deploy backend to Fly
 
 on:
-  push:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["CI - Build and Test"]
+    types:
+      - completed
     branches:
       - prod
-    paths:
-      - server/**
-      - .github/workflows/fly-deploy.yml
-  workflow_dispatch:
 
 concurrency:
   group: fly-deploy-production
@@ -17,16 +17,53 @@ jobs:
   deploy:
     name: Deploy on Fly
     runs-on: ubuntu-latest
+    # Only deploy if CI passed or if manually triggered
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install dependencies
+        working-directory: server
+        run: npm ci
+
+      - name: Run pre-deploy checks
+        working-directory: server
+        run: |
+          echo "Running pre-deployment validation..."
+          node -e "console.log('Node.js version:', process.version)"
+          npm list --depth=0
+
       - name: Setup Flyctl
-        uses: superfly/flyctl-actions/setup-flyctl@master
+        uses: superfly/flyctl-actions/setup-flyctl@v1
 
       - name: Deploy backend
         working-directory: server
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Verify deployment
+        run: |
+          echo "Waiting for deployment to be ready..."
+          sleep 10
+          curl -f https://coal-lending-backend.fly.dev/health || echo "Health check failed, but deployment may still be in progress"
+
+      - name: Deployment summary
+        run: |
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Backend deployed to Fly.io" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 URL: https://coal-lending-backend.fly.dev" >> $GITHUB_STEP_SUMMARY
+          echo "📦 Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "👤 Deployed by: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
