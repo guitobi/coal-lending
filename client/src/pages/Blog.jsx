@@ -50,7 +50,7 @@ function Blog() {
     <>
       <Seo {...seoData} />
 
-      <div className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-16 px-4">
+      <div className="min-h-screen py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-amber-500 mb-4 text-center">
             {currentLang === 'pl' ? 'Blog o Węglu Drzewnym' : 'Charcoal Blog'}

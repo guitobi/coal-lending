@@ -347,7 +347,7 @@ function BlogArticle() {
       />
       <BreadcrumbSchema items={breadcrumbItems} />
 
-      <article className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-16 px-4">
+      <article className="min-h-screen py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Link
             to="/blog"
