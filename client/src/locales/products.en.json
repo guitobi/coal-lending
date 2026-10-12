@@ -1,0 +1,22 @@
+{
+  "eyebrow": "VAN SHARE PRODUCTS",
+  "title": "Two products. One standard.",
+  "description": "Choose hardwood charcoal for grilling or pine wood pellets for heating. Browse the product details, packaging and specifications.",
+  "perTon": "tonne",
+  "startingAt": "Base price",
+  "charcoal": {
+    "title": "Hardwood charcoal",
+    "tag": "FOR GRILLING",
+    "description": "WOODEN WEST hardwood charcoal for barbecues and food service. Available in 2.5, 5 and 10 kg bags.",
+    "view": "Explore charcoal",
+    "imageAlt": "Hardwood charcoal supplied by VAN SHARE"
+  },
+  "pellet": {
+    "title": "Pine wood pellets",
+    "tag": "FOR HEATING",
+    "description": "Pine sawdust pellets in 15 kg bags with manufacturer documentation and clearly listed technical specifications.",
+    "view": "Explore pellets",
+    "bagPrice": "€6.30 per 15 kg bag",
+    "imageAlt": "Pine wood pellet granules held in hands"
+  }
+}

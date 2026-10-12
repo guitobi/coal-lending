@@ -78,7 +78,7 @@ function OrderForm({ productType = "charcoal" }) {
     <form
       onSubmit={handleSubmit((data) => submitOrder(data))}
       className={isPellet
-        ? "rounded-md border border-[#647464]/45 bg-[#172017] p-6 shadow-xl sm:p-10"
+        ? "min-w-0 rounded-3xl border border-stone-700 bg-stone-900/85 p-5 shadow-xl sm:p-8 lg:p-10"
         : "bg-linear-to-br from-stone-900/90 to-stone-900/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-stone-800/50 p-6 sm:p-10 order-1 md:order-2"}
     >
       <div className="space-y-6">
@@ -124,7 +124,7 @@ function OrderForm({ productType = "charcoal" }) {
 
         {/* Submit Button */}
         <div className="pt-4 flex justify-center">
-          <Button type="primary" disabled={isLoading} className={isPellet ? "rounded-md! border-[#cfb587]! bg-[#cfb587]! text-[#172017]! shadow-none! hover:bg-[#e6d2aa]!" : ""}>
+          <Button type="primary" disabled={isLoading}>
             {isLoading ? (
               <div className="flex items-center gap-2">
                 <Spinner />

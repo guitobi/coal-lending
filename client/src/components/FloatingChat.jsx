@@ -8,6 +8,20 @@ function FloatingChat() {
   const [newMessage, setNewMessage] = useState("");
   const [isOnline, setIsOnline] = useState(true);
   const { t } = useTranslation();
+  const [hasConsentChoice, setHasConsentChoice] = useState(() =>
+    Boolean(window.localStorage.getItem("gdpr_consent")),
+  );
+
+  useEffect(() => {
+    const updateChoice = () =>
+      setHasConsentChoice(Boolean(window.localStorage.getItem("gdpr_consent")));
+    window.addEventListener("gdpr_consent_given", updateChoice);
+    window.addEventListener("storage", updateChoice);
+    return () => {
+      window.removeEventListener("gdpr_consent_given", updateChoice);
+      window.removeEventListener("storage", updateChoice);
+    };
+  }, []);
 
   // Simulate online status
   useEffect(() => {
@@ -53,6 +67,8 @@ function FloatingChat() {
       }, 1000);
     }
   };
+
+  if (!hasConsentChoice) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -162,7 +178,7 @@ function FloatingChat() {
                 FAQ
               </a>
               <a
-                href="tel:+48577432949"
+                href="tel:+48731431849"
                 className="flex items-center text-stone-300 hover:text-orange-500 transition-colors"
                 title={t("chat.callUs")}
                 aria-label={t("chat.callUs")}
@@ -183,6 +199,8 @@ function FloatingChat() {
       ) : (
         <button
           onClick={toggleChat}
+          data-chat-toggle
+          aria-label={t("chat.onlineHelp")}
           className={`flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 ${
             isOnline
               ? "bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600"

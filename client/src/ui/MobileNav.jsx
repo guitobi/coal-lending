@@ -7,11 +7,14 @@ function MobileNav({ setIsMenuOpen, isMenuOpen }) {
 
   return (
     <div
-      className={`w-full bg-neutral-900 overflow-hidden transition-all duration-500 ease-in-out 
+      id="mobile-site-navigation"
+      inert={!isMenuOpen}
+      aria-hidden={!isMenuOpen}
+      className={`w-full bg-neutral-900 overflow-hidden transition-all duration-500 ease-in-out xl:hidden
         ${isMenuOpen ? "max-h-screen pb-4 opacity-100" : "max-h-0 pb-0 opacity-0"}`}
     >
       <ul
-        className={`md:hidden flex flex-col divide-y divide-neutral-700 mt-2 mb-0 text-lg font-medium bg-neutral-800 rounded-lg`}
+        className="mt-2 mb-0 flex flex-col divide-y divide-neutral-700 rounded-lg bg-neutral-800 text-lg font-medium"
       >
         <li>
           <NavButtonLink

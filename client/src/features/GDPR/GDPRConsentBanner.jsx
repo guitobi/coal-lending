@@ -61,10 +61,10 @@ export default function GDPRConsentBanner() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-stone-900 border-t-2 border-orange-500 p-4 shadow-2xl">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex-1">
+    <div id="gdpr-consent-banner" className="fixed inset-x-0 bottom-0 z-50 max-h-[85dvh] overflow-y-auto border-t-2 border-orange-500 bg-stone-900 p-4 shadow-2xl">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col items-stretch justify-between gap-4 md:flex-row md:items-center">
+          <div className="min-w-0 flex-1">
             <h3 className="text-lg font-bold text-orange-500 mb-2">
               {t("gdpr.banner.title", "We value your privacy")}
             </h3>
@@ -76,24 +76,24 @@ export default function GDPRConsentBanner() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 justify-end">
+          <div className="grid w-full grid-cols-2 gap-2 md:w-auto md:flex md:justify-end">
             <button
               onClick={handleAcceptNecessaryOnly}
-              className="px-4 py-2 bg-stone-700 hover:bg-stone-600 text-white rounded-lg text-sm font-medium transition-colors border border-stone-600"
+              className="min-h-11 rounded-lg border border-stone-600 bg-stone-700 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-stone-600 md:px-4"
             >
               {t("gdpr.banner.acceptNecessary", "Accept necessary only")}
             </button>
 
             <button
               onClick={handleCustomize}
-              className="px-4 py-2 bg-stone-800 hover:bg-stone-700 text-white rounded-lg text-sm font-medium transition-colors border border-stone-600"
+              className="min-h-11 rounded-lg border border-stone-600 bg-stone-800 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-stone-700 md:px-4"
             >
               {t("gdpr.banner.customize", "Customize")}
             </button>
 
             <button
               onClick={handleAcceptAll}
-              className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-sm font-medium transition-colors border border-orange-600"
+              className="col-span-2 min-h-11 rounded-lg border border-orange-600 bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-600 md:col-span-1"
             >
               {t("gdpr.banner.acceptAll", "Accept all")}
             </button>

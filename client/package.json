@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "test:smoke": "node scripts/smoke-consent.mjs",
     "test:pellet": "node scripts/smoke-pellet.mjs",
+    "test:layout": "node scripts/smoke-layout.mjs",
     "preview": "vite preview",
     "analyze": "vite build --mode analyze",
     "perf-budget": "node scripts/check-bundle-size.mjs",

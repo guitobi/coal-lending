@@ -18,8 +18,8 @@ function NavBar() {
           <Logo />
         </NavButtonLink>
 
-        <div className="text-stone-50 bg-stone-900 flex-1 flex items-center justify-end  px-4 whitespace-nowrap">
-          <ul className="hidden sm:hidden md:flex gap-2 lg:gap-4 text-base md:text-lg lg:text-xl font-medium items-center">
+        <div className="flex min-w-0 flex-1 items-center justify-end bg-stone-900 px-4 text-stone-50">
+          <ul className="hidden items-center gap-1 whitespace-nowrap text-base font-medium xl:flex 2xl:gap-3 2xl:text-lg">
             <li>
               <NavButtonLink to="/" type="primary">
                 {t("nav.home")}

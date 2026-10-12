@@ -5,13 +5,15 @@ import en from "../locales/en.json";
 import pl from "../locales/pl.json";
 import pelletsPl from "../locales/pellets.pl.json";
 import pelletsEn from "../locales/pellets.en.json";
+import productsPl from "../locales/products.pl.json";
+import productsEn from "../locales/products.en.json";
 
 const resources = {
   en: {
-    translation: { ...en, pellets: pelletsEn },
+    translation: { ...en, pellets: pelletsEn, products: productsEn },
   },
   pl: {
-    translation: { ...pl, pellets: pelletsPl },
+    translation: { ...pl, pellets: pelletsPl, products: productsPl },
   },
 };
 

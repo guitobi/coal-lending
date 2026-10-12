@@ -79,6 +79,10 @@ jobs:
         working-directory: client
         run: npm run test:pellet
 
+      - name: Verify responsive layout and unique product photos
+        working-directory: client
+        run: npm run test:layout
+
       - name: Check bundle size
         working-directory: client
         run: npm run perf-budget

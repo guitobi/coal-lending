@@ -20,10 +20,11 @@ try {
   await page.setBypassServiceWorker(true);
   await page.setRequestInterception(true);
   page.on("request", (request) => request.url().startsWith(site) ? request.continue() : request.abort());
-  const selector = ".fixed.bottom-0.left-0.right-0 button";
+  const selector = "#gdpr-consent-banner button";
 
   await page.goto(site, { waitUntil: "networkidle0" });
   await page.waitForSelector(selector);
+  assert.equal(await page.$("[data-chat-toggle]"), null, "Chat must not overlap unacknowledged consent banner");
   assert.equal(await page.evaluate(() => Boolean(
     document.querySelector('script[src*="googletagmanager.com/gtag/js"]')
   )), false, "Google Analytics must not load before consent");
@@ -31,6 +32,7 @@ try {
   await page.evaluate((query) => document.querySelector(query).click(), selector);
   const necessary = await page.evaluate(() => JSON.parse(localStorage.getItem("gdpr_consent")));
   assert.equal(necessary.analytics, false, "necessary-only consent should disable analytics");
+  await page.waitForSelector("[data-chat-toggle]", { visible: true });
   assert.equal(await page.evaluate(() => Boolean(
     document.querySelector('script[src*="googletagmanager.com/gtag/js"]')
   )), false, "Google Analytics must not load after declining analytics");

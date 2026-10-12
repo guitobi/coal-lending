@@ -1,0 +1,22 @@
+{
+  "eyebrow": "OFERTA VAN SHARE",
+  "title": "Dwa produkty. Jeden standard.",
+  "description": "Poznaj węgiel drzewny do grillowania i pellet sosnowy do ogrzewania. Wybierz produkt, aby sprawdzić szczegóły i dostępne opakowania.",
+  "perTon": "tona",
+  "startingAt": "Cena bazowa",
+  "charcoal": {
+    "title": "Węgiel drzewny",
+    "tag": "DO GRILLOWANIA",
+    "description": "Węgiel drzewny WOODEN WEST do grilla i zastosowań gastronomicznych. Dostępne opakowania 2,5, 5 i 10 kg.",
+    "view": "Sprawdź węgiel",
+    "imageAlt": "Węgiel drzewny z oferty VAN SHARE"
+  },
+  "pellet": {
+    "title": "Pellet sosnowy",
+    "tag": "DO OGRZEWANIA",
+    "description": "Pellet sosnowy z trocin drzewnych. Worki 15 kg, dokumentacja producenta i jasne parametry techniczne.",
+    "view": "Zobacz pellet",
+    "bagPrice": "6,30 € za worek 15 kg",
+    "imageAlt": "Granulki pelletu sosnowego trzymane w dłoniach"
+  }
+}
