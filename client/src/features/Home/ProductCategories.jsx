@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 
 const products = [
-  { id: "charcoal", href: "/order", image: "/coal.webp", price: "950 €" },
+  { id: "charcoal", href: "/order", image: "/coal_in_bag.webp", price: "950 €" },
   { id: "pellet", href: "/pellet", image: "/pellet/pellet-granules.webp", price: "420 €" },
 ];
 
@@ -20,9 +20,9 @@ export default function ProductCategories() {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         {products.map((product) => (
           <article key={product.id} className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-stone-700/80 bg-stone-900/75 shadow-xl shadow-black/20 transition-colors duration-300 hover:border-orange-500/65">
-            <Link to={product.href} aria-label={t(`products.${product.id}.view`)} className="relative block aspect-[16/10] overflow-hidden bg-stone-800 focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-orange-400 sm:aspect-[16/9]">
-              <img src={product.image} alt={t(`products.${product.id}.imageAlt`)} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]" />
-              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-950/65 via-transparent to-transparent" />
+            <Link to={product.href} aria-label={t(`products.${product.id}.view`)} className={`relative block aspect-[16/10] overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-orange-400 sm:aspect-[16/9] ${product.id === "charcoal" ? "bg-[#e8e4dd]" : "bg-stone-800"}`}>
+              <img src={product.image} alt={t(`products.${product.id}.imageAlt`)} loading="lazy" decoding="async" className={`h-full w-full transition-transform duration-500 motion-safe:group-hover:scale-[1.03] ${product.id === "charcoal" ? "object-contain mix-blend-multiply" : "object-cover"}`} />
+              <div aria-hidden="true" className={`pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent to-transparent ${product.id === "charcoal" ? "from-stone-950/35" : "from-stone-950/65"}`} />
               <span className="absolute bottom-4 left-4 rounded-full border border-white/25 bg-stone-950/75 px-3 py-1.5 text-xs font-medium text-stone-100 backdrop-blur-sm sm:bottom-5 sm:left-5">{t(`products.${product.id}.tag`)}</span>
             </Link>
             <div className="flex flex-1 flex-col gap-5 p-5 sm:p-7">
