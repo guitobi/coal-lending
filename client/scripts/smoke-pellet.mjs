@@ -19,9 +19,20 @@ try {
   await page.setBypassServiceWorker(true);
   await page.setViewport({width:1280,height:900,deviceScaleFactor:1});
   await page.setRequestInterception(true);
+  let pelletCapability = true;
   let resolveOrder;
   const orderSent = new Promise(resolve => { resolveOrder = resolve; });
   page.on("request",r => {
+    if (r.url().includes("/api/capabilities")) {
+      return r.respond({
+        status: 200,
+        headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          products: pelletCapability ? ["charcoal", "pellet"] : ["charcoal"],
+          pelletOrderVersion: pelletCapability ? 1 : 0,
+        }),
+      });
+    }
     if (r.url().includes("/api/order/new")) {
       const headers = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Content-Type": "application/json" };
       if (r.method() === "POST") {
@@ -67,6 +78,12 @@ try {
   assert.equal(orderPayload.productType, "pellet");
   assert.equal(orderPayload.quantityBags, 2);
   assert.equal(orderPayload.weightInKg, 30);
+  pelletCapability = false;
+  await page.reload({ waitUntil: "networkidle0" });
+  await page.waitForSelector('[role="status"]');
+  assert.equal(await page.$("#quantityBags"), null, "Legacy backend must not accept pellet inquiries");
+  assert.match(await page.$eval('[role="status"]', el => el.textContent), /chwilowo niedostępne/);
+  pelletCapability = true;
   await page.setViewport({width:390,height:844,deviceScaleFactor:1,isMobile:true});
   await page.reload({waitUntil:"networkidle0"});
   await page.waitForSelector("#quantityBags");
@@ -76,7 +93,7 @@ try {
     const mobile=await page.screenshot({type:"jpeg",quality:65,clip:{x:0,y:0,width:390,height:844}});
     console.log("MOBILE:"+Buffer.from(mobile).toString("base64"));
   }
-  console.error("Pellet smoke passed: title, bag quantity, pallet price, PDF, mocked form submission and mobile layout.");
+  console.error("Pellet smoke passed: title, pricing, PDF, order submission, old-backend protection and mobile layout.");
 } finally {
   if(browser) await browser.close();
   await new Promise(resolve=>server.close(resolve));

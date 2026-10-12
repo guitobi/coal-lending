@@ -1,9 +1,11 @@
 import { ArrowDownRight, ArrowUpRight, Download, FileText, Phone } from "lucide-react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import Seo from "../seo/Seo";
 import OrderForm from "../features/Order/OrderForm";
 import { createOrganizationSchema } from "../utils/structuredDataSchemas";
+import { buildApiUrl } from "../utils/api";
 
 const photos = [
   "/pellet/pellet-pallets.webp",
@@ -20,6 +22,32 @@ function Eyebrow({ children }) {
 
 export default function Pellets() {
   const { t } = useTranslation();
+  const [pelletOrdersReady, setPelletOrdersReady] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    fetch(buildApiUrl("/api/capabilities"), { signal: controller.signal, cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("Pellet order capability unavailable");
+        return response.json();
+      })
+      .then((capabilities) => (
+        capabilities.pelletOrderVersion >= 1 &&
+        Array.isArray(capabilities.products) &&
+        capabilities.products.includes("pellet")
+      ))
+      .catch(() => false)
+      .then((enabled) => { if (active) setPelletOrdersReady(enabled); })
+      .finally(() => clearTimeout(timeout));
+    return () => {
+      active = false;
+      controller.abort();
+      clearTimeout(timeout);
+    };
+  }, []);
+
   const specs = t("pellets.spec", { returnObjects: true });
   const productSchema = {
     "@context": "https://schema.org",
@@ -199,7 +227,22 @@ export default function Pellets() {
             <p className="mt-10 text-sm text-[#b7c2b5]">{t("pellets.contact")}</p>
             <a href="tel:+48731431849" className="mt-3 inline-flex items-center gap-3 text-xl font-semibold text-[#e8d4ab] transition hover:text-white"><Phone size={20} aria-hidden="true" /> +48 731 431 849</a>
           </div>
-          <OrderForm productType="pellet" />
+          {pelletOrdersReady ? (
+            <OrderForm productType="pellet" />
+          ) : (
+            <div role="status" className="rounded-md border border-[#647464]/45 bg-[#172017] p-7 sm:p-10">
+              <h3 className="text-2xl font-semibold text-[#e5d0a6]">
+                {t(pelletOrdersReady === null ? "pellets.checkingBackend" : "pellets.orderUnavailable")}
+              </h3>
+              <p className="mt-4 leading-relaxed text-[#b7c2b5]">{t("pellets.contactAlternative")}</p>
+              <a
+                href="mailto:vanshare1@gmail.com?subject=Pellet%20-%20zapytanie"
+                className="mt-6 inline-flex items-center gap-2 text-[#e8d4ab] underline underline-offset-4 hover:text-white"
+              >
+                vanshare1@gmail.com <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+          )}
         </div>
       </section>
       <div className="border-t border-white/10 px-5 py-6 text-sm text-[#aab6a7]">

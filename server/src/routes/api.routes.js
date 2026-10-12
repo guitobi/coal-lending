@@ -28,6 +28,12 @@ import { geocodingLimiter } from "../middleware/rateLimiter.js";
 
 const router = Router();
 
+// Client uses this versioned capability check to avoid sending pellet
+// inquiries to older backends that treat all orders as charcoal.
+router.get("/capabilities", (_req, res) => {
+  res.json({ products: ["charcoal", "pellet"], pelletOrderVersion: 1 });
+});
+
 router.get("/nominatim/search", geocodingLimiter, geocodeSearch);
 router.get("/nominatim/reverse", geocodingLimiter, geocodeReverse);
 
