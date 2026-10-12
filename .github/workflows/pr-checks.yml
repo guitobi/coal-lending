@@ -82,7 +82,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: client/package-lock.json
 
@@ -152,7 +152,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
 
@@ -211,7 +211,7 @@ jobs:
             const comment = '## 🚀 Server Build Summary\n\n' +
               '✅ Server build completed successfully\n\n' +
               '### Docker Image\n' +
-              '- Base image: node:20-alpine\n' +
+              '- Base image: node:22-alpine\n' +
               '- Health check: ✅ Passed\n' +
               '- Container test: ✅ Passed\n\n' +
               '### API Endpoints\n' +
@@ -242,7 +242,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Audit client dependencies
         if: needs.detect-changes.outputs.client == 'true'

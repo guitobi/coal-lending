@@ -11,6 +11,7 @@ const distDir = path.resolve(__dirname, "../dist");
 const routes = [
   { path: "/", priority: 1.0, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
+  { path: "/pellet", priority: 0.9, changefreq: "weekly" },
   { path: "/delivery", priority: 0.8, changefreq: "monthly" },
   { path: "/calculator", priority: 0.7, changefreq: "monthly" },
   { path: "/order", priority: 0.9, changefreq: "weekly" },
@@ -38,7 +39,7 @@ function generateSitemapXml(routes, baseUrl) {
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
     <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}${route.path}" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="${baseUrl}${route.path}?lang=pl" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="${baseUrl}${route.path}?lng=pl" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
   </url>
 `;
   });

@@ -1,9 +1,11 @@
+import { timingSafeEqual } from "node:crypto";
+
 // Admin authentication middleware
 // Protects admin endpoints with API key authentication
 
 export const adminAuth = (req, res, next) => {
   // Get the authorization header
-  const authHeader = req.headers.authorization;
+  const authHeader = req.get("X-Admin-Key") || req.headers.authorization;
 
   // Check if authorization header exists
   if (!authHeader) {
@@ -30,12 +32,13 @@ export const adminAuth = (req, res, next) => {
     });
   }
 
-  // Verify the token matches the admin API key
-  if (token !== adminApiKey) {
+  // Compare equal-length secrets without a variable-time string comparison.
+  const provided = Buffer.from(token);
+  const expected = Buffer.from(adminApiKey);
+  if (provided.length !== expected.length || !timingSafeEqual(provided, expected)) {
     // Log failed authentication attempt
     console.warn("[AUTH FAILED]", {
       timestamp: new Date().toISOString(),
-      ip: req.ip,
       path: req.path,
       method: req.method,
     });

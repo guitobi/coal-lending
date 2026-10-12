@@ -23,8 +23,13 @@ import {
 
 // Import admin auth
 import { adminAuth } from "../middleware/adminAuth.js";
+import { geocodeSearch, geocodeReverse } from "../controllers/geocoding.controller.js";
+import { geocodingLimiter } from "../middleware/rateLimiter.js";
 
 const router = Router();
+
+router.get("/nominatim/search", geocodingLimiter, geocodeSearch);
+router.get("/nominatim/reverse", geocodingLimiter, geocodeReverse);
 
 // Order and problem routes (with strict rate limiting and validation)
 router.post("/order/new", strictFormLimiter, validate(orderSchema), createOrder);

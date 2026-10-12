@@ -31,6 +31,9 @@ function NavBar() {
               </NavButtonLink>
             </li>
             <li>
+              <NavButtonLink to="/pellet" type="primary">{t("nav.pellet")}</NavButtonLink>
+            </li>
+            <li>
               <NavButtonLink to="/delivery" type="primary">
                 {t("nav.delivery")}
               </NavButtonLink>

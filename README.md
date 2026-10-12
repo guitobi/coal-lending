@@ -1,5 +1,17 @@
 # VAN SHARE - Coal Lending Platform
 
+## Pine pellet product (October 2026)
+
+The `/pellet` page offers pine wood pellets alongside the existing charcoal range. It uses the supplied production photographs, shows prices of **€6.30 per 15 kg bag** and **€420 per metric tonne**, and links to the manufacturer's two-page quality/specification document at `/pellet/pellet-quality-document.pdf`. One pallet is described in that document as **65 bags = 975 kg**, or **€409.50** at the listed bag price. Delivery prices and terms are not presumed.
+
+Pellet inquiries use the existing `/api/order/new` endpoint with `productType: "pellet"`, `quantityBags` and derived `weightInKg`. Charcoal inquiries retain their previous pricing and 100 kg minimum. The server validates 15 kg multiples and uses separate localized email wording for the two products.
+
+**Certification caveat:** The supplied document declares class A1 and references ENplus® ID UA 073. The website describes this as a *manufacturer-supplied quality document*, not an independently verified active ENplus certification. Verify the issuing and certification details independently before making a stronger commercial claim.
+
+Contact address: Van Share Sp. z o.o., ul. Gwiaździsta 62 16/6, 53-413 Wrocław. Contact phone: +48 731 431 849.
+
+Run `cd client && npm run test:pellet` after building to smoke-test the product page, PDF and mocked pellet inquiry. The test must never send a real order.
+
 [![CI](https://github.com/guitobi/coal-lending/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/ci.yml)
 [![Deploy Client](https://github.com/guitobi/coal-lending/workflows/Deploy%20client%20to%20Vercel/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/vercel-deploy.yml)
 [![Deploy Backend](https://github.com/guitobi/coal-lending/workflows/Deploy%20backend%20to%20Fly/badge.svg)](https://github.com/guitobi/coal-lending/actions/workflows/fly-deploy.yml)
@@ -37,10 +49,9 @@ VAN SHARE is a full-stack web application that enables customers to order high-q
 - Puppeteer for server-side rendering and SEO
 
 ### Backend
-- Node.js 20 (Alpine Linux)
+- Node.js 22 (Alpine Linux)
 - Express 5.2 web framework
-- Nodemailer 8.0 for email delivery
-- Resend API for email service
+- Resend API for email delivery
 - Winston for structured logging
 - Zod for schema validation
 - Helmet for security headers
@@ -90,7 +101,7 @@ coal-lending/
 
 ### Prerequisites
 
-- Node.js 20.x or higher
+- Node.js 22.12 or higher
 - npm 9.x or higher
 - Git
 
@@ -329,10 +340,10 @@ Clear all heatmap data.
    - Restricted HTTP methods
 
 5. **Data Privacy**
-   - IP addresses are hashed (SHA-256)
+   - Heatmap events do not store IP addresses
    - User agents are sanitized
    - No PII in logs
-   - GDPR-compliant consent management
+   - Consent-aware analytics initialization and revocation
 
 6. **Request Size Limits**
    - JSON body: 10KB maximum
@@ -397,6 +408,7 @@ vercel --prod
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
+| `npm run test:smoke` | Browser smoke test for analytics consent (requires a completed build) |
 | `npm run analyze` | Analyze bundle size |
 | `npm run perf-budget` | Check performance budget |
 | `npm run generate-sitemap` | Generate sitemap.xml |
@@ -408,7 +420,7 @@ vercel --prod
 |--------|-------------|
 | `npm run dev` | Start development server with nodemon |
 | `npm start` | Start production server |
-| `npm test` | Run tests (not implemented) |
+| `npm test` | Run backend unit and concurrency tests (`node --test`) |
 
 ## Internationalization
 
@@ -458,14 +470,14 @@ The application includes heatmap analytics tracking:
 - Mouse movement tracking
 - Form interaction tracking
 
-All analytics data is anonymized:
-- IP addresses are hashed
+Heatmap data is minimized:
+- IP addresses and actual form field values are not stored
 - User agents are sanitized
 - No personally identifiable information is stored
 
 ## GDPR Compliance
 
-The application is GDPR-compliant:
+The application includes GDPR-related privacy controls. Legal compliance still requires a separate assessment:
 
 1. **Consent Management**
    - Cookie consent banner
@@ -477,7 +489,7 @@ The application is GDPR-compliant:
    - Terms of service page
 
 3. **Data Protection**
-   - IP address hashing
+   - No IP address storage in heatmap events
    - Data minimization
    - Secure data transmission (HTTPS)
 
@@ -570,7 +582,7 @@ chore: update dependencies
 
 ## Testing
 
-Currently, the project does not have automated tests. This is a known gap and contributions are welcome.
+The backend includes automated tests for form validation, email-confirmation failures, geocoding input validation, and concurrent heatmap writes. Run them with `cd server && npm test`. Frontend component and end-to-end tests are still a gap.
 
 To add testing:
 
@@ -583,7 +595,7 @@ npm install --save-dev vitest @testing-library/react @testing-library/jest-dom
 2. **Server Testing**
 ```bash
 cd server
-npm install --save-dev jest supertest
+npm test
 ```
 
 ## License

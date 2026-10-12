@@ -23,10 +23,13 @@ export function renderOrderManagerEmail(locale, data) {
   const city = escapeHtml(data.city);
   const weightInKg = Number(data.weightInKg || 0);
   const comment = escapeHtml(data.comment || "");
+  const pellet = data.productType === "pellet";
+  const total = (weightInKg * (pellet ? 0.42 : 0.95)).toFixed(2);
+  const bags = pellet ? `<p><strong>${locale === "pl" ? "Worki 15 kg" : "15 kg bags"}:</strong> ${Number(data.quantityBags)}</p>` : "";
 
   if (locale === "pl") {
     return {
-      subject: "Nowe zamówienie na węgiel drzewny",
+      subject: pellet ? "Nowe zapytanie — pellet sosnowy" : "Nowe zamówienie na węgiel drzewny",
       html: `
         <h2>Nowe zamówienie</h2>
         <p><strong>Imię i nazwisko:</strong> ${name}</p>
@@ -34,14 +37,16 @@ export function renderOrderManagerEmail(locale, data) {
         <p><strong>Telefon:</strong> ${phoneNumber}</p>
         <p><strong>Miasto:</strong> ${city}</p>
         <p><strong>Waga zamówienia:</strong> ${weightInKg} kg</p>
-        <p><strong>Szacunkowa cena:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
+        <p><strong>Produkt:</strong> ${pellet ? "Pellet sosnowy A1" : "Węgiel drzewny"}</p>
+        ${bags}
+        <p><strong>Szacunkowa cena:</strong> €${total}</p>
         ${comment ? `<p><strong>Uwagi:</strong> ${comment}</p>` : ""}
       `,
     };
   }
 
   return {
-    subject: "New charcoal order",
+    subject: pellet ? "New pine wood pellet inquiry" : "New charcoal order",
     html: `
       <h2>New order</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -49,7 +54,9 @@ export function renderOrderManagerEmail(locale, data) {
       <p><strong>Phone number:</strong> ${phoneNumber}</p>
       <p><strong>City:</strong> ${city}</p>
       <p><strong>Order weight:</strong> ${weightInKg} kg</p>
-      <p><strong>Estimated price:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
+      <p><strong>Product:</strong> ${pellet ? "Pine wood pellets A1" : "Hardwood charcoal"}</p>
+      ${bags}
+      <p><strong>Estimated price:</strong> €${total}</p>
       ${comment ? `<p><strong>Comment:</strong> ${comment}</p>` : ""}
     `,
   };
@@ -59,6 +66,9 @@ export function renderOrderCustomerEmail(locale, data) {
   const name = escapeHtml(data.name);
   const weightInKg = Number(data.weightInKg || 0);
   const city = escapeHtml(data.city);
+  const pellet = data.productType === "pellet";
+  const total = (weightInKg * (pellet ? 0.42 : 0.95)).toFixed(2);
+  const bags = pellet ? `<p><strong>${locale === "pl" ? "Worki 15 kg" : "15 kg bags"}:</strong> ${Number(data.quantityBags)}</p>` : "";
 
   if (locale === "pl") {
     return {
@@ -68,9 +78,11 @@ export function renderOrderCustomerEmail(locale, data) {
         <p><strong>Imię i nazwisko:</strong> ${name}</p>
         <p><strong>Miasto:</strong> ${city}</p>
         <p><strong>Waga zamówienia:</strong> ${weightInKg} kg</p>
-        <p><strong>Szacunkowa cena:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
+        <p><strong>Produkt:</strong> ${pellet ? "Pellet sosnowy A1" : "Węgiel drzewny"}</p>
+        ${bags}
+        <p><strong>Szacunkowa cena:</strong> €${total}</p>
         <h3>Nasz menedżer skontaktuje się z Tobą wkrótce.</h3>
-        <p style="color: #666; font-size: 12px;">Cena bazowa: €0.95/kg | Dostawa: DAP Polkowice</p>
+        <p style="color: #666; font-size: 12px;">${pellet ? "Pellet: €420/t lub €6,30/worek 15 kg. Dostawa do uzgodnienia." : "Cena bazowa: €0.95/kg | Dostawa: DAP Polkowice"}</p>
       `,
     };
   }
@@ -82,9 +94,11 @@ export function renderOrderCustomerEmail(locale, data) {
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>City:</strong> ${city}</p>
       <p><strong>Order weight:</strong> ${weightInKg} kg</p>
-      <p><strong>Estimated price:</strong> €${(weightInKg * 0.95).toFixed(2)}</p>
+      <p><strong>Product:</strong> ${pellet ? "Pine wood pellets A1" : "Hardwood charcoal"}</p>
+      ${bags}
+      <p><strong>Estimated price:</strong> €${total}</p>
       <h3>Our manager will contact you soon.</h3>
-      <p style="color: #666; font-size: 12px;">Base price: €0.95/kg | Delivery: DAP Polkowice</p>
+      <p style="color: #666; font-size: 12px;">${pellet ? "Pellets: €420/t or €6.30 per 15 kg bag. Delivery to be arranged." : "Base price: €0.95/kg | Delivery: DAP Polkowice"}</p>
     `,
   };
 }

@@ -13,6 +13,7 @@ const distDir = path.resolve(__dirname, "../dist");
 const routes = [
   "/",
   "/about",
+  "/pellet",
   "/delivery",
   "/calculator",
   "/order",

@@ -1,5 +1,6 @@
 import Seo from "../seo/Seo";
 import { useTranslation } from "react-i18next";
+import GDPRConsentManager from "../features/GDPR/GDPRConsentManager";
 
 export function PrivacyDocPage() {
   const { t } = useTranslation();
@@ -198,6 +199,8 @@ export function CookieDocPage() {
             </h2>
             <p>{t("legalDocs.cookies.withdrawalText")}</p>
           </div>
+
+          <GDPRConsentManager />
 
           <p className="text-sm text-stone-400">{t("legalDocs.lastUpdated")}</p>
         </div>

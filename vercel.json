@@ -24,6 +24,10 @@
   ],
   "rewrites": [
     {
+      "source": "/pellet",
+      "destination": "/pellet/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

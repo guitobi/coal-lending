@@ -17,11 +17,10 @@ export const createOrder = async (req, res) => {
   // Log order received without PII
   logger.info("New order received", {
     weightInKg: data.weightInKg,
-    city: data.city,
     hasComment: !!data.comment,
   });
 
-  const { name, email, phoneNumber, city, weightInKg, comment, lang } = data;
+  const { name, email, phoneNumber, city, weightInKg, comment, lang, productType, quantityBags } = data;
   const locale = getEmailLocale(lang);
 
   try {
@@ -32,6 +31,8 @@ export const createOrder = async (req, res) => {
       city,
       weightInKg,
       comment,
+      productType,
+      quantityBags,
     });
 
     await transporter.sendMail({
@@ -47,19 +48,26 @@ export const createOrder = async (req, res) => {
         name,
         city,
         weightInKg,
+        productType,
+        quantityBags,
       });
 
-      await transporter.sendMail({
-        from: MAIL_FROM,
-        replyTo: CONTACT_EMAIL_TO,
-        to: email,
-        subject: customerEmail.subject,
-        html: customerEmail.html,
-      });
+      try {
+        await transporter.sendMail({
+          from: MAIL_FROM,
+          replyTo: CONTACT_EMAIL_TO,
+          to: email,
+          subject: customerEmail.subject,
+          html: customerEmail.html,
+        });
+      } catch (error) {
+        // The manager already has the order: never invite a duplicate submission.
+        logger.warn("Customer order confirmation failed", { error: error.message });
+      }
     }
 
-    logger.info("Order email sent successfully");
-    res.json({ success: true, message: "Order received and email sent" });
+    logger.info("Order delivered to manager");
+    res.json({ success: true, message: "Order received" });
   } catch (error) {
     logger.error("Error sending order email", { error: error.message, stack: error.stack });
     // Don't leak error details to client

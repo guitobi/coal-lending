@@ -3,13 +3,15 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import en from "../locales/en.json";
 import pl from "../locales/pl.json";
+import pelletsPl from "../locales/pellets.pl.json";
+import pelletsEn from "../locales/pellets.en.json";
 
 const resources = {
   en: {
-    translation: en,
+    translation: { ...en, pellets: pelletsEn },
   },
   pl: {
-    translation: pl,
+    translation: { ...pl, pellets: pelletsPl },
   },
 };
 

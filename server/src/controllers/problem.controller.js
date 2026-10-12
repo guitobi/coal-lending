@@ -16,7 +16,6 @@ export const createProblem = async (req, res) => {
 
   // Log contact form submission without PII
   logger.info("New contact message received", {
-    subject: data.subject,
     messageLength: data.message?.length || 0,
   });
 
@@ -42,13 +41,17 @@ export const createProblem = async (req, res) => {
     if (email) {
       const customerEmail = renderProblemCustomerEmail(locale, { name });
 
-      await transporter.sendMail({
-        from: MAIL_FROM,
-        replyTo: CONTACT_EMAIL_TO,
-        to: email,
-        subject: customerEmail.subject,
-        html: customerEmail.html,
-      });
+      try {
+        await transporter.sendMail({
+          from: MAIL_FROM,
+          replyTo: CONTACT_EMAIL_TO,
+          to: email,
+          subject: customerEmail.subject,
+          html: customerEmail.html,
+        });
+      } catch (error) {
+        logger.warn("Customer contact confirmation failed", { error: error.message });
+      }
     }
 
     logger.info("Contact email sent successfully");

@@ -27,6 +27,11 @@ function FooterQuickLinks() {
           </Link>
         </li>
         <li>
+          <Link to="/pellet" className="text-slate-300 transition-colors hover:text-orange-500">
+            {t("nav.pellet")}
+          </Link>
+        </li>
+        <li>
           <Link
             to="/delivery"
             className="text-slate-300 hover:text-orange-500 transition-colors"

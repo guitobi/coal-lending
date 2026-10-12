@@ -67,21 +67,14 @@ function LocalizedPageTemplate({
       url: region
         ? `https://vanshare.pl/${region.toLowerCase()}`
         : "https://vanshare.pl",
-      telephone: "+48 577 432 949",
+      telephone: "+48 731 431 849",
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",
-        streetAddress: region
-          ? `${region} Location`
-          : "ul. Batalionów Chłopskich 3",
-        addressLocality: region || "Jelenia Góra",
-        postalCode: region ? "Regional Code" : "58-050",
+        streetAddress: "ul. Gwiaździsta 62 16/6",
+        addressLocality: "Wrocław",
+        postalCode: "53-413",
         addressCountry: "PL",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: region ? 52.2297 : 50.9271, // Default to Warsaw coordinates if region, otherwise Jelenia Gora
-        longitude: region ? 21.012 : 15.7166,
       },
       areaServed: region
         ? {

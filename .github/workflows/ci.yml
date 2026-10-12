@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: client/package-lock.json
 
@@ -55,7 +55,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: client/package-lock.json
 
@@ -70,6 +70,14 @@ jobs:
           VITE_API_URL: https://coal-lending-backend.fly.dev
           VITE_SITE_URL: https://vanshare.pl
           VITE_GA_MEASUREMENT_ID: G-TY2RQHRFWQ
+
+      - name: Verify analytics consent in browser
+        working-directory: client
+        run: npm run test:smoke
+
+      - name: Verify pellet product page and inquiry
+        working-directory: client
+        run: npm run test:pellet
 
       - name: Check bundle size
         working-directory: client
@@ -87,7 +95,7 @@ jobs:
   # SERVER CHECKS
   # ============================================
   server-lint:
-    name: Server - Lint
+    name: Server - Syntax Check
     runs-on: ubuntu-latest
 
     steps:
@@ -97,7 +105,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
 
@@ -105,20 +113,9 @@ jobs:
         working-directory: server
         run: npm ci
 
-      - name: Check for ESLint config
-        id: check-eslint
+      - name: Check syntax of all server source files
         working-directory: server
-        run: |
-          if [ -f "eslint.config.js" ] || [ -f ".eslintrc.json" ] || [ -f ".eslintrc.js" ]; then
-            echo "has_eslint=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_eslint=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Run ESLint
-        if: steps.check-eslint.outputs.has_eslint == 'true'
-        working-directory: server
-        run: npm run lint || echo "No lint script found"
+        run: find src -name '*.js' -type f -print0 | xargs -0 -n1 node --check
 
   server-test:
     name: Server - Test
@@ -132,7 +129,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
 
@@ -142,8 +139,7 @@ jobs:
 
       - name: Run tests
         working-directory: server
-        run: npm test || echo "No tests configured yet"
-        continue-on-error: true
+        run: npm test
 
   server-build:
     name: Server - Build Check
@@ -157,7 +153,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
 
@@ -257,17 +253,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Audit client dependencies
         working-directory: client
-        run: npm audit --audit-level=high || true
-        continue-on-error: true
+        run: npm audit --audit-level=high
 
       - name: Audit server dependencies
         working-directory: server
-        run: npm audit --audit-level=high || true
-        continue-on-error: true
+        run: npm audit --audit-level=high
 
   # ============================================
   # SUMMARY
@@ -291,8 +285,10 @@ jobs:
           if [ "${{ needs.client-lint.result }}" != "success" ] || \
              [ "${{ needs.client-build.result }}" != "success" ] || \
              [ "${{ needs.server-lint.result }}" != "success" ] || \
+             [ "${{ needs.server-test.result }}" != "success" ] || \
              [ "${{ needs.server-build.result }}" != "success" ] || \
-             [ "${{ needs.docker-build.result }}" != "success" ]; then
+             [ "${{ needs.docker-build.result }}" != "success" ] || \
+             [ "${{ needs.security-audit.result }}" != "success" ]; then
             echo "Some CI checks failed"
             exit 1
           fi

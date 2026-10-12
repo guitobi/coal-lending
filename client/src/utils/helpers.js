@@ -1,4 +1,5 @@
 import { getDistance } from "geolib";
+import { buildApiUrl } from "./api";
 
 // Координати складу/точки доставки (можна винести в config)
 const WAREHOUSE_COORDS = {
@@ -14,7 +15,7 @@ export async function geocodeAddress(address) {
 
   try {
     const res = await fetch(
-      `/api/nominatim/search?q=${encodeURIComponent(address)}&format=json&limit=1`,
+      buildApiUrl(`/api/nominatim/search?q=${encodeURIComponent(address)}&format=json&limit=1`),
     );
     const data = await res.json();
 
@@ -66,7 +67,7 @@ export function getGeolocation(e, onSuccess, onError) {
         const distanceInKm = (distanceInMeters / 1000).toFixed(2);
 
         const res = await fetch(
-          `/api/nominatim/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+          buildApiUrl(`/api/nominatim/reverse?lat=${latitude}&lon=${longitude}&format=json`),
         );
         const data = await res.json();
 

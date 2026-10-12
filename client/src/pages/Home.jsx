@@ -9,6 +9,7 @@ import CTA from "../features/Home/CTA";
 import HowItWorks from "../features/Home/HowItWorks";
 import KeyFeatures from "../features/Home/KeyFeatures";
 import ProductPackages from "../features/Home/ProductPackages";
+import PelletFeature from "../features/Home/PelletFeature";
 import Testimonials from "../features/Home/Testimonials";
 import FAQSection from "../components/FAQSection";
 
@@ -30,6 +31,7 @@ function Home() {
 
       <main>
         <CTA />
+        <PelletFeature />
         <ProductPackages />
         <Testimonials />
         <HowItWorks />

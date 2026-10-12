@@ -1,0 +1,78 @@
+{
+  "eyebrow": "PRODUCTS / BIOMASS",
+  "title": "Pine wood pellets.",
+  "titleAccent": "Practical heat.",
+  "intro": "Wood pellets made from 100% pine sawdust, without chemical additives or binders. Real product photos, clear specifications and the manufacturer's document.",
+  "cta": "Request pellets",
+  "document": "Quality data sheet (PDF)",
+  "priceBag": "Per 15 kg bag",
+  "priceTon": "Price per metric ton",
+  "bagsUnit": "bags",
+  "features": [
+    "100% pine sawdust",
+    "No chemical additives",
+    "15 kg bags"
+  ],
+  "eyebrowDetails": "TECHNICAL DATA",
+  "specTitle": "Measured details, not slogans.",
+  "specIntro": "Values declared in the manufacturer's product document dated 23 September 2026.",
+  "spec": [
+    {
+      "label": "Moisture",
+      "value": "≤ 7.0%",
+      "note": "maximum"
+    },
+    {
+      "label": "Ash content",
+      "value": "≤ 0.4%",
+      "note": "dry basis"
+    },
+    {
+      "label": "Heating value",
+      "value": "≥ 17.5",
+      "unit": "MJ/kg",
+      "note": "≥ 4.9 kWh/kg"
+    },
+    {
+      "label": "Diameter",
+      "value": "6 mm",
+      "note": "± 1 mm"
+    }
+  ],
+  "eyebrowPhotos": "REAL PRODUCT",
+  "photosTitle": "The pellets as they are.",
+  "photosIntro": "Photographs of the pellets, bags and pallets at the warehouse. No stock renders.",
+  "gallery": [
+    "15 kg bags stacked on pallets",
+    "Pine pellets held in hands",
+    "Pellet pallets at the warehouse",
+    "Close-up of the pellet granules",
+    "Wrapped pallet ready for transport"
+  ],
+  "eyebrowPackaging": "PACKAGING AND PRICING",
+  "packTitle": "Straightforward quantities.",
+  "packIntro": "Every bag contains 15 kg. A standard pallet in the manufacturer's document has 65 bags, totalling 975 kg.",
+  "bagTitle": "Single bag",
+  "palletTitle": "Standard pallet",
+  "palletUnit": "65 × 15 kg = 975 kg",
+  "perBag": "per bag",
+  "perPallet": "per pallet",
+  "note": "Prices are indicative for the product. Delivery, availability and final terms are confirmed by VAN SHARE.",
+  "eyebrowQuality": "DOCUMENTATION",
+  "qualityTitle": "Product data you can review.",
+  "qualityText": "We provide the quality and specification document supplied by manufacturer LLC West Trans UA. It declares A1 class and ENplus® ID UA 073. This information comes from the supplied document and does not imply independent verification of certificate status.",
+  "qualityLink": "Read manufacturer's document",
+  "qualityMeta": "PDF • 2 pages • 23 September 2026",
+  "eyebrowOrder": "CONTACT / ENQUIRY",
+  "orderTitle": "How many bags?",
+  "orderLead": "Specify the number of bags and your contact details. We'll confirm availability and delivery conditions.",
+  "bagsLabel": "Number of 15 kg bags",
+  "bagsHelp": "1 pallet = 65 bags = 975 kg",
+  "total": "Estimated product cost",
+  "weight": "Total weight",
+  "submit": "Send pellet inquiry",
+  "contact": "Or contact us directly",
+  "noShipment": "Delivery cost and timing quoted separately.",
+  "seoTitle": "Pine wood pellets A1, 15 kg | VAN SHARE",
+  "seoDescription": "Pine wood pellets A1 in 15 kg bags: €6.30 per bag, €420/t. Real photographs, product specifications and manufacturer's document. Request delivery."
+}

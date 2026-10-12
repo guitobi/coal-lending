@@ -3,10 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && node scripts/prerender.mjs",
     "lint": "eslint .",
+    "test:smoke": "node scripts/smoke-consent.mjs",
+    "test:pellet": "node scripts/smoke-pellet.mjs",
     "preview": "vite preview",
     "analyze": "vite build --mode analyze",
     "perf-budget": "node scripts/check-bundle-size.mjs",
@@ -46,7 +49,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "puppeteer": "^24.6.0",
+    "puppeteer": "^25.13.0",
     "serve-handler": "^6.1.6"
   }
 }

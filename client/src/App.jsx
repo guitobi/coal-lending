@@ -25,6 +25,7 @@ const Comparison = lazy(() => import("./pages/Comparison"));
 const RegionalCharcoal = lazy(() => import("./pages/RegionalCharcoal"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const Pellets = lazy(() => import("./pages/Pellets"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function withSuspense(component) {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <RoutedAnalyticsProvider measurementId={window.VITE_GA_MEASUREMENT_ID}>
+      <RoutedAnalyticsProvider measurementId={import.meta.env.VITE_GA_MEASUREMENT_ID}>
         <AppLayout />
       </RoutedAnalyticsProvider>
     ),
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "delivery",
         element: withSuspense(<Delivery />),
+      },
+      {
+        path: "pellet",
+        element: withSuspense(<Pellets />),
       },
       {
         path: "calculator",
@@ -145,17 +150,8 @@ function App() {
     };
   }, [i18n]);
 
-  // Heatmap analytics configuration
-  const heatmapConfig = {
-    enabled: true,
-    type: "custom", // Options: 'hotjar', 'crazyegg', 'custom'
-    id: null, // For Hotjar
-    version: null, // For Hotjar
-    accountId: null, // For Crazy Egg
-  };
-
   return (
-    <HeatmapAnalyticsProvider config={heatmapConfig}>
+    <HeatmapAnalyticsProvider>
       <RouterProvider router={router} />
     </HeatmapAnalyticsProvider>
   );

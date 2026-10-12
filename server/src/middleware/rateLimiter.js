@@ -66,3 +66,11 @@ export const heatmapLimiter = rateLimit({
     });
   },
 });
+
+// Geocoding uses a third-party API with a strict fair-use policy.
+export const geocodingLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+});

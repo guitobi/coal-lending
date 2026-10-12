@@ -1,0 +1,78 @@
+{
+  "eyebrow": "OFERTA / BIOMASA",
+  "title": "Pellet sosnowy.",
+  "titleAccent": "Ciepło z natury.",
+  "intro": "Pellet drzewny ze 100% trocin sosnowych, bez dodatków i lepiszczy. Realne zdjęcia partii, przejrzyste parametry i dokumentacja od producenta.",
+  "cta": "Zapytaj o pellet",
+  "document": "Karta jakości (PDF)",
+  "priceBag": "Za worek 15 kg",
+  "priceTon": "Cena za tonę",
+  "bagsUnit": "worków",
+  "features": [
+    "100% trociny sosnowe",
+    "Bez chemicznych dodatków",
+    "Worki 15 kg"
+  ],
+  "eyebrowDetails": "PARAMETRY PRODUKTU",
+  "specTitle": "Liczby zamiast obietnic.",
+  "specIntro": "Wartości deklarowane przez producenta w dostarczonej karcie produktu z 23.09.2026.",
+  "spec": [
+    {
+      "label": "Wilgotność",
+      "value": "≤ 7,0%",
+      "note": "maksymalna"
+    },
+    {
+      "label": "Zawartość popiołu",
+      "value": "≤ 0,4%",
+      "note": "w suchej masie"
+    },
+    {
+      "label": "Wartość opałowa",
+      "value": "≥ 17,5",
+      "unit": "MJ/kg",
+      "note": "≥ 4,9 kWh/kg"
+    },
+    {
+      "label": "Średnica",
+      "value": "6 mm",
+      "note": "± 1 mm"
+    }
+  ],
+  "eyebrowPhotos": "PRODUKT W PRAKTYCE",
+  "photosTitle": "Tak wygląda nasz pellet.",
+  "photosIntro": "Zdjęcia granulek, worków i palet z magazynu. Bez wizualizacji i zdjęć katalogowych.",
+  "gallery": [
+    "Worki pelletu ułożone na paletach",
+    "Pellet sosnowy w dłoniach",
+    "Partia pelletu w magazynie",
+    "Zbliżenie na granulki pelletu",
+    "Paleta worków owinięta folią"
+  ],
+  "eyebrowPackaging": "PAKOWANIE I CENA",
+  "packTitle": "Prosto rozliczane.",
+  "packIntro": "Każdy worek zawiera 15 kg. Paleta z dokumentacji producenta: 65 worków, razem 975 kg.",
+  "bagTitle": "Pojedynczy worek",
+  "palletTitle": "Paleta standardowa",
+  "palletUnit": "65 × 15 kg = 975 kg",
+  "perBag": "za worek",
+  "perPallet": "za paletę",
+  "note": "Ceny produktu są orientacyjne. Dostawa, dostępność i ostateczna oferta wymagają potwierdzenia przez VAN SHARE.",
+  "eyebrowQuality": "DOKUMENTACJA",
+  "qualityTitle": "Dane, które można sprawdzić.",
+  "qualityText": "Udostępniamy kartę charakterystyki i jakości przekazaną przez producenta LLC West Trans UA. Dokument wskazuje klasę A1 i numer ENplus® UA 073. Jest to deklaracja z przekazanego dokumentu, a nie niezależnie zweryfikowane potwierdzenie ważności certyfikatu.",
+  "qualityLink": "Zobacz dokument producenta",
+  "qualityMeta": "PDF • 2 strony • 23.09.2026",
+  "eyebrowOrder": "KONTAKT I ZAMÓWIENIE",
+  "orderTitle": "Ile worków potrzebujesz?",
+  "orderLead": "Podaj liczbę worków oraz dane do kontaktu. Odezwiemy się w sprawie dostępności i warunków dostawy.",
+  "bagsLabel": "Liczba worków po 15 kg",
+  "bagsHelp": "1 paleta = 65 worków = 975 kg",
+  "total": "Szacunkowa wartość produktu",
+  "weight": "Waga razem",
+  "submit": "Wyślij zapytanie o pellet",
+  "contact": "Możesz też zadzwonić bezpośrednio",
+  "noShipment": "Koszt i termin dostawy ustalamy indywidualnie.",
+  "seoTitle": "Pellet sosnowy A1 15 kg | VAN SHARE",
+  "seoDescription": "Pellet sosnowy A1 15 kg: 6,30 € za worek, 420 €/t. Zdjęcia partii, specyfikacja produktu i dokumentacja producenta. Zapytaj o dostawę."
+}

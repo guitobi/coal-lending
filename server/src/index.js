@@ -10,6 +10,10 @@ import logger from "./config/logger.js";
 
 const app = express();
 
+// Fly.io terminates TLS at one trusted proxy hop. Do not trust client-supplied
+// forwarding headers when running the server directly in development.
+if (process.env.NODE_ENV === "production") app.set("trust proxy", 1);
+
 // Security middleware
 app.use(helmet());
 app.use(compression());
@@ -23,8 +27,9 @@ const configuredOrigins = [
     .map((origin) => origin.trim())
     .filter(Boolean),
   process.env.FRONTEND_URL,
-  "http://localhost:5173",
-  "http://localhost:4173",
+  ...(process.env.NODE_ENV === "production"
+    ? []
+    : ["http://localhost:5173", "http://localhost:4173"]),
 ].filter(Boolean);
 
 const allowedOrigins = [...new Set(configuredOrigins)];
@@ -47,7 +52,7 @@ app.use(
       callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "OPTIONS", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Admin-Key"],
   }),
 );
 
@@ -59,17 +64,9 @@ app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok" });
 });
 
-// Cache-Control middleware for API routes
+// API responses contain potentially sensitive data and must not be cached.
 app.use((req, res, next) => {
-  if (req.method === "GET") {
-    // Cache GET requests for 5 minutes by default if they are not the heatmap/health ones
-    if (!req.path.includes("heatmap") && !req.path.includes("health")) {
-      res.setHeader("Cache-Control", "public, max-age=300");
-    }
-  } else {
-    // Prevent caching for POST/DELETE/etc
-    res.setHeader("Cache-Control", "no-store");
-  }
+  res.setHeader("Cache-Control", "no-store");
   next();
 });
 

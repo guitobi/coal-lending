@@ -18,7 +18,7 @@ function ContactDetailsSection() {
 
       <ContactItem icon={Phone} title={t("contactUs.contactInfo.phone.title")}>
         <a
-          href="tel:+48123456789"
+          href="tel:+48731431849"
           className="text-stone-400 hover:text-orange-500 transition-colors text-sm sm:text-base"
         >
           {t("contactUs.contactInfo.phone.description")}

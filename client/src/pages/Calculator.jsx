@@ -6,7 +6,7 @@ import {
   Truck,
   CheckCircle2,
 } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import Seo from "../seo/Seo";
@@ -27,7 +27,7 @@ function Calculator() {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
+    control,
   } = useForm();
 
   const [subtotal, setSubtotal] = useState(0);
@@ -37,7 +37,7 @@ function Calculator() {
   const formRef = useRef(null);
   const resultRef = useRef(null);
 
-  const tons = watch("tons");
+  const tons = useWatch({ control, name: "tons" });
   const PRICE_PER_TON = 950;
 
   useEffect(() => {

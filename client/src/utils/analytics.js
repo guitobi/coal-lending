@@ -1,7 +1,12 @@
+import { getAnalyticsConsent } from "./analyticsConsent";
+
 // Google Analytics 4 Integration
+const initialized = new Set();
 
 // Initialize Google Analytics with measurement ID
 export const initGA = (measurementId) => {
+  if (!getAnalyticsConsent() || initialized.has(measurementId)) return;
+  initialized.add(measurementId);
   // Create script element for GA
   const script = document.createElement("script");
   script.async = true;
@@ -14,17 +19,18 @@ export const initGA = (measurementId) => {
     window.dataLayer.push(arguments);
   }
   window.gtag = gtag;
+  gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied" });
   gtag("js", new Date());
   gtag("config", measurementId, {
-    page_path: window.location.pathname,
+    send_page_view: false,
   });
 };
 
 // Track page views
 export const trackPageView = (location, measurementId) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("config", measurementId, {
-      page_path: location.pathname + location.search + location.hash,
+      page_path: location.pathname,
       page_title: document.title,
     });
   }
@@ -32,7 +38,7 @@ export const trackPageView = (location, measurementId) => {
 
 // Track custom events
 export const trackEvent = (action, category, label, value, measurementId) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", action, {
       event_category: category,
       event_label: label,
@@ -44,7 +50,7 @@ export const trackEvent = (action, category, label, value, measurementId) => {
 
 // Track conversions
 export const trackConversion = (conversionLabel, measurementId) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", "conversion", {
       send_to: `${measurementId}/${conversionLabel}`,
     });
@@ -62,7 +68,7 @@ export const trackPurchase = (
   items = [],
   measurementId,
 ) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", "purchase", {
       transaction_id: transactionId,
       value: value,
@@ -74,7 +80,7 @@ export const trackPurchase = (
 };
 
 export const trackAddToCart = (items = [], measurementId) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", "add_to_cart", {
       items: items,
       send_to: measurementId,
@@ -83,7 +89,7 @@ export const trackAddToCart = (items = [], measurementId) => {
 };
 
 export const trackViewItem = (items = [], measurementId) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", "view_item", {
       items: items,
       send_to: measurementId,
@@ -97,7 +103,7 @@ export const trackBeginCheckout = (
   items = [],
   measurementId,
 ) => {
-  if (window.gtag) {
+  if (window.gtag && getAnalyticsConsent()) {
     window.gtag("event", "begin_checkout", {
       value: value,
       currency: currency,

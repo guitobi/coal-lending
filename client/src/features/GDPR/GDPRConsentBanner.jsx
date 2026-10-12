@@ -53,7 +53,7 @@ export default function GDPRConsentBanner() {
   const handleCustomize = () => {
     // Показуємо діалог налаштування згод
     setShowBanner(false);
-    openConsentModal();
+    openConsentModal(() => setShowBanner(true));
   };
 
   if (!showBanner) {
@@ -105,7 +105,7 @@ export default function GDPRConsentBanner() {
 }
 
 // Функція для відкриття модального вікна налаштувань згоди
-function openConsentModal() {
+function openConsentModal(onClose) {
   // Створюємо тимчасову функцію для відкриття модального вікна
   // Реалізація буде в окремому компоненті
   const modal = document.createElement("div");
@@ -167,6 +167,7 @@ function openConsentModal() {
   // Додаємо обробники подій
   document.getElementById("close-modal").addEventListener("click", () => {
     document.body.removeChild(modal);
+    onClose();
   });
 
   document.getElementById("save-preferences").addEventListener("click", () => {

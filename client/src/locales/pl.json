@@ -7,7 +7,8 @@
     "calculator": "Kalkulator",
     "contactUs": "Skontaktuj się z nami",
     "faq": "FAQ",
-    "blog": "Blog"
+    "blog": "Blog",
+    "pellet": "Pellet"
   },
   "cta": {
     "maximumHeat": "Maksimum ciepła, ",
@@ -84,7 +85,7 @@
   "footer": {
     "contactTitle": "Kontakt",
     "navigationTitle": "Nawigacja",
-    "companyDescription": "Oficjalny dystrybutor węgla WOODEN WEST w Polsce. Węgiel drzewny liściasty premium do grillowania i BBQ",
+    "companyDescription": "Dostarczamy w Polsce wysokiej jakości węgiel drzewny WOODEN WEST oraz pellet sosnowy. Rzeczywiste produkty, jasne warunki i bezpośredni kontakt",
     "allRightsReserved": "Wszelkie prawa zastrzeżone.",
     "legalLinks": {
       "privacyPolicy": "Polityka prywatności",
@@ -232,15 +233,15 @@
         },
         "phone": {
           "title": "Telefon",
-          "first": "+48 577 432 949",
-          "second": "+48 730 670 345"
+          "first": "+48 731 431 849",
+          "second": "+48 731 431 849"
         },
         "address": {
           "title": "Adres",
           "description": {
             "firstLine": "Van Share Spółka z o.o.",
-            "secondLine": "ul. Batalionów Chłopskich 3",
-            "thirdLine": "58-050 Jelenia Góra, Poland"
+            "secondLine": "ul. Gwiaździsta 62 16/6",
+            "thirdLine": "53-413 Wrocław, Poland"
           }
         },
         "nip": "NIP: 716-28-26-886",
@@ -278,13 +279,13 @@
       },
       "phone": {
         "title": "Telefon",
-        "description": "+48 577 432 949"
+        "description": "+48 731 431 849"
       },
       "address": {
         "title": "Adres",
         "description": {
-          "firstLine": "Polkowice, Polska",
-          "secondLine": "Dostępna dostawa DAP"
+          "firstLine": "ul. Gwiaździsta 62 16/6",
+          "secondLine": "53-413 Wrocław, Polska"
         }
       },
       "businessHours": {
@@ -359,7 +360,6 @@
         "placeholder": "Masz specjalne wymagania lub pytania?",
         "optional": "(Opcjonalnie)"
       },
-
       "actions": {
         "submitText": "Wyślij zamówienie",
         "processingText": "Przetwarzanie..."
@@ -427,7 +427,7 @@
       "dataControllerTitle": "Administrator danych",
       "dataController": {
         "company": "VAN SHARE Spółka z o.o.",
-        "address": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+        "address": "ul. Gwiaździsta 62 16/6, 53-413 Wrocław, Poland",
         "nip": "NIP: 716-28-26-886",
         "email": "E-mail: vanshare1@gmail.com"
       },
@@ -483,13 +483,13 @@
       "companyLabel": "Firma:",
       "companyValue": "VAN SHARE Spółka z o.o.",
       "addressLabel": "Adres:",
-      "addressValue": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+      "addressValue": "ul. Gwiaździsta 62 16/6, 53-413 Wrocław, Poland",
       "nipLabel": "NIP:",
       "nipValue": "716-28-26-886",
       "emailLabel": "E-mail:",
       "emailValue": "vanshare1@gmail.com",
       "phoneLabel": "Telefon:",
-      "phoneValue": "+48 577 432 949, +48 730 670 345",
+      "phoneValue": "+48 731 431 849",
       "businessProfileLabel": "Profil działalności:",
       "businessProfileValue": "Dostawy i dystrybucja węgla drzewnego liściastego w modelu B2B."
     }

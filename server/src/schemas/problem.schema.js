@@ -26,4 +26,5 @@ export const problemSchema = z.object({
     .max(254, "Email must not exceed 254 characters")
     .toLowerCase()
     .trim(),
+  lang: z.string().regex(/^(pl|en)(-[a-z]{2})?$/i).optional(),
 });

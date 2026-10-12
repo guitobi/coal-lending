@@ -7,7 +7,8 @@
     "calculator": "Calculator",
     "contactUs": "Contact Us",
     "faq": "FAQ",
-    "blog": "Blog"
+    "blog": "Blog",
+    "pellet": "Pellets"
   },
   "cta": {
     "maximumHeat": "Maximum Heat,",
@@ -84,7 +85,7 @@
   "footer": {
     "contactTitle": "Contact",
     "navigationTitle": "Navigation",
-    "companyDescription": "Official distributor of WOODEN WEST charcoal in Poland. Premium hardwood charcoal for grilling and BBQ",
+    "companyDescription": "We supply WOODEN WEST hardwood charcoal and pine wood pellets in Poland. Real products, clear pricing and direct service",
     "allRightsReserved": "All rights reserved.",
     "legalLinks": {
       "privacyPolicy": "Privacy Policy",
@@ -232,15 +233,15 @@
         },
         "phone": {
           "title": "Phone",
-          "first": "+48 577 432 949",
-          "second": "+48 730 670 345"
+          "first": "+48 731 431 849",
+          "second": "+48 731 431 849"
         },
         "address": {
           "title": "Address",
           "description": {
             "firstLine": "Van Share Spółka z o.o.",
-            "secondLine": "ul. Batalionów Chłopskich 3",
-            "thirdLine": "58-050 Jelenia Góra, Poland"
+            "secondLine": "ul. Gwiaździsta 62 16/6",
+            "thirdLine": "53-413 Wrocław, Poland"
           }
         },
         "nip": "NIP: 716-28-26-886",
@@ -278,13 +279,13 @@
       },
       "phone": {
         "title": "Phone",
-        "description": "+48 577 432 949"
+        "description": "+48 731 431 849"
       },
       "address": {
         "title": "Address",
         "description": {
-          "firstLine": "Polkowice, Poland",
-          "secondLine": "DAP Delivery Available"
+          "firstLine": "ul. Gwiaździsta 62 16/6",
+          "secondLine": "53-413 Wrocław, Poland"
         }
       },
       "businessHours": {
@@ -430,7 +431,7 @@
       "dataControllerTitle": "Data controller",
       "dataController": {
         "company": "VAN SHARE Spółka z o.o.",
-        "address": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+        "address": "ul. Gwiaździsta 62 16/6, 53-413 Wrocław, Poland",
         "nip": "NIP: 716-28-26-886",
         "email": "Email: vanshare1@gmail.com"
       },
@@ -486,13 +487,13 @@
       "companyLabel": "Company:",
       "companyValue": "VAN SHARE Spółka z o.o.",
       "addressLabel": "Address:",
-      "addressValue": "ul. Batalionów Chłopskich 3, 58-050 Jelenia Góra, Poland",
+      "addressValue": "ul. Gwiaździsta 62 16/6, 53-413 Wrocław, Poland",
       "nipLabel": "NIP:",
       "nipValue": "716-28-26-886",
       "emailLabel": "Email:",
       "emailValue": "vanshare1@gmail.com",
       "phoneLabel": "Phone:",
-      "phoneValue": "+48 577 432 949, +48 730 670 345",
+      "phoneValue": "+48 731 431 849",
       "businessProfileLabel": "Business profile:",
       "businessProfileValue": "B2B supply and distribution of hardwood charcoal."
     }

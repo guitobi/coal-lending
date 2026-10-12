@@ -38,7 +38,7 @@ export const orderSchema = z.object({
 
   weightInKg: z
     .number()
-    .min(100, "Weight must be at least 100 kg")
+    .min(15, "Weight must be at least 15 kg")
     .max(100000, "Weight must not exceed 100,000 kg")
     .int("Weight must be a whole number"),
 
@@ -47,4 +47,14 @@ export const orderSchema = z.object({
     .max(2000, "Comment must not exceed 2000 characters")
     .optional()
     .transform((val) => val?.trim() || ""),
+  lang: z.string().regex(/^(pl|en)(-[a-z]{2})?$/i).optional(),
+  productType: z.enum(["charcoal", "pellet"]).default("charcoal"),
+  quantityBags: z.number().int().min(1).max(6666).optional(),
+}).superRefine((data, ctx) => {
+  if (data.productType === "charcoal" && data.weightInKg < 100) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["weightInKg"], message: "Minimum charcoal order is 100 kg" });
+  }
+  if (data.productType === "pellet" && (!data.quantityBags || data.weightInKg !== data.quantityBags * 15)) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["quantityBags"], message: "Pellet orders must use 15 kg bags" });
+  }
 });

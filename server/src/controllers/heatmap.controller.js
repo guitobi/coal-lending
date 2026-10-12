@@ -11,15 +11,6 @@ const HEATMAP_DATA_DIR = process.env.NODE_ENV === "production"
   : path.join(process.cwd(), "data", "heatmap");
 const HEATMAP_FILE_PATH = path.join(HEATMAP_DATA_DIR, "heatmap-data.json");
 
-// Helper function to anonymize IP address
-const anonymizeIP = (ip) => {
-  if (!ip) return "unknown";
-
-  // Hash the IP for privacy
-  const hash = crypto.createHash("sha256").update(ip).digest("hex");
-  return hash.substring(0, 16); // First 16 chars of hash
-};
-
 // Helper function to extract basic user agent info
 const sanitizeUserAgent = (userAgent) => {
   if (!userAgent) return "unknown";
@@ -81,17 +72,34 @@ const readHeatmapData = async () => {
       return [];
     }
     logger.error("Error reading heatmap data", { error: error.message });
-    return [];
+    throw error;
   }
 };
 
 // Helper function to write heatmap data to file
 const writeHeatmapData = async (data) => {
+  const temporaryFile = `${HEATMAP_FILE_PATH}.${crypto.randomUUID()}.tmp`;
   try {
-    await fs.writeFile(HEATMAP_FILE_PATH, JSON.stringify(data, null, 2));
+    await fs.writeFile(temporaryFile, JSON.stringify(data));
+    await fs.rename(temporaryFile, HEATMAP_FILE_PATH);
   } catch (error) {
     logger.error("Error writing heatmap data", { error: error.message });
+    await fs.unlink(temporaryFile).catch(() => {});
+    throw error;
   }
+};
+
+// Serialize file mutations so concurrent requests cannot overwrite each other.
+let mutationQueue = Promise.resolve();
+const mutateHeatmapData = (mutate) => {
+  const job = mutationQueue.then(async () => {
+    const current = await readHeatmapData();
+    const updated = mutate(current);
+    await writeHeatmapData(updated);
+    return updated;
+  });
+  mutationQueue = job.catch(() => {});
+  return job;
 };
 
 // Store heatmap data (clicks, scrolls, mouse movements, etc.)
@@ -109,26 +117,22 @@ export const storeHeatmapData = async (req, res) => {
 
     // Anonymize sensitive data
     const heatmapEntry = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       type,
       ...payload,
+      // Search params can include private information. Store only the page path.
+      ...(payload.url ? { url: (() => { const u = new URL(payload.url); return u.origin + u.pathname; })() } : {}),
       timestamp: payload.timestamp || Date.now(),
       userAgent: sanitizeUserAgent(req.headers["user-agent"]),
-      ipHash: anonymizeIP(req.ip), // Store hash instead of real IP
     };
 
     // Read existing data
-    const existingData = await readHeatmapData();
-
     // Limit file size: keep only last 10000 entries
     const MAX_ENTRIES = 10000;
-    const trimmedData = existingData.slice(-MAX_ENTRIES + 1);
-
-    // Add new entry
-    const updatedData = [...trimmedData, heatmapEntry];
-
-    // Write updated data back to file
-    await writeHeatmapData(updatedData);
+    await mutateHeatmapData((existingData) => [
+      ...existingData.slice(-MAX_ENTRIES + 1),
+      heatmapEntry,
+    ]);
 
     res.status(200).json({ success: true, id: heatmapEntry.id });
   } catch (error) {
@@ -193,7 +197,7 @@ export const getHeatmapDataByType = async (req, res) => {
 // Protected with admin auth middleware
 export const clearHeatmapData = async (req, res) => {
   try {
-    await writeHeatmapData([]);
+    await mutateHeatmapData(() => []);
     logger.info("Heatmap data cleared by admin");
     res.status(200).json({ success: true, message: "Heatmap data cleared" });
   } catch (error) {

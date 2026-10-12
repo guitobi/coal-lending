@@ -1,29 +1,25 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { initGA, trackPageView } from "../utils/analytics";
+import { useAnalyticsConsent } from "../utils/analyticsConsent";
 
 function RoutedAnalyticsProvider({ children, measurementId }) {
   const location = useLocation();
+  const consent = useAnalyticsConsent();
 
   useEffect(() => {
-    // Use either passed measurementId or global window variable
-    const gaMeasurementId = measurementId || window.VITE_GA_MEASUREMENT_ID;
-
-    if (gaMeasurementId) {
-      // Initialize Google Analytics
-      initGA(gaMeasurementId);
+    if (measurementId) {
+      window[`ga-disable-${measurementId}`] = !consent;
+      if (consent) initGA(measurementId);
+      if (window.gtag) {
+        window.gtag("consent", "update", { analytics_storage: consent ? "granted" : "denied" });
+      }
     }
-  }, [measurementId]);
+  }, [measurementId, consent]);
 
   useEffect(() => {
-    // Use either passed measurementId or global window variable
-    const gaMeasurementId = measurementId || window.VITE_GA_MEASUREMENT_ID;
-
-    if (gaMeasurementId) {
-      // Track page views when location changes
-      trackPageView(location, gaMeasurementId);
-    }
-  }, [location, measurementId]);
+    if (measurementId && consent) trackPageView(location, measurementId);
+  }, [location, measurementId, consent]);
 
   return <>{children}</>;
 }

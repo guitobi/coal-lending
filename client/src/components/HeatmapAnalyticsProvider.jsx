@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { initAllHeatmapTracking } from "../utils/heatmapAnalytics";
+import { useAnalyticsConsent } from "../utils/analyticsConsent";
 
-function HeatmapAnalyticsProvider({ children, config }) {
+function HeatmapAnalyticsProvider({ children }) {
+  const consent = useAnalyticsConsent();
   useEffect(() => {
-    if (config && config.enabled) {
-      // Initialize heatmap analytics
-      initAllHeatmapTracking(config);
-    }
-  }, [config]);
+    if (!consent) return;
+    return initAllHeatmapTracking();
+  }, [consent]);
 
   return <>{children}</>;
 }
